@@ -1,1 +1,1 @@
-web: node nom start
+web: npm start
