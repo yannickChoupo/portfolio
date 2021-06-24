@@ -40,9 +40,9 @@ app.use('/account/signOut', logOutRouter);
 app.use('/account/delete', deleteAccountRouter);
 
 
-app.get('/',(req,res) => {
-    res.send("Hello World");
-})
+// app.get('/',(req,res) => {
+//     res.send("Hello World");
+// })
 
 
 // Serve static asssets if we are in production
