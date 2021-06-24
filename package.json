@@ -4,11 +4,12 @@
   "description": "start backend and frontend concurrently",
   "main": "index.js",
   "scripts": {
-    "start": "cd backend && npm install && npm run start",
-    "backend": "nodemon backend/server.js",
-    "frontend": "cd client && npm start",
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd client && npm start\\\" ",
-    "heroku-postbuild": "cd client && npm install && npm build"
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "server": "nodemon server/index.js",
+    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
   },
   "author": "Yannick Choupo",
   "license": "ISC",
