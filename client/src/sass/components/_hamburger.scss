@@ -1,0 +1,75 @@
+@import "../abstracts/mixins";
+
+.hamburger {
+  //@include width-and-height(36px);
+  width: 36px;
+  height: 36px;
+  @include flexCenter;
+  @include rounded;
+  cursor: pointer;
+  position: relative;
+  //box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+  //background-color: rgba(0, 0, 0, 0.1);
+  //transition: 0.8s all ease;
+
+  &:hover,
+  &.active {
+  //  //background-color: rgba(0, 0, 0, 0.9);
+  //  background-color: $def-pri;
+  //  .hamburger__line {
+  //    &,
+  //    &::before,
+  //    &::after {
+        background-color:  rgba($def-pri, 0.2);
+  //      background-color:  white;
+  //    }
+  //  }
+  //  @include after-overlay(8dp);
+  }
+  .hamburger__line {
+     &, &:before, &::after {
+       content: '';
+       height: 2px;
+       width: 20px;
+       background-color: $def-pri;
+     }
+
+     &::before,
+     &::after {
+       position: absolute;
+       transition: 0.25s all ease;
+       //transition: top .25s ease-out;
+     }
+   }
+
+  &--open {
+    .hamburger__line {
+      &::before {
+        bottom: calc(100% / 4);
+      }
+
+      &::after {
+        top: calc(100% / 4);;
+      }
+    }
+  }
+
+  &--close {
+    .hamburger__line {
+      &:nth-child(1) {
+        background-color: transparent;
+      }
+
+      &::before {
+        transform: rotate(-45deg);
+      }
+
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+
+}
+

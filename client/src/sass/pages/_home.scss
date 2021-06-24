@@ -1,0 +1,128 @@
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+
+
+.home {
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .image {
+      background-size: cover;
+      background-image: url("../../images/image1.jpg");
+      background-position: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 50%);
+      width: 15em;
+      height: 15em;
+      border-radius: 50%;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////
+.home-body {
+  //background-color: red;
+  @include breakpoint--small {
+    padding: px-to-em(80px);
+    text-align: center;
+  }
+  p:first-of-type::before {
+    content: "👋";
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  p {
+    padding-top: 1em;
+    strong {
+      font-family: "nunito", sans-serif;
+    }
+  }
+  .p-link {
+    border-radius: px-to-em(3px);
+   border: .1em solid $def-pri;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      color: white;
+      background-color: $def-pri;
+    }
+  }
+
+  //:first-child
+
+  //:first-child
+
+  //.home-body-section {
+  //  position: relative;
+  //  //box-shadow: -2px 1px 5px rgba(0, 0, 0, 0.5);
+  //  //@include after-overlay(4dp);
+  //  display: flex;
+  //  justify-content: center;
+  //  flex-direction: column;
+  //  margin-top: 2rem;
+  //}
+}
+
+//.section-header {
+//  display: flex;
+//  justify-content: center;
+
+//span {
+//  display: block;
+//  position: relative;
+//  padding: .5rem 0;
+//
+//  &::before,
+//  &::after {
+//    content: "";
+//    width: 100%;
+//    height: 2px;
+//    top: 50%;
+//    display: block;
+//    position: absolute;
+//    background-color: darken($def-sec, 20%);
+//  }
+//
+//  &::before {
+//    transform: translateX(calc(-100% - 1rem));
+//  }
+//
+//  &::after {
+//    transform: translateX(calc(100% + 1rem));
+//  }
+//}
+//}
+
+//.about-section {
+//  text-align: center;
+//  line-height: 1.5;
+//  font-size: 2em;
+//  padding: 1rem;
+//}
+//
+//.tech-skills {
+//  padding: 0 1rem;
+//}
+////////////////////////////////////////////////////////////////////////////////////
+//margin-left: 1.5rem;
+//padding: 1rem;
+//border-radius: 6px;
+//justify-content: center;
+//flex-direction: column;
+//line-height: 1.5;
+//box-shadow: -2px 1px 5px rgba(0, 0, 0, 0.5);
+//@include after-overlay(4dp);
+
+//  :nth-child(1)::before {
+//    content: "👋";
+//    padding-right: 4px;
+//  }
+//
+//  :nth-child(2),
+//  :nth-child(3) {
+//    padding-left: 1.5rem;
+//  }

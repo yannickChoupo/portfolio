@@ -1,0 +1,40 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.btn {
+  border-radius: 6px;
+  //text-decoration: none;
+  //padding: 0.2rem 1rem;
+  //box-shadow: 0 2px 5px rgba(0, 0, 0, 50%);
+  //color: hsl(294, 98%, 47%);
+  //&,
+  //&:hover,
+  //&:active {
+  //  color: white;
+  //}
+  //position: relative;
+  //&::after {
+  //  content: "";
+  //  width: 100%;
+  //  height: 100%;
+  //  background-color: hsl(294, 50%, 47%);
+  //  opacity: 8%;
+  //  display: block;
+  //  position: absolute;
+  //  border-radius: inherit;
+  //  top: 0;
+  //  left: 0;
+  //  z-index: 1;
+  //}
+  //& > * {
+  //  position: relative;
+  //  z-index: 2;
+  //}
+  //&:hover{
+  //  color: $color-text-dark;
+  //  &::after {
+  //    background-color: hsl(294, 98%, 50%);
+  //    opacity: 11%;
+  //  }
+  //}
+}

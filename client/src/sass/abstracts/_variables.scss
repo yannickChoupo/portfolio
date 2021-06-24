@@ -1,0 +1,24 @@
+$levels: (
+        0dp: rgba(0,0,0,0),
+        1dp: rgba(0,0,0,0.05),
+        2dp: rgba(0,0,0,0.07),
+        3dp: rgba(0,0,0,0.08),
+        4dp: rgba(0,0,0,0.09),
+        6dp: rgba(0,0,0,0.11),
+        8dp: rgba(0,0,0,0.12),
+        12dp: rgba(0,0,0,0.14),
+        16dp: rgba(0,0,0,0.15),
+        24dp: rgba(0,0,0,0.16),
+);
+$box-shadow: 0 2px 1px rgba(0,0,0,.125);
+
+$def-pri: hsl(264, 98%, 47%); // primary main 600
+$def-sec: hsl(294, 98%, 47%);
+
+$color--white: #fff;
+$color--dark: black;
+$color-text-dark: black;
+
+//$bg-color--dark: #121212;
+$bg-color--dark: #0d1117;               // rgba(13, 17, 23, 1)
+$bg-color--white: white;

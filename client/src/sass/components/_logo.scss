@@ -1,0 +1,63 @@
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+.logo {
+  .logo__container {
+    @include flexCenter;
+    .logo__circle {
+      background-color: white;
+      .logo__cube {
+        background-color: white;
+      }
+    }
+  }
+}
+
+.logo__circle {
+  width: px-to-em(34px);
+  height: px-to-em(34px);
+  @include rounded;
+  cursor: pointer;
+  display: flex;
+}
+
+.logo__cube {
+  //@include width-and-height(20px);
+  width: 20px;
+  height: 20px;
+  position: relative;
+
+  & > div {
+    background-color: $def-pri;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    border: 0;
+    outline: 0;
+  }
+  [line="1"] {
+    &.fade {
+      animation-name: fade;
+    }
+    top: 0;
+  }
+
+  [line="2"] {
+    &.fade {
+      animation-name: fade;
+    }
+    animation-delay: 200ms;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  [line="3"] {
+    &.fade {
+      animation-name: fade;
+    }
+    animation-delay: 400ms;
+    bottom: 0;
+  }
+}
+

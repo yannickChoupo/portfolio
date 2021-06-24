@@ -1,0 +1,85 @@
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+
+$nav-height: 60px;
+nav {
+  width: 100%;
+  height: $nav-height;
+  display: flex;
+  justify-content: center;
+  margin-top: -1 * $nav-height;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+//***********************************************************
+  .signOut {
+    background-color: $def-pri;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 100%;
+    right: .1em;
+    font-size: 1em;
+  }
+  //.delete {
+  //  background-color: $def-pri;
+  //  color: white;
+  //  cursor: pointer;
+  //  position: absolute;
+  //  top: 200%;
+  //  left: 0;
+  //  font-size: 1em;
+  //}
+  //*****************************************************************
+
+  ul {
+    max-width: px-to-em(960px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    li {
+      padding: 0;
+      width: 80px;
+      height: 100%;
+      @include flexCenter;
+
+      .logos {
+        &.active {
+          .logo__cube {
+            & > * {
+              background-color: $def-pri;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav-link {
+  color: inherit;
+  padding: 0;
+}
+
+.link {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  @include flexCenter;
+  letter-spacing: 1px;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    color: $def-pri;
+    border-bottom: 1px solid rgba($def-pri, .75);
+  }
+
+  &.active {
+    border-bottom: 2px solid $def-pri;
+  }
+}

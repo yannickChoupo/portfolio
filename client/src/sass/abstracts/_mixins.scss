@@ -1,0 +1,204 @@
+@import "variables";
+//@import "function";
+// Add property
+@mixin element($name) {
+  @at-root #{&}__#{$name} {
+    @content;
+  }
+}
+
+// Add modifier
+@mixin modifier($name) {
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}
+
+// Emphasis
+@mixin main-em {
+  opacity: 87%;
+}
+@mixin helper-em {
+  opacity: 60%;
+}
+@mixin disabled-em {
+  opacity: 38%;
+}
+
+@mixin error-em {
+  opacity: 100%;
+}
+//**************************************************************************
+
+
+@mixin inline-animation($duration) {
+  $name: inline-#{unique-id()};
+
+  @keyframes #{$name} {
+    @content;
+  }
+
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-iteration-count: infinite;
+}
+
+
+/**
+  UTILILITIES MIXINS
+ */
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin center-vertically($position: absolute) {
+  position: $position;
+  top: 50%;
+  transform: (translateY(-50%));
+}
+
+@mixin center-horizontally($position: absolute) {
+  position: $position;
+  left: 50%;
+  transform: (translateX(-50%))
+}
+
+@mixin center($position: absolute) {
+  position: $position;
+  left: 50%;
+  top: 50%;
+  transform: (translate(-50%, -50%));
+}
+
+@mixin hideFully {
+  &.hide {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+
+
+@mixin rounded {
+  border-radius: 50%;
+}
+
+/**
+  MODIFIER MIXINS
+ */
+//@mixin generate
+
+
+@mixin set($color,$state: false) {
+  @if $state {
+    background-color: $color;
+  }
+}
+
+@mixin set-c($color,$state: false) {
+  @if $state {
+    color: $color;
+  }
+}
+
+@mixin open {
+  &--close {
+    & {
+      animation-name: fade-reverse;
+    }
+
+    &::before {
+      animation-name: down-reverse;
+    }
+
+    &::after {
+      animation-name: up-reverse;
+    }
+  }
+}
+
+@mixin close {
+  &--close {
+    & {
+      animation-name: fade;
+    }
+
+    &::before {
+      animation-name: down;
+    }
+
+    &::after {
+      animation-name: up;
+    }
+  }
+}
+
+@mixin section {
+  width: 500px;
+  display: flex;
+  margin: 2rem 0;
+  background: linear-gradient(50deg, rgba(249, 89, 16, 0.2) 0%, rgba(75, 231, 1, 0.2) 99%);
+  position: relative;
+  //@include overlay;
+  border: 1px solid gray;
+  border-radius: 6px;
+  & > * {
+    position: relative;
+    z-index: 5;
+    font-weight: 100;
+  }
+}
+
+@mixin font {
+  & > * {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+    font-weight: 100;
+  }
+}
+
+@mixin set-sec-bg-oh {
+  &:hover {
+    background-color: hsl(264, 0%, 10%);
+    & > * {
+      background-color: hsl(294, 98%, 47%);
+    }
+  }
+}
+
+@mixin set-sec-cl-oh {
+  &:hover {
+    background-color: hsl(294, 98%, 47%);
+    color: $color-text-dark;
+  }
+}
+@mixin box-shadow ($dp) {
+  box-shadow: 0 1px 1px rgb(0,0,0);
+  opacity: $dp;
+}
+
+//@function get-dp-color ($dp) {
+//  @return map-get($levels,$dp);
+//}
+@mixin after-overlay($suffix) {
+  $color: map-get($levels,$suffix);
+  //$color: get-dp-color($suffix);
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: $color;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    //background-color: $color;
+  }
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+  //@include after($suffix);
+}

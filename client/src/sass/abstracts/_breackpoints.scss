@@ -1,0 +1,84 @@
+@import "function";
+$breakpoint--small:   480px  !default;
+$breakpoint--medium:  640px  !default;
+$breakpoint--large:   960px  !default;
+$breakpoint--x-large: 1280px !default;
+
+
+$sl-breakpoints: (
+        small:   $breakpoint--small,
+        medium:  $breakpoint--medium,
+        large:   $breakpoint--large,
+        x-large: $breakpoint--x-large,
+);
+@mixin breakpoint($breakpoint) {
+  @media only screen and (min-width: #{px-to-em($breakpoint)}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-max($breakpoint) {
+  @media only screen and (max-width: #{px-to-em($breakpoint)}) {
+    @content;
+  }
+}
+
+@mixin breakpoint--small {
+  @include breakpoint($breakpoint--small) {
+    @content;
+  }
+}
+
+@mixin breakpoint--small-max {
+  @include breakpoint-max($breakpoint--small) {
+    @content;
+  }
+}
+
+@mixin breakpoint--medium {
+  @include breakpoint($breakpoint--medium) {
+    @content;
+  }
+}
+
+@mixin breakpoint--medium-max {
+  @include breakpoint-max($breakpoint--medium) {
+    @content;
+  }
+}
+
+@mixin breakpoint--large {
+  @include breakpoint($breakpoint--large) {
+    @content;
+  }
+}
+
+@mixin breakpoint--large-max {
+  @include breakpoint-max($breakpoint--large) {
+    @content;
+  }
+}
+
+@mixin breakpoint--x-large {
+  @include breakpoint($breakpoint--x-large) {
+    @content;
+  }
+}
+
+@mixin breakpoint--x-large-max {
+  @include breakpoint-max($breakpoint--x-large) {
+    @content;
+  }
+}
+
+@mixin breakpoint-set($breakpoint,$size) {
+  @if $breakpoint == none {
+    @content;
+  }
+
+  @else {
+    @include breakpoint($size) {
+      @content;
+    }
+  }
+}

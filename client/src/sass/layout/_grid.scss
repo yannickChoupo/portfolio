@@ -1,0 +1,73 @@
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+@import "../abstracts/colors";
+
+body {
+  min-height: 100vh;
+  //background-color: red;
+  & > * {
+    color: black;
+  }
+
+  .dark-mode {
+    color: white;
+    background-color: $bg-color--dark;
+  }
+}
+
+.grid {
+  //display: grid;
+  //min-height: 100vh;
+  //grid-template-rows: 65px auto 50px;
+  //grid-template-columns: auto auto auto;
+  //grid-template-areas: "nav  nav   nav"
+  //                     " page   page   page"
+  //                     "footer footer footer";
+  //position: relative;
+  //@include main-em;
+  // NabBar, Page, Footer -> position absolute
+  //& > * {
+  //position: absolute;
+  //}
+  //@include main-em;
+  &:hover {
+    nav {
+      //@include after-overlay(8dp);
+      @include after-overlay(1dp);
+
+    }
+  }
+
+  &:not(:hover) {
+    nav {
+      //@include after-overlay(1dp);
+    }
+  }
+
+  .grid-full {
+    grid-area: 1 / 1 / 4 / 4;
+    z-index: 1000;
+  }
+
+//display: flex;
+//  flex-direction: column;
+
+}
+
+.page {
+  min-height: 1000px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  //flex-direction: column;
+  justify-content: center;
+  //background-color: #7b0188;
+  .page-container {
+    max-width: px-to-em(960px);
+    width: 100%;
+    padding: calc(60px + 2em) 0 0  px-to-em(18px);
+  }
+}
+//}
+/////////////////////////////////////////

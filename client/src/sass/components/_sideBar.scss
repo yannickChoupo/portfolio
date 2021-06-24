@@ -1,0 +1,161 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+
+.showUp-enter,
+.showDown-enter {
+  opacity: 0;
+}
+
+.showUp-enter-active,
+.showDown-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.showUp-exit,
+.showDown-exit {
+  opacity: 1;
+}
+
+.showUp-exit-active {
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: opacity 500ms, transform 500ms;
+}
+.showDown-exit-active {
+  opacity: 0;
+  transform: translateY(50%);
+  transition: opacity 500ms, transform 500ms;
+}
+//////////////////////////////////////////////////////////////////////////////
+.show-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.show-enter-active {
+  background-color: #605EFF;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.show-exit {
+  opacity: 1;
+}
+
+.show-exit-active {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 500ms, transform 500ms;
+}
+//////////////////////////////////////////////////////////////////
+
+$icon-wh: 36px;
+.sideBar {
+  width: calc(80px);
+  border-radius: 6px 0 0 6px;
+  position: absolute;
+  right: 0;
+  top: calc((100vh - 6 * 36px) / 2);
+
+  transition: .5s all ease-in;
+
+
+  &:hover {
+    ul {
+      @include after-overlay(8dp);
+    }
+  }
+
+  //color: white;
+  &:not(:hover) {
+    ul {
+      @include after-overlay(1dp);
+    }
+  }
+
+  ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all .5s ease;
+
+    li {
+      width: 100%;
+      height: 40px;
+      margin: 0.5rem 0;
+    }
+  }
+
+  .side__link {
+    //@include width-and-height(40px);
+    height: 40px;
+    width: 40px;
+    color: $def-pri;
+    cursor: pointer;
+    border-radius: 50%;
+    text-decoration: none;
+    @include flexCenter;
+    position: relative;
+
+    &:hover,
+    &.active {
+      background-color: rgba($def-pri, 0.3);
+    }
+  }
+
+  @include breakpoint--small {
+    .side__link {
+      &::before,
+      &::after {
+        $scale: 0;
+        color: transparent;
+        position: absolute;
+        z-index: 1000;
+        transform: scale($scale);
+        transition: 0.5s transform;
+      }
+
+      &::before {
+        content: attr(title);
+        width: max-content;
+        right: 50px;
+        transform-origin: right;
+        padding: 0.3rem;
+        border-radius: 4px;
+        font-size: 10px;
+      }
+
+      &::after {
+        content: '';
+        left: -10px;
+        border: 8px solid transparent;
+        transform-origin: left;
+      }
+
+      &:hover {
+        $scale: 1;
+
+        &::before,
+        &::after {
+          transform: scale($scale);
+        }
+
+        &::before {
+          color: white;
+          background-color: $def-pri;
+        }
+
+        &::after {
+          border: 7px solid transparent;
+          border-left-color: $def-pri;
+        }
+      }
+    }
+  }
+}

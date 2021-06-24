@@ -1,0 +1,38 @@
+@use "hamburger";
+@use "button";
+@use "footer";
+@use "logo";
+@use "switch";
+
+
+//@use "page_title";
+@use "sideBar";
+@use "project_wrapper";
+
+//.showUp-enter,
+//.showDown-enter {
+//  opacity: 0;
+//}
+//
+//.showUp-enter-active,
+//.showDown-enter-active {
+//  opacity: 1;
+//  transform: translateY(0);
+//  transition: opacity 500ms, transform 500ms;
+//}
+//
+//.showUp-exit,
+//.showDown-exit {
+//  opacity: 1;
+//}
+//
+//.showUp-exit-active {
+//  opacity: 0;
+//  transform: translateY(-50%);
+//  transition: opacity 500ms, transform 500ms;
+//}
+//.showDown-exit-active {
+//  opacity: 0;
+//  transform: translateY(50%);
+//  transition: opacity 500ms, transform 500ms;
+//}

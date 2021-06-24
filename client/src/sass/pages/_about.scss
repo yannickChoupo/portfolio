@@ -1,0 +1,206 @@
+@import "../abstracts/variables";
+@import "../abstracts/function";
+@import "../abstracts/mixins";
+
+$lines-color: rgba($def-pri, .87);
+#about {
+  //background-color: #7b0188;
+  padding-bottom: 5em;
+  h3 {
+    padding: .6em 0 .1em 0;
+    border-bottom: 2px solid $def-pri;
+  }
+
+  #education {
+    .body {
+      //background-color: #605EFF;
+      margin: {
+        //left: px-to-em(20px);
+        top: 1em
+      }
+      ////////////////////////////////////////////////////////
+      position: relative;
+
+      &::before {
+        content: "";
+        width: .1em;
+        height: calc(100% - 6.85ch);
+        position: absolute;
+        z-index: 1000;
+        left: 0;
+        top: 1ch;
+        background-color: $def-pri;
+      }
+
+      ///////////////////////////////////////////////////////////
+      section {
+        span {
+          display: block;
+          position: relative;
+        }
+
+        margin-top: 1em;
+
+        .subtitle {
+          display: flex;
+
+
+          .from {
+            position: relative;
+            width: 15ch;
+            text-align: right;
+            margin-right: 9ch;
+            //background-color: #7b0188;
+
+            &::before {
+              content: "";
+              height: 0.2em;
+              width: 3ch;
+              position: absolute;
+              left: 0;
+              top: 50%;
+              background-color: $def-pri;
+              padding: 0 1em 0 0;
+            }
+
+          }
+
+          .to {
+            position: relative;
+            text-align: left;
+
+            &::before {
+              content: "";
+              height: 0.2em;
+              width: 3ch;
+              position: absolute;
+              left: -6ch;
+              top: 50%;
+              background-color: $def-pri;
+              padding: 0 1em 0 0;
+            }
+          }
+
+        }
+
+        p {
+          padding: {
+            left: 4.5ch;
+            top: .5em
+          }
+        }
+      }
+    }
+  }
+
+  #skills {
+    //background-color: #7b0188;
+    .body {
+      //padding: 2e;
+      padding-top: 2em;
+      //background-color: red;
+
+      position: relative;
+      &::before {
+        content: "";
+        width: .1em;
+        height: 9.7ch;
+        position: absolute;
+        //z-index: 2;
+        //left: 0;
+        top: calc(2em + 1ch);
+        background-color: $def-pri;
+      }
+      .subtitle {
+        //background-color: #605EFF;
+        width: 30ch;
+        position: relative;
+        //text-align: right;
+        margin-left: 4.5ch;
+
+        &::before {
+          content: "";
+          height: 0.2em;
+          width: 3ch;
+          position: absolute;
+          left: -4.5ch;
+          top: 50%;
+          background-color: $def-pri;
+          padding: 0 1em 0 0;
+        }
+
+      }
+      .languages {
+        ul {
+          //background-color: lightgreen;
+          padding-left: 4.5ch;
+        }
+        margin-bottom: 1em;
+      }
+
+      .tech-skills {
+        h6,ul {
+          margin-left: 6ch;
+          //background-color: #605EFF;
+        }
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          li {
+            //background-color: #605EFF;
+            margin: .1em .5em;
+            //padding: .2em;
+            color: white;
+            background-color: rgba($def-pri,.9);
+            border: .1em solid $def-pri;
+          }
+        }
+      }
+    }
+  }
+
+  //  .section {
+  //
+  //    &-header {
+  //      border-bottom: 2px solid $def-pri;
+  //    }
+  //  }
+  //}
+  //background-color: $def-pri;
+  //height: calc(100% - 65px);
+  //font-family: 'Quicksand', sans-serif;
+  //.text__container {
+  //  width: 600px;
+  //  padding: 0 15px;
+  //  display: flex;
+  //  flex-direction: column;
+  //  align-items: center;
+  //  justify-content: center;
+  //  h1 {
+  //    font-family: 'Open Sans', sans-serif;
+  //    color: #222;
+  //    font-size: 50px;
+  //    letter-spacing: 3px;
+  //    text-transform: uppercase;
+  //    margin-bottom: 1rem;
+  //  }
+  //
+  //  p {
+  //    display: block;
+  //    text-align: center;
+  //    margin-bottom: 2rem;
+  //  }
+  //
+  //  .Link {
+  //    color: white;
+  //    width: 150px;
+  //    height: 50px;
+  //    border-radius: 5px;
+  //    display: flex;
+  //    justify-content: center;
+  //    align-items: center;
+  //    text-decoration: none;
+  //    background-color: lightgreen;
+  //  }
+  //}
+}

@@ -1,0 +1,13 @@
+@import "src/sass/abstracts/mixins";
+.page__title {
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 15px;
+  font-weight: 300;
+  width: 100px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 5px;
+  //@include set-bg-to("tertiary-color");
+}

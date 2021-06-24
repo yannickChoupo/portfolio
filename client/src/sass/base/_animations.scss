@@ -1,0 +1,123 @@
+/*
+  Animation for the first line from the top
+ */
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+//@keyframes down-reverse {
+//  from {
+//    transform: rotate(45deg);
+//    top: calc(50% - 1px);
+//  }
+//  to {
+//    top: 0;
+//  }
+//}
+//
+//@keyframes up {
+//  from {
+//    bottom: 0;
+//  }
+//  to {
+//    bottom: calc(50% - 1px);
+//    transform: rotate(-45deg);
+//  }
+//}
+//
+//@keyframes up-reverse {
+//  from {
+//    transform: rotate(-45deg);
+//    bottom: calc(50% - 1px);
+//  }
+//  to {
+//    bottom: 0;
+//  }
+//}
+//
+//@keyframes fade {
+//  from {
+//    background-color: rgba(0,0,0,0.1);
+//  }
+//  to {
+//    background-color: transparent;
+//  }
+//}
+//
+//@keyframes fade-reverse {
+//  from {
+//    background-color: transparent;
+//  }
+//  to {
+//    background-color: #b71540;
+//  }
+//}
+//
+//@keyframes lightThemeC {
+//  from {
+//    background-color: gray;
+//  }
+//  to {
+//    background-color: white;
+//  }
+//}
+//
+//@keyframes darkThemeC {
+//  from {
+//    background-color: white;
+//  }
+//  to {
+//    background-color: black;
+//  }
+//}
+//
+//@keyframes lightTheme {
+//  from {
+//    right: 0;
+//    background-color: white;
+//  }
+//  to {
+//    left: 0;
+//    background-color: black;
+//  }
+//}
+//
+//@keyframes darkTheme {
+//  from {
+//    left: 0;
+//    background-color: black;
+//  }
+//  to {
+//    right: 0;
+//    background-color: white;
+//  }
+//}
+//@keyframes btn-hover {
+//  from {
+//      //background-color: $surface-bg-3dp;
+//  }
+//  to {
+//      //background-color: $surface-bg-6dp;
+//  }
+//}
+//@keyframes slide-in {
+//  from {
+//    margin-left: 100%;
+//    width: 300%;
+//  }
+//
+//  70% {
+//    margin-left: 90%;
+//    width: 150%;
+//  }
+//
+//  to {
+//    margin-left: 0;
+//    width: 100%;
+//  }
+//}

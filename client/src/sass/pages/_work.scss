@@ -1,0 +1,129 @@
+@use "../abstracts/colors" as color ;
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+@import "../abstracts/utils";
+@import "../abstracts/colors";
+///////////////////////////////////////////////////////////////////////
+#work {
+  //background-color: #605EFF;
+
+  h2 {
+    margin-bottom: 2em;
+  }
+
+  //***************************************************
+  //max-width: px-to-rem(960px);
+  //width: 100%;
+  //padding: calc(60px + 2em) 0 0  px-to-em(18px);
+  //********************************************************
+  .page-container {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .work-home {
+    //background-color: #7b0188;
+    padding: calc(60px + 2em) 0 0 px-to-em(18px);
+  }
+
+  .work-wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .button {
+      width: 40px;
+      height: 30px;
+      position: absolute;
+      @include flexCenter;
+      bottom: .5em;
+      right: .5em;
+      border-radius: 6px;
+      background-color: $def-pri;
+      font-size: 1em;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        //color: $def-pri;
+        background-color: rgba($def-pri, .8);
+      }
+    }
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////
+.launch-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.launch-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.launch-exit {
+  opacity: 1;
+}
+
+.launch-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 500ms, transform 500ms;
+}
+.work-list {
+  //background-color: #7b0188;
+
+  @include breakpoint--small {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20em,1fr));
+    .project-card {
+      margin-right: .5em;
+    }
+  }
+
+
+  li {
+    //background-color: red;
+    margin-bottom: 3em;
+    display: flex;
+    min-height: 100px;
+    border: {
+      bottom: 1px solid $def-pri;
+      left: 1px solid $def-pri
+    };
+
+    .title {
+      min-width: 10ch;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+    }
+
+    .item-link {
+      position: relative;
+
+      .work-link {
+        border-radius: px-to-em(3px);
+        color: white;
+        background-color: getPriVariant(300);
+        position: absolute;
+        bottom: .25em;
+        margin-left: 1em;
+        padding: .5em;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
+    }
+  }
+}

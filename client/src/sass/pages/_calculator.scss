@@ -1,0 +1,94 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+@import "../abstracts/utils";
+
+#calculator {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: px-to-em(60px) px-to-em(18px);
+  background-color: #282c34;
+}
+
+#board {
+  width: 320px;
+  margin: auto 0;
+  background-color: #1C1C1C;
+  border-radius: 6px;
+  color: white;
+
+  .btn {
+    position: absolute;
+    bottom: 0;
+    background-color: #FF9500;
+  }
+  #screen {
+    .display {
+      height: 40px;
+      width: 100%;
+      font-size: 30px;
+      text-align: right;
+      overflow: hidden;
+    }
+
+    #display {
+      height: 50px;
+      width: 100%;
+      font-size: 2rem;
+      text-align: right;
+    }
+  }
+
+  #main-board {
+    padding: 10px;
+
+    .row {
+      margin-top: 10px;
+    }
+
+    #clear, #zero {
+      width: 135px;
+      height: 60px;
+      border-radius: 2rem;
+      color: white;
+    }
+
+    #clear {
+      background-color: #D4D4D2;
+      color: black;
+    }
+
+    #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero, #decimal {
+      background-color: #505050;
+      color: white;
+      border: none;
+    }
+
+    #equals, #subtract, #divide, #multiply, #add {
+      background-color: #FF9500;
+      color: white;
+    }
+
+    .btn-circle {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+    }
+
+    .col-3 {
+      margin: 0;
+      padding: 0;
+      @include flexCenter;
+    }
+  }
+}
+
+.float-right {
+  float: right;
+}

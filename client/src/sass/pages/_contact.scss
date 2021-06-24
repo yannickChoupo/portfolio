@@ -1,0 +1,41 @@
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+
+#contact{
+  //.body {
+  //  padding: px-to-em(20px) 0 0 px-to-em(20px);
+  //  //background-color: red;
+  //  display: flex;
+  //  flex-direction: column;
+  //  h1 {
+  //    font-size: 2.5em;
+  //  }
+  //  p {
+  //    font-size: 2em;
+  //  }
+  //  span {
+  //    font-size: 1.2em;
+  //  }
+  //  section {
+  //    margin-bottom: 3em;
+  //  }
+  //}
+  textarea {
+    resize: none;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    padding: .5em .5em 0 .5em;
+    margin-bottom: .5em;
+    font-size: 1.3em;
+    border-left: .1em solid $def-pri;
+  }
+  button {
+    border: none;
+    padding: .5em 1em;
+    color: $def-pri;
+  }
+}

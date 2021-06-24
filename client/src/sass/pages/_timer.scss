@@ -1,0 +1,90 @@
+@import "../abstracts/function";
+
+#timer {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: px-to-em(60px) px-to-em(18px);
+  justify-content: center;
+  background-color:  #282c34;
+  //@include after-overlay(24dp);
+
+  h1, h2, h3 {
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 2em;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+  .body {
+
+    .box {
+      margin: .5em;
+    }
+    .setting {
+      float: left;
+      width: 50%;
+      h3 {
+        font-size: 1.3em;
+        padding: .5em;
+      }
+      &-footer {
+        display: flex;
+        justify-content: center;
+        .sign {
+          color: $def-pri;
+          display: flex;
+          justify-content: center;
+          font-size: 1.9em;
+          font-weight: 800;
+          //padding: 0 1ch 0 2ch;
+        }
+        .value {
+          @include flexCenter;
+        }
+        span {
+          font-size: 2em;
+          //margin: 0 1em;
+          height: 50px;
+          width: 50px;
+        }
+      }
+    }
+
+    .display {
+      //background-color: green;
+      border-bottom: .1em solid $def-pri;
+      &-footer {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        span {
+          font-weight: 600;
+          font-size: 1.5em;
+          margin: 0 1em;
+          @include flexCenter;
+          height: 50px;
+          width: 50px;
+        }
+        .reset {
+          color: red;
+        }
+      }
+      .screen {
+        text-align: center;
+        font-size: 6.2em;
+      }
+    }
+  }
+}

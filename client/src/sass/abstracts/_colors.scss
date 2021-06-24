@@ -1,0 +1,34 @@
+//$def-pri: hsl(264, 98%, 47%); // primary main 600
+$pri-variants: (
+        900: #0000db,
+        800: #3500e0,
+        700: #4c00e5,
+        600: #4c00e5,
+        500: #6d0af3,
+        400: #8843f7,
+        300: #a069f8,
+        200: #bc97f9,
+        100: #d7c1fb,
+        50 : #d7c1fb);
+
+//$def-sec: hsl(294, 98%, 47%);
+$sec-variants: (
+        900: #5b00d1,
+        800: #8b00db,
+        700: #a100df,
+        600: #b900e4,
+        500: #cc00e9,
+        400: #d602ed,
+        300: #de55f1,
+        200: #e98df5,
+        100: #f1bcf8,
+        50 : #fae4fc);
+
+$pri: 'pri-variants';
+$sec: 'sec-variants';
+@function getSecVariant($color) {
+  @return map-get($sec-variants, $color)
+}
+@function getPriVariant($color) {
+  @return map-get($pri-variants, $color)
+}

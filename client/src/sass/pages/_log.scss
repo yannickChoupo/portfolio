@@ -1,0 +1,105 @@
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+@import "../abstracts/colors";
+
+#sign {
+  background-color: #282c34;
+  //padding: 0;
+  //padding-right: px-to-em(10px);
+  @include breakpoint--small {
+    //padding: px-to-em(80);
+    text-align: center;
+  }
+
+  .errorMessage {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    padding: .5em;
+    text-align: center;
+    color: gray;
+  }
+  .header {
+    margin-bottom: 1em;
+    section {
+      display: flex;
+      justify-content: center;
+    }
+    .mode {
+      width: max-content;
+      border-bottom: .1em solid $def-pri;
+    }
+  }
+  .switch {
+    width: max-content;
+    cursor: pointer;
+  }
+
+  .body {
+    border: .1em solid getPriVariant(700);
+    padding: 1em 0 3em;
+    margin-right: px-to-em(30px);
+    position: relative;
+    @include after-overlay(4dp);
+    div[role="submit"]{
+      font-size: .8em;
+      border-radius: 3px;
+      padding: .3em;
+      cursor: pointer;
+      @include center-horizontally();
+      width: max-content;
+      border: 1px solid $def-pri;
+      color: white;
+      &:hover {
+        background-color: $def-pri;
+      }
+    }
+    &.signUp {
+      //@include after-overlay(4dp);
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0 1em px-to-em(36px);
+
+    @include breakpoint--small {
+      padding-left: 0;
+      justify-content: center;
+    }
+
+    section {
+      display: flex;
+      margin-bottom: .8em;
+      @include breakpoint--small {
+        justify-content: center;
+      }
+    }
+
+    label {
+      @include flexCenter;
+      width: 40px;
+      color: rgba($def-pri,.87);
+      margin-right: 1em;
+      border-radius: 3px;
+      border: .1em solid $def-pri;
+    }
+
+    input {
+      background: transparent;
+      display: block;
+      padding: .25rem 1rem;
+      border: 0;
+      border-bottom: 1px solid gray;
+      outline: 0;
+
+      &:focus {
+        color: $def-pri;
+        border-bottom: 2px solid $def-pri;
+      }
+    }
+  }
+}
