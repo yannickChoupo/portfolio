@@ -4,7 +4,7 @@
   "description": "start backend and frontend concurrently",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node server.js",
     "backend": "nodemon backend/server.js",
     "frontend": "npm run front --prefix client",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd client && npm start\\\" ",
