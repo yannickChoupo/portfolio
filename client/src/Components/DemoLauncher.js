@@ -28,9 +28,6 @@ const Project = ({projectName}) => {
 const DemoLauncher = ({unMountProject, projectName}) => {
     const {demoIsLaunch} = useSelector(state => state.demo);
     console.log("new project*************", projectName);
-    // if(projectName === "Calculator") {
-    console.log("")
-    // if(demoIsLaunch && projectName) {
     return (
         <>
             {
@@ -40,7 +37,7 @@ const DemoLauncher = ({unMountProject, projectName}) => {
                     classNames="launch"
                     timeout={200}
                     unmountOnExit>
-                    <div className="work-wrapper">
+                    <div className="work-wrapper page-container">
                         <Project projectName={projectName}/>
                         <div className="button" onClick={unMountProject}>
                             &#9746;

@@ -24,18 +24,18 @@
   }
 
   .work-home {
-    //background-color: #7b0188;
     padding: calc(60px + 2em) 0 0 px-to-em(18px);
   }
 
   .work-wrapper {
     position: fixed;
     top: 0;
-    width: 100%;
+    //width: 100%;
     min-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: red;
 
     .button {
       width: 40px;

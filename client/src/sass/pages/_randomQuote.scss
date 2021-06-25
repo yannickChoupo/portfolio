@@ -9,23 +9,21 @@
   display: flex;
   align-items: center;
   padding: px-to-em(60px) px-to-em(18px);
-  background-color: #282c34;
+  //background-color: #282c34;
 
 }
 
 .quote-box {
-  //background-color: #605EFF;
+  background-color: #605EFF;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  //min-width: 350px;
-  //max-width: 600px;
+  width: 100%;
   font-size: 1.61rem;
   font-weight: 500;
   border-radius: 0.60rem;
-//  //background-color: red;
-//
+  padding: 1em;
   .quote-text {
     text-align: center;
   }

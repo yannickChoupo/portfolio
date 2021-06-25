@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require("path");
 const bodyParser = require('body-parser')
@@ -12,11 +13,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: false}), function middleware(req, res, next) {
     console.log(req.method + " " + req.path + " - " + req.ip)
     next();
-})
+});
 const uri = process.env.ATLAS_URI;
-const mongoose = require('mongoose');
-mongoose.connect(uri
-    , {useNewUrlParser: true, useCreateIndex: true});
+mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
 const connection = mongoose.connection;
 //
 connection.once('open', () => {

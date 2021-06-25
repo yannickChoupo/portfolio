@@ -23,7 +23,6 @@
 
 ////////////////////////////////////////////////////////////////////
 .home-body {
-  //background-color: red;
   @include breakpoint--small {
     padding: px-to-em(80px);
     text-align: center;

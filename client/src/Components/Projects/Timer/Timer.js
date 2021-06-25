@@ -120,61 +120,64 @@ class Timer extends React.Component {
         const newSecondes = this.state.curSecondes.toString().length < 2 ? "0".concat(this.state.curSecondes.toString()) : this.state.curSecondes.toString();
         return (
             <div id="timer" className="project">
-                <h1> TIMER </h1>
-                <div className="body">
-                    <section className="display">
-                        <h2>{this.state.curType}</h2>
-                        <div className="screen">
-                            {newMinutes}:{newSecondes}
-                        </div>
-                        <div className="display-footer">
+                {/*<div className="page-container">*/}
+                    <h1> TIMER </h1>
+                    <div className="body">
+                        <section className="display">
+                            <h2>{this.state.curType}</h2>
+                            <div className="screen">
+                                {newMinutes}:{newSecondes}
+                            </div>
+                            <div className="display-footer">
                                 {this.state.counterOn ? <span onClick={this.handleOnOff}>
                                         {/*&#61;*/}
                                         &#61;
                                 </span>
-                                : <span onClick={this.handleOnOff}>
+                                    : <span onClick={this.handleOnOff}>
                                         ⟳
                                     </span>
                                 }
-                            <span className="reset" onClick={this.resetSession}>
+                                <span className="reset" onClick={this.resetSession}>
                                 &#10226;
                             </span>
-                        </div>
-                    </section>
-                    <section className="setting break">
-                        <h3>Break Length</h3>
-                        <div className="setting-footer">
+                            </div>
+                        </section>
+                        <section className="setting break">
+                            <h3>Break Length</h3>
+                            <div className="setting-footer">
                             <span className="sign" onClick={this.decrementBreak}>
                                 &#8249;
                             </span>
-                            <span className="value">
+                                <span className="value">
                                 {this.state.breakLength}
                             </span>
-                            <span className="sign" onClick={this.incrementBreak}>
+                                <span className="sign" onClick={this.incrementBreak}>
                                 &#8250;
                             </span>
-                        </div>
-                    </section>
-                    <section className="setting session">
-                        <h3>Session Length</h3>
-                        <div className="setting-footer">
+                            </div>
+                        </section>
+                        <section className="setting session">
+                            <h3>Session Length</h3>
+                            <div className="setting-footer">
                             <span className="sign" onClick={this.decrementSession}>
                                 &#8249;
                             </span>
-                            <span className="value">
+                                <span className="value">
                                 {this.state.sessionLength}
                             </span>
-                            <span className="sign" onClick={this.incrementSession}>
+                                <span className="sign" onClick={this.incrementSession}>
                                 &#8250;
                             </span>
-                        </div>
-                    </section>
+                            </div>
+                        </section>
+                    </div>
+                    <audio id="beep"
+                           preload="auto"
+                           src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+                           ref={this.audio}/>
                 </div>
-                <audio id="beep"
-                       preload="auto"
-                       src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
-                       ref={this.audio}/>
-            </div>
+            // </div>
+
             // </div>
         );
     }
