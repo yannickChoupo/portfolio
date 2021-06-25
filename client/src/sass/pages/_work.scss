@@ -42,7 +42,7 @@
       height: 30px;
       position: absolute;
       @include flexCenter;
-      top: .5em;
+      top: calc(.5em + 60px);
       right: .5em;
       border-radius: 6px;
       background-color: $def-pri;
