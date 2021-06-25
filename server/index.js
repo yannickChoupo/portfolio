@@ -9,10 +9,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-// app.use(bodyParser.urlencoded({extended: false}), function middleware(req, res, next) {
-//     console.log(req.method + " " + req.path + " - " + req.ip)
-//     next();
-// })
+app.use(bodyParser.urlencoded({extended: false}), function middleware(req, res, next) {
+    console.log(req.method + " " + req.path + " - " + req.ip)
+    next();
+})
 const uri = process.env.ATLAS_URI;
 const mongoose = require('mongoose');
 mongoose.connect(uri
