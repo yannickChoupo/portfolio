@@ -38,7 +38,7 @@ function App() {
         console.log("first Render");
         if (!getFromStorage("main_storage")) {
             history.push("/sign");
-            // window.location.reload();
+            window.location.reload();
             console.log("local storage empty")
         } else {
             const {userName} = getFromStorage("main_storage").user;
