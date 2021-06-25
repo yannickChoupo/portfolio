@@ -48,13 +48,13 @@ function App() {
                 })
         }
     }, [dispatch]);
-    useEffect(() => {
-        if (!getFromStorage("main_storage")) {
-            history.push("/sign");
-            window.location.reload();
-            console.log("local storage empty")
-        }
-    },[])
+    // useEffect(() => {
+    //     if (!getFromStorage("main_storage")) {
+    //         history.push("/sign");
+    //         window.location.reload();
+    //         console.log("local storage empty")
+    //     }
+    // },[])
     return (
         <>
             <BrowserView>
