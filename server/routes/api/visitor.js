@@ -1,22 +1,9 @@
 const router = require('express').Router();
-let Visitor = require('../../models/visitor.model');
+const visitorController = require('../../controllers/visitor');
 
-router.route('/').get((req, res) => {
-    res.send("hello world");
-    // User.find()
-//         .then(users => res.json())
-//         .catch(err => res.status(400).json('error: ' + err))
+router.get('/',(req, res) => {
+    return res.send("hello");
 })
-// router.route('/add').post((req, res) => {
-//     const { username, key} = req.body;
-//
-//     const newUser = new User({
-//         username,
-//         key
-//     })
-//     newUser.save()
-//         .then(() => res.json('User added'))
-//         .catch(err => res.status(400).json('Error: ' + err));
-// })
-//
+router.post('/register',visitorController.visitorSignUp);
+router.post('/signIn',visitorController.visitorSignIn);
 module.exports = router;

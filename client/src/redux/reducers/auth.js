@@ -3,48 +3,56 @@ import {
     REGISTER_FAIL,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT,
+    LOGOUT, AUTHENTICATE,
 } from "../actions/type";
 
-import {getFromStorage} from "../../utils/storage";
+import {getFromStorage, setInStorage} from "../../utils/storage";
 //
 // const mainStorage = getFromStorage("main-storage");
 
 let user = getFromStorage('user');
-const initialState = user ? { isLoggedIn: true, user: null } : {};
+const initialState = user ? {isLoggedIn: true, user: null} : {};
 export default function (state = initialState, action) {
-    const { type, payload } = action;
+    const {type, payload} = action;
 
     switch (type) {
         case REGISTER_SUCCESS:
             return {
                 ...state,
                 isLoggedIn: false,
-                user: null
+                visitor: null
+            };
+        case AUTHENTICATE:
+            setInStorage('main_storage', { user: payload});
+            return {
+                ...state,
+                isLoggedIn: true,
+                visitor: payload
             };
         case REGISTER_FAIL:
             return {
                 ...state,
                 isLoggedIn: false,
-                user: null
+                visitor: null
             }
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 isLoggedIn: true,
-                user: action
+                visitor: action
             }
         case LOGIN_FAIL:
             return {
                 ...state,
                 isLoggedIn: false,
-                user: null
+                visitor: null
             }
         case LOGOUT:
+            localStorage.clear();
             return {
                 ...state,
                 isLoggedIn: false,
-                user: null
+                visitor: null
             }
         default:
             return state;

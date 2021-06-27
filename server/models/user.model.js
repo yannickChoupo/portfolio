@@ -48,13 +48,13 @@ const UserSchema = new Schema({
     timestamps: true,
 })
 
-UserSchema.methods.generateHash = (password) => {
+UserSchema.methods.generateHash = function (password) {
     console.log(password.toString());
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 }
 UserSchema.methods.validPassword = function (password) {
-    console.log(password, this.password);
     console.log("compare passwords : *********************");
+    console.log(password, this.password);
     bcrypt.compare(password, this.password, function (err, res) {
         if (err) {
             return  err;

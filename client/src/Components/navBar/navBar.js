@@ -7,7 +7,7 @@ import Hamburger from "../hamburger/hamburger";
 import SideBar from "../sidebar";
 import React, {useState} from "react";
 import {Link} from "react-scroll";
-import {signOut, deleteUser} from "../../redux/actions/auth";
+import {visitorSignOut} from "../../redux/actions/auth";
 import {getFromStorage} from "../../utils/storage";
 
 export const NavBar = () => {
@@ -15,16 +15,16 @@ export const NavBar = () => {
     const {isLoggedIn} = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const LogOut = () => {
-        let {user} = getFromStorage('main_storage');
-        console.log("signOut request : ", user._id)
+        let { visitor } = getFromStorage('main_storage');
+        console.log("signOut request : ", visitor._id)
         console.log("localstorage : ", getFromStorage('main_storage'));
-        dispatch(signOut(user._id))
-            .then((response) => {
-                if(response.data.success){
-                    history.push('/sign');
-                    window.location.reload();
-                }
-            })
+        dispatch(visitorSignOut(visitor._id,history));
+        //     .then((response) => {
+        //         if(response.data.success){
+        //             history.push('/sign');
+        //             window.location.reload();
+        //         }
+        //     })
         console.log("sign completed!!!!!!!!!!!!!!!!!!!!!");
         console.log("Storage atatus : ",getFromStorage('main_storage'));
         history.push('/sign');

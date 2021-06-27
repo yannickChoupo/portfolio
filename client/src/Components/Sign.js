@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import history from "../helpers/history"
 
 import {useDispatch, useSelector} from "react-redux"
-import {signIn, signUp} from "../redux/actions/auth";
+import {authenticate,visitorSignIn, visitorSignUp} from "../redux/actions/auth";
 
 import {getFromStorage} from "../utils/storage";
 
@@ -25,31 +25,63 @@ const Sign = () => {
         password: ""
     })
     const [curMode, setCurMode] = useState("");
+    const [isSignup, setIsSignup] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("handle submit ");
+        const {userName, password} = fieldState;
+        dispatch(setIsLoading());
+        setTimeout(handleResponse, 2000);
+        if (isSignup) {
+            dispatch(visitorSignUp(userName, password,history))
+                .then((response) => {
+                    console.log(response.data);
+                    if(response.data.success) {
+                        setIsSignup(false);
+                        switchMode(SIGNIN);
+                    }
+                    return response;
+                })
+        } else {
+            dispatch(visitorSignIn(userName, password,history))
+                .then((response) => {
+                    console.log(response.data);
+                    return response;
+                })
+                .then((response) => {
+                    setTimeout(handleResponse, 2000);
+                    console.log(response.data);
+                });
+        }
+        window.reload();
+    }
 
     useEffect(() => {
-        console.log("curMode : ", curMode);
-        if (!getFromStorage("main_storage")) {
-            setCurMode(SIGNUP);
-            console.log("local storage empty")
-        } else {
-            if(window.innerWidth > 500) {
-                history.push("/");
-                window.location.reload();
-                console.log("localstorage : " + getFromStorage("main_storage").user)
-            } else {
-                // sign page as page
-            }
-        }
-    }, [])
+        // console.log("curMode : ", curMode);
+        // if (!getFromStorage("main_storage")) {
+            // setIsSignup(true);
+        //     // setCurMode(SIGNUP);
+        //     console.log("local storage empty",isSignup)
+        // }
+        // else {
+        //     if (window.innerWidth > 500) {
+        //         history.push("/");
+        //         window.location.reload();
+        //         console.log("localstorage : " + getFromStorage("main_storage").user)
+        //     } else {
+        //         sign page as page
+            // }
+        // }
+    })
     useEffect(() => {
-        console.log("curMode : ", curMode);
+        console.log("curMode : ", isSignup);
     }, [curMode]);
 
     const switchMode = () => {
         console.log("switch mode");
         resetFields();
-        const newMode = curMode === SIGNIN ? SIGNUP : SIGNIN;
-        setCurMode(newMode);
+        setIsSignup(!isSignup);
     }
     const getFieldValue = (prop) => {
         return fieldState[prop];
@@ -57,68 +89,17 @@ const Sign = () => {
     const resetFields = () => {
         setFieldState(initialState);
     }
-    const updateFields = (prop, value) => {
-        setFieldState({...fieldState, [prop.toString()]: value})
+    const updateFields = (e) => {
+        setFieldState({...fieldState, [e.target.name]: e.target.value});
+        console.log(fieldState);
     }
 
-    // console.log(fieldMode);
-    // const {isLoggedIn} = useSelector(state => state.auth);
     const {message} = useSelector(state => state.message);
     const {isLoading} = useSelector(state => state.request);
 
 
     const dispatch = useDispatch();
-    // const {message} = useSelector(state => state.message);
-    const onSignIn = () => {
-        // event.preventDefault();
-        const {userName, password} = fieldState;
-        console.log("FRontend sign In REQUEST");
-        // Grab the state
-        dispatch(setIsLoading());
-        dispatch(signIn(userName, password))
-            .then((response) => {
-                console.log("Frontend server response : ", response.data);
-                dispatch(setIsLoading());
-                dispatch(setMessage(response.data.message));
-                setTimeout(handleResponse, 2000);
-                console.log("response : ", response);
-                if (response.data.success) {
-                    history.push("/");
-                    window.location.reload();
-                }
-            })
-        // window.location.reload();
-    }
-    const onSignUp = () => {
-        const {userName, password} = fieldState;
-        console.log("sign Up", userName, password);
-
-        dispatch(setIsLoading());
-        dispatch(signUp(userName, password))
-            .then((response) => {
-                dispatch(setIsLoading());
-                dispatch(setMessage(response.data.message));
-                setTimeout(handleResponse, 2000);
-                console.log("response : ", response);
-                return response;
-            })
-            .then((response) => {
-                if (response.data.message === 'Error: account already exist') {
-                    setCurMode(SIGNIN);
-                }
-                return response;
-            })
-            .then((response) => {
-                if(response.data.success){
-                    setCurMode(SIGNIN);
-                }
-            })
-    };
     const handleResponse = () => {
-        console.log("Operation complete**********************************************************************************")
-        // if(message && message === 'Error: account already exist'){
-        //     setCurMode(SIGNIN);
-        // }
         dispatch(clearIsLoading());
         dispatch(clearMessage());
         clearTimeout(handleResponse);
@@ -133,7 +114,7 @@ const Sign = () => {
         <>
             <div id="sign" className="page sign">
                 <div className="page-container">
-                    <section className={`body ${curMode === SIGNUP && "signUp"}`}>
+                    <section className={`body ${isSignup && "signUp"}`}>
                         <h1 style={messageStyle}>{message}</h1>
                         <div className="header">
                             <section>
@@ -150,9 +131,10 @@ const Sign = () => {
                                 </label>
                                 <input type="text" id="userName"
                                        placeholder="visitor name"
+                                       name="userName"
                                        maxLength="8"
                                        value={getFieldValue(userName)}
-                                       onChange={(event) => updateFields(userName, event.target.value)}
+                                       onChange={(e) => updateFields(e)}
                                        required/>
                             </section>
 
@@ -163,19 +145,22 @@ const Sign = () => {
                                 <input type="password"
                                        id="inputPassword"
                                        placeholder="Password"
+                                       name="password"
                                        maxLength="8"
                                        value={getFieldValue(password)}
-                                       onChange={(event) => updateFields(password, event.target.value)}
+                                       onChange={(e) => updateFields(e)}
                                        required/>
+                                <input className="btn-circle" type="submit" value="Submit" onClick={handleSubmit}/>
                             </section>
+                            {/*<div role="submit">*/}
+                            {/*    {curMode === SIGNUP ? <div onClick={handleSubmit}>*/}
+                            {/*        Sign Up*/}
+                            {/*    </div> : <div onClick={handleSubmit}>*/}
+                            {/*        Sign In*/}
+                            {/*    </div>}*/}
+                            {/*</div>*/}
                         </form>
-                        <div role="submit">
-                            {curMode === SIGNUP ? <div onClick={onSignUp}>
-                                Sign Up
-                            </div> : <div onClick={onSignIn}>
-                                Sign In
-                            </div>}
-                        </div>
+
                     </section>
                 </div>
             </div>

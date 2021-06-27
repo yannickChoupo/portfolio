@@ -19,7 +19,7 @@ import Contact from "./pages/Contact";
 
 import {getFromStorage} from "./utils/storage";
 import {useDispatch} from "react-redux";
-import {authenticate} from "./redux/actions/auth";
+// import {authenticate} from "./redux/actions/auth";
 
 // Pages
 // const routes = [
@@ -41,11 +41,11 @@ function App() {
             // window.location.reload();
             console.log("local storage empty")
         } else {
-            const {userName} = getFromStorage("main_storage").user;
-            dispatch(authenticate(userName))
-                .then((response) => {
-                    console.log("authentication response : ", response.data);
-                })
+            const userName = getFromStorage("main_storage").userName;
+            // dispatch(authenticate(userName))
+            //     .then((response) => {
+            //         console.log("authentication response : ", response.data);
+            //     })
         }
     }, [dispatch]);
     // useEffect(() => {

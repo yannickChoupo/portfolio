@@ -6,22 +6,14 @@
   "scripts": {
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
-    "heroku-postbuild": "cd client && npm install && npm run build",
-    "server": "nodemon server/index.js",
+    "heroku-postbuild": "cd client && npm run build",
+    "server": "cd server && nodemon index.js",
     "client": "cd client && npm run start",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "start": "cd client && npm run build"
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "cd client && npm install && npm run build"
   },
   "author": "Yannick Choupo",
   "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.12.13"
-  },
   "engine": {
     "node": "v14.16.0",
     "npm": "6.14.11"

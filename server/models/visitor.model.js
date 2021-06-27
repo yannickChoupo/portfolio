@@ -6,9 +6,15 @@ const Schema = mongoose.Schema;
 const VisitorSchema = new Schema({
     userName: {
         type: String,
-        default: ''
+        default: '',
+        required: true
     },
     password: {
+        type: String,
+        default: '',
+        required: true
+    },
+    message: {
         type: String,
         default: ''
     },
@@ -20,13 +26,13 @@ const VisitorSchema = new Schema({
     timestamps: true,
 })
 
-VisitorSchema.methods.generateHash = (password) => {
+VisitorSchema.methods.generateHash = function (password) {
     console.log(password.toString());
-    return bcrypt.hashSync(password,bcrypt.genSaltSync(8),null);
+    return bcrypt.hashSync(password,bcrypt.genSaltSync(saltRounds),null);
 }
-VisitorSchema.methods.validPassword = (password) => {
+VisitorSchema.methods.validPassword = function (password) {
     console.log(password,this.password)
-    return bcrypt.compareSync(password, this.password)
+    return bcrypt.compareSync(this.password,password);
 }
 
 const Visitor = mongoose.model('Visitor',VisitorSchema);
