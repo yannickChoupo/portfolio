@@ -63,7 +63,7 @@ app.get('/',(req,res) => {
     res.send("Hello World");
 })
 
-// app.use(express.static(path.resolve(__dirname, "../client/build")));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 // Serve static asssets if we are in production
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/build")));
