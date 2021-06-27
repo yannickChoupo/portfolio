@@ -54,7 +54,7 @@ const Sign = () => {
                     console.log(response.data);
                 });
         }
-        window.reload();
+        // window.reload();
     }
 
     useEffect(() => {
