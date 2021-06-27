@@ -59,9 +59,9 @@ app.use('/account/delete', deleteAccountRouter);
 app.use('/visitor',visitorsRouter);
 
 
-app.get('/',(req,res) => {
-    res.send("Hello World");
-})
+// app.get('/',(req,res) => {
+//     res.send("Hello World");
+// })
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 // Serve static asssets if we are in production
