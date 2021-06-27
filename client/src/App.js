@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {BrowserView, MobileView} from 'react-device-detect';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import history from "./helpers/history";
 
 
@@ -19,6 +19,7 @@ import Contact from "./pages/Contact";
 
 import {getFromStorage} from "./utils/storage";
 import {useDispatch} from "react-redux";
+import SideBar from "./Components/sidebar";
 // import {authenticate} from "./redux/actions/auth";
 
 // Pages
@@ -31,78 +32,67 @@ import {useDispatch} from "react-redux";
 //     {path: '/error', Component: Error},
 //     {path: '*', Component: Error},
 // ]
+if (!getFromStorage("main_storage")) {
+    history.push("/sign");
+    // window.location.reload(true);
+    console.log("local storage empty")
+}
+// else {
+//     history.push('/');
+// }
 
 function App() {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        console.log("first Render");
-        if (!getFromStorage("main_storage")) {
-            history.push("/sign");
-            // window.location.reload();
-            console.log("local storage empty")
-        } else {
-            const userName = getFromStorage("main_storage").userName;
-            // dispatch(authenticate(userName))
-            //     .then((response) => {
-            //         console.log("authentication response : ", response.data);
-            //     })
-        }
-    }, [dispatch]);
-    // useEffect(() => {
-    //     if (!getFromStorage("main_storage")) {
-    //         history.push("/sign");
-    //         window.location.reload();
-    //         console.log("local storage empty")
-    //     }
-    // },[])
     return (
         <>
             <BrowserView>
-                <>
+                {/*<>*/}
+                <Router>
                     <div className="grid">
-                        <Router>
-                            <NavBar/>
-                            <Switch>
-                                <Route exact path="/">
-                                    <Home/>
-                                </Route>
-                                <Route exact path="/sign">
-                                    <Sign/>
-                                </Route>
-                                <Route path="/about">
-                                    <About/>
-                                </Route>
+                        <NavBar/>
+                        <Switch>
+                            <Route exact path="/sign">
+                                <Sign history={history}/>
+                            </Route>
+                            <Route exact path="/">
+                                <Home/>
+                            </Route>
 
-                                <Route path="/contact">
-                                    <Contact/>
-                                </Route>
-                                <Route path="/work">
-                                    <Works/>
-                                </Route>
-                                <Route path="*">
-                                    <Error/>
-                                </Route>
-                            </Switch>
-                        </Router>
+                            <Route path="/about">
+                                <About/>
+                            </Route>
+
+                            <Route path="/contact">
+                                <Contact/>
+                            </Route>
+                            <Route path="/work">
+                                <Works/>
+                            </Route>
+                            <Route path="*">
+                                <Error/>
+                            </Route>
+                        </Switch>
                     </div>
-                </>
+                </Router>
+                {/*</>*/}
             </BrowserView>
             <MobileView>
-                <div className="grid">
-                    <Router>
-                        <Route exact path="/">
-                            <NavBar/>
-                            <Home/>
-                            <About/>
-                            <Works/>
-                            <Contact/>
-                        </Route>
-                        <Route path="/sign">
-                            <NavBar />
-                            <Sign />
-                        </Route>
-                    </Router>
-                </div>
+                <Router>
+                    <div className="grid">
+                        <NavBar/>
+                        <Switch>
+                            <Route exact path="/">
+                                <Home/>
+                                <About/>
+                                <Works/>
+                                <Contact/>
+                            </Route>
+                            <Route exact path="/sign">
+                                {/*<NavBar/>*/}
+                                <Sign/>
+                            </Route>
+                        </Switch>
+                    </div>
+                </Router>
             </MobileView>
         </>
     );

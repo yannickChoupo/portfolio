@@ -5,7 +5,8 @@
 $lines-color: rgba($def-pri, .87);
 #about {
   //background-color: #7b0188;
-  padding-bottom: 5em;
+  //padding-bottom: 5em;
+  padding: calc(60px + 2em) 0 0 px-to-em(18px);
   h3 {
     padding: .6em 0 .1em 0;
     border-bottom: 2px solid $def-pri;
@@ -13,7 +14,6 @@ $lines-color: rgba($def-pri, .87);
 
   #education {
     .body {
-      //background-color: #605EFF;
       margin: {
         //left: px-to-em(20px);
         top: 1em

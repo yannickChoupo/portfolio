@@ -4,6 +4,7 @@
 
 
 .home {
+  //padding: calc(60px + 2em) 0 0 px-to-em(18px);
   .header {
     width: 100%;
     display: flex;
@@ -27,24 +28,31 @@
     padding: px-to-em(80px);
     text-align: center;
   }
+
   p:first-of-type::before {
     content: "👋";
   }
+
   a {
     text-decoration: none;
     color: inherit;
   }
+
   p {
     padding-top: 1em;
+
     strong {
       font-family: "nunito", sans-serif;
     }
   }
+
   .p-link {
     border-radius: px-to-em(3px);
-   border: .1em solid $def-pri;
+    font-size: .8em;
+    border: .1em solid $def-pri;
     transition: all .3s ease-in-out;
     cursor: pointer;
+
     &:hover {
       color: white;
       background-color: $def-pri;

@@ -6,4 +6,5 @@ router.get('/',(req, res) => {
 })
 router.post('/register',visitorController.visitorSignUp);
 router.post('/signIn',visitorController.visitorSignIn);
+router.post('/signOut',visitorController.visitorSignOut);
 module.exports = router;

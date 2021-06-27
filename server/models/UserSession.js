@@ -7,6 +7,10 @@ const UserSessionSchema = new Schema({
         type: String,
         default: ''
     },
+    message: {
+        type: String,
+        default: ''
+    },
     isDeleted: {
         type: Boolean,
         default: false,

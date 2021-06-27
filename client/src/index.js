@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router} from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 import App from "./App";
 
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
 import store from "./store";
 import history from "./helpers/history"
+import {getFromStorage} from "./utils/storage";
+import Sign from "./Components/Sign";
+
+
+// if (!getFromStorage("main_storage")) {
+//     history.push("/sign");
+//     console.log("local storage empty")
+// }
 
 ReactDOM.render(
-    <Router history={history}>
-        <Provider store={store}>
+    <Provider store={store}>
+        <Router history={history}>
             <App />
-        </Provider>
-    </Router>,
+        </Router>
+    </Provider>,
     document.getElementById('root')
 );

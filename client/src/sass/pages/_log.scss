@@ -5,102 +5,110 @@
 
 #sign {
   background-color: #282c34;
-  //padding: 0;
-  //padding-right: px-to-em(10px);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 px-to-em(18px);
+
   @include breakpoint--small {
-    //padding: px-to-em(80);
-    text-align: center;
+    max-width: px-to-em(960px);
+    .message {
+      font-size: 1.2em;
+    }
   }
 
-  .errorMessage {
-    font-size: 1.5em;
+  .message {
+    font-size: 1em;
   }
 
   h3 {
-    padding: .5em;
     text-align: center;
     color: gray;
   }
+
   .header {
     margin-bottom: 1em;
     section {
       display: flex;
       justify-content: center;
     }
+
     .mode {
+      padding: .2em .3em;
       width: max-content;
       border-bottom: .1em solid $def-pri;
     }
   }
+
   .switch {
+    padding: .2em .3em;
     width: max-content;
     cursor: pointer;
   }
 
   .body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     border: .1em solid getPriVariant(700);
-    padding: 1em 0 3em;
-    margin-right: px-to-em(30px);
-    position: relative;
-    @include after-overlay(4dp);
-    div[role="submit"]{
-      font-size: .8em;
-      border-radius: 3px;
-      padding: .3em;
-      cursor: pointer;
-      @include center-horizontally();
-      width: max-content;
-      border: 1px solid $def-pri;
-      color: white;
-      &:hover {
-        background-color: $def-pri;
-      }
+    padding: 1em.5em;
+    //position: relative;
+
+    section {
+      margin-bottom: 1em;
     }
+
+    section[role="submit"] {
+      cursor: pointer;
+      color: white;
+      display: flex;
+      justify-content: center;
+    }
+
     &.signUp {
-      background-color: #7b0188;
-      //@include after-overlay(4dp);
+      @include after-overlay(24 dp);
+    }
+    @include breakpoint--small {
+      max-width: px-to-em(960px);
+      //max-width: px-to-em(960px);
+      //.message {
+      //  font-size: 1.2em;
+      //}
     }
   }
 
   form {
-    display: flex;
-    flex-direction: column;
-    padding: 1em 0 1em px-to-em(36px);
+  }
 
+  section {
+    display: flex;
+    //margin-bottom: .8em;
     @include breakpoint--small {
-      padding-left: 0;
       justify-content: center;
     }
+  }
 
-    section {
-      display: flex;
-      margin-bottom: .8em;
-      @include breakpoint--small {
-        justify-content: center;
-      }
-    }
+  label {
+    @include flexCenter;
+    width: 40px;
+    color: rgba($def-pri, .87);
+    margin-right: 1em;
+    border-radius: 3px;
+    border: .1em solid $def-pri;
+  }
 
-    label {
-      @include flexCenter;
-      width: 40px;
-      color: rgba($def-pri,.87);
-      margin-right: 1em;
-      border-radius: 3px;
-      border: .1em solid $def-pri;
-    }
+  input {
+    background: transparent;
+    display: block;
+    padding: .25rem 1rem;
+    border: 0;
+    border-bottom: 1px solid gray;
+    outline: 0;
 
-    input {
-      background: transparent;
-      display: block;
-      padding: .25rem 1rem;
-      border: 0;
-      border-bottom: 1px solid gray;
-      outline: 0;
-
-      &:focus {
-        color: $def-pri;
-        border-bottom: 2px solid $def-pri;
-      }
+    &:focus {
+      color: $def-pri;
+      border-bottom: 2px solid $def-pri;
     }
   }
 }

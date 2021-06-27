@@ -7,11 +7,13 @@ import {
 } from "../actions/type";
 
 import {getFromStorage, setInStorage} from "../../utils/storage";
-//
-// const mainStorage = getFromStorage("main-storage");
 
-let user = getFromStorage('user');
-const initialState = user ? {isLoggedIn: true, user: null} : {};
+const mainStorage = getFromStorage("main_storage");
+
+console.log("main storage : ", mainStorage);
+const initialState = mainStorage ?
+    { isLoggedIn: true, visitor: mainStorage.user.visitor }
+    : { isLoggedIn: false };
 export default function (state = initialState, action) {
     const {type, payload} = action;
 
@@ -39,7 +41,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isLoggedIn: true,
-                visitor: action
+                visitor: payload
             }
         case LOGIN_FAIL:
             return {

@@ -20,8 +20,8 @@ export const TOGGLE_HAMBURGER = 'TOGGLE_HAMBURGER';
 export const OPEN_HAMBURGER = 'OPEN_HAMBURGER ';
 export const CLOSE_HAMBURGER = 'CLOSE_HAMBURGER';
 
-export const SET_LOADING = 'IS_LOADING';
-export const CLEAR_LOADING = 'IS_LOADING';
+export const SET_IS_LOADING = 'IS_LOADING';
+export const CLEAR_IS_LOADING = 'IS_LOADING';
 
 
 export const LAUNCH_DEMO = 'LAUNCH_DEMO';

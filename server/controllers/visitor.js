@@ -1,11 +1,9 @@
-const express = require('express');
-const router = express.Router();
-
 const bcrypt = require('bcrypt');
 
 const jwt = require('jsonwebtoken');
 
 const Visitor = require('../models/visitor.model');
+const UserSession = require('../models/UserSession');
 /////////////////************************************************************
 /////////////////////Secret primary key : test
 ////////////////////***********************************************
@@ -16,9 +14,10 @@ const Visitor = require('../models/visitor.model');
  * @param next
  * @returns {Promise<*>}
  */
-const visitorSignIn = async  (req, res, next) => {
-    console.log("REQUEST : ",req.headers);
-    const { body } = req;
+
+const visitorSignIn = async (req, res) => {
+    // console.log("REQUEST : ",req);
+    const {body} = req;
     let {
         userName,
         password
@@ -36,7 +35,7 @@ const visitorSignIn = async  (req, res, next) => {
         })
     }
     try {
-        const existingVisitor = await Visitor.findOne({ userName });
+        const existingVisitor = await Visitor.findOne({userName});
         if (!existingVisitor) {
             return res.send({
                 success: false,
@@ -45,11 +44,11 @@ const visitorSignIn = async  (req, res, next) => {
         }
         const isPasswordCorrect = await bcrypt.compare(password, existingVisitor.password);
         console.log("result : ", isPasswordCorrect);
-        if(!isPasswordCorrect) {
-                return res.send({
-                    success: false,
-                    message: 'Error: password incorrect'
-                })
+        if (!isPasswordCorrect) {
+            return res.send({
+                success: false,
+                message: 'Error: password incorrect'
+            })
         }
         const token = jwt.sign(
             {
@@ -74,7 +73,7 @@ const visitorSignIn = async  (req, res, next) => {
 
 }
 
-const visitorSignUp = async function (req, res, next) {
+const visitorSignUp = async function (req, res) {
     console.log("sign up request : ", req.body);
     const {body} = req;
     let {
@@ -131,7 +130,43 @@ const visitorSignUp = async function (req, res, next) {
         })
     })
 };
+const visitorSignOut = async (req, res) => {
+    // console.log(req);
+    const {body} = req;
+    let {
+        visitorName,
+        visitorMessage
+    } = body;
+    console.log("SERVER LOGOUT : ", visitorName, visitorMessage);
+    Visitor.findOneAndDelete({ userName: visitorName}, (err, docs) => {
+        if (err) {
+            return res.send({
+                success: false,
+                message: `something went wrong , visitor couldn't be deleted ${err}`
+            })
+        }
+        return res.send({
+            success: true,
+            message: "visitor successfully deleted"
+        })
+    })
+}
+// console.log("DOCS : ", docs);
+// const userSession = new UserSession();
+// userSession.userId = visitorName;
+// userSession.message = message;
+
+// userSession.save((err, doc) => {
+//     if (err) {
+//         return res.send({
+//             success: false,
+//             message: 'Error: server error'
+//         })
+//     }
+//
+// })
 module.exports = {
     visitorSignIn,
-    visitorSignUp
+    visitorSignUp,
+    visitorSignOut
 };
