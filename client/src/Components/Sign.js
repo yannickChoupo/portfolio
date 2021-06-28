@@ -122,7 +122,9 @@ const Sign = () => {
 
                             </section>
                             <section role="submit">
-                                <input className="submit-btn" type="submit" value="Submit" onClick={handleSubmit}/>
+                                <div className="submit-btn" onClick={handleSubmit}>
+                                    Submit
+                                </div>
                             </section>
                         </form>
                     </section>

@@ -64,6 +64,8 @@
       justify-content: center;
       .submit-btn {
         cursor: pointer;
+        padding: .2em;
+        border: .1em solid gray;
         color: $def-pri;
       }
     }
