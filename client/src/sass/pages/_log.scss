@@ -59,10 +59,13 @@
     }
 
     section[role="submit"] {
-      cursor: pointer;
       color: white;
       display: flex;
       justify-content: center;
+      .submit-btn {
+        cursor: pointer;
+        color: $def-pri;
+      }
     }
 
     &.signUp {
