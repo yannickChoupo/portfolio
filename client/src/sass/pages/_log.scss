@@ -5,12 +5,11 @@
 
 #sign {
   background-color: #282c34;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
   padding: 0 px-to-em(18px);
-
+  @include center-horizontally();
+  display: flex;
+  justify-content: center;
   @include breakpoint--small {
     max-width: px-to-em(960px);
     .message {
@@ -71,10 +70,6 @@
     }
     @include breakpoint--small {
       max-width: px-to-em(960px);
-      //max-width: px-to-em(960px);
-      //.message {
-      //  font-size: 1.2em;
-      //}
     }
   }
 
@@ -83,7 +78,6 @@
 
   section {
     display: flex;
-    //margin-bottom: .8em;
     @include breakpoint--small {
       justify-content: center;
     }

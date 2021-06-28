@@ -31,11 +31,10 @@ body {
   //position: absolute;
   //}
   //@include main-em;
+  //@include after-overlay(1dp);
   &:hover {
     nav {
-      //@include after-overlay(8dp);
       @include after-overlay(1dp);
-
     }
   }
 
@@ -49,23 +48,16 @@ body {
     grid-area: 1 / 1 / 4 / 4;
     z-index: 1000;
   }
-
-//display: flex;
-//  flex-direction: column;
-
 }
 
 .page {
-  min-height: 850px;
   width: 100%;
   display: flex;
-  //flex-direction: column;
-  //align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   .page-container {
     max-width: px-to-em(960px);
     width: 100%;
-    //padding: calc(60px + 2em) 0 0  px-to-em(18px);
   }
 }
 //}
