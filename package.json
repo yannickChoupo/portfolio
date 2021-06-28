@@ -10,7 +10,7 @@
     "server": "cd server && nodemon index.js",
     "client": "cd client && npm run start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "cd client && npm install && npm run build"
+    "start": "NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
