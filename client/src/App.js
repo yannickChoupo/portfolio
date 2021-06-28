@@ -78,16 +78,17 @@ function App() {
             <MobileView>
                 <Router>
                     <div className="grid">
-                        <NavBar/>
+
                         <Switch>
                             <Route exact path="/">
+                                <NavBar/>
                                 <Home/>
                                 <About/>
                                 <Works/>
                                 <Contact/>
                             </Route>
                             <Route exact path="/sign">
-                                {/*<NavBar/>*/}
+                                <NavBar/>
                                 <Sign/>
                             </Route>
                         </Switch>
