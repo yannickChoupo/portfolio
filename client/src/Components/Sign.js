@@ -31,6 +31,7 @@ const Sign = () => {
         e.preventDefault();
         const {userName, password} = fieldState;
         setTimeout(submitHandler, 2000);
+        // dispatch(setIsLoading());
         if (isSignup) {
             dispatch(visitorSignUp(userName, password, history))
                 .then((response) => {
@@ -38,6 +39,7 @@ const Sign = () => {
                     if (response.data.success) {
                         switchMode();
                     }
+                    dispatch(clearIsLoading());
                     // submitHandler();
                 })
         } else {
@@ -47,6 +49,8 @@ const Sign = () => {
                         history.push('/');
                         window.location.reload(true);
                     }
+                    dispatch(clearIsLoading());
+
                 })
         }
         submitHandler();
@@ -73,6 +77,7 @@ const Sign = () => {
 
     const dispatch = useDispatch();
     const submitHandler = () => {
+        // dispatch(clearIsLoading());
         dispatch(clearMessage());
         clearTimeout(submitHandler);
         resetFields();
@@ -122,9 +127,9 @@ const Sign = () => {
 
                             </section>
                             <section role="submit">
-                                <div className="submit-btn" onClick={handleSubmit} onTouchStart={handleSubmit}>
+                                <button className="submit-btn" onClick={handleSubmit}>
                                     Submit
-                                </div>
+                                </button>
                             </section>
                         </form>
                     </section>

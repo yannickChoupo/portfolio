@@ -78,7 +78,6 @@ function App() {
             <MobileView>
                 <Router>
                     <div className="grid">
-
                         <Switch>
                             <Route exact path="/">
                                 <NavBar/>
