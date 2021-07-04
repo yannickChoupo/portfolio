@@ -125,12 +125,11 @@ const Sign = () => {
                                        required/>
 
                             </section>
-
                         </form>
                         <section role="submit">
-                            <a href="#" className="submit-btn" onClick={handleSubmit}>
+                            <button type="button" className="submit-btn" onClick={(e) => handleSubmit(e)}>
                                 Submit
-                            </a>
+                            </button>
                         </section>
                     </section>
                 </div>
