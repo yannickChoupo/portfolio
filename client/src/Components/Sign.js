@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import history from "../helpers/history"
+import history from "../helpers/history";
+import {BrowserView, MobileView} from 'react-device-detect';
+
 
 import {useDispatch, useSelector} from "react-redux"
 import {authenticate, visitorSignIn, visitorSignUp} from "../redux/actions/auth";
@@ -126,9 +128,16 @@ const Sign = () => {
                             </section>
                         </form>
                         <section role="submit">
-                            <button type="button" className="submit-btn" onClick={(e) => handleSubmit(e)}>
-                                Submit
-                            </button>
+                            <BrowserView>
+                                <button type="button" className="submit-btn" onClick={(e) => handleSubmit(e)}>
+                                    submit
+                                </button>
+                            </BrowserView>
+                            <MobileView>
+                                <button type="button" className="submit-btn" onClick="void(0)" onTouchStart={handleSubmit}>
+                                    submit
+                                </button>
+                            </MobileView>
                         </section>
                     </section>
                 </div>
