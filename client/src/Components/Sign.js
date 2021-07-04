@@ -126,7 +126,7 @@ const Sign = () => {
 
                             </section>
                             <section role="submit">
-                                <button type="button" className="submit-btn" onClick={handleSubmit}>
+                                <button type="button" className="submit-btn" onClick={handleSubmit} onTouchStart={handleSubmit}>
                                     Submit
                                 </button>
                             </section>
