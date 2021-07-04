@@ -129,14 +129,14 @@ const Sign = () => {
                         </form>
                         <section role="submit">
                             <BrowserView>
-                                <button type="button" className="submit-btn" onClick={handleSubmit}>
+                                <div className="submit-btn" onClick={handleSubmit}>
                                     Submit
-                                </button>
+                                </div>
                             </BrowserView>
                             <MobileView>
-                                <button className="submit-btn" onClick="void(0)" onTouchStart={handleSubmit}>
+                                <div className="submit-btn" onClick="void(0)" onTouchStart={handleSubmit}>
                                     submit
-                                </button>
+                                </div>
                             </MobileView>
                         </section>
                     </section>
