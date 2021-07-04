@@ -97,7 +97,7 @@ const SideBar = () => {
                                     activclassname="active"
                                     to='/contact'
                                     onClick={handleSwitchClick}>
-                                    <i  className="fa fa-address-card"/>
+                                    <i className="fa fa-address-card"/>
                                 </NavLink>
                             </li>
                             <li>
@@ -123,7 +123,8 @@ const SideBar = () => {
                                     spy={true}
                                     smooth={true}
                                     duration={300}>
-                                    <i title="home" className="fa fa-home" onClick={(e) => handleClick(e)}/>
+                                    <i title="home" className="fa fa-home"
+                                       onClick={(e) => handleClick(e)}/>
                                 </Link>
                             </li>
                             <li>
@@ -134,20 +135,20 @@ const SideBar = () => {
                                     spy={true}
                                     smooth={true}
                                     duration={300}>
-                                    <i title="about" className="fa fa-id-card " onClick={(e) => handleClick(e)}/>
+                                    <i title="about" className="fa fa-id-card "
+                                       onClick={(e) => handleClick(e)}/>
                                 </Link>
                             </li>
-
                             <li>
                                 <Link
-
                                     className="side__link "
                                     activclass="active"
                                     to="work"
                                     spy={true}
                                     smooth={true}
                                     duration={300}>
-                                    <i title="work" className="fa fa-briefcase " onClick={(e) => handleClick(e)}/>
+                                    <i title="work" className="fa fa-briefcase "
+                                       onClick={(e) => handleClick(e)}/>
                                 </Link>
                             </li>
                             <li>
