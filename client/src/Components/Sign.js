@@ -129,12 +129,12 @@ const Sign = () => {
                         </form>
                         <section role="submit">
                             <BrowserView>
-                                <button type="button" className="submit-btn" onClick={(e) => handleSubmit(e)}>
-                                    submit
+                                <button type="button" className="submit-btn" onClick={handleSubmit}>
+                                    Submit
                                 </button>
                             </BrowserView>
                             <MobileView>
-                                <button type="button" className="submit-btn" onClick="void(0)" onTouchStart={handleSubmit}>
+                                <button className="submit-btn" onClick="void(0)" onTouchStart={handleSubmit}>
                                     submit
                                 </button>
                             </MobileView>
