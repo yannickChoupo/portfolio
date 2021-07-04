@@ -123,7 +123,6 @@ const Sign = () => {
                                        value={getFieldValue(password)}
                                        onChange={(e) => updateFields(e)}
                                        required/>
-
                             </section>
                         </form>
                         <section role="submit">

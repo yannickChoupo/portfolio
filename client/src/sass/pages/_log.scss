@@ -68,14 +68,14 @@
       display: flex;
       justify-content: center;
       button {
-        cursor: pointer;
+        //cursor: pointer;
         padding: .2em;
         border: .1em solid gray;
         color: $def-pri;
       }
     }
     &.signUp {
-      @include after-overlay(24 dp);
+      @include after-overlay(24dp);
     }
     @include breakpoint--small {
       max-width: px-to-em(960px);
