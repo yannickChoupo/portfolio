@@ -134,7 +134,7 @@ const Sign = () => {
                                 </div>
                             </BrowserView>
                             <MobileView>
-                                <div className="submit-btn" onClick="void(0)" onTouchStart={handleSubmit}>
+                                <div className="submit-btn" onClick="void(0);" onTouchStart={handleSubmit}>
                                     submit
                                 </div>
                             </MobileView>
