@@ -30,7 +30,7 @@ const Sign = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const {userName, password} = fieldState;
-        setTimeout(submitHandler, 2000);
+        setTimeout(submitHandler, 1000);
         // dispatch(setIsLoading());
         if (isSignup) {
             dispatch(visitorSignUp(userName, password, history))
@@ -39,7 +39,7 @@ const Sign = () => {
                     if (response.data.success) {
                         switchMode();
                     }
-                    dispatch(clearIsLoading());
+                    // dispatch(clearIsLoading());
                     // submitHandler();
                 })
         } else {
@@ -49,8 +49,7 @@ const Sign = () => {
                         history.push('/');
                         window.location.reload(true);
                     }
-                    dispatch(clearIsLoading());
-
+                    // dispatch(clearIsLoading());
                 })
         }
         submitHandler();
@@ -127,7 +126,7 @@ const Sign = () => {
 
                             </section>
                             <section role="submit">
-                                <button className="submit-btn" onClick={handleSubmit}>
+                                <button type="button" className="submit-btn" onClick={handleSubmit}>
                                     Submit
                                 </button>
                             </section>

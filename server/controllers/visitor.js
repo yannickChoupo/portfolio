@@ -35,13 +35,17 @@ const visitorSignIn = async (req, res) => {
         })
     }
     try {
+        // Authenticate userName
         const existingVisitor = await Visitor.findOne({userName});
+
         if (!existingVisitor) {
             return res.send({
                 success: false,
                 message: 'Error: account doesn\'t exist'
             });
         }
+
+        // Authenticate password
         const isPasswordCorrect = await bcrypt.compare(password, existingVisitor.password);
         console.log("result : ", isPasswordCorrect);
         if (!isPasswordCorrect) {
@@ -50,6 +54,8 @@ const visitorSignIn = async (req, res) => {
                 message: 'Error: password incorrect'
             })
         }
+
+        // Create JWT string with secret
         const token = jwt.sign(
             {
                 userName: existingVisitor.userName,
@@ -58,6 +64,7 @@ const visitorSignIn = async (req, res) => {
             {
                 expiresIn: "1h"
             });
+        // Send back the user information with the JWT to store in localstorage
         return res.send({
             success: true,
             message: 'successful sign in',
@@ -67,13 +74,12 @@ const visitorSignIn = async (req, res) => {
     } catch (error) {
         return res.send({
             success: false,
-            message: `something went wrong ${err}`
+            message: `something went wrong ${error}`
         })
     }
-
 }
 
-const visitorSignUp = async function (req, res) {
+const visitorSignUp = async (req, res) => {
     console.log("sign up request : ", req.body);
     const {body} = req;
     let {
@@ -93,42 +99,33 @@ const visitorSignUp = async function (req, res) {
             message: 'Error: password cannot be blank'
         })
     }
-    Visitor.find({userName: userName}, (err, visitorFound) => {
-        console.log(`Person found ${visitorFound.length}`);
-        if (err) {
+    try {
+
+        // Check exiting visitor
+        const existingVisitor = await Visitor.find({userName: userName});
+        console.log("existing visitor : ", existingVisitor);
+        if (existingVisitor[0]) {
             return res.send({
-                success: false,
-                message: "Error: Server error " + err
-            });
-        }
-        if (visitorFound[0]) {
-            res.send({
                 success: false,
                 message: 'Error: account already exist'
             });
         }
-        // else {
+
+        // Save visitor
         const newVisitor = new Visitor();
         newVisitor.userName = userName;
         newVisitor.password = newVisitor.generateHash(password);
-
-        console.log("new visitor : ", newVisitor);
-
-        // // Save the new user
-        newVisitor.save((err, visitor) => {
-            if (err) {
-                return res.send({
-                    success: false,
-                    message: 'Error: Server error'
-                })
-            }
-            console.log("saved visitor : ", visitor);
-            return res.send({
-                success: true,
-                message: 'Sign up successful',
-            })
+        const savedVisitor = await newVisitor.save();
+        return  res.send({
+            success: true,
+            message: 'Sign up successful'
+        });
+    } catch (error) {
+        return res.send({
+            success: false,
+            message: `something went wrong ${error}`
         })
-    })
+    }
 };
 const visitorSignOut = async (req, res) => {
     // console.log(req);
@@ -138,7 +135,7 @@ const visitorSignOut = async (req, res) => {
         visitorMessage
     } = body;
     console.log("SERVER LOGOUT : ", visitorName, visitorMessage);
-    Visitor.findOneAndDelete({ userName: visitorName}, (err, docs) => {
+    Visitor.findOneAndDelete({userName: visitorName}, (err, docs) => {
         if (err) {
             return res.send({
                 success: false,

@@ -12,7 +12,7 @@ const mainStorage = getFromStorage("main_storage");
 
 console.log("main storage : ", mainStorage);
 const initialState = mainStorage ?
-    { isLoggedIn: true, visitor: mainStorage.user.visitor }
+    { isLoggedIn: true, visitor: mainStorage.visitor }
     : { isLoggedIn: false };
 export default function (state = initialState, action) {
     const {type, payload} = action;
@@ -25,7 +25,7 @@ export default function (state = initialState, action) {
                 visitor: null
             };
         case AUTHENTICATE:
-            setInStorage('main_storage', { user: payload});
+            setInStorage('main_storage', { visitor: payload});
             return {
                 ...state,
                 isLoggedIn: true,
