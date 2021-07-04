@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import $ from "jquery";
 import history from "../helpers/history";
 import {BrowserView, MobileView} from 'react-device-detect';
 
@@ -33,7 +34,6 @@ const Sign = () => {
         e.preventDefault();
         const {userName, password} = fieldState;
         setTimeout(submitHandler, 1000);
-        // dispatch(setIsLoading());
         if (isSignup) {
             dispatch(visitorSignUp(userName, password, history))
                 .then((response) => {
@@ -41,8 +41,6 @@ const Sign = () => {
                     if (response.data.success) {
                         switchMode();
                     }
-                    // dispatch(clearIsLoading());
-                    // submitHandler();
                 })
         } else {
             dispatch(visitorSignIn(userName, password, history))
@@ -51,7 +49,6 @@ const Sign = () => {
                         history.push('/');
                         window.location.reload(true);
                     }
-                    // dispatch(clearIsLoading());
                 })
         }
         submitHandler();
@@ -78,7 +75,6 @@ const Sign = () => {
 
     const dispatch = useDispatch();
     const submitHandler = () => {
-        // dispatch(clearIsLoading());
         dispatch(clearMessage());
         clearTimeout(submitHandler);
         resetFields();
@@ -86,6 +82,9 @@ const Sign = () => {
     let messageStyle = {
         'color': /Error/.test(message) ? 'red' : 'green'
     };
+    const handleClick = () => {
+        $(".submit-btn").css("color","red");
+    }
     return (
         <>
             <div id="sign" className="page">
@@ -100,7 +99,7 @@ const Sign = () => {
                                 <h3 className="mode">{isSignup ? "Sign Up" : "Sign In"}</h3>
                             </section>
                         </div>
-                        <form autoComplete="on">
+                        <form autoComplete="on" onSubmit={handleSubmit}>
                             <section role="userName">
                                 <label htmlFor="name">
                                     <i className="fa fa-user"/>
@@ -128,16 +127,12 @@ const Sign = () => {
                             </section>
                         </form>
                         <section role="submit">
-                            <BrowserView>
-                                <div className="submit-btn" onClick={handleSubmit}>
-                                    Submit
-                                </div>
-                            </BrowserView>
-                            <MobileView>
-                                <div className="submit-btn" onClick="void(0);" onTouchStart={handleSubmit}>
-                                    submit
-                                </div>
-                            </MobileView>
+                            <div className="submit-btn" onClick={handleSubmit}>
+                                submit
+                            </div>
+                            <div className="submit-btn" onClick={handleClick}>
+                                SUBMIT
+                            </div>
                         </section>
                     </section>
                 </div>
