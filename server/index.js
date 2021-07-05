@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require("path");
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const config = require('./config/key');
+
 require('dotenv').config();
 
 const app = express();
@@ -16,9 +18,8 @@ app.use(bodyParser.urlencoded({extended: false}), function middleware(req, res, 
     console.log(req.method + " " + req.path + " - " + req.ip)
     next();
 });
-const uri = process.env.ATLAS_URI;
-// mongoose.connect('mongodb+srv://YannickNjilo:Jocker237@cluster0.bwiea.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-mongoose.connect(process.env.ATLAS_URI,
+const uri = config.ATLAS_URI;
+mongoose.connect(uri,
     {
         useNewUrlParser: true,
         useCreateIndex: true,

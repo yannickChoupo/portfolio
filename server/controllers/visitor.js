@@ -54,22 +54,25 @@ const visitorSignIn = async (req, res) => {
                 message: 'Error: password incorrect'
             })
         }
-
+        console.log("EXISTING USER : ", existingVisitor)
         // Create JWT string with secret
         const token = jwt.sign(
             {
-                userName: existingVisitor.userName,
-                id: existingVisitor._id
-            }, 'test',
+                visitorName: existingVisitor.userName,
+                id: existingVisitor.id,
+                createdAt: existingVisitor.createdAt
+            }, "test",
             {
                 expiresIn: "1h"
             });
-        // Send back the user information with the JWT to store in localstorage
+        // Send back the visitor information in from of a token
         return res.send({
             success: true,
             message: 'successful sign in',
-            visitor: existingVisitor,
-            token: token
+            token: token,
+            // visitor: {
+            //     visitorName: existingVisitor.visitorName
+            // }
         })
     } catch (error) {
         return res.send({
@@ -116,7 +119,7 @@ const visitorSignUp = async (req, res) => {
         newVisitor.userName = userName;
         newVisitor.password = newVisitor.generateHash(password);
         const savedVisitor = await newVisitor.save();
-        return  res.send({
+        return res.send({
             success: true,
             message: 'Sign up successful'
         });
@@ -129,39 +132,37 @@ const visitorSignUp = async (req, res) => {
 };
 const visitorSignOut = async (req, res) => {
     // console.log(req);
-    const {body} = req;
+    const {
+        body
+    } = req;
     let {
+        userId,
+        createdAt,
         visitorName,
-        visitorMessage
+        message
     } = body;
-    console.log("SERVER LOGOUT : ", visitorName, visitorMessage);
-    Visitor.findOneAndDelete({userName: visitorName}, (err, docs) => {
-        if (err) {
-            return res.send({
-                success: false,
-                message: `something went wrong , visitor couldn't be deleted ${err}`
-            })
-        }
-        return res.send({
-            success: true,
-            message: "visitor successfully deleted"
-        })
-    })
-}
-// console.log("DOCS : ", docs);
-// const userSession = new UserSession();
-// userSession.userId = visitorName;
-// userSession.message = message;
+    // if(message) {
+    try {
+        const newSession = new UserSession();
+        newSession.userId = userId;
+        newSession.createdAt = createdAt;
+        newSession.userName = visitorName;
+        newSession.message = message;
 
-// userSession.save((err, doc) => {
-//     if (err) {
-//         return res.send({
-//             success: false,
-//             message: 'Error: server error'
-//         })
-//     }
-//
-// })
+        const savedSession = await newSession.save();
+        Visitor.findOneAndDelete({userName: visitorName}, () => {
+            return res.send({
+                success: true,
+                message: "visitor successfully deleted"
+            })
+        })
+    } catch (e) {
+        return res.send({
+            success: false,
+            message: `something went wrong ${e}`
+        })
+    }
+}
 module.exports = {
     visitorSignIn,
     visitorSignUp,

@@ -30,10 +30,10 @@ class Timer extends React.Component {
         let newTypes;
         if (curSecondes === 0) {
             newSecondes = 59;
-            if (curMinutes - 1 < 0) {
+            if (curMinutes === 0) {
                 this.audio.current.play();
                 newTypes = curType === 'Session' ? 'Break' : 'Session';
-                newMinutes = curType === 'Session' ? breakLength : sessionLength;
+                newMinutes = curType === 'Session' ? breakLength - 1 : sessionLength - 1;
             } else {
                 newTypes = curType;
                 newMinutes = curMinutes - 1;
@@ -58,12 +58,11 @@ class Timer extends React.Component {
     }
 
     incrementSession() {
-        const {sessionLength, curMinutes} = this.state;
+        const {sessionLength} = this.state;
         let newSessionLength = sessionLength + 1 > 60 ? sessionLength : sessionLength + 1;
-        let newMinutes = newSessionLength;
         this.setState({
             sessionLength: newSessionLength,
-            curMinutes: newMinutes
+            curMinutes: newSessionLength
         })
     }
 
@@ -75,17 +74,15 @@ class Timer extends React.Component {
     }
 
     decrementSession() {
-        const {sessionLength, curMinutes} = this.state;
+        const {sessionLength} = this.state;
         let newSessionLength = sessionLength - 1 < 1 ? sessionLength : sessionLength - 1;
-        let newMinutes = newSessionLength
         this.setState({
             sessionLength: newSessionLength,
-            curMinutes: newMinutes
+            curMinutes: newSessionLength
         })
     }
 
     resetSession() {
-        // console.log(this.interval);
         clearInterval(this.interval);
         if (!this.audio.current.paused) {
             this.audio.current.pause();
@@ -113,72 +110,67 @@ class Timer extends React.Component {
             this.interval = setInterval(this.timer, 1000)
         }
     }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
     render() {
-        console.log(this.state);
         const newMinutes = this.state.curMinutes.toString().length < 2 ? "0".concat(this.state.curMinutes.toString()) : this.state.curMinutes.toString();
         const newSecondes = this.state.curSecondes.toString().length < 2 ? "0".concat(this.state.curSecondes.toString()) : this.state.curSecondes.toString();
         return (
             <div id="timer" className="project">
                 {/*<div className="page-container">*/}
-                    <h1> TIMER </h1>
-                    <div className="body">
-                        <section className="display">
-                            <h2>{this.state.curType}</h2>
-                            <div className="screen">
-                                {newMinutes}:{newSecondes}
-                            </div>
-                            <div className="display-footer">
-                                {this.state.counterOn ? <span onClick={this.handleOnOff}>
-                                        {/*&#61;*/}
-                                        &#61;
-                                </span>
-                                    : <span onClick={this.handleOnOff}>
-                                        ⟳
-                                    </span>
-                                }
-                                <span className="reset" onClick={this.resetSession}>
+                <h1> TIMER </h1>
+                <div className="body">
+                    <section className="display">
+                        <h2>{this.state.curType}</h2>
+                        <div className="screen">
+                            {newMinutes}:{newSecondes}
+                        </div>
+                        <div className="display-footer">
+                            {this.state.counterOn ?
+                                <span onClick={this.handleOnOff}>&#61;</span>
+                                :
+                                <span onClick={this.handleOnOff}>⟳</span>}
+                            <span className="reset" onClick={this.resetSession}>
                                 &#10226;
                             </span>
-                            </div>
-                        </section>
-                        <section className="setting break">
-                            <h3>Break Length</h3>
-                            <div className="setting-footer">
+                        </div>
+                    </section>
+                    <section className="setting break">
+                        <h3>Break Length</h3>
+                        <div className="setting-footer">
                             <span className="sign" onClick={this.decrementBreak}>
                                 &#8249;
                             </span>
-                                <span className="value">
+                            <em className="value">
                                 {this.state.breakLength}
-                            </span>
-                                <span className="sign" onClick={this.incrementBreak}>
+                            </em>
+                            <span className="sign" onClick={this.incrementBreak}>
                                 &#8250;
                             </span>
-                            </div>
-                        </section>
-                        <section className="setting session">
-                            <h3>Session Length</h3>
-                            <div className="setting-footer">
+                        </div>
+                    </section>
+                    <section className="setting session">
+                        <h3>Session Length</h3>
+                        <div className="setting-footer">
                             <span className="sign" onClick={this.decrementSession}>
                                 &#8249;
                             </span>
-                                <span className="value">
+                            <em className="value">
                                 {this.state.sessionLength}
-                            </span>
-                                <span className="sign" onClick={this.incrementSession}>
+                            </em>
+                            <span className="sign" onClick={this.incrementSession}>
                                 &#8250;
                             </span>
-                            </div>
-                        </section>
-                    </div>
-                    <audio id="beep"
-                           preload="auto"
-                           src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
-                           ref={this.audio}/>
+                        </div>
+                    </section>
                 </div>
-            // </div>
-
-            // </div>
+                <audio id="beep"
+                       preload="auto"
+                       src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+                       ref={this.audio}/>
+            </div>
         );
     }
 }

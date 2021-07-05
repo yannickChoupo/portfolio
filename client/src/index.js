@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
 import App from "./App";
 
 import {Provider} from "react-redux";
@@ -17,9 +17,9 @@ import Sign from "./Components/Sign";
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter history={history}>
+        <Router history={history}>
             <App />
-        </BrowserRouter>
+        </Router>
     </Provider>,
     document.getElementById('root')
 );

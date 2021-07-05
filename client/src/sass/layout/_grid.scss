@@ -3,62 +3,46 @@
 @import "../abstracts/function";
 @import "../abstracts/colors";
 
+body, html {
+  //overflow: hidden
+}
 body {
-  min-height: 100vh;
-  //background-color: red;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
   & > * {
     color: black;
   }
-
-  .dark-mode {
-    color: white;
+  &.dark-mode {
+    &::-webkit-scrollbar {
+      width: .5em;
+      background-color: $bg-color--dark;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $def-pri;
+    }
+    & > * {
+      color: white;
+    }
     background-color: $bg-color--dark;
   }
-}
-
-.grid {
-  //display: grid;
-  //min-height: 100vh;
-  //grid-template-rows: 65px auto 50px;
-  //grid-template-columns: auto auto auto;
-  //grid-template-areas: "nav  nav   nav"
-  //                     " page   page   page"
-  //                     "footer footer footer";
-  //position: relative;
-  //@include main-em;
-  // NabBar, Page, Footer -> position absolute
-  //& > * {
-  //position: absolute;
-  //}
-  //@include main-em;
-  //@include after-overlay(1dp);
-  &:hover {
-    nav {
-      @include after-overlay(1dp);
+  #root {
+    &:hover {
+      nav {
+        @include after-overlay(1dp);
+      }
+    }
+  }
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .page-container {
+      max-width: px-to-em(960px);
+      width: 100%;
     }
   }
 
-  &:not(:hover) {
-    nav {
-      //@include after-overlay(1dp);
-    }
-  }
-
-  .grid-full {
-    grid-area: 1 / 1 / 4 / 4;
-    z-index: 1000;
-  }
 }
 
-.page {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .page-container {
-    max-width: px-to-em(960px);
-    width: 100%;
-  }
-}
-//}
 /////////////////////////////////////////

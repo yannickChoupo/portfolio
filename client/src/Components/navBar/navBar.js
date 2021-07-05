@@ -12,12 +12,10 @@ import {getFromStorage} from "../../utils/storage";
 
 export const NavBar = () => {
     const {isLoggedIn} = useSelector(state => state.auth);
+    const {demoIsLaunch} = useSelector(state => state.demo);
     const dispatch = useDispatch();
     const LogOut = () => {
-        let {visitor} = getFromStorage('main_storage').user;
-        const {userName, message} = visitor;
-        console.log("signOut request : ", visitor);
-        dispatch(visitorSignOut(userName, message))
+        dispatch(visitorSignOut())
             .then((response) => {
                 if (response.data.success) {
                     history.push('/sign');
@@ -50,10 +48,10 @@ export const NavBar = () => {
 
                     </li>
                     <li className="nav-ham">
-                        <Hamburger/>
+                        <Hamburger />
                     </li>
                     {
-                        isLoggedIn &&
+                        isLoggedIn && !demoIsLaunch &&
                         <li className="signOut">
                             <div onClick={LogOut}> LOGOUT</div>
                         </li>

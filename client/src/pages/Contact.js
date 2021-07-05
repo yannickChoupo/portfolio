@@ -15,10 +15,11 @@ const Contact = () => {
     const saveMessage = () => {
         if(message) {
             let actualStorage = getFromStorage("main_storage");
-            actualStorage["visitor"].message = message;
-            console.log("local storage : ",actualStorage["visitor"].message);
+            actualStorage.message = message;
+            // console.log("local storage : ",actualStorage["visitor"].message);
             setInStorage("main_storage", actualStorage);
-            console.log("new storage value : ",localStorage);
+            setMessage("");
+            // console.log("new storage value : ",localStorage);
         } else {
             console.log("no message")
         }
@@ -40,6 +41,7 @@ const Contact = () => {
                                   name="message-area"
                                   placeholder="please consider living a message ...."
                                   onChange={handleChange}
+                                  value={message}
                                   rows={2}>
                         </textarea>
                         <section>

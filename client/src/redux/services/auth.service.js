@@ -13,36 +13,40 @@ const VISITOR_API = axios.create(
             'http://localhost:5000'}/visitor`
     }
 );
+// const VISITOR_MESSAGE_API = axios.create(
+//     {
+//         baseURL: `${process.env.NODE_ENV === "production" ?
+//             'https://yannick-njilo-portfolio.herokuapp.com'
+//             :
+//             'http://localhost:5000'}/visitor`
+//     }
+// );
 // }
 ///////////////////////**************************////////////////////////////
 
-// API.interceptors.request.use((req) => {
-//     if (getFromStorage("main_storage")) {
-//         req.headers.Authorization = `Bearer ${getFromStorage("main_storage")}`
-//     }
-//     return req;
-// })
+VISITOR_API.interceptors.request.use((req) => {
+    // req.body.token = storage.to= {message: storage.message, token: storage.token};
+    console.log("Interceptor -> request url : ",req.url);
+    if(req.url === "/signOut") {
+        req.headers.authorization = `Bearer ${getFromStorage("main_storage").token}`;
+    }
+    return req;
+},err => {
+    console.log(err);
+})
 /////////////////////////////////////////////////////////////////////////////////////////
 export const visitorSignIn = (userName, password) => {
-    // console.log("Sign in request : ", userName, password);
     return VISITOR_API.post('/signIn', {userName, password});
 }
 ///////////////////////////////////////////////////////////////////////////
-export const visitorSignOut = (visitorName, visitorMessage) => {
-    console.log("redux signout request : ", visitorMessage, visitorName);
-    return VISITOR_API.post('/signOut',
-        {visitorName, visitorMessage});
-    // .then((response) => {
-    //     console.log(response.data);
-    //     return response;
-    // });
+export const visitorSignOut = () => {
+    const storage = getFromStorage("main_storage");
+    return VISITOR_API.post('/signOut',{message: storage.message});
 }
 ///////////////////////////////////////////////////////////////////////////////
 export const visitorSignUp = (userName, password) => {
-    // console.log("Sign up request : ", userName, password);
     return VISITOR_API.post('/register', {userName, password});
 }
-
 
 // export default {
 // signIn,

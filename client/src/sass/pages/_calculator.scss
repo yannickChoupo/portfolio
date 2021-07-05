@@ -6,13 +6,13 @@
 
 #calculator {
   font-family: 'Poppins', sans-serif;
-  color: white;
-  width: 100%;
+  //color: white;
+  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: px-to-em(60px) px-to-em(18px);
+  //padding: px-to-em(60px) px-to-em(18px);
   background-color: #282c34;
 }
 
@@ -57,6 +57,7 @@
       height: 60px;
       border-radius: 2rem;
       color: white;
+      border: none;
     }
 
     #clear {
@@ -73,6 +74,7 @@
     #equals, #subtract, #divide, #multiply, #add {
       background-color: #FF9500;
       color: white;
+      border: none;
     }
 
     .btn-circle {

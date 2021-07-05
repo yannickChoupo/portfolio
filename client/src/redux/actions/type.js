@@ -26,4 +26,5 @@ export const CLEAR_IS_LOADING = 'IS_LOADING';
 
 export const LAUNCH_DEMO = 'LAUNCH_DEMO';
 export const STOP_DEMO = 'STOP_DEMO';
+export const TOGGLE_DEMO = 'TOGGLE_DEMO';
 

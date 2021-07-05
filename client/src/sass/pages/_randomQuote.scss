@@ -1,5 +1,6 @@
 @import "../abstracts/mixins";
 @import "../abstracts/function";
+@import "../abstracts/breackpoints";
 
 #randomQuote {
   font-family: 'Poppins', sans-serif;
@@ -7,14 +8,16 @@
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: px-to-em(60px) px-to-em(18px);
-  //background-color: #282c34;
+  //padding: px-to-em(60px) px-to-em(18px);
+  padding: 0 px-to-em(18px);
+  background-color: #282c34;
 
 }
 
 .quote-box {
-  background-color: #605EFF;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,6 +27,10 @@
   font-weight: 500;
   border-radius: 0.60rem;
   padding: 1em;
+  border: .05em solid white;
+  @include breakpoint--small {
+    max-width: px-to-em(300px);
+  }
   .quote-text {
     text-align: center;
   }
@@ -52,18 +59,21 @@
       display: flex;
       align-items: center;
       border: none;
+      font-size: 0.7em;
 
       a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        width: 40px;
+        height: 100%;
         margin: 0 10px 0 0;
         color: white;
         cursor: pointer;
-        border-radius: 3px;
-        border: 1px solid white;
+        i {
+          height: 100%;
+          width: 40px;
+          border: 1px solid white;
+          border-radius: 3px;
+          background-color: transparent;
+          @include flexCenter;
+        }
 
         &:hover {
           opacity: 0.8;
@@ -72,9 +82,10 @@
     }
 
     button {
+      background-color: transparent;
       height: 40px;
       width: 120px;
-      font-size: 0.8rem;
+      font-size: 0.6em;
 
       padding: 1rem;
       border-radius: 5px;

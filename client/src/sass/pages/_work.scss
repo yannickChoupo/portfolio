@@ -7,35 +7,37 @@
 @import "../abstracts/colors";
 ///////////////////////////////////////////////////////////////////////
 #work {
-  //background-color: #605EFF;
-
   h2 {
     margin-bottom: 2em;
   }
-
-  //***************************************************
-  //max-width: px-to-rem(960px);
-  //width: 100%;
-  //padding: calc(60px + 2em) 0 0  px-to-em(18px);
-  //********************************************************
   .page-container {
-    padding: 0;
-    overflow: hidden;
+    min-height: 100vh;
+    @include breakpoint--small {
+      padding: calc(60px + 2em) 0 0 px-to-em(18px);
+    }
   }
 
   .work-home {
     padding: calc(60px + 2em) 0 0 px-to-em(18px);
   }
 
+  .backHome-btn {
+    @include flexCenter;
+    background-color: $def-pri;
+    position: absolute;
+    color: white;
+    padding: .5em;
+    right: 0;
+    top: px-to-em(60px);
+  }
+
   .work-wrapper {
     position: fixed;
     top: 0;
-    //width: 100%;
     min-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
 
     .button {
       width: 40px;
@@ -45,14 +47,19 @@
       top: calc(.5em + 60px);
       right: .5em;
       border-radius: 6px;
+
+      //border: .1em solid white;
       background-color: $def-pri;
       font-size: 1em;
       color: white;
       cursor: pointer;
+      @include breakpoint--small {
+        display: none;
+      }
 
       &:hover {
         //color: $def-pri;
-        background-color: rgba($def-pri, .8);
+        //background-color: rgba($def-pri, .8);
       }
     }
   }
@@ -81,8 +88,6 @@
   transition: opacity 500ms, transform 500ms;
 }
 .work-list {
-  //background-color: #7b0188;
-
   @include breakpoint--small {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(20em,1fr));
@@ -91,32 +96,32 @@
     }
   }
 
-
   li {
-    //background-color: red;
     margin-bottom: 3em;
     display: flex;
+    justify-content: space-between;
     min-height: 100px;
     border: {
-      bottom: 1px solid $def-pri;
-      left: 1px solid $def-pri
+      bottom: .1em solid $def-pri;
+      left: .1em solid $def-pri
     };
 
     .title {
-      min-width: 10ch;
+      min-width: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 2em;
+
     }
 
     .item-link {
+      min-width: 30%;
       position: relative;
-
       .work-link {
         border-radius: px-to-em(3px);
         color: white;
-        background-color: getPriVariant(300);
+        background-color: $def-pri;
         position: absolute;
         bottom: .25em;
         margin-left: 1em;

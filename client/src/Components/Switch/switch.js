@@ -4,7 +4,7 @@ import $ from "jquery"
 export const Switch = ({handleSwitchClick}) => {
     const switchThemePosition = () => {
         $(".switch__round").toggleClass("p-left");
-        $(".grid").toggleClass("dark-mode");
+        $("body").toggleClass("dark-mode");
         handleSwitchClick();
     }
     return (

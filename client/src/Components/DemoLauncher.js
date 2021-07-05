@@ -31,7 +31,6 @@ const DemoLauncher = ({unMountProject, projectName}) => {
     return (
         <>
             {
-                // demoIsLaunch
                 <CSSTransition
                     in={demoIsLaunch}
                     classNames="launch"
@@ -47,77 +46,6 @@ const DemoLauncher = ({unMountProject, projectName}) => {
             }
         </>
     )
-    // } else {
-    //     return (
-    //         <div className="project-wrapper">
-    //             <h1> Not available</h1>
-    //         </div>
-    //     )
-    // }
-
-    // }
-    // }else{
-    //     return (
-    //             <>
-    //                 <CSSTransition
-    //                     in={demoIsLaunch}
-    //                     classNames="launch"
-    //                     timeout={500}
-    //                     unmountOnExit>
-    //                     {/*<Calculator/>*/}
-    //                     <div className="work-wrapper">
-    //                         <h1>Project launch</h1>
-    //                         <span className="btn btn-close" onClick={unMountProject}>Unmount</span>
-    //                     </div>
-    //                 </CSSTransition>
-    //             </>
-    //
-    //         )
-    // }
-    // if (demoIsLaunch) {
-    //     return (
-    //         <>
-    //             <CSSTransition
-    //                 in={demoIsLaunch}
-    //                 classNames="launch"
-    //                 timeout={500}
-    //                 unmountOnExit>
-    //                 {/*<Calculator/>*/}
-    //                 <div className="work-wrapper">
-    //                     <h1>Project launch</h1>
-    //                     <span className="btn btn-close" onClick={unMountProject}>Unmount</span>
-    //                 </div>
-    //             </CSSTransition>
-    //         </>
-    //
-    //     )
-    // } else {
-    //     return (
-    //         <>
-    //             <div className="work-wrapper">
-    //                 <h1 className="bg-danger">
-    //                     Project not launch
-    //                 </h1>
-    //                 <span className="btn" onClick={unMountProject}>Unmount</span>
-    //             </div>
-    //
-    //         </>
-    //
-    //     )
-    // }
 }
-// } else if (projectName === "RandomQuote") {
-//     return <RandomQuote/>
-// } else if (projectName === "Timer") {
-//     return <Timer/>
-// } else if (projectName === "BarChart") {
-//     return <BarChart/>
-// } else if (projectName === "ScatterPlot") {
-//     return <ScatterPlot/>
-// } else {
-//     return (
-//         <h4>Project not jet here available but on my account</h4>
-//     );
-// }
 
 export default DemoLauncher;

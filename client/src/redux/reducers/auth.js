@@ -16,6 +16,7 @@ const initialState = mainStorage ?
     : { isLoggedIn: false };
 export default function (state = initialState, action) {
     const {type, payload} = action;
+    console.log("SIGN IN payload : ",payload);
 
     switch (type) {
         case REGISTER_SUCCESS:
@@ -25,7 +26,7 @@ export default function (state = initialState, action) {
                 visitor: null
             };
         case AUTHENTICATE:
-            setInStorage('main_storage', { visitor: payload});
+            setInStorage('main_storage', { token: payload.token,message: ""});
             return {
                 ...state,
                 isLoggedIn: true,

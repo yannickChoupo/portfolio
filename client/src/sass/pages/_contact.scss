@@ -6,6 +6,7 @@
   padding: px-to-em(100px) 0 0 px-to-em(20px);
   min-height: 100vh;
   textarea {
+    color: inherit;
     resize: none;
     overflow: hidden;
     border: none;

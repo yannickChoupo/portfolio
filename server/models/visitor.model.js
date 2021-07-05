@@ -13,15 +13,7 @@ const VisitorSchema = new Schema({
         type: String,
         default: '',
         required: true
-    },
-    message: {
-        type: String,
-        default: ''
-    },
-    isDeleted: {
-        type: Boolean,
-        default: false
-    },
+    }
 },{
     timestamps: true,
 })

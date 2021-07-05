@@ -1,4 +1,4 @@
 module.exports = {
     secret: 'test',
-    mongodbURI: 'mongodb+srv://YannickNjilo:Jocker237@cluster0.bwiea.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    ATLAS_URI: 'mongodb+srv://YannickNjilo:Jocker237@cluster0.bwiea.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 }

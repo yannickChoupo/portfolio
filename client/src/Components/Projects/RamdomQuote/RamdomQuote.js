@@ -70,33 +70,36 @@ export const RandomQuote = () => {
         <>
             <div id="randomQuote" className="project" style={{backgroundColor: data.color}}>
                 {/*<div className="page-container">*/}
-                    <div className="quote-box">
-                        <div className="quote-text">
-                            <i className="fa fa-quote-left"/>
-                            {data.text}
+                <div className="quote-box">
+                    <div className="quote-text">
+                        <i className="fa fa-quote-left"/>
+                        {data.text}
+                    </div>
+                    <div className="quote-author">
+                        <span>- {data.author}</span>
+                    </div>
+                    <div className="quote-footer">
+                        <div className="icons">
+                            {/*<a style={{backgroundColor: data.color}} href="#">*/}
+                            <a href="#">
+                                <i className="fa fa-twitter"/>
+                            </a>
+                            {/*<a style={{backgroundColor: data.color}} href="#">*/}
+                            <a href="#">
+                                <i className="fa fa-tumblr"/>
+                            </a>
                         </div>
-                        <div className="quote-author">
-                            <span>- {data.author}</span>
-                        </div>
-                        <div className="quote-footer">
-                            <div className="icons">
-                                <a style={{backgroundColor: data.color}} href="#">
-                                    <i className="fa fa-twitter"/>
-                                </a>
-                                <a style={{backgroundColor: data.color}} href="#">
-                                    <i className="fa fa-tumblr"/>
-                                </a>
-                            </div>
-                            <div>
-                                <button type="button"
-                                        onClick={fetchQuoteText}
-                                        style={{backgroundColor: data.color}}>
-                                    New Quote
-                                </button>
-                            </div>
+                        <div>
+                            <button type="button"
+                                    onClick={fetchQuoteText}
+                                    // style={{backgroundColor: data.color}}
+                            >
+                                New Quote
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
             {/*</div>*/}
 
         </>

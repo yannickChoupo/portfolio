@@ -9,7 +9,6 @@
     {
         // id: 2,
         name: "Quote",
-        link: "RandomQuote",
         techUsed: ["Javascript(Ajax)","React","Bootstrap","Jquery"],
         description: "Generate a Random Quote onclick",
         status: "available"

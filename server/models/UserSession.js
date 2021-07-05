@@ -7,13 +7,21 @@ const UserSessionSchema = new Schema({
         type: String,
         default: ''
     },
-    message: {
+    userName: {
         type: String,
         default: ''
     },
-    isDeleted: {
-        type: Boolean,
-        default: false,
+    createdAt: {
+        type: String,
+        default: ''
+    },
+    deletedAt: {
+        type: Date,
+        default: Date.now()
+    },
+    message: {
+        type: String,
+        default: ''
     },
     timestamp: {
         type: Date,

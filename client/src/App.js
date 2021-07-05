@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {BrowserView, MobileView} from 'react-device-detect';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -18,8 +18,8 @@ import Contact from "./pages/Contact";
 
 
 import {getFromStorage} from "./utils/storage";
-import {useDispatch} from "react-redux";
-import SideBar from "./Components/sidebar";
+// import {useDispatch} from "react-redux";
+// import SideBar from "./Components/sidebar";
 // import {authenticate} from "./redux/actions/auth";
 
 // Pages
@@ -47,7 +47,7 @@ function App() {
             <BrowserView>
                 {/*<>*/}
                 <Router>
-                    <div className="grid">
+                    {/*<div className="grid">*/}
                         <NavBar/>
                         <Switch>
                             <Route exact path="/sign">
@@ -71,7 +71,7 @@ function App() {
                                 <Error/>
                             </Route>
                         </Switch>
-                    </div>
+                    {/*</div>*/}
                 </Router>
                 {/*</>*/}
             </BrowserView>

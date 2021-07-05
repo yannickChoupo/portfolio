@@ -40,7 +40,6 @@ export const visitorSignUp = (userName, password, history) => async (dispatch) =
         });
 }
 export const visitorSignIn = (userName, password) => async (dispatch) => {
-    console.log("sign In request");
     return api.visitorSignIn(userName, password)
         .then((response) => {
                 console.log(response.data)
@@ -49,7 +48,6 @@ export const visitorSignIn = (userName, password) => async (dispatch) => {
                     payload: response.data.message
                 })
                 if (response.data.success) {
-                    console.log("PAYLOAD : ",response.data);
                     dispatch({
                         type: AUTHENTICATE,
                         payload: response.data
@@ -72,17 +70,14 @@ export const visitorSignIn = (userName, password) => async (dispatch) => {
             }
         )
 }
-export const visitorSignOut = (visitorName,visitorMessage) => (dispatch) => {
-    console.log("Logout request !!!!!!!!!!!!!!!!!!!!",visitorName,visitorMessage);
-    return api.visitorSignOut(visitorName,visitorMessage)
+export const visitorSignOut = () => (dispatch) => {
+    return api.visitorSignOut()
         .then((response) => {
             if (response.data.success) {
                 dispatch({
                     type: LOGOUT
                 })
             }
-            console.log("response : ", response);
-            console.log("response : ", response.data);
             return response;
         })
 }

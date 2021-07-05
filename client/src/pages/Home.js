@@ -29,28 +29,25 @@ const Home = () => {
                             <a href="https://freecodecamp.org"> freecodecamp </a><br/>
                             where i usually read articles and complete challenges
                             here are some of them<br/>
-                            <BrowserView>
-                                <NavLink
-                                    className="p-link"
-                                    activclassname="active"
-                                    to='work'>
-                                    <em>Demos</em>
-                                </NavLink>
-                            </BrowserView>
-                            <MobileView>
-                                <Link title="message"
-                                      className="p-link"
-                                      to="work"
-                                      spy={true}
-                                      smooth={true}
-                                      duration={500}>
-                                    <em>Demos</em>
-                                </Link>
-                            </MobileView>
-
-                            {/*<Link title="work" className="p-link" to="work" spy={true} smooth={true}*/}
-                            {/*      duration={500}> Demos</Link> <br/>*/}
                         </p>
+                        <BrowserView>
+                            <NavLink
+                                className="p-link"
+                                activclassname="active"
+                                to='work'>
+                                <em>Demos</em>
+                            </NavLink>
+                        </BrowserView>
+                        <MobileView>
+                            <Link title="message"
+                                  className="p-link"
+                                  to="work"
+                                  spy={true}
+                                  smooth={true}
+                                  duration={500}>
+                                <em>Demos</em>
+                            </Link>
+                        </MobileView>
                         <p>
                             I don't any professional experience and i looking for some.
                         </p>

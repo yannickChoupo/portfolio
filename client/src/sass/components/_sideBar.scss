@@ -61,17 +61,16 @@ $icon-wh: 36px;
   position: absolute;
   right: 0;
   top: calc((100vh - 6 * 36px) / 2);
-
+  //z-index: 1000;
   transition: .5s all ease-in;
 
 
   &:hover {
     ul {
-      @include after-overlay(8dp);
+      @include after-overlay(24dp);
     }
   }
 
-  //color: white;
   &:not(:hover) {
     ul {
       @include after-overlay(1dp);
