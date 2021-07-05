@@ -24,15 +24,14 @@
 
 ////////////////////////////////////////////////////////////////////
 .home-body {
+  text-align: center;
   @include breakpoint--small {
     padding: px-to-em(80px);
-    text-align: center;
   }
 
   p:first-of-type::before {
     content: "👋";
   }
-
   a {
     text-decoration: none;
     color: inherit;
@@ -58,78 +57,5 @@
       background-color: $def-pri;
     }
   }
-
-  //:first-child
-
-  //:first-child
-
-  //.home-body-section {
-  //  position: relative;
-  //  //box-shadow: -2px 1px 5px rgba(0, 0, 0, 0.5);
-  //  //@include after-overlay(4dp);
-  //  display: flex;
-  //  justify-content: center;
-  //  flex-direction: column;
-  //  margin-top: 2rem;
-  //}
 }
 
-//.section-header {
-//  display: flex;
-//  justify-content: center;
-
-//span {
-//  display: block;
-//  position: relative;
-//  padding: .5rem 0;
-//
-//  &::before,
-//  &::after {
-//    content: "";
-//    width: 100%;
-//    height: 2px;
-//    top: 50%;
-//    display: block;
-//    position: absolute;
-//    background-color: darken($def-sec, 20%);
-//  }
-//
-//  &::before {
-//    transform: translateX(calc(-100% - 1rem));
-//  }
-//
-//  &::after {
-//    transform: translateX(calc(100% + 1rem));
-//  }
-//}
-//}
-
-//.about-section {
-//  text-align: center;
-//  line-height: 1.5;
-//  font-size: 2em;
-//  padding: 1rem;
-//}
-//
-//.tech-skills {
-//  padding: 0 1rem;
-//}
-////////////////////////////////////////////////////////////////////////////////////
-//margin-left: 1.5rem;
-//padding: 1rem;
-//border-radius: 6px;
-//justify-content: center;
-//flex-direction: column;
-//line-height: 1.5;
-//box-shadow: -2px 1px 5px rgba(0, 0, 0, 0.5);
-//@include after-overlay(4dp);
-
-//  :nth-child(1)::before {
-//    content: "👋";
-//    padding-right: 4px;
-//  }
-//
-//  :nth-child(2),
-//  :nth-child(3) {
-//    padding-left: 1.5rem;
-//  }
