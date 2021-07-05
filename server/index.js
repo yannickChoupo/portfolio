@@ -17,7 +17,8 @@ app.use(bodyParser.urlencoded({extended: false}), function middleware(req, res, 
     next();
 });
 const uri = process.env.ATLAS_URI;
-mongoose.connect('mongodb+srv://YannickNjilo:Jocker237@cluster0.bwiea.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+// mongoose.connect('mongodb+srv://YannickNjilo:Jocker237@cluster0.bwiea.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(process.env.ATLAS_URI,
     {
         useNewUrlParser: true,
         useCreateIndex: true,

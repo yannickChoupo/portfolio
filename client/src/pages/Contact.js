@@ -17,6 +17,8 @@ const Contact = () => {
             let actualStorage = getFromStorage("main_storage");
             actualStorage["visitor"].message = message;
             console.log("local storage : ",actualStorage["visitor"].message);
+            setInStorage("main_storage", actualStorage);
+            console.log("new storage value : ",localStorage);
         } else {
             console.log("no message")
         }
