@@ -32,11 +32,11 @@ import SideBar from "./Components/sidebar";
 //     {path: '/error', Component: Error},
 //     {path: '*', Component: Error},
 // ]
-// if (!getFromStorage("main_storage")) {
-//     history.push("/sign");
-//     // window.location.reload(true);
-//     console.log("local storage empty")
-// }
+if (!getFromStorage("main_storage")) {
+    history.push("/sign");
+    // window.location.reload(true);
+    console.log("local storage empty")
+}
 // else {
 //     history.push('/');
 // }

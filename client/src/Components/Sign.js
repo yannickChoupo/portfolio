@@ -104,7 +104,8 @@ const Sign = () => {
                                 <label htmlFor="name">
                                     <i className="fa fa-user"/>
                                 </label>
-                                <input type="text" id="userName"
+                                <input type="text"
+                                       id="userName"
                                        placeholder="visitor name"
                                        name="userName"
                                        maxLength="8"
