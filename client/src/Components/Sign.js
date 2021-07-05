@@ -131,9 +131,6 @@ const Sign = () => {
                             <div className="submit-btn" onClick={handleSubmit}>
                                 submit
                             </div>
-                            <div className="submit-btn" onClick={handleClick}>
-                                SUBMIT
-                            </div>
                         </section>
                     </section>
                 </div>
