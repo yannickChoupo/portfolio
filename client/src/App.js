@@ -76,23 +76,23 @@ function App() {
                 {/*</>*/}
             </BrowserView>
             <MobileView>
-                {/*<Router>*/}
-                <div className="grid">
-                    {/*<Switch>*/}
-                    {/*<Route exact path="/">*/}
-                    <NavBar/>
-                    <Sign/>
-                    <Home/>
-                    <About/>
-                    <Works/>
-                    <Contact/>
-                    {/*</Route>*/}
-                    {/*<Route exact path="/sign">*/}
-                    {/*    <NavBar/>*/}
-                    {/*</Route>*/}
-                    {/*</Switch>*/}
-                </div>
-                {/*</Router>*/}
+                <Router>
+                    <div className="grid">
+                        <Switch>
+                            <Route exact path="/">
+                                <NavBar/>
+                                <Home/>
+                                <About/>
+                                <Works/>
+                                <Contact/>
+                            </Route>
+                            <Route exact path="/sign">
+                                <NavBar/>
+                                <Sign/>
+                            </Route>
+                        </Switch>
+                    </div>
+                </Router>
             </MobileView>
         </>
     );

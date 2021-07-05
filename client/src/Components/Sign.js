@@ -82,15 +82,13 @@ const Sign = () => {
     let messageStyle = {
         'color': /Error/.test(message) ? 'red' : 'green'
     };
-    const handleClick = () => {
-        $(".submit-btn").css("color","red");
-    }
     return (
         <>
             <div id="sign" className="page">
                 <div className="page-container">
+                    <h1 className="message" style={messageStyle}>{message}</h1>
                     <section className={`body ${isSignup && "signUp"}`}>
-                        <h1 className="message" style={messageStyle}>{message}</h1>
+
                         <div className="header">
                             <section>
                                 <h3 className="switch" onClick={switchMode}>⇋</h3>
@@ -100,7 +98,7 @@ const Sign = () => {
                             </section>
                         </div>
                         <form autoComplete="on" onSubmit={handleSubmit}>
-                            <section role="userName">
+                            <div role="userName" className="form-group">
                                 <label htmlFor="name">
                                     <i className="fa fa-user"/>
                                 </label>
@@ -111,9 +109,10 @@ const Sign = () => {
                                        maxLength="8"
                                        value={getFieldValue(userName)}
                                        onChange={(e) => updateFields(e)}
+                                       autoFocus
                                        required/>
-                            </section>
-                            <section role="password">
+                            </div>
+                            <div role="password" className="form-group">
                                 <label htmlFor="inputPassword">
                                     <i className="fa fa-unlock-alt"/>
                                 </label>
@@ -125,7 +124,7 @@ const Sign = () => {
                                        value={getFieldValue(password)}
                                        onChange={(e) => updateFields(e)}
                                        required/>
-                            </section>
+                            </div>
                         </form>
                         <section role="submit">
                             <div className="submit-btn" onClick={handleSubmit}>
