@@ -16,7 +16,7 @@ import {setInStorage} from "../../utils/storage";
 export const visitorSignUp = (userName, password, history) => async (dispatch) => {
     return api.visitorSignUp(userName, password).then(
         (response) => {
-            console.log("Server response : " ,response.data);
+            console.log("Server response : ", response.data);
             if (!response.data.success) {
                 dispatch({
                     type: REGISTER_FAIL
@@ -73,11 +73,10 @@ export const visitorSignIn = (userName, password) => async (dispatch) => {
 export const visitorSignOut = () => (dispatch) => {
     return api.visitorSignOut()
         .then((response) => {
-            if (response.data.success) {
-                dispatch({
-                    type: LOGOUT
-                })
-            }
+            console.log("response data: ", response.data)
+            dispatch({
+                type: LOGOUT
+            })
             return response;
         })
 }

@@ -25,10 +25,11 @@ const VISITOR_API = axios.create(
 ///////////////////////**************************////////////////////////////
 
 VISITOR_API.interceptors.request.use((req) => {
-    // req.body.token = storage.to= {message: storage.message, token: storage.token};
-    console.log("Interceptor -> request url : ",req.url);
     if(req.url === "/signOut") {
+        // req.body.token = storage.to= {message: storage.message, token: storage.token};
+        console.log("Interceptor -> request url : ",req.url);
         req.headers.authorization = `Bearer ${getFromStorage("main_storage").token}`;
+        return req;
     }
     return req;
 },err => {

@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserView, MobileView} from 'react-device-detect';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch, useLocation} from "react-router-dom";
 import history from "./helpers/history";
 
 
@@ -18,20 +18,25 @@ import Contact from "./pages/Contact";
 
 
 import {getFromStorage} from "./utils/storage";
+import {
+    CSSTransition,
+    TransitionGroup
+} from "react-transition-group";
+import {useSelector} from "react-redux";
 // import {useDispatch} from "react-redux";
 // import SideBar from "./Components/sidebar";
 // import {authenticate} from "./redux/actions/auth";
 
 // Pages
-// const routes = [
-//     {path: '/', Component: Home},
-//     {path: '/about', Component: About},
-//     {path: '/work', Component: Works},
-//     {path: '/contact', Component: Error},
-//     {path: '/sign', Component: Sign},
-//     {path: '/error', Component: Error},
-//     {path: '*', Component: Error},
-// ]
+const routes = [
+    {path: '/', Component: Home},
+    {path: '/about', Component: About},
+    {path: '/work', Component: Works},
+    {path: '/contact', Component: Contact},
+    {path: '/sign', Component: Sign},
+    {path: '/error', Component: Error},
+    {path: '*', Component: Error},
+]
 if (!getFromStorage("main_storage")) {
     history.push("/sign");
     // window.location.reload(true);
@@ -42,14 +47,36 @@ if (!getFromStorage("main_storage")) {
 // }
 
 function App() {
+    const {demoIsLaunch} = useSelector(state => state.demo);
+    const location = useLocation();
     return (
         <>
             <BrowserView>
                 {/*<>*/}
-                <Router>
-                    {/*<div className="grid">*/}
-                        <NavBar/>
-                        <Switch>
+                {/*<Router>*/}
+                {/*<div className="grid">*/}
+                <NavBar/>
+                <TransitionGroup>
+                    <CSSTransition
+                        timeout={1000}
+                        classNames="pages"
+                        key={history.location.key}>
+                        <Switch location={history.location}>
+                            {/*{routes.map(({path, Component}) => (*/}
+                            {/*    <Route key={path} exact path={path}>*/}
+                            {/*        {({match}) => (*/}
+                            {/*            <CSSTransition*/}
+                            {/*                in={match != null}*/}
+                            {/*                timeout={1000}*/}
+                            {/*                classNames="pages"*/}
+                            {/*                unmountOnExit>*/}
+                            {/*                <Component/>*/}
+                            {/*            </CSSTransition>*/}
+
+                            {/*        )}*/}
+                            {/*    </Route>*/}
+                            {/*))}*/}
+
                             <Route exact path="/sign">
                                 <Sign history={history}/>
                             </Route>
@@ -71,13 +98,17 @@ function App() {
                                 <Error/>
                             </Route>
                         </Switch>
-                    {/*</div>*/}
-                </Router>
+                    </CSSTransition>
+
+                </TransitionGroup>
+
+                {/*</div>*/}
+                {/*</Router>*/}
                 {/*</>*/}
             </BrowserView>
             <MobileView>
-                <Router>
-                    <div className="grid">
+                {/*<Router>*/}
+                {/*    <div className="grid">*/}
                         <Switch>
                             <Route exact path="/">
                                 <NavBar/>
@@ -91,26 +122,41 @@ function App() {
                                 <Sign/>
                             </Route>
                         </Switch>
-                    </div>
-                </Router>
+                    {/*</div>*/}
+                {/*</Router>*/}
             </MobileView>
         </>
     );
 }
 
 export default App;
-//             {/*{routes.map(({path, Component}) => (*/}
-//             {/*    <Route key={path} exact path={path}>*/}
-//             {/*        {({match}) => (*/}
-//             {/*            <CSSTransition*/}
-//             {/*                in={match != null}*/}
-//             {/*                timeout={300}*/}
-//             {/*                classNames="page"*/}
-//             {/*                unmountOnExit>*/}
-//             {/*                <div className="page">*/}
-//             {/*                    <Component />*/}
-//             {/*                </div>*/}
-//             {/*            </CSSTransition>*/}
-//             {/*        )}*/}
-//             {/*    </Route>*/}
-//             {/*))}*/}
+{/*{routes.map(({path, Component}) => (*/
+}
+{/*    <Route key={path} exact path={path}>*/
+}
+{/*        {({match}) => (*/
+}
+{/*            <CSSTransition*/
+}
+{/*                in={match != null}*/
+}
+{/*                timeout={300}*/
+}
+{/*                classNames="page"*/
+}
+{/*                unmountOnExit>*/
+}
+{/*                <div className="page">*/
+}
+{/*                    <Component />*/
+}
+{/*                </div>*/
+}
+{/*            </CSSTransition>*/
+}
+{/*        )}*/
+}
+{/*    </Route>*/
+}
+{/*))}*/
+}

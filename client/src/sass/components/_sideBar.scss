@@ -37,7 +37,7 @@
 }
 
 .show-enter-active {
-  background-color: #605EFF;
+  //background-color: #605EFF;
   opacity: 1;
   transform: translateX(0);
   transition: opacity 500ms, transform 500ms;
@@ -49,7 +49,7 @@
 
 .show-exit-active {
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateX(100%);
   transition: opacity 500ms, transform 500ms;
 }
 //////////////////////////////////////////////////////////////////

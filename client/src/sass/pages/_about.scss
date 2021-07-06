@@ -1,6 +1,8 @@
 @import "../abstracts/variables";
 @import "../abstracts/function";
 @import "../abstracts/mixins";
+@import "../abstracts/breackpoints";
+
 
 $lines-color: rgba($def-pri, .87);
 #about {
@@ -106,10 +108,11 @@ $lines-color: rgba($def-pri, .87);
         width: .1em;
         height: 9.7ch;
         position: absolute;
-        //z-index: 2;
-        //left: 0;
         top: calc(2em + 1ch);
         background-color: $def-pri;
+        @include breakpoint--small {
+          height: 10ch;
+        }
       }
       .subtitle {
         //background-color: #605EFF;

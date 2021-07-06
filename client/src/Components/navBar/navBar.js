@@ -20,6 +20,8 @@ export const NavBar = () => {
                 if (response.data.success) {
                     history.push('/sign');
                     window.location.reload(true);
+                } else {
+                    localStorage.clear();
                 }
             })
     }

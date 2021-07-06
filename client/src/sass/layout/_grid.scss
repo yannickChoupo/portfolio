@@ -10,6 +10,7 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  position: relative;
   & > * {
     color: black;
   }
@@ -44,5 +45,26 @@ body {
   }
 
 }
+.pages-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.pages-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+//.pages-exit {
+//  opacity: 1;
+//  transform: translateX(-100%);
+//}
+//
+//.page-exit-active {
+//  opacity: 0;
+//  transform: translateX(100%);
+//  transition: opacity 500ms, transform 500ms;
+//}
 
 /////////////////////////////////////////

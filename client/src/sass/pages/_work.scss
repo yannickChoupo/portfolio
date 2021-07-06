@@ -7,6 +7,7 @@
 @import "../abstracts/colors";
 ///////////////////////////////////////////////////////////////////////
 #work {
+  position: relative;
   h2 {
     margin-bottom: 2em;
   }
@@ -45,7 +46,7 @@
       position: absolute;
       @include flexCenter;
       top: calc(.5em + 60px);
-      right: .5em;
+      right: px-to-em(20px);
       border-radius: 6px;
 
       //border: .1em solid white;
@@ -73,9 +74,10 @@
 }
 
 .launch-enter-active {
+  background-color: red;
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 500ms, transform 500ms;
+  transition: opacity 1000ms, transform 1000ms;
 }
 
 .launch-exit {
@@ -131,4 +133,25 @@
       }
     }
   }
+}
+.launch-enter {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.launch-enter-active {
+  background-color: red;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 1000ms, transform 1000ms;
+}
+
+.launch-exit {
+  opacity: 1;
+}
+
+.launch-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 500ms, transform 500ms;
 }

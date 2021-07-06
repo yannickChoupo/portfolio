@@ -71,15 +71,12 @@ const Works = () => {
             <BrowserView>
                 <div id="work" className="page">
                     {demoIsLaunch &&
-                        <Link to={url}
-                              className="backHome-btn"
-                              onClick={() => dispatch(stopDemo())}>
-                            Back Home
-                        </Link>
+                    <Link to={url}
+                          className="backHome-btn"
+                          onClick={() => dispatch(stopDemo())}>
+                        Back Home
+                    </Link>
                     }
-                    <Route path={`${url}/:projectName`}>
-                        <Project/>
-                    </Route>
                     <Route exact path={url}>
                         <div className="page-container">
                             <h2>Work</h2>
@@ -105,6 +102,9 @@ const Works = () => {
                                 })}
                             </ul>
                         </div>
+                    </Route>
+                    <Route exact path={`${url}/:projectName`}>
+                        <Project/>
                     </Route>
                 </div>
                 {/*<Route path={`${url}/:projectName`}>*/}
