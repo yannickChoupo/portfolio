@@ -31,7 +31,6 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });
-
 // API Endpoint routes to be able to use the server to perform CRUD operations
 const usersRouter = require('./routes/api/users');
 const visitorsRouter = require('./routes/api/visitor');
