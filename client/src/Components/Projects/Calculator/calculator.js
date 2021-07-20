@@ -26,22 +26,24 @@ export const Calculator = ({unMountProject}) => {
     const handleClick = (e) => {
         const {value} = e.target;
         registerLastInput(value);
-        if (value === 'AC') {
-            reinitialize();
+        if(curDisplay.length <= 6) {
+            if (value === 'AC') {
+                reinitialize();
+            }
+            if (/\d/.test(value)) {
+                handleNumbers(value);
+            }
+            if (value === '.') {
+                handleDecimal(value);
+            }
+            if (/[=]/.test(value)) {
+                handleEqual();
+            }
+            if (/[+-/x]/.test(value)) {
+                handleOperators(value);
+            }
+            updateState();
         }
-        if (/\d/.test(value)) {
-            handleNumbers(value);
-        }
-        if (value === '.') {
-            handleDecimal(value);
-        }
-        if (/[=]/.test(value)) {
-            handleEqual();
-        }
-        if (/[+-/x]/.test(value)) {
-            handleOperators(value);
-        }
-        updateState();
     }
     const handleEqual = () => {
         if (prevInput !== "=") {
@@ -107,13 +109,6 @@ export const Calculator = ({unMountProject}) => {
             }
         }
     }
-
-    const dispatch = useDispatch();
-    const {demoIsLaunch} = useSelector(state => state.demo);
-    //
-    console.log("actual demo state : ", demoIsLaunch);
-
-
     return (
         <div id="calculator" className="project">
             <div id="board">
@@ -124,13 +119,20 @@ export const Calculator = ({unMountProject}) => {
                 <div id="main-board">
                     <div className="row">
                         <div className="col-6">
-                            <button id="clear" type="button" value="AC"
-                                    onClick={handleClick}>AC
+                            <button id="clear"
+                                    type="button"
+                                    value="AC"
+                                    onClick={handleClick}>
+                                AC
                             </button>
                         </div>
                         <div className="col-6">
-                            <button id="divide" type="button" className="btn-circle float-right"
-                                    onClick={handleClick} value="/">/
+                            <button id="divide"
+                                    type="button"
+                                    className="btn-circle float-right"
+                                    onClick={handleClick}
+                                    value="/">
+                                /
                             </button>
                         </div>
                     </div>
@@ -169,30 +171,33 @@ export const Calculator = ({unMountProject}) => {
                     </div>
                     <div className="row">
                         <div className="col-6">
-                            <button type="button" id="zero" value="0"
-                                    onClick={handleClick}>0
+                            <button type="button"
+                                    id="zero"
+                                    value="0"
+                                    onClick={handleClick}>
+                                0
                             </button>
                         </div>
                         <div className="col-3">
-                            <button type="button" id="decimal"
+                            <button type="button"
+                                    id="decimal"
                                     className="btn-circle"
                                     value="."
-                                    onClick={handleClick}>.
+                                    onClick={handleClick}>
+                                .
                             </button>
                         </div>
                         <div className="col-3 ">
                             <button type="button" id="equals"
                                     className="btn-circle"
                                     value="="
-                                    onClick={handleClick}>=
+                                    onClick={handleClick}>
+                                =
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            {/*<div className="btn" onClick={unMountProject}>Back Home*/}
-            {/*</div>*/}
         </div>
     );
 }

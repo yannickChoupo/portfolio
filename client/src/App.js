@@ -52,9 +52,6 @@ function App() {
     return (
         <>
             <BrowserView>
-                {/*<>*/}
-                {/*<Router>*/}
-                {/*<div className="grid">*/}
                 <NavBar/>
                 <TransitionGroup>
                     <CSSTransition
@@ -62,21 +59,6 @@ function App() {
                         classNames="pages"
                         key={history.location.key}>
                         <Switch location={history.location}>
-                            {/*{routes.map(({path, Component}) => (*/}
-                            {/*    <Route key={path} exact path={path}>*/}
-                            {/*        {({match}) => (*/}
-                            {/*            <CSSTransition*/}
-                            {/*                in={match != null}*/}
-                            {/*                timeout={1000}*/}
-                            {/*                classNames="pages"*/}
-                            {/*                unmountOnExit>*/}
-                            {/*                <Component/>*/}
-                            {/*            </CSSTransition>*/}
-
-                            {/*        )}*/}
-                            {/*    </Route>*/}
-                            {/*))}*/}
-
                             <Route exact path="/sign">
                                 <Sign history={history}/>
                             </Route>
@@ -99,64 +81,25 @@ function App() {
                             </Route>
                         </Switch>
                     </CSSTransition>
-
                 </TransitionGroup>
-
-                {/*</div>*/}
-                {/*</Router>*/}
-                {/*</>*/}
             </BrowserView>
             <MobileView>
-                {/*<Router>*/}
-                {/*    <div className="grid">*/}
-                        <Switch>
-                            <Route exact path="/">
-                                <NavBar/>
-                                <Home/>
-                                <About/>
-                                <Works/>
-                                <Contact/>
-                            </Route>
-                            <Route exact path="/sign">
-                                <NavBar/>
-                                <Sign/>
-                            </Route>
-                        </Switch>
-                    {/*</div>*/}
-                {/*</Router>*/}
+                <Switch>
+                    <Route exact path="/">
+                        <NavBar/>
+                        <Home/>
+                        <About/>
+                        <Works/>
+                        <Contact/>
+                    </Route>
+                    <Route exact path="/sign">
+                        <NavBar/>
+                        <Sign/>
+                    </Route>
+                </Switch>
             </MobileView>
         </>
     );
 }
 
 export default App;
-{/*{routes.map(({path, Component}) => (*/
-}
-{/*    <Route key={path} exact path={path}>*/
-}
-{/*        {({match}) => (*/
-}
-{/*            <CSSTransition*/
-}
-{/*                in={match != null}*/
-}
-{/*                timeout={300}*/
-}
-{/*                classNames="page"*/
-}
-{/*                unmountOnExit>*/
-}
-{/*                <div className="page">*/
-}
-{/*                    <Component />*/
-}
-{/*                </div>*/
-}
-{/*            </CSSTransition>*/
-}
-{/*        )}*/
-}
-{/*    </Route>*/
-}
-{/*))}*/
-}

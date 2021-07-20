@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import $ from "jquery";
 import {
     Route,
@@ -6,24 +6,50 @@ import {
     useParams,
     useRouteMatch
 } from "react-router-dom";
-import {MobileView, BrowserView} from 'react-device-detect'
+import {MobileView, BrowserView} from 'react-device-detect';
+import history from "../helpers/history";
 
 import Projects from "../data";
 import RandomQuote from "../Components/Projects/RamdomQuote/RamdomQuote";
 import Calculator from "../Components/Projects/Calculator/calculator";
 import Timer from "../Components/Projects/Timer/Timer.js";
 import BarChart from "../Components/Projects/DataVisualisation/BarChart";
-import ScatterPlot from "../Components/Projects/DataVisualisation/Scatterplot"
+import ScatterPlot from "../Components/Projects/DataVisualisation/Scatterplot";
+import TimesTamp from "../Components/Projects/timesTamp";
 
 
 import {useDispatch, useSelector} from "react-redux";
 import {launchDemo, stopDemo} from "../redux/actions/demo"
 import DemoLauncher from "../Components/DemoLauncher";
 
+const Project = () => {
+    let {projectName} = useParams();
+    console.log(projectName);
+    if (projectName === "Calculator") {
+        return <Calculator/>
+    } else if (projectName === "Quote") {
+        return <RandomQuote/>
+    } else if (projectName === "Timer") {
+        return <Timer/>
+    } else if (projectName === "BarChart") {
+        return <BarChart/>
+    } else if (projectName === "ScatterPlot") {
+        return <ScatterPlot/>
+    }else if (projectName === "Timestamp") {
+        return <TimesTamp/>
+    } else {
+        return (
+            <h4>Project not jet available here</h4>
+        );
+    }
+}
+
 const Works = () => {
     const dispatch = useDispatch();
     const {demoIsLaunch} = useSelector(state => state.demo);
+
     let {url} = useRouteMatch();
+
     const [projectName, setProjectName] = useState("")
     console.log(url);
     const mountProject = (projectName) => {
@@ -37,6 +63,14 @@ const Works = () => {
         $("body").css("overflow", "auto");
         dispatch(stopDemo());
     }
+    useEffect(() => {
+        let location = history.location.pathname.split("/");
+        if (location[location.length - 1] !== "work") {
+            if (!demoIsLaunch) {
+                dispatch(launchDemo());
+            }
+        }
+    })
     return (
         <>
             <MobileView>
@@ -107,52 +141,9 @@ const Works = () => {
                         <Project/>
                     </Route>
                 </div>
-                {/*<Route path={`${url}/:projectName`}>*/}
-                {/*    <Project/>*/}
-                {/*</Route>*/}
-                {/*<Route exact path={url}>*/}
-                {/*    <h2>Work</h2>*/}
-                {/*    <ul>*/}
-                {/*        {Projects.map((project, idx) => {*/}
-                {/*            const {*/}
-                {/*                name,*/}
-                {/*                techUsed,*/}
-                {/*                url*/}
-                {/*            } = project;*/}
-                {/*            return (*/}
-                {/*                <li className="list-item project-card" key={idx}>*/}
-                {/*                    <div className="title">*/}
-                {/*                        {name}*/}
-                {/*                    </div>*/}
-                {/*                    <div className="item-link">*/}
-                {/*                        <Link to={`${url}/${name}`} className="link">Demo</Link>*/}
-                {/*                    </div>*/}
-                {/*                </li>*/}
-                {/*            )*/}
-                {/*        })}*/}
-                {/*    </ul>*/}
-                {/*</Route>*/}
             </BrowserView>
         </>
     )
 }
-const Project = () => {
-    let {projectName} = useParams();
-    console.log(projectName);
-    if (projectName === "Calculator") {
-        return <Calculator/>
-    } else if (projectName === "Quote") {
-        return <RandomQuote/>
-    } else if (projectName === "Timer") {
-        return <Timer/>
-    } else if (projectName === "BarChart") {
-        return <BarChart/>
-    } else if (projectName === "ScatterPlot") {
-        return <ScatterPlot/>
-    } else {
-        return (
-            <h4>Project not jet available here</h4>
-        );
-    }
-}
+
 export default Works;

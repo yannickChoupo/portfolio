@@ -32,7 +32,14 @@
         name: "ScatterPlot",
         techUsed: ["Javascript(D3, Ajax)","React","Bootstrap","Jquery"],
         description: "calculate",
-        status: "not available"
+        status: "available"
+    },
+     {
+        // id: 4,
+        name: "Timestamp",
+        techUsed: ["Javascript(Ajax)","React","express"],
+        description: "Generate a timestamp",
+        status: "available"
     }
 ]
  // const ProjectsLinks = []

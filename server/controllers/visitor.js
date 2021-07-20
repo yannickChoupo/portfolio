@@ -84,7 +84,7 @@ const visitorSignIn = async (req, res) => {
 
 const visitorSignUp = async (req, res) => {
     console.log("sign up request : ", req.body);
-    const {body} = req;
+    const { body } = req;
     let {
         userName,
         password

@@ -1,0 +1,14 @@
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+#timestamp {
+  font-family: 'Poppins', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  padding-top: px-to-em(120px);
+  text-align: center;
+  background-color: #282c34;
+
+  .container {
+    background-color: #605EFF;
+  }
+}

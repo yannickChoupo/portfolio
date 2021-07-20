@@ -16,14 +16,13 @@ export const Logo = () => {
                 <div className="logo__container">
                     <div className="logo__circle">
                         <div className={`logo__cube`}>
-                            <div line="1" className={`line `}/>
-                            <div line="2" className={`line `}/>
-                            <div line="3" className={`line `}/>
+                            <div line="1" className={`line`}/>
+                            <div line="2" className={`line`}/>
+                            <div line="3" className={`line`}/>
                         </div>
                     </div>
                 </div>
             </div>
-
         </>
     );
 }
