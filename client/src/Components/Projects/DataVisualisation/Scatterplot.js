@@ -14,7 +14,7 @@ const ScatterPlot = () => {
             const svg = d3.select('svg');
             let yScale;
             let xScale;
-            let xAxisScale;
+            // let xAxisScale;
             let yAxisScale;
             data.forEach((item) => {
                 const timeString = item.Time.split(":");

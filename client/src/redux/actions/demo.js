@@ -1,4 +1,4 @@
-import { TOGGLE_DEMO,LAUNCH_DEMO,STOP_DEMO} from "./type"
+import { TOGGLE_DEMO } from "./type"
 export const launchDemo = () => (dispatch) => {
     dispatch({
         type: TOGGLE_DEMO

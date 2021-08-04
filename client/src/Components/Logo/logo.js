@@ -8,7 +8,6 @@ export const Logo = () => {
             $(".line").toggleClass("fade");
     }else{
         $(".line").removeClass("fade");
-        console.log("logo is loading false////////////////")
     }
     return (
         <>

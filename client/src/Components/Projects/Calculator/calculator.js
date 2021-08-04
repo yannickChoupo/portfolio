@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {firstLineData, initialState, secondLineData, thirdLineData} from "./calculatorData";
-import {useDispatch, useSelector} from "react-redux";
+// import {useDispatch, useSelector} from "react-redux";
 
 export const Calculator = ({unMountProject}) => {
     const [state, setState] = useState({

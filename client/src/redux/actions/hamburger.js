@@ -1,6 +1,6 @@
 import { TOGGLE_HAMBURGER, OPEN_HAMBURGER, CLOSE_HAMBURGER } from "./type"
 export const toggleHamburger = (curState) => (dispatch) => {
-    console.log("toggleHamburger -> curState : ",curState);
+    // console.log("toggleHamburger -> curState : ",curState);
     dispatch({
         type: TOGGLE_HAMBURGER,
     })

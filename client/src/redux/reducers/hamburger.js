@@ -1,8 +1,8 @@
-import {OPEN_HAMBURGER, CLOSE_HAMBURGER, TOGGLE_HAMBURGER, TOGGLE_DEMO} from "../actions/type";
+import { TOGGLE_HAMBURGER } from "../actions/type";
 
 const initialState = {isOpen: false};
 
-export default function (state = initialState, action) {
+export default function hamburgerReducer (state = initialState, action) {
     const {type} = action;
     switch (type) {
     //     case OPEN_HAMBURGER:

@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import {Link} from 'react-scroll'
+// import {Link} from 'react-scroll'
 import $ from "jquery";
 import {setInStorage, getFromStorage} from "../utils/storage";
 const Contact = () => {
     const [message, setMessage] = useState("");
     const handleChange = () => {
         let textArea = $(".message-area");
-        let curText = textArea.val();
+        // let curText = textArea.val();
         // textArea.attr("height",3)
         textArea.attr("rows", 2 + textArea.val().length / 28);
         setMessage(textArea.val());

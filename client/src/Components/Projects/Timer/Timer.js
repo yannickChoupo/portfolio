@@ -100,7 +100,7 @@ class Timer extends React.Component {
     }
 
     handleOnOff() {
-        const {counterOn, curDisplay} = this.state;
+        const {counterOn} = this.state;
         this.setState({
             counterOn: !counterOn
         })

@@ -1,7 +1,10 @@
 import React from "react";
 import {BrowserView, MobileView} from 'react-device-detect';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Router, Route, Switch, useLocation} from "react-router-dom";
+import {
+
+
+    Route, Switch, useLocation} from "react-router-dom";
 import history from "./helpers/history";
 
 
@@ -39,12 +42,8 @@ const routes = [
 ]
 if (!getFromStorage("main_storage")) {
     history.push("/sign");
-    // window.location.reload(true);
     console.log("local storage empty")
 }
-// else {
-//     history.push('/');
-// }
 
 function App() {
     const {demoIsLaunch} = useSelector(state => state.demo);

@@ -14,10 +14,8 @@ console.log("main storage : ", mainStorage);
 const initialState = mainStorage ?
     { isLoggedIn: true, visitor: mainStorage.visitor }
     : { isLoggedIn: false };
-export default function (state = initialState, action) {
+export default function authReducer (state = initialState, action) {
     const {type, payload} = action;
-    console.log("SIGN IN payload : ",payload);
-
     switch (type) {
         case REGISTER_SUCCESS:
             return {

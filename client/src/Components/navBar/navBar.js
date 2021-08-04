@@ -8,7 +8,7 @@ import SideBar from "../sidebar";
 import React from "react";
 import {Link} from "react-scroll";
 import {visitorSignOut} from "../../redux/actions/auth";
-import {getFromStorage} from "../../utils/storage";
+// import {getFromStorage} from "../../utils/storage";
 
 export const NavBar = () => {
     const {isLoggedIn} = useSelector(state => state.auth);

@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import $ from "jquery";
+import React, { useState} from 'react';
+// import $ from "jquery";
 import history from "../helpers/history";
-import {BrowserView, MobileView} from 'react-device-detect';
+// import {BrowserView, MobileView} from 'react-device-detect';
 
 
 import {useDispatch, useSelector} from "react-redux"
-import {authenticate, visitorSignIn, visitorSignUp} from "../redux/actions/auth";
+import { visitorSignIn, visitorSignUp} from "../redux/actions/auth";
 
-import {getFromStorage} from "../utils/storage";
+// import {getFromStorage} from "../utils/storage";
 
-import {clearMessage, setMessage} from "../redux/actions/message";
-import {setIsLoading, clearIsLoading} from "../redux/actions/request";
+import {clearMessage} from "../redux/actions/message";
+// import {setIsLoading, clearIsLoading} from "../redux/actions/request";
 
 const userName = 'userName';
 
@@ -25,16 +25,16 @@ const Sign = () => {
         userName: "",
         password: ""
     })
-    const [isSignup, setIsSignup] = useState(true);
+    const [isSignUp, setIsSignUp] = useState(true);
 
-    const {isLoggedIn} = useSelector(state => state.auth);
+    // const {isLoggedIn} = useSelector(state => state.auth);
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const {userName, password} = fieldState;
         setTimeout(submitHandler, 1000);
-        if (isSignup) {
+        if (isSignUp) {
             dispatch(visitorSignUp(userName, password, history))
                 .then((response) => {
                     console.log("response : ", response.data);
@@ -56,7 +56,7 @@ const Sign = () => {
     const switchMode = () => {
         console.log("switch mode");
         resetFields();
-        setIsSignup(!isSignup);
+        setIsSignUp(!isSignUp);
     }
     const getFieldValue = (prop) => {
         return fieldState[prop];
@@ -70,7 +70,7 @@ const Sign = () => {
     }
 
     const {message} = useSelector(state => state.message);
-    const {isLoading} = useSelector(state => state.request);
+    // const {isLoading} = useSelector(state => state.request);
 
 
     const dispatch = useDispatch();
@@ -87,18 +87,18 @@ const Sign = () => {
             <div id="sign" className="page">
                 <div className="page-container">
                     <h1 className="message" style={messageStyle}>{message}</h1>
-                    <section className={`body ${isSignup && "signUp"}`}>
+                    <section className={`body ${isSignUp && "signUp"}`}>
 
                         <div className="header">
                             <section>
                                 <h3 className="switch" onClick={switchMode}>⇋</h3>
                             </section>
                             <section>
-                                <h3 className="mode">{isSignup ? "Sign Up" : "Sign In"}</h3>
+                                <h3 className="mode">{isSignUp ? "Sign Up" : "Sign In"}</h3>
                             </section>
                         </div>
                         <form autoComplete="on" onSubmit={handleSubmit}>
-                            <div role="userName" className="form-group">
+                            <div className="form-group">
                                 <label htmlFor="name">
                                     <i className="fa fa-user"/>
                                 </label>
@@ -112,7 +112,7 @@ const Sign = () => {
                                        autoFocus
                                        required/>
                             </div>
-                            <div role="password" className="form-group">
+                            <div className="form-group">
                                 <label htmlFor="inputPassword">
                                     <i className="fa fa-unlock-alt"/>
                                 </label>
@@ -126,7 +126,7 @@ const Sign = () => {
                                        required/>
                             </div>
                         </form>
-                        <section role="submit">
+                        <section>
                             <div className="submit-btn" onClick={handleSubmit}>
                                 submit
                             </div>
