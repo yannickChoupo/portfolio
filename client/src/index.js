@@ -6,8 +6,8 @@ import App from "./App";
 import {Provider} from "react-redux";
 import store from "./store";
 import history from "./helpers/history"
-import {getFromStorage} from "./utils/storage";
-import Sign from "./Components/Sign";
+// import {getFromStorage} from "./utils/storage";
+// import Sign from "./Components/Sign";
 
 
 // if (!getFromStorage("main_storage")) {

@@ -1,7 +1,6 @@
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
-    LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
     SET_MESSAGE,
@@ -11,12 +10,11 @@ import {
 import * as api from "../services/auth.service";
 
 
-import {setInStorage} from "../../utils/storage";
+// import {setInStorage} from "../../utils/storage";
 
 export const visitorSignUp = (userName, password, history) => async (dispatch) => {
     return api.visitorSignUp(userName, password).then(
         (response) => {
-            console.log("Server response : ", response.data);
             if (!response.data.success) {
                 dispatch({
                     type: REGISTER_FAIL
@@ -42,7 +40,6 @@ export const visitorSignUp = (userName, password, history) => async (dispatch) =
 export const visitorSignIn = (userName, password) => async (dispatch) => {
     return api.visitorSignIn(userName, password)
         .then((response) => {
-                console.log(response.data)
                 dispatch({
                     type: SET_MESSAGE,
                     payload: response.data.message
@@ -73,7 +70,6 @@ export const visitorSignIn = (userName, password) => async (dispatch) => {
 export const visitorSignOut = () => (dispatch) => {
     return api.visitorSignOut()
         .then((response) => {
-            console.log("response data: ", response.data)
             dispatch({
                 type: LOGOUT
             })

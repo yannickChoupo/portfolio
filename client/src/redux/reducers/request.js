@@ -4,8 +4,8 @@ const initialState = {
     isLoading: false
 }
 
-export default function (state = initialState, action) {
-    const { type, payload } = action;
+export default function requestReducer (state = initialState, action) {
+    const { type } = action;
     switch (type) {
         case SET_IS_LOADING:
             return { isLoading: true };

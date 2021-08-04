@@ -34,10 +34,11 @@ const DemoLauncher = ({unMountProject, projectName}) => {
                 <CSSTransition
                     in={demoIsLaunch}
                     classNames="launch"
-                    timeout={200}
+                    timeout={1000}
                     unmountOnExit>
                     <div className="work-wrapper page-container">
                         <Project projectName={projectName}/>
+                        {/*<h1>Project wrapper</h1>*/}
                         <div className="button" onClick={unMountProject}>
                             &#9746;
                         </div>

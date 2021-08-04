@@ -56,7 +56,9 @@ const Works = () => {
         console.log("Load : ", projectName);
         $("body").css("overflow", "hidden");
         setProjectName(projectName);
-        dispatch(launchDemo());
+        if(!demoIsLaunch) {
+            dispatch(launchDemo());
+        }
     }
     const unMountProject = () => {
         console.log("unmount project");
@@ -65,7 +67,7 @@ const Works = () => {
     }
     useEffect(() => {
         let location = history.location.pathname.split("/");
-        if (location[location.length - 1] !== "work") {
+        if (location[location.length - 1] !== "work" && window.innerWidth > "480") {
             if (!demoIsLaunch) {
                 dispatch(launchDemo());
             }
@@ -104,13 +106,6 @@ const Works = () => {
             </MobileView>
             <BrowserView>
                 <div id="work" className="page">
-                    {demoIsLaunch &&
-                    <Link to={url}
-                          className="backHome-btn"
-                          onClick={() => dispatch(stopDemo())}>
-                        Back Home
-                    </Link>
-                    }
                     <Route exact path={url}>
                         <div className="page-container">
                             <h2>Work</h2>
@@ -138,6 +133,9 @@ const Works = () => {
                         </div>
                     </Route>
                     <Route exact path={`${url}/:projectName`}>
+                        { demoIsLaunch && <Link to={url} className="backHome-btn"
+                                                onClick={() => dispatch(stopDemo())}> Back Home </Link>
+                        }
                         <Project/>
                     </Route>
                 </div>

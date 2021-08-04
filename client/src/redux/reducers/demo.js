@@ -1,10 +1,10 @@
-import {LAUNCH_DEMO, STOP_DEMO,TOGGLE_DEMO} from "../actions/type";
+import {TOGGLE_DEMO} from "../actions/type";
 
-import {useSelector} from "react-redux";
+// import {useSelector} from "react-redux";
 
 const initialState = {demoIsLaunch: false};
 
-export default function (state = initialState, action) {
+export default function demoReducer (state = initialState, action) {
     const {type} = action;
     switch (type) {
         //     case OPEN_HAMBURGER:

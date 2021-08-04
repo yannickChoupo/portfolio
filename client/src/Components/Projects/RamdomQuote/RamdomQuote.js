@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
+// import axios from "axios";
 
 export const RandomQuote = () => {
     const [data, setData] = useState({author: "", text: "", color: ""});
@@ -37,7 +37,7 @@ export const RandomQuote = () => {
         const Quote = dataBase[newQuoteIndex];
 
         // Get the Author and the text and set update the view
-        const {text, author} = Quote;
+        // const {text, author} = Quote;
         Quote.color = getRandomColor();
         setData(Quote);
         // let newQuote = {};
