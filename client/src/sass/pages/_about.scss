@@ -9,6 +9,7 @@ $lines-color: rgba($def-pri, .87);
   //background-color: #7b0188;
   //padding-bottom: 5em;
   padding: calc(60px + 2em) 0 0 px-to-em(18px);
+
   h3 {
     padding: .6em 0 .1em 0;
     border-bottom: 2px solid $def-pri;
@@ -26,11 +27,11 @@ $lines-color: rgba($def-pri, .87);
       &::before {
         content: "";
         width: .1em;
-        height: calc(100% - 6.85ch);
+        height: calc(100% - 4.5ch);
         position: absolute;
         z-index: 1000;
         left: 0;
-        top: 1ch;
+        top: 1.3ch;
         background-color: $def-pri;
       }
 
@@ -46,20 +47,21 @@ $lines-color: rgba($def-pri, .87);
         .subtitle {
           display: flex;
 
-
           .from {
             position: relative;
-            width: 15ch;
-            text-align: right;
+            width: 13ch;
+            //text-align: right;
             margin-right: 9ch;
+            margin-left: 5ch;
             //background-color: #7b0188;
+
 
             &::before {
               content: "";
               height: 0.2em;
               width: 3ch;
               position: absolute;
-              left: 0;
+              left: -5ch;
               top: 50%;
               background-color: $def-pri;
               padding: 0 1em 0 0;
@@ -70,6 +72,7 @@ $lines-color: rgba($def-pri, .87);
           .to {
             position: relative;
             text-align: left;
+            //background-color: #FF9500;
 
             &::before {
               content: "";
@@ -86,9 +89,12 @@ $lines-color: rgba($def-pri, .87);
         }
 
         p {
+          font-size: 1em;
+          //font-family: Arial sans-serif;
+          letter-spacing: 1px;
           padding: {
-            left: 4.5ch;
-            top: .5em
+            left: 5ch;
+            top: .2em
           }
         }
       }
@@ -96,27 +102,26 @@ $lines-color: rgba($def-pri, .87);
   }
 
   #skills {
-    //background-color: #7b0188;
     .body {
-      //padding: 2e;
       padding-top: 2em;
-      //background-color: red;
-
       position: relative;
+
       &::before {
         content: "";
         width: .1em;
-        height: 9.7ch;
+        height: 10ch;
         position: absolute;
-        top: calc(2em + 1ch);
+        top: calc(2em + 1.3ch);
         background-color: $def-pri;
         @include breakpoint--small {
           height: 10ch;
         }
       }
+
       .subtitle {
-        //background-color: #605EFF;
+        background-color: #605EFF;
         width: 30ch;
+        font-size: 1em;
         position: relative;
         //text-align: right;
         margin-left: 4.5ch;
@@ -133,29 +138,69 @@ $lines-color: rgba($def-pri, .87);
         }
 
       }
+
       .languages {
         ul {
-          //background-color: lightgreen;
-          padding-left: 4.5ch;
+          padding-left: 5ch;
         }
         margin-bottom: 1em;
       }
 
       .tech-skills {
-        h6,ul {
-          margin-left: 6ch;
-          //background-color: #605EFF;
+        section {
+          margin-bottom: 1em;
         }
+        h6, ul {
+          margin-left: 6ch;
+        }
+
         ul {
-          display: flex;
-          flex-wrap: wrap;
           li {
-            //background-color: #605EFF;
-            margin: .1em .5em;
-            //padding: .2em;
-            color: white;
-            background-color: rgba($def-pri,.9);
+            display: flex;
+            flex-direction: column;
+            //position: relative;
+            //& > * {
+            //  position: absolute;
+            //  z-index: -1;
+            //}
+            p {
+              padding: .5em 1em;
+              display: none;
+              transition: display 1s ease-in;
+            }
+            &.active {
+              .arrow {
+                transform: rotate(90deg);
+              }
+              p {
+                display: block;
+              }
+            }
+          }
+        }
+
+        .software-skills {
+          padding: 0 .5em 0 .5em;
+          .header {
+            margin: 0;
+            padding: .5em 1em;
+            display: flex;
+            justify-content: space-between;
             border: .1em solid $def-pri;
+          }
+
+          .language {
+            //padding: .5em ;
+            //background-color: red;
+          }
+
+          .description {
+            letter-spacing: 1px;
+          }
+
+          .arrow {
+            color: $def-pri;
+            cursor: none;
           }
         }
       }

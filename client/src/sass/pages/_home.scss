@@ -49,18 +49,18 @@
       font-family: "nunito", sans-serif;
     }
   }
-
   .p-link {
-    border-radius: px-to-em(3px);
-    font-size: .8em;
-    border: .1em solid $def-pri;
-    transition: all .3s ease-in-out;
-    cursor: pointer;
+     border-radius: px-to-em(3px);
+     font-size: 1.1em;
+    padding: .05em .3em;
+     border: .1em solid $def-pri;
+     transition: all .3s ease-in-out;
+     cursor: pointer;
 
-    &:hover {
-      color: white;
-      background-color: $def-pri;
-    }
-  }
+     &:hover {
+       color: white;
+       background-color: $def-pri;
+     }
+   }
+
 }
-
