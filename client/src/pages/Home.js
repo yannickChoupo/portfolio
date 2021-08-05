@@ -50,9 +50,9 @@ const Home = () => {
                             </Link>
                         </MobileView>
                         <p>
-                            I haven't jet got the opportunity to work in a professional software team .<br/>
-                            just with friends and i am looking for an opportunity to use the skills i earned in a <br/>
-                            productive way.
+                            I haven't jet got the opportunity to work in a professional Team<br/>
+                            For the moment just with friends and i am looking for an opportunity to use the skills i earned in a <br/>
+                            more productive way.
                         </p>
                         <p>
                             I am really enjoying learn new things myself and also from others<br/>
