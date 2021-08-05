@@ -6,8 +6,6 @@ const Contact = () => {
     const [message, setMessage] = useState("");
     const handleChange = () => {
         let textArea = $(".message-area");
-        // let curText = textArea.val();
-        // textArea.attr("height",3)
         textArea.attr("rows", 2 + textArea.val().length / 28);
         setMessage(textArea.val());
         console.log("current message : ",message);
@@ -26,17 +24,33 @@ const Contact = () => {
     }
     return (
         <>
-            <div id="contact" className="page contact">
-                <div className="page-container body">
-                    <section>
-                        <h1>CONTACT ME!</h1>
+            <div id="contact" className="page">
+                <div className="page-container">
+                    <h2>CONTACT</h2>
+                    <section className="infos">
                         <p>
-                            i am available for  working student jobs
+                            Email : <em>yannicknjilo@gmail.com</em>
                         </p>
-                        <span><em>yannicknjilo@gmail.com</em></span>
+                        <p>
+                            Phone : <em>(+49)17637424182</em>
+                        </p>
+                        <p>
+                            Github : <em>
+                             <a href="https://github.com/yannickChoupo">
+                                    https://github.com/yannickChoupo
+                                </a>
+                            </em>
+                        </p>
+                        <p>
+                            Linkedin : <em>
+                             <a href="https://www.linkedin.com/in/yannick-njilo-794326205/">
+                                 https://www.linkedin.com/in/yannick-njilo-794326205/
+                                </a>
+                            </em>
+                        </p>
                     </section>
                     <section>
-                        <h2> Drop a message</h2>
+                        <h3> Drop a message</h3>
                         <textarea className="message-area"
                                   name="message-area"
                                   placeholder="please consider living a message ...."
@@ -44,9 +58,9 @@ const Contact = () => {
                                   value={message}
                                   rows={2}>
                         </textarea>
-                        <section>
-                            <button type="button" onClick={saveMessage}>send</button>
-                        </section>
+                        {/*<section>*/}
+                        <button type="button" onClick={saveMessage}>send</button>
+                        {/*</section>*/}
                     </section>
                     {/*<Footer/>*/}
                 </div>

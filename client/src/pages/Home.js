@@ -23,12 +23,13 @@ const Home = () => {
                         </p>
                         <p>
                             Through my personal interest <br/>
-                            for interaction between full-stack application and embedded systems <br/>
+                            for web development <br/>
                             i learned different web technologies <br/>
                             most of the time on google or websites like
                             <a href="https://freecodecamp.org"> freecodecamp </a><br/>
-                            where i usually read articles and complete challenges
-                            here are some of them<br/>
+                            where i usually read articles and complete challenges.<br/>
+                            I use the some of the technologies i learned to build this website and some small application<br/>
+                            here are some of them <br/>
                         </p>
                         <BrowserView>
                             <NavLink
@@ -49,12 +50,13 @@ const Home = () => {
                             </Link>
                         </MobileView>
                         <p>
-                            I don't any professional experience and i looking for some.
+                            I haven't jet got the opportunity to work in a professional software team .<br/>
+                            just with friends and i am looking for an opportunity to use the skills i earned in a <br/>
+                            productive way.
                         </p>
                         <p>
-                            please consider before leaving me a message for if you have
-                            any advices you can give me to for improve.
-
+                            I am really enjoying learn new things myself and also from others<br/>
+                            so please if you have any advices to help me to improve consider leaving me a message.
                         </p>
                         <BrowserView>
                             <NavLink
