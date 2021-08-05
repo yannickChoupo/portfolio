@@ -1,11 +1,11 @@
-import React from "react";
+// const jwt = require('jsonwebtoken');
+import React, {useEffect} from "react";
 import {BrowserView, MobileView} from 'react-device-detect';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-
-
-    Route, Switch, useLocation} from "react-router-dom";
+import { Route, Switch, useLocation} from "react-router-dom";
 import history from "./helpers/history";
+import jwt from 'jsonwebtoken'
+
 
 
 import './sass/main.scss';
@@ -42,12 +42,23 @@ const routes = [
 ]
 if (!getFromStorage("main_storage")) {
     history.push("/sign");
-    console.log("local storage empty")
+    console.log("local storage empty");
 }
-
+const token = getFromStorage("main_storage").token;
+const exp = jwt.decode(token);
+if(Date.now() >= (exp * 1000)) {
+    history.push("/sign");
+    console.log("jwt expired ")
+}
 function App() {
     const {demoIsLaunch} = useSelector(state => state.demo);
     const location = useLocation();
+    useEffect(() => {
+        if(Date.now() >= (exp * 1000)) {
+            console.log("jwt expired ")
+            history.push("/sign");
+        }
+    })
     return (
         <>
             <BrowserView>
