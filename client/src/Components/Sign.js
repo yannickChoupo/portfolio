@@ -126,7 +126,7 @@ const Sign = () => {
                                        required/>
                             </div>
                         </form>
-                        <section>
+                        <section className="submit">
                             <div className="submit-btn" onClick={handleSubmit}>
                                 submit
                             </div>
