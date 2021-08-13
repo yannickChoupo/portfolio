@@ -9,6 +9,8 @@ require('dotenv').config();
 
 const app = express();
 
+
+
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: false}), function middleware(req, res, next) {
@@ -26,9 +28,9 @@ mongoose.connect(uri,
     .then(() => console.log('MongoDB Connected'))
     .catch((error) => console.log(error));
 
-const connection = mongoose.connection;
+// const connection = mongoose.connection;
 //
-connection.once('open', () => {
+mongoose.connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });
 // API Endpoint routes to be able to use the server to perform CRUD operations
@@ -51,7 +53,9 @@ if (process.env.NODE_ENV === "production") {
         res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
     });
 }
-
+app.get('/',(req,res) => {
+    res.send("hello world");
+})
 
 app.listen(process.env.PORT || 5000, function () {
     console.log(`Server is running on port : ${process.env.PORT || 5000}`);
