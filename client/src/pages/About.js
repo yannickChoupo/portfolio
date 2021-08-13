@@ -4,36 +4,36 @@ import $ from 'jquery'
 const Skills = [
     {
         language: "C/C++",
-        description: "i am used with the basic synthax up to object oriented programming and it is the mean language a " +
+        description: "I am used with the basic synthax up to object oriented programming and it is the mean language a " +
             "university laboratory"
     },
     {
         language: "Java",
-        description: "i have already learn the basic synthax but haven't jet use it"
+        description: "I learned the basics synthax but haven't jet use it"
     },
     {
         language: "Javascript",
-        description: "i am used with the basic synthax up to ES6, object oriented programming " +
+        description: "I am used with the basic synthax up to ES6, object oriented programming " +
             "AJAX (Asynchronous javascript and XML) and D3(Javascript data visualisation) and use it to build several" +
             "code to solve challenges on freecodecamp (some of them in demos)"
     },
     {
         language: "HTML",
-        description: "i am used with it and i used to build views like landing pages, tribute pages, Blog"
+        description: "I am used with it and i used to build views like landing pages, tribute pages, Blog, ..."
     },
     {
         language: "CSS",
-        description: "i am used it and i used it to build views like landing pages, tribute pages," +
+        description: "I am used with it and i used it to build views like landing pages, tribute pages," +
             " Blog, to build this website which is fully responsive"
     },
     {
         language: "SASS",
-        description: "i use it to generate all the CSS of this website and also play around possibility it by " +
-            "generating the CSS for to have the choice between 3 colors"
+        description: "I use it to generate all the CSS of this website and also play around with it by " +
+            "generating CSS for to provide diferent themes "
     },
     {
         language: "React",
-        description: "i use it to build several frontend and i include some of them in the demo section"
+        description: "I use it to build several frontend and i include some of them in the demo section"
     },
     {
         language: "Bootstrap",
@@ -46,15 +46,15 @@ const Skills = [
     },
     {
         language: "Redux",
-        description: "I am with it and i use it to manage the global and some component state on this website"
+        description: "I am used with it and i use it to manage the global state and some component state on this website"
     },
     {
         language: "Express",
-        description: "i use to programme the backend of this website"
+        description: "I use to programme the backend of this website"
     },
     {
         language: "MongoDb",
-        description: "i know the basic synthax and i use it as Database for this website"
+        description: "I know the basic synthax and i use it as Database for this website"
     },
     {
         language: "PHP",
@@ -62,16 +62,23 @@ const Skills = [
     },
     {
         language: "SQL",
-        description: "i know the basic synthax and i actually using it to build the backend of a worpress website"
+        description: "I know the basic synthax and i actually using it to build the backend of a worpress website"
     },
-
+    {
+        language: "Docker",
+        description: "I know the basic synthax and i went through the getting-started tutorial of Docker-Dektop and" 
+         + "i am actually Dockerizing this website"
+    }
 ]
 const About = () => {
     // const {curTheme} = useGlobalThemeContext();
     const openDescription = (e) => {
+        console.log("event target", e.target.parentNode.className);
+        if(e.target.parentNode.className == "active") {
+            $(e.target.parentNode).toggleClass("active");
+        } 
         const activeListItem = $("li[class='active']");
         if(activeListItem) {
-            console.log("active class");
             activeListItem.toggleClass("active");
         }
         console.log(e.target.parentNode);

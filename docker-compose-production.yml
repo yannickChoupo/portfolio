@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  client:
+    container_name: client-production
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    environment: production
+    
+  server:
+    container_name: server-production
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    environment:
+      MODE_ENV: production
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
