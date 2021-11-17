@@ -14,7 +14,7 @@ const Home = () => {
                     </section>
                     <section className="content home-body ">
                         <p>
-                            Hey there I´m <strong>Yannick</strong>,<br/>
+                             <strong>Yannick</strong>,<br/>
                             web developer <br/>
                             currently living in
                             <strong> Darmstadt,</strong><br/>
