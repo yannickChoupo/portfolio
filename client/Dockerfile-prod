@@ -1,0 +1,25 @@
+# Dockerfile for React client
+
+# Build react client
+FROM node:lts-buster-slim as build-stage
+
+# Working directory be app
+WORKDIR /app
+
+COPY package*.json ./
+
+## Installing dependencies
+RUN npm install --production
+
+ # copy local files to app folder
+COPY . .
+
+EXPOSE 3000
+
+RUN npm build
+
+FROM nginx:1.15
+
+COPY --from=build-stage /app/build/ /usr/share/nginx/html
+
+COPY --from=build-stage /nginx.conf etc/nginx/conf.d/default.conf

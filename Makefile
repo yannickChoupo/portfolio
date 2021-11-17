@@ -1,3 +1,5 @@
+build:
+    docker-compose up
 build-dev:
     cd client && $(MAKE) build-dev
     cd server && $(MAKE) build
