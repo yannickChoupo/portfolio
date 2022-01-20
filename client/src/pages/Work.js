@@ -16,6 +16,8 @@ import Timer from "../Components/Projects/Timer/Timer.js";
 import BarChart from "../Components/Projects/DataVisualisation/BarChart";
 import ScatterPlot from "../Components/Projects/DataVisualisation/Scatterplot";
 import TimesTamp from "../Components/Projects/timesTamp";
+import Heatmap from "../Components/Projects/DataVisualisation/heatmap";
+
 
 
 import {useDispatch, useSelector} from "react-redux";
@@ -35,7 +37,7 @@ const Project = () => {
         return <BarChart/>
     } else if (projectName === "ScatterPlot") {
         return <ScatterPlot/>
-    }else if (projectName === "Timestamp") {
+    } else if (projectName === "Timestamp") {
         return <TimesTamp/>
     } else {
         return (
