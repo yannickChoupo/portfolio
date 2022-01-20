@@ -28,7 +28,7 @@ const Home = () => {
                             most of the time on google or websites like
                             <a href="https://freecodecamp.org"> freecodecamp </a><br/>
                             where i usually read articles and complete challenges.<br/>
-                            I use the some of the technologies i learned to build this website and some small application<br/>
+                            I have used some of the technologies i learned to build this website and some small application<br/>
                             here are some of them <br/>
                         </p>
                         <BrowserView>
