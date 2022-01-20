@@ -9,9 +9,9 @@ WORKDIR /app
 COPY package*.json ./
 
 ## Installing dependencies
-RUN npm install --production
+RUN npm install 
 
- # copy local files to app folder
+# copy local files to app folder
 COPY . .
 
 EXPOSE 3000
