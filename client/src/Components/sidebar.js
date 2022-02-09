@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserView, MobileView } from 'react-device-detect';
+import React from 'react';
+// import { BrowserView, MobileView } from 'react-device-detect';
 
 import { NavLink } from 'react-router-dom'
 
@@ -14,41 +14,41 @@ import { Switch } from "./Switch/switch";
 import CSSTransition from "react-transition-group/cjs/CSSTransition";
 
 
-const TOP_BOTTOM = "showDown";
-const TOP_TOP = "showUp";
+// const TOP_BOTTOM = "showDown";
+// const TOP_TOP = "showUp";
 const SideBar = () => {
     // Get the actual Hamburger state from Redux Store
     const { isOpen } = useSelector(state => state.hamburger);
     const dispatch = useDispatch();
 
 
-    const [curVanishingMode, setCurVanishingMode] = useState("showUp")
+    // const [curVanishingMode, setCurVanishingMode] = useState("showUp")
 
     const handleSwitchClick = () => {
         dispatch(toggleHamburger());
     }
 
-    const handleClick = (e) => {
-        console.log("button clicked");
-        console.log("Event : ", e)
-        console.log("new target : ", e.target.title)
-        if (e.target.title) {
-            console.log("evaluate Pos******************************************************")
-            let curWindowPos = window.scrollY;
-            let targetTitle = e.target.title;
-            let targetOffset = document.getElementById(targetTitle).offsetTop;
-            console.log("curPosition : ", curWindowPos);
-            console.log("target offset : ", targetOffset);
-            if (targetOffset > curWindowPos) {
-                setCurVanishingMode(TOP_TOP);
-                console.log("new vanishing mode : ", curVanishingMode);
-            } else {
-                setCurVanishingMode(TOP_BOTTOM);
-                console.log("new vanishing mode : ", curVanishingMode);
-            }
-        }
-        dispatch(toggleHamburger());
-    }
+    // const handleClick = (e) => {
+    //     console.log("button clicked");
+    //     console.log("Event : ", e)
+    //     console.log("new target : ", e.target.title)
+    //     if (e.target.title) {
+    //         console.log("evaluate Pos******************************************************")
+    //         let curWindowPos = window.scrollY;
+    //         let targetTitle = e.target.title;
+    //         let targetOffset = document.getElementById(targetTitle).offsetTop;
+    //         console.log("curPosition : ", curWindowPos);
+    //         console.log("target offset : ", targetOffset);
+    //         if (targetOffset > curWindowPos) {
+    //             setCurVanishingMode(TOP_TOP);
+    //             console.log("new vanishing mode : ", curVanishingMode);
+    //         } else {
+    //             setCurVanishingMode(TOP_BOTTOM);
+    //             console.log("new vanishing mode : ", curVanishingMode);
+    //         }
+    //     }
+    //     dispatch(toggleHamburger());
+    // }
     return (
         <>
             {/* <BrowserView> */}
