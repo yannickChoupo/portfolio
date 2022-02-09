@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
-import {BrowserView, MobileView} from 'react-device-detect';
+import React, { useState } from 'react';
+import { BrowserView, MobileView } from 'react-device-detect';
 
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // From Redux
-import {useSelector, useDispatch} from "react-redux";
-import {toggleHamburger} from "../redux/actions/hamburger"
-import {Switch} from "./Switch/switch";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleHamburger } from "../redux/actions/hamburger"
+import { Switch } from "./Switch/switch";
 
 // Form React Scroll
-import {Link} from 'react-scroll'
+import { Link } from 'react-scroll'
 
 // From React CSS Transition
 import CSSTransition from "react-transition-group/cjs/CSSTransition";
@@ -19,7 +19,7 @@ const TOP_BOTTOM = "showDown";
 const TOP_TOP = "showUp";
 const SideBar = () => {
     // Get the actual Hamburger state from Redux Store
-    const {isOpen} = useSelector(state => state.hamburger);
+    const { isOpen } = useSelector(state => state.hamburger);
     const dispatch = useDispatch();
 
 
@@ -52,61 +52,61 @@ const SideBar = () => {
     }
     return (
         <>
-            <BrowserView>
-                <CSSTransition
-                    in={isOpen}
-                    classNames="show"
-                    timeout={500}
-                    unmountOnExit>
-                    <div className="sideBar">
-                        <ul>
-                            <li>
-                                <NavLink
-                                    title="home"
-                                    className="side__link"
-                                    activclassname="active"
-                                    exact to='/'
-                                    onClick={handleSwitchClick}>
-                                    <i className="fa fa-home"/>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    title="about"
-                                    className="side__link"
-                                    activclassname="active"
-                                    to='/about'
-                                    onClick={handleSwitchClick}>
-                                    <i className="fa fa-id-card "/>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    title="work"
-                                    className="side__link"
-                                    activclassname="active"
-                                    to='/work'
-                                    onClick={handleSwitchClick}>
-                                    <i className="fa fa-briefcase "/>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    title="contact"
-                                    className="side__link"
-                                    activclassname="active"
-                                    to='/contact'
-                                    onClick={handleSwitchClick}>
-                                    <i className="fa fa-address-card"/>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <Switch handleSwitchClick={handleSwitchClick}/>
-                            </li>
-                        </ul>
-                    </div>
-                </CSSTransition>
-            </BrowserView>
+            {/* <BrowserView> */}
+            <CSSTransition
+                in={isOpen}
+                classNames="show"
+                timeout={500}
+                unmountOnExit>
+                <div className="sideBar">
+                    <ul>
+                        <li>
+                            <NavLink
+                                title="home"
+                                className="side__link"
+                                activclassname="active"
+                                exact to='/'
+                                onClick={handleSwitchClick}>
+                                <i className="fa fa-home" />
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                title="about"
+                                className="side__link"
+                                activclassname="active"
+                                to='/about'
+                                onClick={handleSwitchClick}>
+                                <i className="fa fa-id-card " />
+                            </NavLink>
+                        </li>
+                        <li >
+                            <NavLink
+                                title="work"
+                                className="side__link"
+                                activclassname="active"
+                                to='/work'
+                                onClick={handleSwitchClick}>
+                                <i className="fa fa-briefcase " />
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                title="contact"
+                                className="side__link"
+                                activclassname="active"
+                                to='/contact'
+                                onClick={handleSwitchClick}>
+                                <i className="fa fa-address-card" />
+                            </NavLink>
+                        </li>
+                        <li>
+                            <Switch handleSwitchClick={handleSwitchClick} />
+                        </li>
+                    </ul>
+                </div>
+            </CSSTransition>
+            {/* </BrowserView>
             <MobileView>
                 <CSSTransition
                     in={isOpen}
@@ -169,8 +169,8 @@ const SideBar = () => {
                         </ul>
                     </div>
                 </CSSTransition>
-            </MobileView>
+            </MobileView> */}
         </>
-)
+    )
 }
 export default SideBar;

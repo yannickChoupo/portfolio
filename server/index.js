@@ -11,23 +11,23 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: false}), function middleware(req, res, next) {
+app.use(bodyParser.urlencoded({ extended: false }), function middleware(req, res, next) {
     console.log(req.method + " " + req.path + " - " + req.ip)
     next();
 });
 const uri = process.env.NODE_ENV === "production" ? process.env.ATLAS_URI : config.ATLAS_URI;
-mongoose.connect(uri,
+mongoose.connect(
+    uri,
     {
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true
-    }
-)
+    })
     .then(() => console.log('MongoDB Connected'))
     .catch((error) => console.log(error));
 
 const connection = mongoose.connection;
-//
+
 connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });

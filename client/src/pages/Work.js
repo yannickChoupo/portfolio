@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import {
     Route,
@@ -6,7 +6,7 @@ import {
     useParams,
     useRouteMatch
 } from "react-router-dom";
-import {MobileView, BrowserView} from 'react-device-detect';
+import { MobileView, BrowserView } from 'react-device-detect';
 import history from "../helpers/history";
 
 import Projects from "../data";
@@ -16,29 +16,29 @@ import Timer from "../Components/Projects/Timer/Timer.js";
 import BarChart from "../Components/Projects/DataVisualisation/BarChart";
 import ScatterPlot from "../Components/Projects/DataVisualisation/Scatterplot";
 import TimesTamp from "../Components/Projects/timesTamp";
-import Heatmap from "../Components/Projects/DataVisualisation/heatmap";
+// import Heatmap from "../Components/Projects/DataVisualisation/heatmap";
 
 
 
-import {useDispatch, useSelector} from "react-redux";
-import {launchDemo, stopDemo} from "../redux/actions/demo"
+import { useDispatch, useSelector } from "react-redux";
+import { launchDemo, stopDemo } from "../redux/actions/demo"
 import DemoLauncher from "../Components/DemoLauncher";
 
 const Project = () => {
-    let {projectName} = useParams();
+    let { projectName } = useParams();
     console.log(projectName);
     if (projectName === "Calculator") {
-        return <Calculator/>
+        return <Calculator />
     } else if (projectName === "Quote") {
-        return <RandomQuote/>
+        return <RandomQuote />
     } else if (projectName === "Timer") {
-        return <Timer/>
+        return <Timer />
     } else if (projectName === "BarChart") {
-        return <BarChart/>
+        return <BarChart />
     } else if (projectName === "ScatterPlot") {
-        return <ScatterPlot/>
+        return <ScatterPlot />
     } else if (projectName === "Timestamp") {
-        return <TimesTamp/>
+        return <TimesTamp />
     } else {
         return (
             <h4>Project not jet available here</h4>
@@ -48,9 +48,9 @@ const Project = () => {
 
 const Works = () => {
     const dispatch = useDispatch();
-    const {demoIsLaunch} = useSelector(state => state.demo);
+    const { demoIsLaunch } = useSelector(state => state.demo);
 
-    let {url} = useRouteMatch();
+    let { url } = useRouteMatch();
 
     const [projectName, setProjectName] = useState("")
     console.log(url);
@@ -58,7 +58,7 @@ const Works = () => {
         console.log("Load : ", projectName);
         $("body").css("overflow", "hidden");
         setProjectName(projectName);
-        if(!demoIsLaunch) {
+        if (!demoIsLaunch) {
             dispatch(launchDemo());
         }
     }
@@ -102,7 +102,7 @@ const Works = () => {
                                 })}
                             </ul>
                         </section>
-                        <DemoLauncher unMountProject={unMountProject} projectName={projectName}/>
+                        <DemoLauncher unMountProject={unMountProject} projectName={projectName} />
                     </div>
                 </div>
             </MobileView>
@@ -123,8 +123,8 @@ const Works = () => {
                                             </div>
                                             <div className="item-link">
                                                 <Link to={`${url}/${name}`}
-                                                      className="work-link"
-                                                      onClick={() => dispatch(launchDemo())}>
+                                                    className="work-link"
+                                                    onClick={() => dispatch(launchDemo())}>
                                                     Demo
                                                 </Link>
                                             </div>
@@ -135,10 +135,10 @@ const Works = () => {
                         </div>
                     </Route>
                     <Route exact path={`${url}/:projectName`}>
-                        { demoIsLaunch && <Link to={url} className="backHome-btn"
-                                                onClick={() => dispatch(stopDemo())}> Back Home </Link>
+                        {demoIsLaunch && <Link to={url} className="backHome-btn"
+                            onClick={() => dispatch(stopDemo())}> Back Home </Link>
                         }
-                        <Project/>
+                        <Project />
                     </Route>
                 </div>
             </BrowserView>
