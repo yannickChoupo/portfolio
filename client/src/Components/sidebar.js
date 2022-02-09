@@ -9,7 +9,6 @@ import { toggleHamburger } from "../redux/actions/hamburger"
 import { Switch } from "./Switch/switch";
 
 // Form React Scroll
-import { Link } from 'react-scroll'
 
 // From React CSS Transition
 import CSSTransition from "react-transition-group/cjs/CSSTransition";
