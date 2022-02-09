@@ -20,7 +20,8 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.14"
+    "mongoose": "^5.13.14",
+    "react-scroll": "^1.8.4"
   },
   "author": "Yannick Choupo",
   "license": "ISC",
