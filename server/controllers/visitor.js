@@ -17,7 +17,7 @@ const UserSession = require('../models/UserSession');
 
 const visitorSignIn = async (req, res) => {
     // console.log("REQUEST : ",req);
-    const {body} = req;
+    const { body } = req;
     let {
         userName,
         password
@@ -36,7 +36,7 @@ const visitorSignIn = async (req, res) => {
     }
     try {
         // Authenticate userName
-        const existingVisitor = await Visitor.findOne({userName});
+        const existingVisitor = await Visitor.findOne({ userName });
 
         if (!existingVisitor) {
             return res.send({
@@ -63,7 +63,7 @@ const visitorSignIn = async (req, res) => {
                 createdAt: existingVisitor.createdAt
             }, "test",
             {
-                expiresIn: "1h"
+                expiresIn: "1min"
             });
         // Send back the visitor information in from of a token
         return res.send({
@@ -105,7 +105,7 @@ const visitorSignUp = async (req, res) => {
     try {
 
         // Check exiting visitor
-        const existingVisitor = await Visitor.find({userName: userName});
+        const existingVisitor = await Visitor.find({ userName: userName });
         console.log("existing visitor : ", existingVisitor);
         if (existingVisitor[0]) {
             return res.send({
@@ -150,7 +150,7 @@ const visitorSignOut = async (req, res) => {
         newSession.message = message;
 
         const savedSession = await newSession.save();
-        Visitor.findOneAndDelete({userName: visitorName}, () => {
+        Visitor.findOneAndDelete({ userName: visitorName }, () => {
             return res.send({
                 success: true,
                 message: "visitor successfully deleted"

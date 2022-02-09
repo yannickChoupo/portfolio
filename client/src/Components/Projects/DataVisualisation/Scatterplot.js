@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import * as d3 from 'd3';
 import sendHttpRequest from "./utils";
 
@@ -23,15 +23,15 @@ const ScatterPlot = () => {
                 return item;
             });
             console.log(data);
-            console.log(d3.max(data,item => item.Time));
+            console.log(d3.max(data, item => item.Time));
             svg.attr("width", svgWidth);
             svg.attr("height", svgHeight);
 
             xScale = d3.scaleLinear()
-                .domain([d3.min(data,(item) => item.Year - 1), d3.max(data, (item) => item.Year + 1)])
+                .domain([d3.min(data, (item) => item.Year - 1), d3.max(data, (item) => item.Year + 1)])
                 .range([padding, svgWidth - 10]);
             yScale = d3.scaleTime()
-                .domain([d3.min(data,(item) => item.Seconds ), d3.max(data, (item) => item.Seconds)])
+                .domain([d3.min(data, (item) => item.Seconds), d3.max(data, (item) => item.Seconds)])
                 .range([padding, svgHeight - padding]);
 
             // xAxisScale = d3.scaleLinear()
@@ -39,7 +39,7 @@ const ScatterPlot = () => {
             //     .range([padding, svgWidth - 10])
 
             yAxisScale = d3.scaleLinear()
-                .domain([d3.min(data,(item) => item.Time), d3.max(data,(item) => item.Time)])
+                .domain([d3.min(data, (item) => item.Time), d3.max(data, (item) => item.Time)])
                 .range([svgHeight - padding, padding])
 
             let yFormat = d3.timeFormat('%M:%S')
@@ -65,7 +65,7 @@ const ScatterPlot = () => {
                 .append("circle")
                 .attr("class", "dot")
                 .attr("data-xvalue", (item) => new Date(item.Year))
-                .attr("data-yvalue",  (item) => item.Time)
+                .attr("data-yvalue", (item) => item.Time)
                 .attr("cx", (item) => xScale(item.Year))
                 .attr("cy", (item) => yScale(item.Seconds))
                 .attr("r", 5)
@@ -77,7 +77,7 @@ const ScatterPlot = () => {
             <div id="scatterPlot" className="project">
                 <h1>SCATTER PLOT</h1>
                 <div className="body">
-                    <section  className="svg-container">
+                    <section className="svg-container">
                         <svg id="canvas">
                             <text id="title" x="80" y="30">
                                 Doping in Professional Bicycle Racing

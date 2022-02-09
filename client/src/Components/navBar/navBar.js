@@ -1,18 +1,22 @@
-import {NavLink} from "react-router-dom";
-import {BrowserView, MobileView} from 'react-device-detect';
-import {useSelector, useDispatch} from "react-redux";
+import { NavLink } from "react-router-dom";
+import { BrowserView, MobileView } from 'react-device-detect';
+import { toggleHamburger } from "../../redux/actions/hamburger";
+import { useSelector, useDispatch } from "react-redux";
 import history from '../../helpers/history'
-import {Logo} from "../Logo/logo";
+import { Logo } from "../Logo/logo";
 import Hamburger from "../hamburger/hamburger";
 import SideBar from "../sidebar";
 import React from "react";
-import {Link} from "react-scroll";
-import {visitorSignOut} from "../../redux/actions/auth";
+import { Link } from "react-scroll";
+import { visitorSignOut } from "../../redux/actions/auth";
+import $ from 'jquery';
+import { process_params } from "express/lib/router";
 // import {getFromStorage} from "../../utils/storage";
 
-export const NavBar = () => {
-    const {isLoggedIn} = useSelector(state => state.auth);
-    const {demoIsLaunch} = useSelector(state => state.demo);
+export const NavBar = (props) => {
+    const { isLoggedIn } = useSelector(state => state.auth);
+    const { demoIsLaunch } = useSelector(state => state.demo);
+    const { isOpen } = useSelector(state => state.hamburger);
     const dispatch = useDispatch();
     const LogOut = () => {
         dispatch(visitorSignOut())
@@ -26,28 +30,21 @@ export const NavBar = () => {
             })
     }
 
+    const handleLogoClick = () => {
+        if (isOpen) {
+            dispatch(toggleHamburger());
+        }
+    }
     return (
         <>
             <nav className="nav">
                 <ul>
                     <li className="nav-logo">
-                        <BrowserView>
-                            <NavLink activclassname="active"
-                                     to='/'>
-                                <Logo/>
-                            </NavLink>
-                        </BrowserView>
-                        <MobileView>
-                            <Link
-                                activclass="active"
-                                to="home"
-                                spy={true}
-                                smooth={true}
-                                duration={300}>
-                                <Logo/>
-                            </Link>
-                        </MobileView>
-
+                        <NavLink activclassname="active"
+                            to='/'
+                            onClick={handleLogoClick}>
+                            <Logo />
+                        </NavLink>
                     </li>
                     <li className="nav-ham">
                         <Hamburger />
@@ -59,7 +56,7 @@ export const NavBar = () => {
                         </li>
                     }
                 </ul>
-                <SideBar/>
+                {/* <SideBar /> */}
             </nav>
         </>
     )
