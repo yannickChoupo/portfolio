@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { BrowserView, MobileView } from 'react-device-detect';
+// import { BrowserView, MobileView } from 'react-device-detect';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, useLocation } from "react-router-dom";
 import history from "./helpers/history";
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 import $ from 'jquery';
 
 
@@ -23,29 +23,29 @@ import Contact from "./pages/Contact";
 import SideBar from "./Components/sidebar";
 
 
-import { getFromStorage } from "./utils/storage";
+// import { getFromStorage } from "./utils/storage";
 import {
     CSSTransition,
     TransitionGroup
 } from "react-transition-group";
 
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { toggleHamburger } from "./redux/actions/hamburger";
+// import { useDispatch } from "react-redux";
+// import { toggleHamburger } from "./redux/actions/hamburger";
 
 // import SideBar from "./Components/sidebar";
 // import {authenticate} from "./redux/actions/auth";
 
 // Pages
-const routes = [
-    { path: '/', Component: Home },
-    { path: '/about', Component: About },
-    { path: '/work', Component: Works },
-    { path: '/contact', Component: Contact },
-    { path: '/sign', Component: Sign },
-    { path: '/error', Component: Error },
-    { path: '*', Component: Error },
-]
+// const routes = [
+//     { path: '/', Component: Home },
+//     { path: '/about', Component: About },
+//     { path: '/work', Component: Works },
+//     { path: '/contact', Component: Contact },
+//     { path: '/sign', Component: Sign },
+//     { path: '/error', Component: Error },
+//     { path: '*', Component: Error },
+// ]
 // if (!getFromStorage("main_storage")) {
 //     history.push("/sign");
 //     console.log("local storage empty");

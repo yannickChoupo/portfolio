@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import {
-    CSSTransition,
-    TransitionGroup
-} from "react-transition-group";
+import React, { useEffect, useState } from 'react';
+// import {
+//     CSSTransition,
+//     TransitionGroup
+// } from "react-transition-group";
 
 const sendHttpRequest = (method, url) => {
     const promise = new Promise((resolve, reject) => {
@@ -42,7 +42,6 @@ export const RandomQuote = () => {
         color: ''
     })
 
-    const textRef = useRef();
 
     function getRandomColor() {
         const letters = '0123456789ABCDEF';

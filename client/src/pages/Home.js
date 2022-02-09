@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserView, MobileView } from 'react-device-detect';
+// import { BrowserView, MobileView } from 'react-device-detect';
 import { NavLink } from "react-router-dom";
 
 const Home = () => {
@@ -30,15 +30,15 @@ const Home = () => {
                             I have used some of the technologies i learned to build this website and some small application<br />
                             here are some of them <br />
                         </p>
-                        <BrowserView>
-                            <NavLink
-                                className="p-link"
-                                activclassname="active"
-                                to='work'>
-                                <em>Demos</em>
-                            </NavLink>
-                        </BrowserView>
-                        <MobileView>
+                        {/* <BrowserView> */}
+                        <NavLink
+                            className="p-link"
+                            activclassname="active"
+                            to='work'>
+                            <em>Demos</em>
+                        </NavLink>
+                        {/* </BrowserView> */}
+                        {/* <MobileView>
                             <Link title="message"
                                 className="p-link"
                                 to="work"
@@ -47,7 +47,7 @@ const Home = () => {
                                 duration={500}>
                                 <em>Demos</em>
                             </Link>
-                        </MobileView>
+                        </MobileView> */}
                         <p>
                             I haven't jet got the opportunity to work in a professional Team<br />
                             For the moment just with friends and i am looking for an opportunity to use the skills i earned in a <br />
@@ -57,15 +57,15 @@ const Home = () => {
                             I am really enjoying learn new things myself and also from others<br />
                             so please if you have any advices to help me to improve consider leaving me a message.
                         </p>
-                        <BrowserView>
-                            <NavLink
-                                className="p-link"
-                                activclassname="active"
-                                to='contact'>
-                                <em>Drop a Message</em>
-                            </NavLink>
-                        </BrowserView>
-                        <MobileView>
+                        {/* <BrowserView> */}
+                        <NavLink
+                            className="p-link"
+                            activclassname="active"
+                            to='contact'>
+                            <em>Drop a Message</em>
+                        </NavLink>
+                        {/* </BrowserView> */}
+                        {/* <MobileView>
                             <Link title="message"
                                 className="p-link"
                                 to="contact"
@@ -74,7 +74,7 @@ const Home = () => {
                                 duration={500}>
                                 <em>Drop a Message</em>
                             </Link>
-                        </MobileView>
+                        </MobileView> */}
 
                     </section>
                 </div>

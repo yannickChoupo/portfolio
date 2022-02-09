@@ -1,6 +1,6 @@
 import React from "react";
 import $ from 'jquery'
-import SideBar from "../Components/sidebar";
+// import SideBar from "../Components/sidebar";
 
 const Skills = [
     {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { toggleHamburger } from "../../redux/actions/hamburger";
-import $ from 'jquery';
+// import $ from 'jquery';
 
 
 const Hamburger = (props) => {
