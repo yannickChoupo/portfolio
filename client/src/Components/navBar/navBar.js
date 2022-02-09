@@ -8,27 +8,27 @@ import Hamburger from "../hamburger/hamburger";
 // import SideBar from "../sidebar";
 import React from "react";
 // import { Link } from "react-scroll";
-import { visitorSignOut } from "../../redux/actions/auth";
+// import { visitorSignOut } from "../../redux/actions/auth";
 // import $ from 'jquery';
 // import { process_params } from "express/lib/router";
 // import {getFromStorage} from "../../utils/storage";
 
 export const NavBar = (props) => {
-    const { isLoggedIn } = useSelector(state => state.auth);
-    const { demoIsLaunch } = useSelector(state => state.demo);
+    // const { isLoggedIn } = useSelector(state => state.auth);
+    // const { demoIsLaunch } = useSelector(state => state.demo);
     const { isOpen } = useSelector(state => state.hamburger);
     const dispatch = useDispatch();
-    const LogOut = () => {
-        dispatch(visitorSignOut())
-            .then((response) => {
-                if (response.data.success) {
-                    history.push('/sign');
-                    window.location.reload(true);
-                } else {
-                    localStorage.clear();
-                }
-            })
-    }
+    // const LogOut = () => {
+    //     dispatch(visitorSignOut())
+    //         .then((response) => {
+    //             if (response.data.success) {
+    //                 history.push('/sign');
+    //                 window.location.reload(true);
+    //             } else {
+    //                 localStorage.clear();
+    //             }
+    //         })
+    // }
 
     const handleLogoClick = () => {
         if (isOpen) {
@@ -49,12 +49,12 @@ export const NavBar = (props) => {
                     <li className="nav-ham">
                         <Hamburger />
                     </li>
-                    {
+                    {/* {
                         isLoggedIn && !demoIsLaunch &&
                         <li className="signOut">
                             <div onClick={LogOut}> LOGOUT</div>
                         </li>
-                    }
+                    } */}
                 </ul>
                 {/* <SideBar /> */}
             </nav>
