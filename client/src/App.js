@@ -70,14 +70,14 @@ function App() {
         $('.page').css('opacity', '1');
     }
     useEffect(() => {
-        // const mainStorage = getFromStorage("main_storage");
-        // if (!mainStorage) {
-        //     SERVER_Request.get('/session').then((response) => {
-        //         if (response.data.session) {
-        //             setInStorage("session", response.data.session);
-        //         }
-        //     })
-        // }
+        const mainStorage = getFromStorage("main_storage");
+        if (!mainStorage) {
+            SERVER_Request.get('/session').then((response) => {
+                if (response.data.session) {
+                    setInStorage("session", response.data.session);
+                }
+            })
+        }
     }, [])
 
     if (isOpen) {
