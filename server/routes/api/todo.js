@@ -5,10 +5,10 @@ const auth = require("../../middleware/auth");
 router.get('/', (req, res) => {
     return res.send("todo manage");
 })
-router.get('/api/getTodos', todoController.getTodos);
-router.get('/api/getTodo', todoController.getTodo);
-router.post('/api/storeTodo', todoController.storeTodo);
-router.post('/api/updateTodo', todoController.updateTodos);
-router.post('/api/removeTodo', todoController.removeTodo);
+router.get('/getTodos', todoController.getTodos);
+router.get('/getTodo', todoController.getTodo);
+router.post('/storeTodo', todoController.storeTodo);
+router.post('/updateTodo', todoController.updateTodos);
+router.post('/removeTodo', todoController.removeTodo);
 
 module.exports = router;
