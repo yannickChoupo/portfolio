@@ -1,0 +1,133 @@
+@use "../abstracts/colors" as color ;
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+@import "../abstracts/utils";
+@import "../abstracts/colors";
+
+#admin {
+    position: relative;
+    // background-color: red;
+    font-family: sans-serif;
+
+    h2 {
+      margin-bottom: px-to-em(5px);
+    }
+    .page-container {
+        min-height: 100vh;
+        padding: px-to-em(40px) 0 0 px-to-em(23px);
+        & > * {
+           margin-bottom: 1em;
+        }
+        .todoList {
+            margin: 0 px-to-em(30px) 0 0;
+
+            ul {
+                li {
+                    margin-bottom: .5em;
+                    display: flex;
+
+                    div {
+                        display: block;
+                        width: 70%;
+                        padding: .3em;
+
+                    }
+                    button {
+                        width: fit-content;
+                        border: 0;
+                        background-color: transparent;
+                        border-radius: .4em;
+                        border: .1em solid $def-pri;
+                        padding: .3em;
+                        color: inherit;
+                        cursor: pointer;
+
+                    }
+                }
+            }
+        }
+        .todos {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1em;
+            .header {
+                display: flex;
+                margin: 0 px-to-em(30px) 0 0;
+                h3 {
+                    width: fit-content;
+                    width: 70%;
+                }
+                button {
+                    width: 6.5ch;
+                    border: 0;
+                    background-color: transparent;
+                    border-radius: .4em;
+                    border: .1em solid $def-pri;
+                    padding: .3em;
+                    // margin: .3em;
+                    color: inherit;
+                    cursor: pointer;
+                    &:hover {
+                        color: white;
+                        background-color: $def-pri;
+                    } 
+                }
+            }
+            .form {
+                margin: 0 px-to-em(30px) 0 0;
+                 & > * {
+                        margin: 1em 0 0 0 ;
+                    }
+                .form-group {
+                   
+                    &.name {
+                        display: flex;
+                    }
+                    &.description {
+                        display: flex;
+                    }
+                }
+                label {
+                    display: block;
+                    min-width: 20%;
+                    padding: .3em 0;
+                    text-transform: capitalize;
+                    font-size: .8em;
+                    margin: 0 1em 0 0;
+                    padding: .3em;
+                }
+                input {
+                    border: 0;
+                    border-bottom: 1px solid $def-pri;
+                    display: block;
+                    width: 100%;
+                    padding: 0 0 0 1em;
+                    background-color: transparent;
+                    // border-radius: .2em;
+                    color: inherit;
+                    &:focus {
+                        outline: 0;
+                    }
+                }
+
+                button {
+                    border: 0;
+                    background-color: transparent;
+                    border-radius: .4em;
+                    border: .1em solid $def-pri;
+                    padding: .3em;
+                    margin: .3em;
+                    color: inherit;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    &:hover {
+                        color: white;
+                        background-color: $def-pri;
+                    } 
+                }
+            }
+        }
+    }
+}

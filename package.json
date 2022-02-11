@@ -22,7 +22,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.14",
     "multer": "^1.4.2",
-    "react-scroll": "^1.8.4"
+    "react-scroll": "^1.8.4",
+    "redux-devtools-extension": "^2.13.9"
   },
   "author": "Yannick Choupo",
   "license": "ISC",
