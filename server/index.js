@@ -43,13 +43,13 @@ const fileMetaRouter = require('./routes/api/fileMetaData');
 
 
 
-app.use('/timestamp', timestampRouter);
-app.use('/whoiam', whoiamRouter);
-app.use('/shorturl', shortUrlRouter);
-app.use('/excercise', excerciseRouter);
+// app.use('/timestamp', timestampRouter);
+// app.use('/whoiam', whoiamRouter);
+// app.use('/shorturl', shortUrlRouter);
+// app.use('/excercise', excerciseRouter);
 app.use('/todo', todosRouter);
 // app.use('/session', sessionRouter);
-app.use('/filemeta', fileMetaRouter);
+// app.use('/filemeta', fileMetaRouter);
 
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));
