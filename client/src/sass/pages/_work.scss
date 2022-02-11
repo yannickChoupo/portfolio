@@ -8,18 +8,13 @@
 ///////////////////////////////////////////////////////////////////////
 #work {
   position: relative;
+
   h2 {
-    margin-bottom: 2em;
+    margin-bottom: px-to-em(5px);
   }
   .page-container {
     min-height: 100vh;
-    @include breakpoint--small {
-      padding: calc(60px + 2em) 0 0 px-to-em(18px);
-    }
-  }
-
-  .work-home {
-    padding: calc(60px + 2em) 0 0 px-to-em(18px);
+    padding: px-to-em(40px) 0 0 px-to-em(23px);
   }
 
   .backHome-btn {
@@ -38,7 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: red;
+    // color: red;
 
     .button {
       width: 40px;
@@ -61,6 +56,81 @@
       &:hover {
         //color: $def-pri;
         //background-color: rgba($def-pri, .8);
+      }
+    }
+  }
+}
+//////////////////////////////////////////////////////////////////////
+.filters {
+  // background-color: red;
+  margin-bottom: px-to-em(20px);
+  & > * {
+    margin-bottom: 1em;
+  }
+  &.close {
+    transform: scale(0);
+  }
+  ul {
+    width: 100%;
+    // display: flex;
+    // li {
+      // background-color: red;
+      // margin: .5em;
+    // }
+    // .active {
+    //   color: $def-pri;
+    // }
+  }
+  #categorie {
+    // background-color: green;
+    .close {
+      // transform: scale(0);
+    }
+    .filterList {
+      // background-color: red;
+      &.close {
+        // background-color: aqua;
+        // transform: scale(0);
+      }
+      & ,ul {
+        font-size: .7em;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(7em,1fr));
+        .active {
+          color: white;
+          background-color: $def-pri;
+      }
+      li {
+        display: flex;
+        border-radius: .4em;
+        border: .1em solid $def-pri;
+        padding: .3em;
+        margin: .2em;
+      }
+    }
+  }
+}
+
+  #techStack {
+    // background-color: yellow;
+    ul {
+      font-size: .7em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(7em,1fr));
+      // display: grid;
+      // background-color: green;
+      .active {
+          color: white;
+          background-color: $def-pri;
+        }
+      li {
+        display: flex;
+        border-radius: .4em;
+        border: .1em solid $def-pri;
+        padding: .3em;
+        margin: .2em;
+        cursor: pointer;
+       
       }
     }
   }
@@ -99,7 +169,9 @@
   }
 
   li {
-    margin-bottom: 3em;
+    // margin: 1em 1em 0 1em;
+    margin: 0 1em 1em 0;
+    // padding: 1em 0 0 1em;
     display: flex;
     justify-content: space-between;
     min-height: 100px;
@@ -109,24 +181,44 @@
     };
 
     .title {
-      min-width: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2em;
+      min-width: 70%;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      font-size: 1.5em;
+      margin-bottom: .2em;
+      // background-color: red;
 
     }
 
+    .techList {
+      height: 100%;
+      display: flex;
+      font-size: 1em;
+      // background-color: brown;
+
+      span {
+        font-size: .7em;
+        // margin:  .2em;
+        // border: 1px solid green;
+      }
+    }
+
     .item-link {
-      min-width: 30%;
-      position: relative;
+      width: 30%;
+      max-width: 30%;
+      margin-bottom: .2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       .work-link {
+        // background-color: red;
         border-radius: px-to-em(3px);
         color: white;
         background-color: $def-pri;
-        position: absolute;
-        bottom: .25em;
-        margin-left: 1em;
+    //     position: absolute;
+    //     bottom: .25em;
+    //     margin-left: 1em;
         padding: .5em;
         font-size: 1.2em;
         cursor: pointer;
@@ -134,24 +226,3 @@
     }
   }
 }
-//.launch-enter {
-//  opacity: 0;
-//  transform: translateX(-50%);
-//}
-//
-//.launch-enter-active {
-//  background-color: red;
-//  opacity: 1;
-//  transform: translateX(0);
-//  transition: opacity 1000ms, transform 1000ms;
-//}
-//
-//.launch-exit {
-//  opacity: 1;
-//}
-//
-//.launch-exit-active {
-//  opacity: 0;
-//  transform: translateX(100%);
-//  transition: opacity 500ms, transform 500ms;
-//}

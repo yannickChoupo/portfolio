@@ -3,30 +3,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSessionSchema = new Schema({
-    userId: {
+    id: {
+        type: String,
+        default: '',
+        unique: true
+    },
+    hostName: {
         type: String,
         default: ''
     },
-    userName: {
+    userAgent: {
         type: String,
         default: ''
-    },
-    createdAt: {
-        type: String,
-        default: ''
-    },
-    deletedAt: {
-        type: Date,
-        default: Date.now()
     },
     message: {
         type: String,
         default: ''
     },
-    timestamp: {
-        type: Date,
-        default: Date.now()
-    }
-})
 
-module.exports = mongoose.model('UserSession',UserSessionSchema);
+}, { timestamp: true })
+
+module.exports = mongoose.model('UserSession', UserSessionSchema);
