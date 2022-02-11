@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require("path");
 const bodyParser = require('body-parser');
 const config = require('./config/key');
+const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
 
@@ -40,7 +41,22 @@ const fileMetaRouter = require('./routes/api/fileMetaData');
 
 // const SessionMiddleware = require('./middleware/session');
 
-
+app.use((req, res, next) => {
+    let sendedToken = '';
+    let decodedToken = '';
+    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+        // return req.headers.authorization.split(' ')[1];
+        // console.log(req.headers.authorization.split(' ')[1]);
+        sendedToken = req.headers.authorization.split(' ')[1];
+        decodedToken = jwt.decode(sendedToken);
+        // console.log(decodedToken);
+    } else if (req.query && req.query.token) {
+        // return req.query.token;
+        // console.log(req.query.token);
+    }
+    // return null;
+    next();
+})
 
 
 app.use('/api/timestamp', timestampRouter);

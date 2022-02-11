@@ -78,7 +78,6 @@ async function storeTodo(req, res) {
 
         // Check exiting todo
         const existingTodo = await Todo.find({ name: name });
-        console.log("existing visitor : ", existingVisitor);
         if (existingTodo[0]) {
             return res.send({
                 success: false,
@@ -88,15 +87,20 @@ async function storeTodo(req, res) {
 
         // Save visitor
         const newTodo = new Todo();
-        newVisitor.name = name;
-        newVisitor.description = description;
+        newTodo.name = name;
+        newTodo.description = description;
+        newTodo.completed = false;
+        newTodo.id = newTodo._id;
+
         const savedTodo = await newTodo.save();
+
         return res.send({
             success: true,
             message: 'todo succesfull added',
             todo: savedTodo
         });
     } catch (error) {
+        console.log(error)
         return res.send({
             success: false,
             message: `something went wrong: ${error}`
@@ -153,6 +157,8 @@ async function removeTodo(req, res) {
     let {
         id
     } = body;
+
+    console.log("Delete Request");
 
     try {
         const existingTodo = await Todo.find({ id: id });

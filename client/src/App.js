@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import history from "./helpers/history";
 import $ from 'jquery';
+import jwt from 'jsonwebtoken';
 import axios from "axios";
 
 
@@ -20,7 +21,7 @@ import Sign from "./Components/Sign";
 import SideBar from "./Components/sidebar";
 
 
-import { getFromStorage, setInStorage } from "./utils/storage";
+import { getFromStorage, setInStorage, removeInStorage } from "./utils/storage";
 import {
     CSSTransition,
     TransitionGroup
@@ -70,13 +71,26 @@ function App() {
         $('.page').css('opacity', '1');
     }
     useEffect(() => {
-        const mainStorage = getFromStorage("main_storage");
+        const mainStorage = getFromStorage("session");
+        // add the session
         if (!mainStorage) {
-            SERVER_Request.get('/session').then((response) => {
+            SERVER_Request.get('/api/session').then((response) => {
                 if (response.data.session) {
                     setInStorage("session", response.data.session);
                 }
+            }).then((response) => {
+                console.log("Add sessio response: \n", response);
             })
+        } else {
+            // delete the session 
+            const exp = jwt.decode(mainStorage);
+            if (Date.now() >= (exp.exp * 1000)) {
+                removeInStorage("session");
+                SERVER_Request.post(`/api/session/${exp.id}`)
+                    .then((response) => {
+                        console.log(response.message);
+                    })
+            }
         }
     }, [])
 
@@ -110,12 +124,15 @@ function App() {
                         <Route path="/contact">
                             <Contact />
                         </Route>
+
                         <Route path="/work">
                             <Works />
                         </Route>
+
                         <Route path="/admin">
                             <Admin />
                         </Route>
+
                         <Route path="*">
                             <Error />
                         </Route>

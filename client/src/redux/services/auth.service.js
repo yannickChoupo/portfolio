@@ -1,10 +1,5 @@
-import axios from "axios";
+import axios from 'axios';
 import { getFromStorage } from "../../utils/storage";
-///////////************************////////////////////////////////////////////////
-// let VISITOR_API = ""
-// if (process.env.NODE_ENV === "production") {
-//     const VISITOR_API = axios.create({baseURL: 'https://yannick-njilo-portfolio.herokuapp.com/visitor'});
-// } else {
 const SERVER_Request = axios.create(
     {
         baseURL: `${process.env.NODE_ENV === "production" ?
@@ -13,28 +8,18 @@ const SERVER_Request = axios.create(
             'http://localhost:5000'}`
     }
 );
-// const VISITOR_MESSAGE_API = axios.create(
-//     {
-//         baseURL: `${process.env.NODE_ENV === "production" ?
-//             'https://yannick-njilo-portfolio.herokuapp.com'
-//             :
-//             'http://localhost:5000'}/visitor`
-//     }
-// );
-// }
-///////////////////////**************************////////////////////////////
 
-SERVER_Request.interceptors.request.use((req) => {
-    if (req.url === "/signOut") {
-        // req.body.token = storage.to= {message: storage.message, token: storage.token};
-        console.log("Interceptor -> request url : ", req.url);
-        req.headers.authorization = `Bearer ${getFromStorage("main_storage").token}`;
-        return req;
-    }
-    return req;
-}, err => {
-    console.log(err);
-})
+// SERVER_Request.interceptors.request.use((req) => {
+//     if (req.url === "/signOut") {
+//         // req.body.token = storage.to= {message: storage.message, token: storage.token};
+//         console.log("Interceptor -> request url : ", req.url);
+//         req.headers.authorization = `Bearer ${getFromStorage("main_storage").token}`;
+//         return req;
+//     }
+//     return req;
+// }, err => {
+//     console.log(err);
+// })
 
 /////////////////////////////////////////////////////////////////////////////////////////
 export const visitorSignIn = (userName, password) => {

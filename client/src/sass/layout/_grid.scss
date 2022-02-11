@@ -53,16 +53,7 @@ body {
   }
 
 }
-.pages-enter {
-  opacity: 0;
-  transform: translateX(-100%);
-}
 
-.pages-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 500ms, transform 500ms;
-}
 
 // .fade-enter {
 //   opacity: 1;
@@ -83,17 +74,17 @@ body {
 //   opacity: 1;
 // }
 
-@keyframes fade {
-  from {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+// @keyframes fade {
+//   from {
+//     opacity: 1;
+//   }
+//   50% {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
 //.pages-exit {
 //  opacity: 1;
 //}
