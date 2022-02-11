@@ -23,4 +23,7 @@ const UserSessionSchema = new Schema({
 
 }, { timestamp: true })
 
-module.exports = mongoose.model('UserSession', UserSessionSchema);
+const UserSession = mongoose.model('UserSession', UserSessionSchema);
+
+
+module.exports = UserSession;
