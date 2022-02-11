@@ -35,10 +35,10 @@ const whoiamRouter = require('./routes/api/reqHeaderParser');
 const excerciseRouter = require('./routes/api/excercise');
 const shortUrlRouter = require('./routes/api/shortUrl');
 const todosRouter = require('./routes/api/todo');
-const sessionRouter = require('./routes/api/session');
+// const sessionRouter = require('./routes/api/session');
 const fileMetaRouter = require('./routes/api/fileMetaData');
 
-const SessionMiddleware = require('./middleware/session');
+// const SessionMiddleware = require('./middleware/session');
 
 
 
@@ -48,7 +48,7 @@ app.use('/whoiam', whoiamRouter);
 app.use('/shorturl', shortUrlRouter);
 app.use('/excercise', excerciseRouter);
 app.use('/todo', todosRouter);
-app.use('/session', sessionRouter);
+// app.use('/session', sessionRouter);
 app.use('/filemeta', fileMetaRouter);
 
 
