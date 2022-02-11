@@ -48,7 +48,14 @@ import { useSelector } from "react-redux";
 //         console.log("jwt expired ");
 //     }
 // }
-
+const SERVER_Request = axios.create(
+    {
+        baseURL: `${process.env.NODE_ENV === "production" ?
+            'https://yannick-njilo-portfolio.herokuapp.com'
+            :
+            'http://localhost:5000'}`
+    }
+);
 function App() {
     const location = useLocation();
     const { isOpen } = useSelector(state => state.hamburger);
@@ -65,15 +72,11 @@ function App() {
     useEffect(() => {
         const mainStorage = getFromStorage("main_storage");
         if (!mainStorage) {
-            // setInStorage("main_storage");
-            axios({
-                method: 'get',
-                url: 'http://localhost:5000/session',
-            }).then(response => {
+            SERVER_Request.get('/session').then((response) => {
                 if (response.data.session) {
                     setInStorage("session", response.data.session);
                 }
-            });
+            })
         }
     }, [])
 
