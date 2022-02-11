@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
-const UserSession = require('../../models/userSession')
+const UserSession = require('../../models/userSession');
 const router = require('express').Router();
+const jwt = require('jsonwebtoken');
 
 router.get('/', async (req, res) => {
     const { headers } = req;
