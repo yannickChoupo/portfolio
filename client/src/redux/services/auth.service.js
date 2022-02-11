@@ -1,16 +1,16 @@
 import axios from "axios";
-import {getFromStorage} from "../../utils/storage";
+import { getFromStorage } from "../../utils/storage";
 ///////////************************////////////////////////////////////////////////
 // let VISITOR_API = ""
 // if (process.env.NODE_ENV === "production") {
 //     const VISITOR_API = axios.create({baseURL: 'https://yannick-njilo-portfolio.herokuapp.com/visitor'});
 // } else {
-const VISITOR_API = axios.create(
+const SERVER_Request = axios.create(
     {
         baseURL: `${process.env.NODE_ENV === "production" ?
             'https://yannick-njilo-portfolio.herokuapp.com'
             :
-            'http://localhost:5000'}/visitor`
+            'http://localhost:5000'}`
     }
 );
 // const VISITOR_MESSAGE_API = axios.create(
@@ -24,29 +24,34 @@ const VISITOR_API = axios.create(
 // }
 ///////////////////////**************************////////////////////////////
 
-VISITOR_API.interceptors.request.use((req) => {
-    if(req.url === "/signOut") {
+SERVER_Request.interceptors.request.use((req) => {
+    if (req.url === "/signOut") {
         // req.body.token = storage.to= {message: storage.message, token: storage.token};
-        console.log("Interceptor -> request url : ",req.url);
+        console.log("Interceptor -> request url : ", req.url);
         req.headers.authorization = `Bearer ${getFromStorage("main_storage").token}`;
         return req;
     }
     return req;
-},err => {
+}, err => {
     console.log(err);
 })
+
 /////////////////////////////////////////////////////////////////////////////////////////
 export const visitorSignIn = (userName, password) => {
-    return VISITOR_API.post('/signIn', {userName, password});
+    return SERVER_Request.post('/signIn', { userName, password });
 }
 ///////////////////////////////////////////////////////////////////////////
 export const visitorSignOut = () => {
     const storage = getFromStorage("main_storage");
-    return VISITOR_API.post('/signOut',{message: storage.message});
+    return SERVER_Request.post('/signOut', { message: storage.message });
 }
 ///////////////////////////////////////////////////////////////////////////////
 export const visitorSignUp = (userName, password) => {
-    return VISITOR_API.post('/register', {userName, password});
+    return SERVER_Request.post('/register', { userName, password });
+}
+
+export const session = () => {
+    return SERVER_Request.post('/session', {});
 }
 
 // export default {

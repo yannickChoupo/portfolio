@@ -1,42 +1,32 @@
 import React, { useEffect } from "react";
-// import { BrowserView, MobileView } from 'react-device-detect';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, useLocation } from "react-router-dom";
 import history from "./helpers/history";
-// import jwt from 'jsonwebtoken';
 import $ from 'jquery';
-
-
+import axios from "axios";
 
 
 import './sass/main.scss';
-import NavBar from "./Components/navBar/navBar";
+import NavBar from "./Components/navBar";
 
 
 import Home from './pages/Home'
 import About from './pages/About'
 import Works from './pages/Work'
 import Error from './pages/ErrorPage'
-import Sign from "./Components/Sign";
 import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
+
+import Sign from "./Components/Sign";
 import SideBar from "./Components/sidebar";
 
 
-// import { getFromStorage } from "./utils/storage";
+import { getFromStorage, setInStorage } from "./utils/storage";
 import {
     CSSTransition,
     TransitionGroup
 } from "react-transition-group";
 
 import { useSelector } from "react-redux";
-// import { useDispatch } from "react-redux";
-// import { toggleHamburger } from "./redux/actions/hamburger";
-
-// import SideBar from "./Components/sidebar";
-// import {authenticate} from "./redux/actions/auth";
-
-// Pages
 // const routes = [
 //     { path: '/', Component: Home },
 //     { path: '/about', Component: About },
@@ -65,7 +55,7 @@ function App() {
 
     const disableScroll = () => {
         $("body").css("overflow", "hidden");
-        $('.page').css('opacity', '0.5');
+        $('.page').css('opacity', '0.1');
 
     }
     const enableScroll = () => {
@@ -73,7 +63,18 @@ function App() {
         $('.page').css('opacity', '1');
     }
     useEffect(() => {
-        console.log('app initial render completed');
+        const mainStorage = getFromStorage("main_storage");
+        if (!mainStorage) {
+            // setInStorage("main_storage");
+            axios({
+                method: 'get',
+                url: 'http://localhost:5000/session',
+            }).then(response => {
+                if (response.data.session) {
+                    setInStorage("session", response.data.session);
+                }
+            });
+        }
     }, [])
 
     if (isOpen) {
@@ -108,6 +109,9 @@ function App() {
                         </Route>
                         <Route path="/work">
                             <Works />
+                        </Route>
+                        <Route path="/admin">
+                            <Admin />
                         </Route>
                         <Route path="*">
                             <Error />

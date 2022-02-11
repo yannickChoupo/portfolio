@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 // From Redux
 import { useSelector, useDispatch } from "react-redux";
 import { toggleHamburger } from "../redux/actions/hamburger"
-import { Switch } from "./Switch/switch";
+import { Switch } from "./switch"
 
 // Form React Scroll
 
