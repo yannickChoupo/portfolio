@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const timestampControllers = require('../../controllers/timestamp');
 
-router.get('/api', (req, res) => {
+router.get('/', (req, res) => {
     let newDate = new Date(), unixValue, utcValue;
     utcValue = newDate.toUTCString();
     unixValue = newDate.valueOf();

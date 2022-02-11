@@ -3,7 +3,7 @@ const Url = require('../../models/url');
 
 // const shControllers = require('../../controllers/timestamp');
 
-router.post('/api/shorturl', async (req, res) => {
+router.post('/shorturl', async (req, res) => {
     const { url } = req.body;
     dns.lookup(urlParser.parse(url).hostname, (error, address) => {
         if (!address) {
@@ -36,7 +36,7 @@ router.post('/api/shorturl', async (req, res) => {
     }
 });
 
-router.get('/api/shorturl/:id', async (req, res) => {
+router.get('/shorturl/:id', async (req, res) => {
     const { id } = req.params;
     const originalUrl = await Url.find({ short_url: id });
     if (originalUrl[0]) {

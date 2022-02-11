@@ -14,7 +14,7 @@ const Admin = () => {
     const [numberOfVisits, setNumberOfVisits] = useState(0);
     const [todos, setTodos] = useState(0);
     useEffect(() => {
-        SERVER_Request.get('/todo/api/getTodos').then(response => {
+        SERVER_Request.get('/api/todo/getTodos').then(response => {
             setTodos(response.data.todos);
             console.log(response);
         })

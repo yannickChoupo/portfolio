@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const reqHeaderControllers = require('../../controllers/timestamp');
 
-router.get('/api', (req, res) => {
+router.get('/', (req, res) => {
     let { headers, accept } = req;
     let software = headers['user-agent'];
     let language = headers['accept-language']
