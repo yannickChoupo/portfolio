@@ -557,8 +557,6 @@ const Works = () => {
                                             </div>
                                         </li>
                                     )
-                                } else {
-                                    return <h4>no project...</h4>
                                 }
                             })}
                         </ul>

@@ -1,4 +1,4 @@
-const UserSession = require('../../models/userSession');
+const UserSession = require('../../models/usersession');
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 
