@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <script src="https://kit.fontawesome.com/6d005655ae.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "couriernew", Courier, sans-serif;
+        }
+
+        body {
+            background: url("./images/blue-1845901_1920.jpg")center /cover no-repeat;
+        }
+
+        .job_main {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            float: right;
+        }
+
+        a {
+            font-size: 0.7em;
+            color: white;
+            display: block;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: white;
+            color: darkblue;
+        }
+
+        .text {
+            width: 75vw;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .welcome {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30vw;
+            height: 100vh;
+            background: #1F2F85;
+            opacity: 0.2;
+        }
+
+        .welcome:hover {
+            opacity: 0.7
+        }
+
+        .welcome div {
+            border: 1px #181876 solid;
+            border-radius: 0.7em;
+            margin: 0.5em;
+            overflow: hidden;
+        }
+
+        @media screen and (max-width: 560px) {
+            .job_main {
+                flex-direction: column;
+                background-size: contain;
+            }
+
+            .welcome {
+                width: 100vw;
+                height: 25vh;
+                margin-bottom: 10vh;
+            }
+
+            /* .welcome div {} */
+        }
+
+        @media screen and (max-width: 360px) {
+            .job_main {
+                flex-direction: column;
+            }
+
+            body {
+                background: url("./images/blue-medium.jpg")right/cover no-repeat;
+            }
+
+            .welcome {
+                width: 100vw;
+                height: 25vh;
+                margin-bottom: 10vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="job_main">
+        <div class="text">
+            <p>hello world</p>
+        </div>
+        <div class="welcome">
+            <div><a href="#" target="_blank">Administrator</a></div>
+            <div><a href="#" target="_blank">Besucher</a></div>
+        </div>
+    </div>
+</body>
+
+</html>

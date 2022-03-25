@@ -3,8 +3,8 @@
 @import "../abstracts/function";
 
 #contact {
-  padding: px-to-em(100px) 0 0 px-to-em(20px);
-  min-height: 100vh;
+  padding: calc(60px + 2em) 0 0 px-to-em(18px);
+  // min-height: 100vh;
   textarea {
     color: inherit;
     resize: none;

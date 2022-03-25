@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Survey</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #content {
+            z-index: 1;
+            position: relative;
+
+            line-height: 1.4;
+            color: white;
+            width: 40%;
+
+        }
+
+        #head {
+            text-align: center;
+            margin-bottom: 1em;
+            background: transparent;
+        }
+
+        #survey-form {
+            font-family: 'Poppins', sans-serif;
+            padding: 1.5em 1em 0 1em;
+            background-color: rgba(0, 49, 113, 0.9);
+            border-radius: 5px;
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=number],
+        input[id="dropdown"] {
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: 2px solid green;
+            border-radius: 5px;
+        }
+
+        label {
+            margin-top: 30px;
+        }
+
+        #image {
+            position: relative;
+            top: -100vh;
+        }
+
+        img {
+            min-width: 100vw;
+            height: 100vh;
+            opacity: 0.5;
+        }
+
+        #filter {
+            position: relative;
+            min-width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 49, 169, 0.8);
+        }
+
+        #back {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+        }
+
+        #title {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        #description {
+            font-family: 'Poiret One', sans-serif;
+            font-style: oblique;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="content">
+            <div id="head">
+                <h1 id="title">freeCodeCamp Survey Form</h1>
+                <p id="description">Thank you for tacking the time to helps us improve the platform</p>
+            </div>
+            <form id="survey-form">
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="name" placeholder="Enter your name "><br>
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" placeholder="Enter your Email"><br>
+                <label for="number">Age(optional)</label><br>
+                <input type="number" id="number" name="number" min="20" max="70" value="age" placeholder="Age"><br>
+                <label for="dropdown">Which option best describes your current role?</label><br>
+                <input list="options" id="dropdown" placeholder="select an option">
+                <datalist id="options">
+                    <option value="student">
+                    <option value="Full time Job">
+                    <option value="Full time Leaner">
+                    <option value="Prefer not to say">
+                    <option value="Other">
+                </datalist><br>
+                <p>Would you recommend freeCodeCamp to a friend?</p>
+                <input type="radio" id="Definitely" name="choose" value="Definitely" checked>
+                <label for="Definitely">Definitely</label><br>
+                <input type="radio" id="Maybe" name="choose" value="Maybe">
+                <label for="Maybe">Maybe</label><br>
+                <input type="radio" id="No" name="choose" value="Not sure">
+                <label for="No">Not sure</label><br>
+                <label for="favorite">What is your favorite feature of freeCodeCamp?</label><br>
+                <input list="favorites_l" id="favorite" placeholder="Community">
+                <datalist id="favorites_l">
+                    <option value="Challenges">
+                    <option value="Projects">
+                    <option value="Community">
+                    <option value="pen source">
+                </datalist><br>
+                <p>What would you like to see Improved? (check all that apply)</p>
+                <input type="checkbox" id="Front-end-projects" name="improvement" value="Front-end-projects">
+                <label for="Front-end-projects">Front-end Projects</label><br>
+                <input type="checkbox" id="Back-end Projects" name="improvement" value="Back-end Projects">
+                <label for="Back-end Projects">Back-end Projects</label><br>
+                <input type="checkbox" id="Data Visualization" name="improvement" value="Data Visualization">
+                <label for="Data Visualization">Data visualization</label><br>
+                <input type="checkbox" id="Challenges" name="improvement" value="Challenges">
+                <label for="Challenges">Challenges</label><br>
+                <input type="checkbox" id="Open Sources" name="improvement" value="Open Sources">
+                <label for="Open Sources">Open Sources Community</label><br>
+                <input type="checkbox" id="Gitter felp rooms" name="improvement" value="Gitter hleps rooms">
+                <label for="Gitter felp rooms">Gitter help rooms</label><br>
+                <input type="checkbox" id="Videos" name="improvement" value="Videos">
+                <label for="Videos"></label><br>
+                <input type="checkbox" id="City Meetups" name="improvement" value="City Meetups">
+                <label for="City Meetups">City Meetups</label><br>
+                <input type="checkbox" id="Wiki" name="improvement" value="Wiki">
+                <label for="Wiki">Wiki</label><br>
+                <input type="checkbox" id="Forum" name=improvement"" value="Forum">
+                <label for="Forum">Forum</label><br>
+                <input type="checkbox" id="Additional Courses" name="improvement" value="Additional Courses">
+                <label for="Additional Courses">Additional Courses</label><br><br>
+                <label for="Suggestions">Any comment or Suggestions?</label><br>
+                <textarea name="Suggestions" id="Suggestions">Enter your comment here...</textarea><br>
+                <input type="submit" id="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <div id="back">
+        <div id="filter"></div>
+        <div id="image">
+            <img src="./images/guetto.jpg.jpg" alt="foto">
+        </div>
+    </div>
+</body>
+
+</html>

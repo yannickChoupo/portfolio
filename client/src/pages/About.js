@@ -1,5 +1,6 @@
 import React from "react";
 import $ from 'jquery'
+// import SideBar from "../Components/sidebar";
 
 const Skills = [
     {
@@ -71,14 +72,18 @@ const Skills = [
     }
 ]
 const About = () => {
-    // const {curTheme} = useGlobalThemeContext();
     const openDescription = (e) => {
         console.log("event target", e.target.parentNode.className);
         if(e.target.parentNode.className == "active") {
             $(e.target.parentNode).toggleClass("active");
         } 
         const activeListItem = $("li[class='active']");
+<<<<<<< HEAD
         if(activeListItem) {
+=======
+        if (activeListItem) {
+            console.log("active class");
+>>>>>>> 5d8720e8c57d6c7c4d2f58b8b67549d522e1fa65
             activeListItem.toggleClass("active");
         }
         console.log(e.target.parentNode);
@@ -86,7 +91,6 @@ const About = () => {
     }
     return (
         <>
-            {/*<CSSTransition>*/}
             <div id="about" className="page">
                 <div className="page-container">
                     <h2>
@@ -101,7 +105,7 @@ const About = () => {
                                     <span className="to">now</span>
                                 </span>
                                 <p>
-                                   Bachelor of science electrical engineering
+                                    Bachelor of science electrical engineering
                                 </p>
                             </section>
                             <section>
@@ -114,20 +118,20 @@ const About = () => {
                                 </p>
                             </section>
                             <section>
-                                  <span className="subtitle">
+                                <span className="subtitle">
                                     <span className="from">august 2014</span>
                                     <span className="to">march 2015</span>
-                                  </span>
+                                </span>
                                 <p>
                                     German language course  at the <strong>Goethe institute </strong>
                                     in Yaounde cameroon
                                 </p>
                             </section>
                             <section>
-                                 <span className="subtitle">
+                                <span className="subtitle">
                                     <span className="from">october 2013</span>
                                     <span className="to">august 2014</span>
-                                  </span>
+                                </span>
                                 <p>
                                     German language course at the <strong>Institute the Sicherste Weg </strong>
                                     in Yaounde Cameroon
@@ -137,28 +141,28 @@ const About = () => {
                                 <span className="subtitle">
                                     <span className="from">october 2012</span>
                                     <span className="to">september 2013</span>
-                                  </span>
+                                </span>
                                 <p>
                                     Bachelor of Science Mathematic at the university of <strong>Ngoa-Ekele </strong>in
-                                    Yaounde Cameroon<br/>
+                                    Yaounde Cameroon<br />
                                 </p>
                             </section>
                             <section>
-                                 <span className="subtitle">
+                                <span className="subtitle">
                                     <span className="from">july 2005</span>
                                     <span className="to"> june 2012</span>
-                                  </span>
-                                <span className="subtitle"> <span className="until"/></span>
+                                </span>
+                                <span className="subtitle"> <span className="until" /></span>
                                 <p>
                                     High school
                                 </p>
                             </section>
                             <section>
-                                  <span className="subtitle">
+                                <span className="subtitle">
                                     <span className="from">july 2000</span>
                                     <span className="to"> june 2005</span>
-                                  </span>
-                                <span className="subtitle"> <span className="until"/> </span>
+                                </span>
+                                <span className="subtitle"> <span className="until" /> </span>
                                 <p>
                                     Primary school
                                 </p>
@@ -181,7 +185,7 @@ const About = () => {
                                 <section className="list">
                                     <h6>Software Development : </h6>
                                     <ul className="software-skills">
-                                        {Skills.map(({ language, description}) => {
+                                        {Skills.map(({ language, description }) => {
                                             return (
                                                 <li key={language}
                                                     onClick={e => openDescription(e)}>
@@ -190,9 +194,9 @@ const About = () => {
                                                         <div className="arrow">→</div>
                                                     </section>
                                                     <p className="description">
-                                                       <em>
-                                                           {description}
-                                                       </em>
+                                                        <em>
+                                                            {description}
+                                                        </em>
                                                     </p>
                                                 </li>
                                             )
@@ -217,8 +221,6 @@ const About = () => {
                     </section>
                 </div>
             </div>
-            {/*</CSSTransition>*/}
-
         </>
     );
 }

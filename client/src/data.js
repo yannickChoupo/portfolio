@@ -34,11 +34,18 @@
         description: "calculate",
         status: "available"
     },
-     {
+    {
         // id: 4,
         name: "Timestamp",
         techUsed: ["Javascript(Ajax)","React","express"],
         description: "Generate a timestamp",
+        status: "available"
+    },
+    {
+        // id: 4,
+        name: "Heatmap",
+        techUsed: ["Javascript(Ajax)","React","express"],
+        description: "calculate",
         status: "available"
     }
 ]

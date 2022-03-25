@@ -6,7 +6,7 @@ import {
     LOGOUT, AUTHENTICATE,
 } from "../actions/type";
 
-import {getFromStorage, setInStorage} from "../../utils/storage";
+import { getFromStorage, setInStorage } from "../../utils/storage";
 
 const mainStorage = getFromStorage("main_storage");
 
@@ -14,8 +14,10 @@ console.log("main storage : ", mainStorage);
 const initialState = mainStorage ?
     { isLoggedIn: true, visitor: mainStorage.visitor }
     : { isLoggedIn: false };
-export default function authReducer (state = initialState, action) {
-    const {type, payload} = action;
+
+
+export default function authReducer(state = initialState, action) {
+    const { type, payload } = action;
     switch (type) {
         case REGISTER_SUCCESS:
             return {
@@ -24,7 +26,7 @@ export default function authReducer (state = initialState, action) {
                 visitor: null
             };
         case AUTHENTICATE:
-            setInStorage('main_storage', { token: payload.token,message: ""});
+            setInStorage('main_storage', { token: payload.token, message: "" });
             return {
                 ...state,
                 isLoggedIn: true,
