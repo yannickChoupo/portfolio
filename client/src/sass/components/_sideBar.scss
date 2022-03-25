@@ -11,7 +11,7 @@
 .showUp-enter-active,
 .showDown-enter-active {
   opacity: 1;
-  transform: translateY(0);
+  // transform: translateY(0);
   transition: opacity 500ms, transform 500ms;
 }
 
@@ -22,24 +22,24 @@
 
 .showUp-exit-active {
   opacity: 0;
-  transform: translateY(-50%);
+  // transform: translateY(-50%);
   transition: opacity 500ms, transform 500ms;
 }
 .showDown-exit-active {
   opacity: 0;
-  transform: translateY(50%);
+  // transform: translateY(50%);
   transition: opacity 500ms, transform 500ms;
 }
 //////////////////////////////////////////////////////////////////////////////
 .show-enter {
   opacity: 0;
-  transform: translateX(100%);
+  // transform: translateX(100%);
 }
 
 .show-enter-active {
   //background-color: #605EFF;
   opacity: 1;
-  transform: translateX(0);
+  // transform: translateX(0);
   transition: opacity 500ms, transform 500ms;
 }
 
@@ -49,7 +49,7 @@
 
 .show-exit-active {
   opacity: 0;
-  transform: translateX(100%);
+  // transform: translateX(100%);
   transition: opacity 500ms, transform 500ms;
 }
 //////////////////////////////////////////////////////////////////
@@ -57,11 +57,12 @@
 $icon-wh: 36px;
 .sideBar {
   width: calc(80px);
-  border-radius: 6px 0 0 6px;
+  border-radius: .3em 0 0 .3em;
   position: absolute;
   right: 0;
   top: calc((100vh - 6 * 36px) / 2);
-  //z-index: 1000;
+  // top: 20%;
+  z-index: 10;
   transition: .5s all ease-in;
 
 
@@ -85,9 +86,11 @@ $icon-wh: 36px;
     transition: all .5s ease;
 
     li {
+      // background-color: aqua;
       width: 100%;
       height: 40px;
       margin: 0.5rem 0;
+      @include flexCenter;
     }
   }
 
@@ -101,6 +104,7 @@ $icon-wh: 36px;
     text-decoration: none;
     @include flexCenter;
     position: relative;
+    // background-color: green;
 
     &:hover,
     &.active {
@@ -117,23 +121,23 @@ $icon-wh: 36px;
         position: absolute;
         z-index: 1000;
         transform: scale($scale);
-        transition: 0.5s transform;
+        transition: .2s transform;
       }
 
       &::before {
         content: attr(title);
         width: max-content;
-        right: 50px;
+        right: 49px;
         transform-origin: right;
-        padding: 0.3rem;
-        border-radius: 4px;
-        font-size: 10px;
+        padding: 0.5em;
+        border-radius: 2px;
+        font-size: .7em;
       }
 
       &::after {
         content: '';
         left: -10px;
-        border: 8px solid transparent;
+        border: 10px solid transparent;
         transform-origin: left;
       }
 

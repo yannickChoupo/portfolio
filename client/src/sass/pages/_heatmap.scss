@@ -1,0 +1,27 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../abstracts/breackpoints";
+@import "../abstracts/mixins";
+@import "../abstracts/utils";
+
+.bar {
+  background-color: red;
+}
+
+#heatmap {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+  padding-top: px-to-em(80px);
+  background-color: #282c34;
+
+  .svg-container {
+    height: 100%;
+    width: 100%;
+    //background-color: yellow;
+    svg {
+      background-color: white;
+    }
+  }
+}

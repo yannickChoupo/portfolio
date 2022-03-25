@@ -1,0 +1,30 @@
+@import "../abstracts/function";
+
+#markDownPreviewer {
+    padding: px-to-em(40px) px-to-em(23px) 0 px-to-em(23px);
+
+    #inputField {
+        // background-color: red;
+
+        h4 {
+            margin-bottom: .5em;
+            font-family: sans-serif;
+        }
+        
+        textarea {
+            // background-color: aqua;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    #outputField {
+        h4 {
+            border-bottom: .1em solid $def-pri;
+        }
+
+        .preview {
+            width: 100%;
+        }
+    }
+}
