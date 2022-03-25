@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         "utc": utcValue
     })
 })
-router.post('/api/timestamp/:date', timestampControllers.timestamp);
+router.post('/:date', timestampControllers.timestamp);
 
 
 module.exports = router;

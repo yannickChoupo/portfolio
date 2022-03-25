@@ -1,3 +1,6 @@
+import React from "react";
+import { marked } from "marked"
+
 const initialState = `
 # heding
 ## heading
@@ -39,7 +42,7 @@ And here. | Okay. | I think we get it.
 
 ![React Logo w/ Text](https://goo.gl/Umyytc)
 `;
-class App extends React.Component {
+class MarkDownPreviewer extends React.Component {
     state = {
         text: initialState
     }
@@ -58,28 +61,30 @@ class App extends React.Component {
         );
         console.log(html);
         return (
-            <div>
-                <h2 className="text-center m-4">Convert your Markdown</h2>
-                <div className="row">
-                    <div className="col-6">
-                        <h6>Enter your Markdown here</h6>
-                        <textarea
-                            className="form-control"
-                            id="editor"
-                            value={text}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="col-6" >
-                        <h6>See the result</h6>
-                        <div className="preview rounder"
-                            id="preview"
-                            dangerouslySetInnerHTML={{ __html: markdown }}
-                        ></div>
-                    </div>
+            <div id="markDownPreviewer">
+                <h2 className="header">Convert your Markdown</h2>
+                <div id="inputField" className="">
+                    <h4>Enter your Markdown here</h4>
+                    <textarea
+                        id="editor"
+                        value={text}
+                        onChange={this.handleChange}
+                        // data-limt-row-len="true"
+                        // maxLength="10"
+                        rows="5"
+                        cols="5"
+                    />
+                </div>
+                <div id="outputField">
+                    <h4>See the result</h4>
+                    <div id="preview"
+                        dangerouslySetInnerHTML={{ __html: markdown }}
+                    ></div>
                 </div>
             </div>
         );
     }
 }
-ReactDOM.render(<App />, document.getElementById("app"));
+
+
+export default MarkDownPreviewer;

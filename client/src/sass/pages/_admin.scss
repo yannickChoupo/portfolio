@@ -43,7 +43,6 @@
                         padding: .3em;
                         color: inherit;
                         cursor: pointer;
-
                     }
                 }
             }
@@ -81,6 +80,7 @@
                         margin: 1em 0 0 0 ;
                     }
                 .form-group {
+                    width: 70%;
                    
                     &.name {
                         display: flex;

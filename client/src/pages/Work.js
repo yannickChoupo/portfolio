@@ -14,8 +14,9 @@ import Calculator from "../Projects/algorithm/calculator";
 import Timer from "../Projects/algorithm/Timer.js";
 import BarChart from "../Projects/dataviz/BarChart";
 import ScatterPlot from "../Projects/dataviz/Scatterplot";
-import TimesTamp from "../Projects/backendApis/timesTamp";
-// import Heatmap from "../Components/Projects/DataVisualisation/heatmap";
+import TimesTamp from "../Projects/backend/timesTamp";
+import Heatmap from "../Projects/dataviz/Heatmap";
+import MarkDownPreviewer from "../Projects/algorithm/markDownPreviewer";
 
 
 
@@ -78,7 +79,7 @@ const Projects = [
     {
         // id: 4,
         name: "Timestamp",
-        techStack: ["express"],
+        techStack: ["Express"],
         description: "description .....",
         status: "available",
         use: (techStack, tech) => {
@@ -90,17 +91,17 @@ const Projects = [
         name: "Heatmap",
         techStack: ["Javascript", "Ajax", "React"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
     },
     {
         // id: 4,
-        name: "Mardown Previewer",
-        techStack: ["Javascript", "Ajax"],
+        name: "MarkDownPreviewer",
+        techStack: ["Javascript", "HTML", "SCSS", ""],
         description: "Description .....",
-        status: "not available",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -331,6 +332,10 @@ const Project = () => {
         return <ScatterPlot />
     } else if (projectName === "Timestamp") {
         return <TimesTamp />
+    } else if (projectName === "MarkDownPreviewer") {
+        return <MarkDownPreviewer />
+    } else if (projectName === "Heatmap") {
+        return <Heatmap />
     } else {
         return (
             <h4>Project not jet available here</h4>
@@ -494,6 +499,7 @@ const Works = () => {
                                                     id={curCategorie.name}
                                                     className={active ? "active" : ""}
                                                     onClick={handleCategorieChange}
+                                                    key={curCategorie.name + idx}
                                                 >
                                                     {curCategorie.name}
                                                 </li>
@@ -512,7 +518,9 @@ const Works = () => {
                                                 <li
                                                     id={tech}
                                                     className={active ? "active" : ""}
-                                                    onClick={handleTechStackChange}>
+                                                    onClick={handleTechStackChange}
+                                                    key={tech + idx}
+                                                >
                                                     {tech}
                                                 </li>
                                             )
@@ -541,9 +549,9 @@ const Works = () => {
                                                     {
                                                         techStack.map((tech, idx) => {
                                                             if (idx === techStack.length - 1) {
-                                                                return (<span>{tech}</span>)
+                                                                return (<span key={tech}>{tech}</span>)
                                                             }
-                                                            return (<span>{tech},</span>)
+                                                            return (<span key={tech}>{tech},</span>)
                                                         })
                                                     }
                                                 </div>
