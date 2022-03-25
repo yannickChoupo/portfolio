@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import * as d3 from 'd3';
 import sendHttpRequest from "../../helpers/utils";
-// import {BrowserView, MobileView} from 'react-device-detect';
 
 
 let url = "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json";
-// const padding = 40, svgHeight = 470, svgWidth = 320;
 const BarChart = () => {
     useEffect(() => {
         console.log("window size", window.innerWidth)
 
         sendHttpRequest("GET", url).then(responseData => {
-            // setState({data: responseData.data, isFetching: false})
             const data = responseData.data;
             console.log(data[0]);
             let heightScale;
