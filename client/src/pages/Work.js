@@ -5,17 +5,13 @@ import {
     useParams,
     useRouteMatch
 } from "react-router-dom";
-// import { MobileView, BrowserView } from 'react-device-detect';
-// import history from "../helpers/history";
-
-// import Projects from "../data";
 import RandomQuote from "../Projects/algorithm/RamdomQuote";
 import Calculator from "../Projects/algorithm/calculator";
 import Timer from "../Projects/algorithm/Timer.js";
 import BarChart from "../Projects/dataviz/BarChart";
 import ScatterPlot from "../Projects/dataviz/Scatterplot";
 import TimesTamp from "../Projects/backend/timesTamp";
-import Heatmap from "../Projects/dataviz/Heatmap";
+import Heatmap from "../Projects/dataviz/heatmap";
 import MarkDownPreviewer from "../Projects/algorithm/markDownPreviewer";
 
 
@@ -330,17 +326,18 @@ const Project = () => {
         return <BarChart />
     } else if (projectName === "ScatterPlot") {
         return <ScatterPlot />
-    } else if (projectName === "Timestamp") {
-        return <TimesTamp />
-    } else if (projectName === "MarkDownPreviewer") {
-        return <MarkDownPreviewer />
-    } else if (projectName === "Heatmap") {
-        return <Heatmap />
     } else {
         return (
             <h4>Project not jet available here</h4>
         );
     }
+    //  else if (projectName === "Timestamp") {
+    //     return <TimesTamp />
+    // } else if (projectName === "MarkDownPreviewer") {
+    //     return <MarkDownPreviewer />
+    // } else if (projectName === "Heatmap") {
+    //     return <Heatmap />
+    // } 
 }
 
 // const Categorie = () => {
