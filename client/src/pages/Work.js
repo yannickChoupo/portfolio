@@ -325,13 +325,10 @@ const Project = () => {
         return <BarChart />
     } else if (projectName === "ScatterPlot") {
         return <ScatterPlot />
-<<<<<<< HEAD
     } else if (projectName === "Timestamp") {
         return <TimesTamp />
     } else if (projectName === "MarkDownPreviewer") {
         return <MarkDownPreviewer />
-=======
->>>>>>> master
     } else {
         return (
             <h4>Project not jet available here</h4>
