@@ -5,10 +5,6 @@ import {
     useParams,
     useRouteMatch
 } from "react-router-dom";
-// import { MobileView, BrowserView } from 'react-device-detect';
-// import history from "../helpers/history";
-
-// import Projects from "../data";
 import RandomQuote from "../Projects/algorithm/RamdomQuote";
 import Calculator from "../Projects/algorithm/calculator";
 import Timer from "../Projects/algorithm/Timer.js";
@@ -329,15 +325,25 @@ const Project = () => {
         return <BarChart />
     } else if (projectName === "ScatterPlot") {
         return <ScatterPlot />
+<<<<<<< HEAD
     } else if (projectName === "Timestamp") {
         return <TimesTamp />
     } else if (projectName === "MarkDownPreviewer") {
         return <MarkDownPreviewer />
+=======
+>>>>>>> master
     } else {
         return (
             <h4>Project not jet available here</h4>
         );
     }
+    //  else if (projectName === "Timestamp") {
+    //     return <TimesTamp />
+    // } else if (projectName === "MarkDownPreviewer") {
+    //     return <MarkDownPreviewer />
+    // } else if (projectName === "Heatmap") {
+    //     return <Heatmap />
+    // } 
 }
 
 // const Categorie = () => {
