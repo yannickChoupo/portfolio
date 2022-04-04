@@ -26,11 +26,8 @@ mongoose.connect(
     .then(() => console.log('MongoDB Connected'))
     .catch((error) => console.log(error));
 
-<<<<<<< HEAD
 // const connection = mongoose.connection;
 //
-=======
->>>>>>> 5d8720e8c57d6c7c4d2f58b8b67549d522e1fa65
 mongoose.connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });

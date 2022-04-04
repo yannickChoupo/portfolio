@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import history from "./helpers/history";
-<<<<<<< HEAD
-// import jwt from 'jsonwebtoken';
-
-=======
-import $ from 'jquery';
 import jwt from 'jsonwebtoken';
-import axios from "axios";
->>>>>>> 5d8720e8c57d6c7c4d2f58b8b67549d522e1fa65
+import $ from 'jquery';
+import axios from 'axios';
+
 
 
 import './sass/main.scss';
@@ -31,38 +27,6 @@ import {
     CSSTransition,
     TransitionGroup
 } from "react-transition-group";
-<<<<<<< HEAD
-import {useSelector} from "react-redux";
-// import {useDispatch} from "react-redux";
-// import SideBar from "./Components/sidebar";
-// import {authenticate} from "./redux/actions/auth";
-
-// Pages
-const routes = [
-    {path: '/', Component: Home},
-    {path: '/about', Component: About},
-    {path: '/work', Component: Works},
-    {path: '/contact', Component: Contact},
-    {path: '/sign', Component: Sign},
-    {path: '/error', Component: Error},
-    {path: '*', Component: Error},
-]
-/**
- * if (!getFromStorage("main_storage")) {
-    history.push("/sign");
-    console.log("local storage empty");
-} else {
-    const token = getFromStorage("main_storage").token;
-    const exp = jwt.decode(token);
-    if(Date.now() >= (exp * 1000)) {
-        history.push("/sign");
-        console.log("jwt expired ");
-    }
-}
- */
-
-=======
->>>>>>> 5d8720e8c57d6c7c4d2f58b8b67549d522e1fa65
 
 import { useSelector } from "react-redux";
 // const routes = [
