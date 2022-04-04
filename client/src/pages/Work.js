@@ -15,7 +15,6 @@ import Timer from "../Projects/algorithm/Timer.js";
 import BarChart from "../Projects/dataviz/BarChart";
 import ScatterPlot from "../Projects/dataviz/Scatterplot";
 import TimesTamp from "../Projects/backend/timesTamp";
-import Heatmap from "../Projects/dataviz/Heatmap";
 import MarkDownPreviewer from "../Projects/algorithm/markDownPreviewer";
 
 
@@ -334,8 +333,6 @@ const Project = () => {
         return <TimesTamp />
     } else if (projectName === "MarkDownPreviewer") {
         return <MarkDownPreviewer />
-    } else if (projectName === "Heatmap") {
-        return <Heatmap />
     } else {
         return (
             <h4>Project not jet available here</h4>
@@ -536,7 +533,6 @@ const Works = () => {
                                     techStack,
                                     status
                                 } = project;
-                                // console.log(project.use(techStack, "React"));
                                 const activeStack = curStack.filter(({ active }) => active);
                                 const activeStacks = activeStack.map(item => item.tech);
                                 if (activeStacks.some(elem => project.use(techStack, elem))

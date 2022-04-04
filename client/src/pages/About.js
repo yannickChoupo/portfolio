@@ -78,17 +78,8 @@ const About = () => {
             $(e.target.parentNode).toggleClass("active");
         } 
         const activeListItem = $("li[class='active']");
-<<<<<<< HEAD
-        if(activeListItem) {
-=======
-        if (activeListItem) {
-            console.log("active class");
->>>>>>> 5d8720e8c57d6c7c4d2f58b8b67549d522e1fa65
             activeListItem.toggleClass("active");
         }
-        console.log(e.target.parentNode);
-        $(e.target.parentNode).addClass("active");
-    }
     return (
         <>
             <div id="about" className="page">
