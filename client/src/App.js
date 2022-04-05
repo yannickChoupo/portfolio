@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import history from "./helpers/history";
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 import $ from 'jquery';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 
@@ -18,11 +18,11 @@ import Error from './pages/ErrorPage'
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 
-import Sign from "./Components/Sign";
+// import Sign from "./Components/Sign";
 import SideBar from "./Components/sidebar";
 
 
-import { getFromStorage, setInStorage, removeInStorage } from "./utils/storage";
+// import { getFromStorage } from "./utils/storage";
 import {
     CSSTransition,
     TransitionGroup
@@ -50,16 +50,18 @@ import { useSelector } from "react-redux";
 //         console.log("jwt expired ");
 //     }
 // }
-const SERVER_Request = axios.create(
-    {
-        baseURL: `${process.env.NODE_ENV === "production" ?
-            'https://yannick-njilo-portfolio.herokuapp.com'
-            :
-            'http://localhost:5000'}`
-    }
-);
+
+////////////////////  AXIOS   //////////////////////////////////////////// 
+// const SERVER_Request = axios.create(
+//     {
+//         baseURL: `${process.env.NODE_ENV === "production" ?
+//             'https://yannick-njilo-portfolio.herokuapp.com'
+//             :
+//             'http://localhost:5000'}`
+//     }
+// );
 function App() {
-    const location = useLocation();
+    // const location = useLocation();
     const { isOpen } = useSelector(state => state.hamburger);
 
     const disableScroll = () => {
@@ -72,27 +74,28 @@ function App() {
         $('.page').css('opacity', '1');
     }
     useEffect(() => {
-        const mainStorage = getFromStorage("session");
+        console.log("App gestarted ...")
+        // const mainStorage = getFromStorage("session");
         // add the session
-        if (!mainStorage) {
-            SERVER_Request.get('/api/session').then((response) => {
-                if (response.data.session) {
-                    setInStorage("session", response.data.session);
-                }
-            }).then((response) => {
-                console.log("Add sessio response: \n", response);
-            })
-        } else {
-            // delete the session 
-            const exp = jwt.decode(mainStorage);
-            if (Date.now() >= (exp.exp * 1000)) {
-                removeInStorage("session");
-                SERVER_Request.post(`/api/session/${exp.id}`)
-                    .then((response) => {
-                        console.log(response.message);
-                    })
-            }
-        }
+        // if (!mainStorage) {
+        //     SERVER_Request.get('/api/session').then((response) => {
+        //         if (response.data.session) {
+        //             setInStorage("session", response.data.session);
+        //         }
+        //     }).then((response) => {
+        //         console.log("Add sessio response: \n", response);
+        //     })
+        // } else {
+        //     // delete the session 
+        //     const exp = jwt.decode(mainStorage);
+        //     if (Date.now() >= (exp.exp * 1000)) {
+        //         removeInStorage("session");
+        //         SERVER_Request.post(`/api/session/${exp.id}`)
+        //             .then((response) => {
+        //                 console.log(response.message);
+        //             })
+        //     }
+        // }
     }, [])
 
     if (isOpen) {
@@ -111,9 +114,9 @@ function App() {
                     classNames="pages"
                     key={history.location.key}>
                     <Switch location={history.location}>
-                        <Route exact path="/sign">
+                        {/* <Route exact path="/sign">
                             <Sign history={history} />
-                        </Route>
+                        </Route> */}
                         <Route exact path="/">
                             <Home />
                         </Route>
