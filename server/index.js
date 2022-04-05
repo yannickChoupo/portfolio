@@ -80,7 +80,7 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 app.get('/',(req,res) => {
-    res.send("hello world");
+    res.send("Yannick Njilo Portfolio backend");
 })
 
 app.listen(process.env.PORT || 5000, function () {

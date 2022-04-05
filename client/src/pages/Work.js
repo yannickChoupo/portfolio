@@ -564,6 +564,10 @@ const Works = () => {
                                             </div>
                                         </li>
                                     )
+                                } else {
+                                    return (
+                                        <li className="list-item project-card" key={idx}>Stack not available</li>
+                                    )
                                 }
                             })}
                         </ul>

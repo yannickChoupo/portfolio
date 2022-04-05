@@ -74,7 +74,7 @@ const Skills = [
 const About = () => {
     const openDescription = (e) => {
         console.log("event target", e.target.parentNode.className);
-        if(e.target.parentNode.className == "active") {
+        if(e.target.parentNode.className === "active") {
             $(e.target.parentNode).toggleClass("active");
         } 
         const activeListItem = $("li[class='active']");
