@@ -12,7 +12,6 @@ COPY package*.json ./
 RUN npm install 
 
 # copy local files to app folder
-COPY . .
 
 EXPOSE 3000
 

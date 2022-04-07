@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 build:
-=======
-makebuild:
->>>>>>> 5d8720e8c57d6c7c4d2f58b8b67549d522e1fa65
     docker-compose up
 build-dev:
     cd client && $(MAKE) build-dev

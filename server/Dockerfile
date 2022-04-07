@@ -15,9 +15,9 @@ COPY package.json /usr/src/app/
 RUN npm install
 
 # copy local files to app folder
-COPY . /usr/src/app
+COPY . .
 
 EXPOSE 5000
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "dev"]
 
