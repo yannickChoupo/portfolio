@@ -13,8 +13,8 @@ const Home = () => {
                     </section>
                     <section className="content home-body ">
                         <p>
-                             <strong>Yannick</strong>,<br/>
-                            web developer <br/>
+                            Hey there I´m <strong>Yannick</strong>,<br />
+                            web developer <br />
                             currently living in
                             <strong> Darmstadt,</strong><br />
                             where i am studying <strong>electrical engineering </strong>
