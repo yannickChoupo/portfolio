@@ -1,25 +1,37 @@
-# Dockerfile for React client
+FROM tiangolo/node-frontend:10 as build-stage
 
-# Build react client
-FROM node:lts-buster-slim as build-stage
-
-# Working directory be app
+# The work directory will be /app.
+# This Docker "instruction" will create that directory and go inside of it,
+# + all the next steps will "be" in that /app directory:
 WORKDIR /app
 
-COPY package*.json ./
+# copy all files that start with package and end with json into the /app directorie
+COPY package*.json /app/
 
-## Installing dependencies
-RUN npm install --production
+# install the dependencies
+RUN npm install
 
- # copy local files to app folder
-COPY . .
+# copy the content of the pwd into the /app directorie
+COPY ./ /app/
 
-EXPOSE 3000
+# run the npm build command to compile the source code inside the docker container
+RUN npm run build
 
-RUN npm build
-
+# Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.15
 
+# from the build-stage copy the the compiled app
 COPY --from=build-stage /app/build/ /usr/share/nginx/html
 
-COPY --from=build-stage /nginx.conf etc/nginx/conf.d/default.conf
+# remove the default config file
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copy the default nginx.conf provided by tiangolo/node-frontend
+
+COPY nginx/nginx.conf /etc/nginx/conf.d
+
+# expose port 80
+EXPOSE 80
+
+# fire up nginx
+CMD ["nginx", "-g", "daemon off;"]
