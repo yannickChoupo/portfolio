@@ -64,48 +64,48 @@ class LogInOut extends React.Component {
     }
 
     componentDidMount() {
-        const mainStorage = getFromStorage('main_storage');
-        if (mainStorage) {
-            const { token } = mainStorage;
-            // verify token
-            this.setState({
-                isLoading: true,
-            })
-            axios({
-                method: 'post',
-                url: 'http://localhost:5000/account/verify?token=' + token,
-            }).then(response => {
-                if (response.data.success) {
-                    this.setState({
-                        token: token,
-                        isLoading: false,
-                        logged: true
-                    })
-                } else {
-                    this.setState({
-                        isLoading: false
-                    })
-                }
-            });
-        } else {
-            this.setState({
-                isLoading: false
-            })
-        }
+        // const mainStorage = getFromStorage('main_storage');
+        // if (mainStorage) {
+        //     const { token } = mainStorage;
+        //     // verify token
+        //     this.setState({
+        //         isLoading: true,
+        //     })
+        //     axios({
+        //         method: 'post',
+        //         url: 'http://localhost:5000/account/verify?token=' + token,
+        //     }).then(response => {
+        //         if (response.data.success) {
+        //             this.setState({
+        //                 token: token,
+        //                 isLoading: false,
+        //                 logged: true
+        //             })
+        //         } else {
+        //             this.setState({
+        //                 isLoading: false
+        //             })
+        //         }
+        //     });
+        // } else {
+        //     this.setState({
+        //         isLoading: false
+        //     })
+        // }
     }
 
-    componentWillMount() {
-        console.log("component will mount")
-        document.addEventListener("keyPress", this.handleKeyPressed.bind(this));
-    }
+    // componentWillMount() {
+    //     console.log("component will mount")
+    //     document.addEventListener("keyPress", this.handleKeyPressed.bind(this));
+    // }
 
-    componentWillUnmount() {
-        document.removeEventListener("keypress", this.handleKeyPressed.bind(this));
-    }
+    // componentWillUnmount() {
+    //     document.removeEventListener("keypress", this.handleKeyPressed.bind(this));
+    // }
 
-    handleKeyPressed(event) {
-        console.log(event);
-    }
+    // handleKeyPressed(event) {
+    //     console.log(event);
+    // }
 
     updateUserName = (event) => {
         this.setState({
@@ -118,17 +118,22 @@ class LogInOut extends React.Component {
         });
     }
 
-    onSignUp() {
+    onSignUp(e) {
+		e.preventDefault();
+		
+
         console.log("sign Up")
-        // Grab the state
+        // // Grab the state
         const {
             userName,
             password
         } = this.state;
+		console.log(this.state);
+
         // Post request to backend
-        this.setState({
-            isLoading: true,
-        })
+        // this.setState({
+        //     isLoading: true,
+        // })
         axios({
             method: 'post',
             url: 'http://localhost:5000/account/signUp',
@@ -150,7 +155,7 @@ class LogInOut extends React.Component {
                     isLoading: false
                 })
             }
-            this.handleResponse();
+            // this.handleResponse();
         });
     }
 
@@ -189,19 +194,19 @@ class LogInOut extends React.Component {
                     isLoading: false
                 })
             }
-            this.handleResponse();
+            // this.handleResponse();
         });
     }
 
     handleResponse = () => {
-        $(".errorMessage").show();
-        setTimeout(() => {
-            $(".errorMessage").hide();
-        }, 1000)
+        // $(".errorMessage").show();
+        // setTimeout(() => {
+        //     $(".errorMessage").hide();
+        // }, 1000)
     }
 
     render() {
-        console.log("component Mount !!!!!")
+        // console.log("component Mount !!!!!")
         const userNameIsValid = false;
         const passwordIsValid = false;
         const {
@@ -216,74 +221,80 @@ class LogInOut extends React.Component {
         errorStyle = {
             'color': response.success ? 'green' : 'red'
         }
-        if (isLoading) {
-            return (<div>
-                <p>
-                    Loading...
-                </p>
-            </div>)
-        }
+        // if (isLoading) {
+        //     return (<div>
+        //         <p>
+        //             Loading...
+        //         </p>
+        //     </div>)
+        // }
         const status = !token ? "Up" : "In";
         return (
             <>
-                {/*{ !logged &&*/}
-                <div className="grid-full log">
-                    <div className="errorMessage hide" style={errorStyle}>{response.message}</div>
-                    <div className="main">
+                <div id="sign" className="page">
+					<div className="page-container">
                         <div className="header">
                             <div>Sign {status}</div>
                         </div>
-                        <form className="container" autoComplete="off">
-                            <div className="row" role="userName">
-                                <label htmlFor="name" className="col-2">
-                                    <i className="fa fa-user"/>
-                                </label>
-                                <div className="col-10">
-                                    <input type="text" id="userName"
-                                           placeholder="visitor name"
-                                           maxLength="8"
-                                           value={userName}
-                                           onChange={(event) => this.updateUserName(event)}
-                                           required/>
-                                    {userNameIsValid && <i className="fa fa-check"/>}
-                                </div>
-                            </div>
-
-                            <div className="row" role="password">
-                                <label htmlFor="inputPassword" className="col-2">
-                                    <i className="fa fa-unlock-alt"/>
-                                </label>
-                                <div className="col-10">
-                                    <input type="password"
-                                           id="inputPassword"
-                                           placeholder="Password"
-                                           maxLength="8"
-                                           value={password}
-                                           onChange={(event) => this.updatePassword(event)}
-                                           required/>
-                                    {/*<div></div>*/}
-                                    {passwordIsValid && <i className="fa fa-check"/>}
-                                </div>
-                            </div>
-                            <div className="row" role="submit">
-                                <button type="button" value="Submit"
-                                        onClick={!token ? this.onSignUp : this.onSignIn}>
-                                    Sign {status}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+						<form onSubmit={(e) => this.onSignUp(e)}>
+							<label>
+								username:
+								<input name="username"
+								       type="text"
+									   id="username"
+									   maxLength="8"
+									   value={userName}
+									   onChange={(event) => this.updateUserName(event)}>
+								</input>
+							</label>
+							<label>
+								password:
+								<input  name="password"
+										type="password"
+										id="password"
+										maxLength="8"
+										value={password}
+										onChange={(event) => this.updatePassword(event)}>
+								</input>
+							</label>
+							<label>
+								<input name="submit"
+								       type="submit"
+									   value="submit"
+									   onClick={(e) => this.onSignUp(e)}>
+								</input>
+							</label>
+						</form>
+					 {/*	<form>
+							<label>
+								<i className="fa fa-user"/>
+								<input  name="username"
+								        type="text"
+								        id="userName"
+										placeholder="visitor name"
+										maxLength="8"
+										value={userName}
+										onChange={(event) => this.updateUserName(event)}/>
+							</label>
+							<label>
+								<i className="fa fa-unlock-alt"/>
+								<input  name="password"
+								        type="password"
+										id="password"
+										placeholder="Password"
+										maxLength="8"
+										value={password}
+										onChange={(event) => this.updatePassword(event)}/>
+							</label>
+							<input type="submit" value="Submit"
+									onClick={!token ? this.onSignUp : this.onSignIn}>
+								Sign {status}
+							</input>
+                        </form>*/}
+					</div> 
                 </div>
-                {/*}*/}
             </>
         );
-        // }else{
-        //     return (
-        //         <p>
-        //             {token}
-        //         </p>
-        //     )
-        // }
 
     }
 
