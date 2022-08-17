@@ -18,7 +18,7 @@ import Error from './pages/ErrorPage'
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 
-// import Sign from "./Components/Sign";
+import LogInOut from "./pages/LogInOut";
 import SideBar from "./Components/sidebar";
 
 
@@ -98,11 +98,11 @@ function App() {
         // }
     }, [])
 
-    if (isOpen) {
-        disableScroll();
-    } else {
-        enableScroll();
-    }
+    // if (isOpen) {
+    //     disableScroll();
+    // } else {
+    //     enableScroll();
+    // }
     return (
         <div id="app">
             <NavBar />
@@ -114,9 +114,9 @@ function App() {
                     classNames="pages"
                     key={history.location.key}>
                     <Switch location={history.location}>
-                        {/* <Route exact path="/sign">
-                            <Sign history={history} />
-                        </Route> */}
+                        <Route exact path="/sign">
+                            <LogInOut history={history} />
+                        </Route>
                         <Route exact path="/">
                             <Home />
                         </Route>
