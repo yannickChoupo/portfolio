@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { toggleHamburger } from "../redux/actions/hamburger";
-// import $ from 'jquery';
+import { toggleHamburger } from '../features/hamburger/hamburgerSlice';
 
 
 const Hamburger = (props) => {
@@ -15,7 +14,7 @@ const Hamburger = (props) => {
     return (
         <>
             <div
-                className={`hamburger ${!isOpen ? "hamburger--open" : "hamburger--close active"} `}
+                className={`hamburger ${!isOpen ? "hamburger--open" : "hamburger--close active"}`}
                 onClick={switchMode}>
                 <div className={`hamburger__line`} />
             </div>
