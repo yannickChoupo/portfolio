@@ -16,10 +16,6 @@ export const SET_LOG_MODE = "SET_LOG_MODE";
 
 export const AUTHENTICATE = 'AUTHENTICATE';
 
-export const TOGGLE_HAMBURGER = 'TOGGLE_HAMBURGER';
-// export const OPEN_HAMBURGER = 'OPEN_HAMBURGER ';
-// export const CLOSE_HAMBURGER = 'CLOSE_HAMBURGER';
-
 export const SET_IS_LOADING = 'IS_LOADING';
 export const CLEAR_IS_LOADING = 'IS_LOADING';
 
