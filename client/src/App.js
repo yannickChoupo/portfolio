@@ -37,7 +37,7 @@ import { useSelector } from "react-redux";
 import Project from "./pages/Project";
 import SharedLayout from "./Components/SharedLayout";
 import ProtectetdRoute from "./Components/ProtectedRoute";
-import SharedProductLayout from "./Components/ShareProductLayout";
+import SharedProjectLayout from "./Components/ShareProjectLayout";
 // const routes = [
 //     { path: '/', Component: Home },
 //     { path: '/about', Component: About },
@@ -120,7 +120,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={ <SharedLayout/> }>
 						<Route index element={ <Home />} />
-						<Route path="works" element={ <SharedProductLayout />}> 
+						<Route path="works" element={ <SharedProjectLayout />}> 
 							<Route index element={<Works />} />
 							<Route path=":projectName" element={ <Project />} />
 						</Route>

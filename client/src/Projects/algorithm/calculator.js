@@ -130,106 +130,101 @@ export const Calculator = ({ unMountProject }) => {
         }
     }
     return (
-        <div id="calculator" className="project">
+        <div id="calculator">
             <div id="board">
-                <div id="screen" className="container">
+                <div id="screen">
                     <div className="display">{state.formula}</div>
-                    <div id="display">{state.curDisplay}</div>
+                    <div className="display">{state.curDisplay}</div>
                 </div>
                 <div id="main-board">
-                    <div className="row">
-                        <div className="col-6">
-                            <button id="clear"
-                                type="button"
-                                value="AC"
-                                onClick={handleClick}>
-                                AC
-                            </button>
-                        </div>
-                        <div className="col-6">
-                            <button id="divide"
-                                type="button"
-                                className="btn-circle float-right"
-                                onClick={handleClick}
-                                value="/">
-                                /
-                            </button>
-                        </div>
+                    <div className="row first">
+						<button 
+							id="clear"
+							className="btn btn-wide"
+							type="button"
+							value="AC"
+							onClick={handleClick}>
+							AC
+						</button>
+						<button 
+							id="divide"
+							type="button"
+							className="btn btn-small btn-circle"
+							onClick={handleClick}
+							value="/">
+							/
+						</button>
                     </div>
                     <div className="row">
                         {firstLineData.map((item, idx) => {
                             return (
-                                <RoundButton innerText={item.symbol}
-                                    innerID={item.ID}
+                                <button 
+									id={item.ID}
+                                    className="btn btn-circle"
+									value={item.symbol}
                                     key={idx}
-                                    className="col-3"
-                                    handleButtonClick={handleClick} />
+                                    onClick={handleClick} 
+								>
+									{item.symbol}
+								</button>
                             )
                         })}
                     </div>
                     <div className="row">
                         {secondLineData.map((item, idx) => {
                             return (
-                                <RoundButton innerText={item.symbol}
-                                    innerID={item.ID}
-                                    key={idx}
-                                    className="col-3"
-                                    handleButtonClick={handleClick} />
+								<button 
+									id={item.ID}
+									className="btn btn-circle"
+									value={item.symbol}
+									key={idx}
+									onClick={handleClick} 
+								>
+									{item.symbol}
+								</button>
                             )
                         })}
                     </div>
                     <div className="row">
                         {thirdLineData.map((item, idx) => {
                             return (
-                                <RoundButton innerText={item.symbol}
-                                    innerID={item.ID}
-                                    key={idx}
-                                    className="col-3"
-                                    handleButtonClick={handleClick} />
+								<button 
+									id={item.ID}
+									className="btn btn-circle"
+									value={item.symbol}
+									key={idx}
+									onClick={handleClick} 
+								>
+									{item.symbol}
+								</button>
                             )
                         })}
                     </div>
-                    <div className="row">
-                        <div className="col-6">
-                            <button type="button"
-                                id="zero"
-                                value="0"
-                                onClick={handleClick}>
-                                0
-                            </button>
-                        </div>
-                        <div className="col-3">
-                            <button type="button"
-                                id="decimal"
-                                className="btn-circle"
-                                value="."
-                                onClick={handleClick}>
-                                .
-                            </button>
-                        </div>
-                        <div className="col-3 ">
-                            <button type="button" id="equals"
-                                className="btn-circle"
-                                value="="
-                                onClick={handleClick}>
-                                =
-                            </button>
-                        </div>
+                    <div className="row last">
+						<button type="button"
+							id="zero"
+							value="0"
+							onClick={handleClick}>
+							0
+						</button>
+						<button type="button"
+							id="decimal"
+							className="btn-circle"
+							value="."
+							onClick={handleClick}>
+							.
+						</button>
+						<button type="button" id="equals"
+							className="btn-circle"
+							value="="
+							onClick={handleClick}>
+							=
+						</button>
                     </div>
                 </div>
             </div>
         </div>
     );
 }
-const RoundButton = (props) => {
-    return (
-        <div className="col-3">
-            <button type="button"
-                id={props.innerID}
-                value={props.innerText}
-                className="btn-circle"
-                onClick={props.handleButtonClick}>{props.innerText}</button>
-        </div>
-    );
-}
-export default Calculator
+
+export default Calculator;

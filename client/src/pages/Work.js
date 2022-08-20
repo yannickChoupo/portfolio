@@ -475,92 +475,73 @@ const Works = () => {
     }
     return (
         <>
-            <div id="work" className="page">
-				<div className="page-container">
-					<h2>Work</h2>
-					<div className="filters">
-						<div id="categorie">
-							<h4>Categorie</h4>
-							<ul className="filterList close">
-								{
-									curCategories.map((curCategorie, idx) => {
-										const { active } = curCategorie;
-										return (
-											<li
-												id={curCategorie.name}
-												className={active ? "active" : ""}
-												onClick={handleCategorieChange}
-												key={curCategorie.name + idx}
-											>
-												{curCategorie.name}
-											</li>
-										)
-									})
-								}
-							</ul>
-						</div>
-						<div id="techStack">
-							<h4>Tech stack</h4>
-							<ul className="filterList">
-								{
-									curStack.map((stack, idx) => {
-										const { tech, active } = stack;
-										return (
-											<li
-												id={tech}
-												className={active ? "active" : ""}
-												onClick={handleTechStackChange}
-												key={tech + idx}
-											>
-												{tech}
-											</li>
-										)
-									})
-								}
-							</ul>
-						</div>
-					</div>
-					<ul className="work-list">
-						{Projects.map((project, idx) => {
-							const {
-								name,
-								techStack,
-								status
-							} = project;
-							const activeStack = curStack.filter(({ active }) => active);
-							const activeStacks = activeStack.map(item => item.tech);
-							if (activeStacks.some(elem => project.use(techStack, elem))
-								&& status === "available") {
-								return (
-									<li className="list-item project-card" key={idx}>
-										<div className="title">
-											<h3>{name}</h3>
-											<div className="techList">
-												{
-													techStack.map((tech, idx) => {
-														if (idx === techStack.length - 1) {
-															return (<span key={tech}>{tech}</span>)
-														}
-														return (<span key={tech}>{tech},</span>)
-													})
-												}
-											</div>
-										</div>
-										<div className="item-link">
-											<NavLink 
-												to={`/works/${name}`}
-												className="work-link"
-												onClick={() => dispatch(launchDemo())}>
-												Demo
-											</NavLink>
-										</div>
-									</li>
-								)
+            <div id="work">
+				<h2>Work</h2>
+				<div className="filters">
+					<div id="categorie">
+						<h4>Categorie</h4>
+						<ul className="filter-list close">
+							{
+								curCategories.map((curCategorie, idx) => {
+									const { active } = curCategorie;
+									return (
+										<li
+											id={curCategorie.name}
+											className={active ? "active" : ""}
+											onClick={handleCategorieChange}
+											key={curCategorie.name + idx}
+										>
+											{curCategorie.name}
+										</li>
+									)
+								})
 							}
-						})}
-					</ul>
+						</ul>
+					</div>
+					<div id="techStack">
+						<h4>Tech stack</h4>
+						<ul className="filter-list">
+							{
+								curStack.map((stack, idx) => {
+									const { tech, active } = stack;
+									return (
+										<li
+											id={tech}
+											className={active ? "active" : ""}
+											onClick={handleTechStackChange}
+											key={tech + idx}
+										>
+											{tech}
+										</li>
+									)
+								})
+							}
+						</ul>
+					</div>
 				</div>
-            </div>
+				<div className="work-list">
+					{Projects.map((project, idx) => {
+						const {
+							name,
+							techStack,
+							status
+						} = project;
+						const activeStack = curStack.filter(({ active }) => active);
+						const activeStacks = activeStack.map(item => item.tech);
+						if (activeStacks.some(elem => project.use(techStack, elem))
+							&& status === "available") {
+							return (
+								<NavLink 
+										to={`/works/${name}`}
+										className="list-item project-card"
+									>
+										{name}
+								</NavLink>
+							)
+						}
+					})}
+				</div>
+				</div>
         </>
     )
 }

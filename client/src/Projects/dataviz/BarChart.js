@@ -77,7 +77,7 @@ const BarChart = () => {
     return (
         <>
             {/*<MobileView>*/}
-            <div id="barChart" className="project">
+            <div id="barChart">
                 <h1>BAR CHART</h1>
                 <div className="body">
                     <section className="svg-container">

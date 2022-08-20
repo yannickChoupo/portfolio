@@ -290,17 +290,23 @@ const Project = () => {
 	console.log(project)
 
 	return (
-		<section  className="work-wrapper page-container">
+		<section  className="project page">
+			<NavLink
+				to='/works'
+				className="backHome-btn"
+			>
+				Back Home
+			</NavLink>
 			{
-			  projectName === "Calculator" ? <Calculator /> 
-			  : projectName === "Quote" ?  <RandomQuote /> 
-			  : projectName === "Timer" ?  <Timer /> 
-			  : projectName === "BarChart" ?  <BarChart /> 
-			  : projectName === "ScatterPlot" ?  <ScatterPlot /> 
-			  : projectName === "Timestamp" ?  <TimesTamp /> 
-			  : projectName === "MarkDownPreviewer" ?  <MarkDownPreviewer /> :
-			  
-			  (<h4> the project {projectName} not jet available here</h4>)
+				projectName === "Calculator" ? <Calculator /> 
+				: projectName === "Quote" ?  <RandomQuote /> 
+				: projectName === "Timer" ?  <Timer /> 
+				: projectName === "BarChart" ?  <BarChart /> 
+				: projectName === "ScatterPlot" ?  <ScatterPlot /> 
+				: projectName === "Timestamp" ?  <TimesTamp /> 
+				: projectName === "MarkDownPreviewer" ?  <MarkDownPreviewer /> :
+				
+				(<h4> the project {projectName} not jet available here</h4>)
 			}
 		</section>
 	)
