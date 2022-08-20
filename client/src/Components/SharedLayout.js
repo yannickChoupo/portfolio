@@ -7,7 +7,9 @@ const SharedLayout = () => {
 		<>
 			<NavBar  />
 		    <SideBar />
-			<Outlet />
+			<section className="page">
+				<Outlet />
+			</section>
 		</>
 	)
 }

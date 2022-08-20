@@ -1,0 +1,15 @@
+@import "../abstracts/function";
+
+.project {
+	position: relative;
+	.backHome-btn {
+		padding: .5em;
+		position: absolute;
+		top: 1em;
+		left: px-to-em(18px);;
+		color: inherit;
+		border: 1px solid $def-pri;
+		border-radius: 6px;
+		cursor: pointer;
+	}
+}
