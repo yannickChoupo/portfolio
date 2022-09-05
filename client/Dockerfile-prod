@@ -1,15 +1,14 @@
 FROM tiangolo/node-frontend:10 as build-stage
-
 # The work directory will be /app.
 # This Docker "instruction" will create that directory and go inside of it,
 # + all the next steps will "be" in that /app directory:
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # copy all files that start with package and end with json into the /app directorie
-COPY package*.json /app/
+COPY package*.json ./
 
 # install the dependencies
-RUN npm install
+RUN npm install --production
 
 # copy the content of the pwd into the /app directorie
 COPY ./ /app/

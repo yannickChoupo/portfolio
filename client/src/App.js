@@ -4,17 +4,7 @@ import {
 	Route,
 	Routes
   } from "react-router-dom";
-// import { Route, Switch } from "react-router-dom";
-import history from "./helpers/history";
-// import jwt from 'jsonwebtoken';
-import $ from 'jquery';
-// import axios from 'axios';
-
-
-
 import './sass/main.scss';
-import NavBar from "./Components/navBar";
-
 
 import Home from './pages/Home'
 import About from './pages/About';
@@ -24,16 +14,6 @@ import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 
 import LogInOut from "./pages/LogInOut";
-import SideBar from "./Components/sidebar";
-
-
-// import { getFromStorage } from "./utils/storage";
-import {
-    CSSTransition,
-    TransitionGroup
-} from "react-transition-group";
-
-import { useSelector } from "react-redux";
 import Project from "./pages/Project";
 import SharedLayout from "./Components/SharedLayout";
 import ProtectetdRoute from "./Components/ProtectedRoute";
@@ -75,7 +55,6 @@ function App() {
 	const [user, setUser] = useState(null);
 
     useEffect(() => {
-		console.log("App gestarted ...")
         // const mainStorage = getFromStorage("session");
         // add the session
         // if (!mainStorage) {

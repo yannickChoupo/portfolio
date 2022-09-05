@@ -2,24 +2,29 @@ version: "3.7"
 services:
   client:
     container_name: client-dev
+    image: client-dev
+    working_dir: /app/
     build: 
       context: ./client
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-dev
     ports:
       - 3000:3000
     volumes:
-      - ./client:/app
+      - /C/Users/Thinkpad_T460s/Programming/portfolio/client/:/app/
       - /app/node_modules
     depends_on:
       - server
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
       
   server:
     container_name: server-dev
     build:
       context: ./server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-dev
     ports:
       - 5000:5000
     volumes:
-      - ./server:/app
+      - ./server:/usr/src/app/src
       - /app/node_modules
