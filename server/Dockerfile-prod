@@ -3,14 +3,15 @@
 # Build express server
 FROM node:lts-buster-slim
 
-  # Working directory be app
-WORKDIR /app
+# Working directory be app
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-  ## Installing dependencies
+# Installing dependencies
 RUN npm install
-  # copy local files to app folder
+
+# copy local files to app folder
 COPY . .
 
 EXPOSE 5000

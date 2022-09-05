@@ -1,3 +1,8 @@
+.git
+*Dockerfile*
 node_modules
-npm-debug.log
-package-lock.json
+build
+.dockerignore
+Makefile
+.gitignore
+README.md

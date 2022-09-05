@@ -1,6 +1,12 @@
 .git
 *Dockerfile*
-*docker-compose*
 node_modules
 build
 .dockerignore
+Dockerfile-dev
+Dockerfile-prod
+Dockerfile-nginx
+
+Makefile
+.gitignore
+README.md

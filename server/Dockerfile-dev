@@ -1,10 +1,6 @@
 # Dockerfile for React client
-
 # Build express server
-FROM node:16
-
-# Create app directory
-RUN mkdir -p /usr/src/app
+FROM node:lts-alpine
 
 # Working directory be app
 WORKDIR /usr/src/app
