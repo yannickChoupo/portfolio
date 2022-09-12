@@ -3,14 +3,14 @@ services:
   client:
     container_name: client-dev
     image: client-dev
-    working_dir: /app/
+    working_dir: /app
     build: 
       context: ./client
       dockerfile: Dockerfile-dev
     ports:
       - 3000:3000
     volumes:
-      - /C/Users/Thinkpad_T460s/Programming/portfolio/client/:/app/
+      - ./client/src:/app/src
       - /app/node_modules
     depends_on:
       - server
@@ -26,5 +26,5 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - ./server:/usr/src/app/src
+      - ./server:/app
       - /app/node_modules

@@ -14,7 +14,6 @@ const UserSession = require('../models/UserSession');
  * @param next
  * @returns {Promise<*>}
  */
-
 const visitorSignIn = async (req, res) => {
     const { body } = req;
     let {
