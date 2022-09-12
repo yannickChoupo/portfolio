@@ -1,8 +1,6 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-// import { BrowserView, MobileView } from 'react-device-detect';
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-// import history from "../helpers/history";
 import { Logo } from "./logo";
 import Hamburger from "./hamburger";
 import { toggleHamburger } from '../features/hamburger/hamburgerSlice';
@@ -22,25 +20,17 @@ export const NavBar = (props) => {
             <nav className="nav">
                 <ul>
                     <li className="nav-logo">
-                        <NavLink 
-						    // activclassname="active"
+                        <Link 
                             to='/'
                             onClick={handleLogoClick}
 						>
                             <Logo />
-                        </NavLink>
+                        </Link>
                     </li>
                     <li className="nav-ham">
                         <Hamburger />
                     </li>
-                    {/* {
-                        isLoggedIn && !demoIsLaunch &&
-                        <li className="signOut">
-                            <div onClick={LogOut}> LOGOUT</div>
-                        </li>
-                    } */}
                 </ul>
-                {/* <SideBar /> */}
             </nav>
         </>
     )
