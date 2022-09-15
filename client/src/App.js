@@ -36,9 +36,9 @@ function App() {
 					<Route 
 						path="/admin"
 						element = {
-							<ProtectetdRoute user={user} >
+							// <ProtectetdRoute user={user} >
 								<Admin user={user} />
-							</ProtectetdRoute>
+							// </ProtectetdRoute>
 						} 
 					/>
 					<Route path="/login" element={ <LogInOut setUser={setUser} /> } />
