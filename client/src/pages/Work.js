@@ -1,23 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-    Link,
-	NavLink,
-	useParams
-} from "react-router-dom";
-import RandomQuote from "../Projects/algorithm/RamdomQuote";
-import Calculator from "../Projects/algorithm/calculator";
-import Timer from "../Projects/algorithm/Timer.js";
-import BarChart from "../Projects/dataviz/BarChart";
-import ScatterPlot from "../Projects/dataviz/Scatterplot";
-import TimesTamp from "../Projects/backend/timesTamp";
-import MarkDownPreviewer from "../Projects/algorithm/markDownPreviewer";
-
-
-
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { launchDemo, stopDemo } from "../redux/actions/demo"
-// import DemoLauncher from "../Components/DemoLauncher";
-// import { active, curveStepAfter } from "d3";
 
 const Projects = [
     {
@@ -310,58 +293,6 @@ const Categories = [
         techStack: ["C/C++", "Esp-idf", "Arduino"]
     }
 ]
-
-// const Project = () => {
-//     let { projectName } = useParams();
-//     console.log(projectName);
-//     if (projectName === "Calculator") {
-//         return <Calculator />
-//     } else if (projectName === "Quote") {
-//         return <RandomQuote />
-//     } else if (projectName === "Timer") {
-//         return <Timer />
-//     } else if (projectName === "BarChart") {
-//         return <BarChart />
-//     } else if (projectName === "ScatterPlot") {
-//         return <ScatterPlot />
-//     } else if (projectName === "Timestamp") {
-//         return <TimesTamp />
-//     } else if (projectName === "MarkDownPreviewer") {
-//         return <MarkDownPreviewer />
-//     } else {
-//         return (
-//             <h4>Project not jet available here</h4>
-//         );
-//     }
-//     //  else if (projectName === "Timestamp") {
-//     //     return <TimesTamp />
-//     // } else if (projectName === "MarkDownPreviewer") {
-//     //     return <MarkDownPreviewer />
-//     // } else if (projectName === "Heatmap") {
-//     //     return <Heatmap />
-//     // } 
-// }
-
-// const Categorie = () => {
-//     let { categorieName } = useParams();
-//     // console.log(categorieName);
-//     if (categorieName === "Responsive") {
-//         return <h1>Responsive</h1>;
-//     } else if (categorieName === "Algorithm") {
-//         return <h1>Algorithm</h1>;
-//     } else if (categorieName === "Dataviz") {
-//         return <h1>Dataviz</h1>;
-//     } else if (categorieName === "Libraries") {
-//         return <h1>Libraries</h1>;
-//     } else if (categorieName === "Backend") {
-//         return <h1>Backend</h1>;
-//     } else {
-//         return (
-//             <h4>Project not jet available here</h4>
-//         );
-//     }
-// }
-
 const Works = () => {
 	const dispatch = useDispatch();
     const [curCategories, setcurCategories] = useState(Categories);
@@ -436,8 +367,6 @@ const Works = () => {
         setcurCategories(newCategoriesList);
     }, []);
 
-
-
     const handleCategorieChange = (e) => {
         const newCategories = curCategories.map(item => {
             const { active } = item;
@@ -510,7 +439,7 @@ const Works = () => {
 											className={active ? "active" : ""}
 											onClick={handleTechStackChange}
 											key={tech + idx}
-										>
+											>
 											{tech}
 										</li>
 									)
@@ -534,6 +463,7 @@ const Works = () => {
 								<NavLink 
 										to={`/works/${name}`}
 										className="list-item project-card"
+										key={name + techStack + idx}
 									>
 										{name}
 								</NavLink>
@@ -541,7 +471,7 @@ const Works = () => {
 						}
 					})}
 				</div>
-				</div>
+			</div>
         </>
     )
 }
