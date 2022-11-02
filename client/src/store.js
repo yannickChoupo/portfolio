@@ -1,17 +1,10 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-// import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './redux/reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import hamburgerReducer from './features/hamburger/hamburgerSlice';
 
-const initialState = {};
-const middleware = [thunk];
-
-const store = createStore(
-    rootReducer,
-    initialState,
-    compose(
-        applyMiddleware(...middleware)
-    ),
-);
+const store = configureStore({
+	reducer: {
+		hamburger: hamburgerReducer,
+	},
+});
 
 export default store;

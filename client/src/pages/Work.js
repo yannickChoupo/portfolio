@@ -1,25 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-    Route,
-    Link,
-    useParams,
-    useRouteMatch
-} from "react-router-dom";
-import RandomQuote from "../Projects/algorithm/RamdomQuote";
-import Calculator from "../Projects/algorithm/calculator";
-import Timer from "../Projects/algorithm/Timer.js";
-import BarChart from "../Projects/dataviz/BarChart";
-import ScatterPlot from "../Projects/dataviz/Scatterplot";
-import TimesTamp from "../Projects/backend/timesTamp";
-import Heatmap from "../Projects/dataviz/heatmap";
-import MarkDownPreviewer from "../Projects/algorithm/markDownPreviewer";
-
-
-
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { launchDemo, stopDemo } from "../redux/actions/demo"
-// import DemoLauncher from "../Components/DemoLauncher";
-// import { active, curveStepAfter } from "d3";
 
 const Projects = [
     {
@@ -312,58 +293,9 @@ const Categories = [
         techStack: ["C/C++", "Esp-idf", "Arduino"]
     }
 ]
-
-const Project = () => {
-    let { projectName } = useParams();
-    console.log(projectName);
-    if (projectName === "Calculator") {
-        return <Calculator />
-    } else if (projectName === "Quote") {
-        return <RandomQuote />
-    } else if (projectName === "Timer") {
-        return <Timer />
-    } else if (projectName === "BarChart") {
-        return <BarChart />
-    } else if (projectName === "ScatterPlot") {
-        return <ScatterPlot />
-    } else {
-        return (
-            <h4>Project not jet available here</h4>
-        );
-    }
-    //  else if (projectName === "Timestamp") {
-    //     return <TimesTamp />
-    // } else if (projectName === "MarkDownPreviewer") {
-    //     return <MarkDownPreviewer />
-    // } else if (projectName === "Heatmap") {
-    //     return <Heatmap />
-    // } 
-}
-
-// const Categorie = () => {
-//     let { categorieName } = useParams();
-//     // console.log(categorieName);
-//     if (categorieName === "Responsive") {
-//         return <h1>Responsive</h1>;
-//     } else if (categorieName === "Algorithm") {
-//         return <h1>Algorithm</h1>;
-//     } else if (categorieName === "Dataviz") {
-//         return <h1>Dataviz</h1>;
-//     } else if (categorieName === "Libraries") {
-//         return <h1>Libraries</h1>;
-//     } else if (categorieName === "Backend") {
-//         return <h1>Backend</h1>;
-//     } else {
-//         return (
-//             <h4>Project not jet available here</h4>
-//         );
-//     }
-// }
-
 const Works = () => {
-    // const [curProjects, setCurProjects] = useState(Projects);
+	const dispatch = useDispatch();
     const [curCategories, setcurCategories] = useState(Categories);
-
     const [curStack, setCurStack] = useState([])
 
     const updateStack = () => {
@@ -435,14 +367,6 @@ const Works = () => {
         setcurCategories(newCategoriesList);
     }, []);
 
-
-
-    const dispatch = useDispatch();
-    const { demoIsLaunch } = useSelector(state => state.demo);
-
-    let { url } = useRouteMatch();
-
-    // const [projectName, setProjectName] = useState("")
     const handleCategorieChange = (e) => {
         const newCategories = curCategories.map(item => {
             const { active } = item;
@@ -480,100 +404,74 @@ const Works = () => {
     }
     return (
         <>
-            <div id="work" className="page">
-                <Route exact path={url}>
-                    <div className="page-container">
-                        <h2>Work</h2>
-                        <div className="filters">
-                            <div id="categorie">
-                                <h4>Categorie</h4>
-                                <ul className="filterList close">
-                                    {
-                                        curCategories.map((curCategorie, idx) => {
-                                            const { active } = curCategorie;
-                                            return (
-                                                <li
-                                                    id={curCategorie.name}
-                                                    className={active ? "active" : ""}
-                                                    onClick={handleCategorieChange}
-                                                    key={curCategorie.name + idx}
-                                                >
-                                                    {curCategorie.name}
-                                                </li>
-                                            )
-                                        })
-                                    }
-                                </ul>
-                            </div>
-                            <div id="techStack">
-                                <h4>Tech stack</h4>
-                                <ul className="filterList">
-                                    {
-                                        curStack.map((stack, idx) => {
-                                            const { tech, active } = stack;
-                                            return (
-                                                <li
-                                                    id={tech}
-                                                    className={active ? "active" : ""}
-                                                    onClick={handleTechStackChange}
-                                                    key={tech + idx}
-                                                >
-                                                    {tech}
-                                                </li>
-                                            )
-                                        })
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        <ul className="work-list">
-                            {Projects.map((project, idx) => {
-                                const {
-                                    name,
-                                    techStack,
-                                    status
-                                } = project;
-                                // console.log(project.use(techStack, "React"));
-                                const activeStack = curStack.filter(({ active }) => active);
-                                const activeStacks = activeStack.map(item => item.tech);
-                                if (activeStacks.some(elem => project.use(techStack, elem))
-                                    && status === "available") {
-                                    return (
-                                        <li className="list-item project-card" key={idx}>
-                                            <div className="title">
-                                                <h3>{name}</h3>
-                                                <div className="techList">
-                                                    {
-                                                        techStack.map((tech, idx) => {
-                                                            if (idx === techStack.length - 1) {
-                                                                return (<span key={tech}>{tech}</span>)
-                                                            }
-                                                            return (<span key={tech}>{tech},</span>)
-                                                        })
-                                                    }
-                                                </div>
-                                            </div>
-                                            <div className="item-link">
-                                                <Link to={`${url}/${name}`}
-                                                    className="work-link"
-                                                    onClick={() => dispatch(launchDemo())}>
-                                                    Demo
-                                                </Link>
-                                            </div>
-                                        </li>
-                                    )
-                                }
-                            })}
-                        </ul>
-                    </div>
-                </Route>
-                <Route exact path={`${url}/:projectName`}>
-                    {demoIsLaunch && <Link to={url} className="backHome-btn"
-                        onClick={() => dispatch(stopDemo())}> Back Home </Link>
-                    }
-                    <Project />
-                </Route>
-            </div>
+            <div id="work">
+				<h2>Work</h2>
+				<div className="filters">
+					<div id="categorie">
+						<h4>Categorie</h4>
+						<ul className="filter-list close">
+							{
+								curCategories.map((curCategorie, idx) => {
+									const { active } = curCategorie;
+									return (
+										<li
+											id={curCategorie.name}
+											className={active ? "active" : ""}
+											onClick={handleCategorieChange}
+											key={curCategorie.name + idx}
+										>
+											{curCategorie.name}
+										</li>
+									)
+								})
+							}
+						</ul>
+					</div>
+					<div id="techStack">
+						<h4>Tech stack</h4>
+						<ul className="filter-list">
+							{
+								curStack.map((stack, idx) => {
+									const { tech, active } = stack;
+									return (
+										<li
+											id={tech}
+											className={active ? "active" : ""}
+											onClick={handleTechStackChange}
+											key={tech + idx}
+											>
+											{tech}
+										</li>
+									)
+								})
+							}
+						</ul>
+					</div>
+				</div>
+				<div className="work-list">
+					{Projects.map((project, idx) => {
+						const {
+							name,
+							techStack,
+							status
+						} = project;
+						const activeStack = curStack.filter(({ active }) => active);
+						const activeStacks = activeStack.map(item => item.tech);
+						if (activeStacks.some(elem => project.use(techStack, elem))
+							&& status === "available") {
+							return (
+								<NavLink 
+										to={`/works/${name}`}
+										className="list-item project-card"
+										key={name + techStack + idx}
+									>
+										{name}
+								</NavLink>
+							)
+						}
+					})}
+				</div>
+			</div>
         </>
     )
 }

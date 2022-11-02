@@ -1,15 +1,15 @@
 import { useSelector } from "react-redux";
 import $ from 'jquery'
 export const Logo = () => {
-    const { isLoading } = useSelector(state => state.request);
+    // const { isLoading } = useSelector(state => state.request);
     // const lineStyle = isLoading ? {"animation-name": "fade"} : {};
-    if (isLoading) {
-        $(".line").toggleClass("fade");
-    } else {
-        $(".line").removeClass("fade");
-    }
 
-
+	
+    // if (isLoading) {
+    //     $(".line").toggleClass("fade");
+    // } else {
+    //     $(".line").removeClass("fade");
+    // }
 
     return (
         <>

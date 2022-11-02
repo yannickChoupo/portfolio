@@ -1,6 +1,5 @@
-server/.env
-node_modules/
+/node_modules
+client/Makefile
+server/node_modules/
+server/Makefile
 .idea/
-.vscode/
-.keys
-config/

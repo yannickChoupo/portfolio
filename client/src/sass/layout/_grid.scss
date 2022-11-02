@@ -4,95 +4,29 @@
 @import "../abstracts/colors";
 
 body {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-
-  & > * {
-    color: black;
-    width: 100%;
-    max-width: px-to-em(960px);
-  }
-
-  &.dark-mode {
-    &::-webkit-scrollbar {
-      width: .5em;
-      background-color: $bg-color--dark;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: $def-pri;
-    }
-    & > * {
-      color: white;
-    }
-    background-color: $bg-color--dark;
-  }
-  #root {
-    #app {
-      position: relative;
-      // overflow: hidden;
-    }
-    &:hover {
-      nav {
-        @include after-overlay(1dp);
-      }
-    }
-  }
-  .page {
-    display: flex;
-    flex-direction: column;
-    // max-width: px-to-em(960px);
-    // width: 100%;
-    @include breakpoint--small {
-      // background-color: red;
-      display: flex;
-      justify-content: center;
-      margin: 0 auto;
-    }
-  }
-
+	&.dark-mode {
+	  &::-webkit-scrollbar {
+		width: .5em;
+		background-color: $bg-color--dark;
+	  }
+	  &::-webkit-scrollbar-thumb {
+		background-color: $def-pri;
+	  }
+	  & > * {
+		color: white;
+	  }
+	  background-color: $bg-color--dark;
+	}
+	#root {
+		#app {
+			max-width: px-to-em(960px);
+			position: relative;
+			margin: 0 auto;
+		}
+		&:hover {
+			nav {
+				@include after-overlay(1dp);
+			}
+		}
+	}
 }
-
-
-// .fade-enter {
-//   opacity: 1;
-//   // transition: opacity 2s;
-// }
-
-// .fade-enter-active {
-//   opacity: 0;
-//   // transition: opacity 2s;
-// }
-
-// .fade-exit {
-//   opacity: 0;
-//   transition: opacity 2s;
-// }
-
-// .fade-exit-active {
-//   opacity: 1;
-// }
-
-// @keyframes fade {
-//   from {
-//     opacity: 1;
-//   }
-//   50% {
-//     opacity: 0;
-//   }
-//   to {
-//     opacity: 1;
-//   }
-// }
-//.pages-exit {
-//  opacity: 1;
-//}
-//
-//.page-exit-active {
-//  opacity: 0;
-//  transform: translateX(100%);
-//  transition: opacity 500ms, transform 500ms;
-//}
-
-/////////////////////////////////////////

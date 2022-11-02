@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 
 const Visitor = require('../models/visitor.model');
 const UserSession = require('../models/UserSession');
-/////////////////************************************************************
-/////////////////////Secret primary key : test
-////////////////////***********************************************
+/////////////////***********************************************
+/////////////////      Secret primary key : test
+/////////////////***********************************************
 /**
  * implement the logic to store a Visitor in the database
  * @param req
@@ -14,14 +14,14 @@ const UserSession = require('../models/UserSession');
  * @param next
  * @returns {Promise<*>}
  */
-
 const visitorSignIn = async (req, res) => {
-    // console.log("REQUEST : ",req);
     const { body } = req;
     let {
         userName,
         password
     } = body;
+
+    // check if the credentials are not empty
     if (!userName) {
         return res.send({
             success: false,
@@ -34,8 +34,8 @@ const visitorSignIn = async (req, res) => {
             message: 'Error: password cannot be blank'
         })
     }
+
     try {
-        // Authenticate userName
         const existingVisitor = await Visitor.findOne({ userName });
 
         if (!existingVisitor) {

@@ -1,0 +1,9 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "makefile.buildBeforeLaunch": false,
+    "makefile.configurations": [
+    
+    ],
+    "makefile.makefilePath": "C:/Users/Thinkpad_T460s/Programming/web/portfolio/client",
+    "makefile.makePath": "/usr'/bin/make"
+}

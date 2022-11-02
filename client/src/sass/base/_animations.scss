@@ -34,8 +34,38 @@
   transform: scale(0);
   transform-origin: top center;
   transition: opacity 500ms, transform 500ms;
-
 }
+
+// .fade-enter {
+//   opacity: 1;
+//   // transition: opacity 2s;
+// }
+
+// .fade-enter-active {
+//   opacity: 0;
+//   // transition: opacity 2s;
+// }
+
+// .fade-exit {
+//   opacity: 0;
+//   transition: opacity 2s;
+// }
+
+// .fade-exit-active {
+//   opacity: 1;
+// }
+
+// @keyframes fade {
+//   from {
+//     opacity: 1;
+//   }
+//   50% {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
 
 
 

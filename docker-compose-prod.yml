@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  client:
+    container_name: portfolio_client
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    environment: 
+      - NODE_ENV: production
+    
+  server:
+    container_name: portfolio_server
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    environment:
+      MODE_ENV: production
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
