@@ -104,17 +104,20 @@ $lines-color: rgba($def-pri, .87);
 #skills {
 	.body {
 		margin: 1em 0;
+		& > *{
+			margin-bottom: 1em;
+		}
 		&:first-child {
 			position: relative;
-			background-color: red;
-			&::before {
-				content: "";
-				width: .2em;
-				height: 25%;
-				position: absolute;
-				top: 25%;
-				background-color: $def-pri;
-			}
+			// background-color: red;
+			// &::before {
+			// 	content: "";
+			// 	width: .2em;
+			// 	height: 25%;
+			// 	position: absolute;
+			// 	top: 25%;
+			// 	background-color: $def-pri;
+			// }
 		}
 		.languages {
 			ul {
@@ -128,6 +131,7 @@ $lines-color: rgba($def-pri, .87);
         font-size: 1em;
         position: relative;
         margin-left: 5ch;
+		margin-bottom: .5em;
 
         &::before {
 			content: "";
@@ -143,51 +147,58 @@ $lines-color: rgba($def-pri, .87);
 
       .tech-skills {
 		.header {
-			padding: 0 0 1em 5ch;
+			padding: 0 0 0 5ch;
 		}
-
 		.list {
-			margin-bottom: 1em;
+			li {
+				display: flex;
+				flex-direction: column;
+				border: .1em solid $def-pri;
+				.header {
+					margin: 0;
+					padding: .5em 1em;
+					display: flex;
+					justify-content: space-between;
+					cursor: pointer;
+				}
+			    .description {
+					padding: .5em 1em;
+			        transition: display 3s ease-in;
+			        display: none;
+			    }
+			    &.active {
+					.arrow {
+						transform: rotate(90deg);
+					}
+					.description {
+			            display: block;
+					}
+			    }
+			}
+			
 		}
-        ul {
-			padding: 0 5ch 0 5ch;
-          li {
-            display: flex;
-            flex-direction: column;
-			cursor: pointer;
-            p {
-              padding: .5em 1em;
-              display: none;
-              transition: display 1s ease-in;
-            }
-            &.active {
-              .arrow {
-                transform: rotate(90deg);
-              }
-              p {
-                display: block;
-              }
-            }
-          }
-        }
 
-        .software-skills {
-          .header {
-            margin: 0;
-            padding: .5em 1em;
-            display: flex;
-            justify-content: space-between;
-            border: .1em solid $def-pri;
-          }
-          .description {
-            letter-spacing: 1px;
-          }
-
-          .arrow {
-            color: $def-pri;
-            cursor: none;
-          }
-        }
+        // .software-skills {
+		// 	.body {
+		// 		.header {
+		// 			margin: 0;
+		// 			padding: .5em 1em;
+		// 			display: flex;
+		// 			justify-content: space-between;
+		// 			border: .1em solid $def-pri;
+		// 		}
+	
+		// 		.description {
+		// 			letter-spacing: 1px;
+		// 			background-color: red;
+		// 			margin-left: 1em;
+		// 		}
+		// 		.arrow {
+		// 			color: $def-pri;
+		// 			// cursor: none;
+		// 		}
+		// 	}
+        // }
       }
     }
   }
