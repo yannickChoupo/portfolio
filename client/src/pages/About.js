@@ -3,82 +3,109 @@ import $ from 'jquery'
 
 const Skills = [
     {
-        language: "C/C++",
-        description: "I am used with the basic synthax up to object oriented programming and it is the mean language a " +
-            "university laboratory"
+        technologie: "C/C++",
+        description: "Within the framework of a software development laboratory we hab to use C/C++ to programm a vaccum cleaner navigation and during it i learned the basics of object oriented programming."
     },
     {
-        language: "Java",
-        description: "I learned the basics synthax but haven't jet use it"
+        technologie: "Java",
+        description: "I got my the first Java experiences while visiting and optional class from the university and had then to use spring-boot in the framework of my job as working student by SyngenioAG to develop a backend application with some security features."
     },
     {
-        language: "Javascript",
-        description: "I am used with the basic synthax up to ES6, object oriented programming " +
-            "AJAX (Asynchronous javascript and XML) and D3(Javascript data visualisation) and use it to build several" +
-            "code to solve challenges on freecodecamp (some of them in demos)"
+        technologie: "Javascript",
+        description: "In the framework of a roadmap i followed i learned the ES6 synthax, object oriented programming using javascript, AJAX (Asynchronous javascript and XML) and D3(Javascript data visualisation framwork) and use it to build application on freecodecamp (some of them in demos)"
     },
     {
-        language: "HTML",
-        description: "I am used with it and i used to build views like landing pages, tribute pages, Blog, ..."
+        technologie: "HTML",
+        description: "I learned the basic building blocks possible and used it to build views like landing pages, tribute pages, Blog, ..."
     },
     {
-        language: "CSS",
-        description: "I am used with it and i used it to build views like landing pages, tribute pages," +
-            " Blog, to build this website which is fully responsive"
+        technologie: "CSS",
+        description: "I had used it to give some more color the views like landing pages, tribute pages, Blog including adding responsiveness to them."
     },
     {
-        language: "SASS",
-        description: "I use it to generate all the CSS of this website and also play around with it by " +
-            "generating CSS for to provide diferent themes "
+        technologie: "SASS",
+        description: "Is prefered way to go when it is about building complex views needing more complex css selections or generate css to a multithemes views."
     },
     {
-        language: "React",
-        description: "I use it to build several frontend and i include some of them in the demo section"
+        technologie: "React",
+        description: "I use it to build several frontend applications and i include some of them in the demo section"
     },
     {
-        language: "Bootstrap",
-        description: "I know the basic synthax i haven't jet use a lot because a thought throught a better" +
-            "understanding of CSS i will be able to better use bootstrap in better way."
+        technologie: "Bootstrap",
+        description: "I know the basic synthax but haven't jet use a lot."
     },
     {
-        language: "Jquery",
-        description: "I know the basic synthax i use at some point depending on the situation"
+        technologie: "Jquery",
+        description: "I know the basic synthax and use it time to time depending on the situation."
     },
     {
-        language: "Redux",
-        description: "I am used with it and i use it to manage the global state and some component state on this website"
+        technologie: "Redux",
+        description: "I am used with it and i use it to manage the global state on this website"
     },
     {
-        language: "Express",
-        description: "I use to programme the backend of this website"
+        technologie: "Express",
+        description: "I use it to programme the backend of this website"
     },
     {
-        language: "MongoDb",
-        description: "I know the basic synthax and i use it as Database for this website"
+        technologie: "MongoDB",
+        description: "I know the basic synthax and used mongodb-atlas as Database for this website."
+    },
+	{
+        technologie: "Wordpress",
+        description: "In the framework of my job as sofware developer by syngenioAG, i had to take care of content and user management."
     },
     {
-        language: "PHP",
-        description: "i know the basic synthax and i actually using it to build the backend of a worpress website"
+        technologie: "PHP",
+        description: "I know the basic synthax and had to write some line of it in the framework of my job as sofware developer by syngenioAG where i had to write custom code for some fonctionalities in wordpress."
     },
     {
-        language: "SQL",
-        description: "I know the basic synthax and i actually using it to build the backend of a worpress website"
+        technologie: "SQL",
+        description: "I know the basic synthax but haven't use it a lot."
     },
     {
-        language: "Docker",
-        description: "I know the basic synthax and i went through the getting-started tutorial of Docker-Dektop and" 
-         + "i am actually Dockerizing this website"
+        technologie: "Docker",
+        description: "I went through the getting-started tutorial of Docker-Dektop and had to use in the framework of my job as sofware developer by syngenioAG."
+    },
+	{
+        technologie: "kubernetes",
+        description: "For the moment i went throught the basic working principles of a cluster but couldn't jet get a hands on."
+    },
+	{
+        technologie: "GIT",
+        description: "In the framework of my job as sofware developer by syngenioAG we have used git for the version control of the different sofware we worked on and i also use to manage the version of this website."
+    },
+	{
+        technologie: "Python",
+        description: "I have learned the basic synthax and used it to write some algorythm."
+    },
+	{
+        technologie: "Grafana",
+        description: "I haven't jet use it but have a basci understanding of how it works and how it could be use."
+    },
+	{
+        technologie: "GITHUB/Gitlab",
+        description: "I am using github to store te code for this website and had to use gitlab in the Framework of my job as working student by SyngenioAG."
+    },
+	{
+        technologie: "CI/CD",
+        description: "I the framework of my job as working student by SyngenioAG i hab the update and write pipelines to ensure a constant integration and development of the features w eadded to the program."
+    },
+	{
+        technologie: "SCRUM",
+        description: "I the framework of my job as working student by SyngenioAG we worked in agile way."
     }
 ]
 const About = () => {
     const openDescription = (e) => {
         console.log("event target", e.target.parentNode.className);
+		const activeListItem = $("li[class='active']");
+		activeListItem.toggleClass("active");
         if(e.target.parentNode.className === "active") {
             $(e.target.parentNode).toggleClass("active");
-        } 
-        const activeListItem = $("li[class='active']");
-            activeListItem.toggleClass("active");
-        }
+        } else {
+			$(e.target.parentNode).addClass("active")
+		}
+    }
     return (
         <>
             <div id="about">
@@ -169,7 +196,7 @@ const About = () => {
 					<h3>Skills</h3>
 					<div className="body">
 						<div className="languages">
-							<h2 className="subtitle">languages</h2>
+							<div className="subtitle">languages</div>
 							<ul>
 								<li>German (C1 level)</li>
 								<li>English (safe to act)</li>
@@ -177,41 +204,27 @@ const About = () => {
 							</ul>
 						</div>
 						<div className="tech-skills">
-							<h2 className="subtitle">Technical skills</h2>
-							<div className="list">
-								<div className="header">Software Development : </div>
-								<ul className="software-skills">
-									{Skills.map(({ language, description }) => {
+							<div className="subtitle">Technical skills</div>
+								<ul className="list">
+									{Skills.map(({ technologie, description }) => {
 										return (
-											<li key={language}
-												onClick={e => openDescription(e)}>
-												<section className="header" >
-													<div className="language">{language}</div>
+											<li 
+												key={technologie}
+												>
+												<section className="header" 
+														 onClick={e => openDescription(e)}>
+													<div className="language">{technologie}</div>
 													<div className="arrow">→</div>
 												</section>
-												<p className="description">
+												<section className="description">
 													<em>
 														{description}
 													</em>
-												</p>
+												</section>
 											</li>
 										)
 									})}
 								</ul>
-							</div>
-							<section className="list">
-								<div className="header">Project Management : </div>
-								<ul>
-									<li>Git</li>
-									<li>Github</li>
-								</ul>
-							</section>
-							<section className="list">
-								<div className="header">Other skills: </div>
-								<ul>
-									<li> Microsoft office</li>
-								</ul>
-							</section>
 						</div>
 					</div>
 				</section>
