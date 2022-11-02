@@ -75,7 +75,7 @@ const ScatterPlot = () => {
     }, [])
     return (
         <>
-            <div id="scatterPlot" className="project">
+            <div id="scatterPlot">
                 <h1>SCATTER PLOT</h1>
                 <div className="body">
                     <section className="svg-container">

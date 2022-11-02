@@ -19,7 +19,7 @@ import Todo from "../Components/todo";
 //     return ref.current;
 // }
 
-const Admin = () => {
+const Admin = ({ user }) => {
     const [sessions, setSession] = useState(0);
     const [todos, setTodos] = useState(0);
 

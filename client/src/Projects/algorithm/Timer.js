@@ -118,8 +118,7 @@ class Timer extends React.Component {
         const newMinutes = this.state.curMinutes.toString().length < 2 ? "0".concat(this.state.curMinutes.toString()) : this.state.curMinutes.toString();
         const newSecondes = this.state.curSecondes.toString().length < 2 ? "0".concat(this.state.curSecondes.toString()) : this.state.curSecondes.toString();
         return (
-            <div id="timer" className="project">
-                {/*<div className="page-container">*/}
+            <div id="timer">
                 <h1> TIMER </h1>
                 <div className="body">
                     <section className="display">
