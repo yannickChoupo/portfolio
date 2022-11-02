@@ -205,26 +205,26 @@ const About = () => {
 						</div>
 						<div className="tech-skills">
 							<div className="subtitle">Technical skills</div>
-								<ul className="list">
-									{Skills.map(({ technologie, description }) => {
-										return (
-											<li 
-												key={technologie}
-												>
-												<section className="header" 
-														 onClick={e => openDescription(e)}>
-													<div className="language">{technologie}</div>
-													<div className="arrow">→</div>
-												</section>
-												<section className="description">
-													<em>
-														{description}
-													</em>
-												</section>
-											</li>
-										)
-									})}
-								</ul>
+							<ul className="list">
+								{Skills.map(({ technologie, description }) => {
+									return (
+										<li 
+											key={technologie}
+											>
+											<section className="header" 
+														onClick={e => openDescription(e)}>
+												<div className="language">{technologie}</div>
+												<div className="arrow">→</div>
+											</section>
+											<section className="description">
+												<em>
+													{description}
+												</em>
+											</section>
+										</li>
+									)
+								})}
+							</ul>
 						</div>
 					</div>
 				</section>
