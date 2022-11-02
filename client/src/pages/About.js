@@ -8,7 +8,7 @@ const Skills = [
     },
     {
         technologie: "Java",
-        description: "I got my the first Java experiences while visiting and optional class from the university and had then to use spring-boot in the framework of my job as working student by SyngenioAG to develop a backend application with some security features."
+        description: "I got my the first Java experiences while visiting and optional class from the university and had then to use Spring-boot in the framework of my job as working student by SyngenioAG to develop a backend application with some security features."
     },
     {
         technologie: "Javascript",
