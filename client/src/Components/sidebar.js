@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { useSelector, useDispatch } from "react-redux";
 import { Switch } from "./switch"
@@ -26,40 +26,40 @@ const SideBar = () => {
                 <div className="sideBar" ref={sideBar}>
                     <ul>
                         <li>
-                            <Link
+                            <NavLink
                                 title="home"
                                 className="side__link"
                                 to='/'
                                 onClick={handleSwitchClick}>
                                 <i className="fa fa-home" />
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link
+                            <NavLink
                                 title="about"
                                 className="side__link"
                                 to='/about'
                                 onClick={handleSwitchClick}>
                                 <i className="fa fa-id-card " />
-                            </Link>
+                            </NavLink>
                         </li>
                         <li >
-                            <Link
+                            <NavLink
                                 title="work"
                                 className="side__link"
                                 to='/works'
                                 onClick={handleSwitchClick}>
                                 <i className="fa fa-briefcase " />
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link
+                            <NavLink
                                 title="contact"
                                 className="side__link"
                                 to='/contact'
                                 onClick={handleSwitchClick}>
                                 <i className="fa fa-address-card" />
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
                             <Switch handleSwitchClick={handleSwitchClick} />

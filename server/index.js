@@ -31,7 +31,6 @@ mongoose.connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });
 
-
 app.use((req, res, next) => {
     let sendedToken = '';
     let decodedToken = '';
@@ -42,7 +41,6 @@ app.use((req, res, next) => {
     }
     next();
 })
-
 
 const timestampRouter = require('./routes/api/timestamp');
 const whoiamRouter = require('./routes/api/reqHeaderParser');
