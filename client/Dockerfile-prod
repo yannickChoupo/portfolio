@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install --production
 
 # copy the content of the pwd into the /app directorie
-COPY ./ /app/
+COPY ./ ./app
 
 # run the npm build command to compile the source code inside the docker container
 RUN npm run build
