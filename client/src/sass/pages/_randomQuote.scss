@@ -10,6 +10,9 @@
   padding: 0 px-to-em(18px);
   background-color: #282c34;
   transition: background-color 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .quote-box {
