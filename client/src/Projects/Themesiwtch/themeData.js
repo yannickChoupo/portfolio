@@ -209,3 +209,33 @@
 //@include set-border-bottom-color;
 //@include set-bg-oh-color;
 //@include set-tooltip-before-after-color;
+
+///////////////////////////////////////////////////////////////
+//////////////// Navigation Animation ////////////////////////
+//.showUp-enter,
+//.showDown-enter {
+//  opacity: 0;
+//}
+//
+//.showUp-enter-active,
+//.showDown-enter-active {
+//  opacity: 1;
+//  transform: translateY(0);
+//  transition: opacity 500ms, transform 500ms;
+//}
+//
+//.showUp-exit,
+//.showDown-exit {
+//  opacity: 1;
+//}
+//
+//.showUp-exit-active {
+//  opacity: 0;
+//  transform: translateY(-50%);
+//  transition: opacity 500ms, transform 500ms;
+//}
+//.showDown-exit-active {
+//  opacity: 0;
+//  transform: translateY(50%);
+//  transition: opacity 500ms, transform 500ms;
+//}

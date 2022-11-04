@@ -284,13 +284,8 @@ const projects = [
 
 const Project = () => {
     let { projectName } = useParams();
-    console.log(projectName);
-	const project = projects.find((project) => project.name === projectName);
-
-	console.log(project)
-
 	return (
-		<section  className="project page">
+		<section  className="project">
 			<NavLink
 				to='/works'
 				className="backHome-btn"
