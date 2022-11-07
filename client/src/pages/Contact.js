@@ -32,7 +32,7 @@ const Contact = () => {
                             Email : <em>yannicknjilo@gmail.com</em>
                         </p>
                         <p>
-                            Phone : <em>(+49)17637424182</em>
+                            Phone : <em>(+49)17668400227</em>
                         </p>
                         <p>
                             Github : <em>
