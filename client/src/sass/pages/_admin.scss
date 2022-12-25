@@ -3,12 +3,10 @@
 @import "../abstracts/mixins";
 @import "../abstracts/breackpoints";
 @import "../abstracts/mixins";
-@import "../abstracts/utils";
 @import "../abstracts/colors";
 
 #admin {
     position: relative;
-    // background-color: red;
     font-family: sans-serif;
 
     h2 {
@@ -65,7 +63,6 @@
                     border-radius: .4em;
                     border: .1em solid $def-pri;
                     padding: .3em;
-                    // margin: .3em;
                     color: inherit;
                     cursor: pointer;
                     &:hover {
@@ -105,7 +102,6 @@
                     width: 100%;
                     padding: 0 0 0 1em;
                     background-color: transparent;
-                    // border-radius: .2em;
                     color: inherit;
                     &:focus {
                         outline: 0;

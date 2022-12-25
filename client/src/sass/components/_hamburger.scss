@@ -1,44 +1,30 @@
-@import "../abstracts/mixins";
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
 
 .hamburger {
-  //@include width-and-height(36px);
   width: 36px;
   height: 36px;
-  @include flexCenter;
-  @include rounded;
-//   cursor: pointer;
+  @include mixins.flexCenter;
+  border-radius: 50%;
   position: relative;
-  //box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
-  //background-color: rgba(0, 0, 0, 0.1);
-  //transition: 0.8s all ease;
 
   &:hover,
   &.active {
-  //  //background-color: rgba(0, 0, 0, 0.9);
-  //  background-color: $def-pri;
-  //  .hamburger__line {
-  //    &,
-  //    &::before,
-  //    &::after {
-        background-color:  rgba($def-pri, 0.2);
-  //      background-color:  white;
-  //    }
-  //  }
-  //  @include after-overlay(8dp);
+        background-color:  rgba(variables.$def-pri, 0.2);
   }
+
   .hamburger__line {
      &, &:before, &::after {
        content: '';
        height: 2px;
        width: 20px;
-       background-color: $def-pri;
+       background-color: variables.$def-pri;
      }
 
      &::before,
      &::after {
        position: absolute;
        transition: 0.25s all ease;
-       //transition: top .25s ease-out;
      }
    }
 

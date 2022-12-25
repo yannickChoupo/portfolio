@@ -1,17 +1,25 @@
 import $ from "jquery"
-// import React, {useEffect,useState} from 'react';
 
 export const Switch = ({handleSwitchClick}) => {
-    const switchThemePosition = () => {
-        $(".switch__round").toggleClass("p-left");
-        $("body").toggleClass("dark-mode");
+    const switchTheme = () => {
+        $(".switch__con .icon").toggleClass("dark");
+        $("#app").toggleClass("light");
         handleSwitchClick();
     }
+
+	const darkThmeIsActiv = () => {
+		let darkThmeIsActiv = true;
+		// let preferredThemeIsDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+		if($(".app.light").length === 1) {
+			darkThmeIsActiv = false;
+		} 
+		return darkThmeIsActiv;
+	}
     return (
         <>
-            <div className="switch" onClick={switchThemePosition}>
+            <div className="switch" onClick={switchTheme}>
                 <div className="switch__con">
-                    <div className="switch__round p-left"/>
+					<span className={"icon ".concat(darkThmeIsActiv() ? "dark" : "")}>&#9788;</span>
                 </div>
             </div>
         </>

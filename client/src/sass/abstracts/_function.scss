@@ -1,5 +1,4 @@
 @use "sass:math";
-//@import "../abstracts/breackpoints";
 @import "../abstracts/mixins";
 @import "../abstracts/variables";
 
@@ -30,14 +29,9 @@ $browser-context: 16;
   @return map.keys($list);
 }
 
-
-//@function px-to-rem($pixels, $font-size: 16px) {
-//  @return math.div($pixels, ($font-size * 1rem));
-//}
 @function rem($size) {
   @return ($size / 16px) * 1rem;
 }
-
 
 @function px-to-em($size) {
   @return ($size / 16px) * 1em;

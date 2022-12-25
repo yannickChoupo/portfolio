@@ -1,79 +1,22 @@
 @charset "utf-8";
-
 /// Vendors
-//@use "/vendors/vendors";
+@use "vendors/vendors";
 
 // Base
+@use "abstracts/abstracts_dir";
 @use "base/base";
 @use "base/animations";
-
-@use "layout/layout_dir";
-//@use "components/components_dir";
-//@use "abstracts/breackpoints";
-//@use "abstracts/mixins";
-//@use "abstracts/function";
-
-// Layout
-//@use "layout/layout_dir";
-
-// Abstracts
-//@use "abstracts/abstracts_dir";
-//@import "abstracts/placeholders";
-//@import "abstracts/function";
-//@import "abstracts/mixins";
-//@import "abstracts/utils";
-
-
-// Components
 @use "components/components_dir";
-@use "visual/typography";
-
-
-// Pages
 @use "pages/pages_dir";
-@use "vendors/vendors";
-// visual
-//@use "visual/themes";
-//@use "visual/typography";
 
-// Components
-//@import "src/sass/components/logo";
-//@import "src/sass/components/navBar";
-//@debug "***********************************";
-//@include
-// Pages
-//@use "pages/home";
-
-// Layout
-//@import layouts/__layouts-dir
-
-.fades {
-  //font-size: 0.8rem;
-  //opacity: 0;
+.page {
+	margin: 0 auto;
+	padding-top: px-to-em(60px);
+	position: relative;
+	min-height: 100vh;
 }
-
-.fades-enter {
-  opacity: 1;
-  //transform: scale(1.1);
+.logo {
+	background-color: rgba(rebeccapurple, 0.7);
+	width: 36px;
+	height: 36px;
 }
-
-.fades-enter-active {
-  opacity: 0;
-  //transform: scale(1);
-  //transition: opacity 300ms, transform 300ms;
-  //transition: opacity 200ms;
-}
-
-.fades-exit {
-  opacity: 1;
-//  //transform: scale(1);
-}
-//
-.fades-exit-active {
-  opacity: 0;
-//  //transform: scale(0.9);
-//  //transition: opacity 300ms, transform 300ms;
-//  transition: opacity 200ms;
-//  //background-color: #b71540;
-}
-

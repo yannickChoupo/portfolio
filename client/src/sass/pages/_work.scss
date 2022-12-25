@@ -3,13 +3,10 @@
 @import "../abstracts/mixins";
 @import "../abstracts/breackpoints";
 @import "../abstracts/mixins";
-@import "../abstracts/utils";
 @import "../abstracts/colors";
 ///////////////////////////////////////////////////////////////////////
 #work {
     padding: px-to-em(40px) 0 0 px-to-em(23px);
-	width: 100%;
-	height: 100vh;
 	.filters {
 		margin-bottom: px-to-em(20px);
 		width: 100%;

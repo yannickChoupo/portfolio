@@ -22,11 +22,12 @@ body {
 			max-width: px-to-em(960px);
 			position: relative;
 			margin: 0 auto;
-		}
-		&:hover {
-			nav {
-				@include after-overlay(1dp);
+			&:hover {
+				nav {
+					@include after-overlay(1dp);
+				}
 			}
 		}
+		
 	}
 }

@@ -2,7 +2,6 @@
 @import "../abstracts/mixins";
 @import "../abstracts/breackpoints";
 @import "../abstracts/mixins";
-@import "../abstracts/utils";
 .switch {
   // margin: auto 0;
   // padding: 0;
@@ -10,25 +9,31 @@
     width: 36px;
     height: 12px;
     border-radius: 15px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     cursor: pointer;
-    position: relative;
     background-color: rgba(0,0,0,0.5);
+	position: relative;
 
-    .switch__round {
-      //@include width-and-height(8px);
-      width: 8px;
-      height: 8px;
-      background-color: $def-pri;
-      border-radius: 50%;
-      position: absolute;
-      margin: 0 2px;
-      right: 0;
-    }
+	.icon {
+		width: 10px;
+		height: 10px;
+		border: .5px solid rgba(0,0,0,0.1);
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		margin: 0 2px 0 2üx;
+		font-size: 10px;
+		margin: 0 2px;
+		position: absolute;
+		transition: left 1s easy;
+		&.dark {
+			color: blueviolet;
+			left: 0;
+		}
+		&:not(.dark) {
+			right: 0;
+		}
+	}
   }
-}
-.p-left {
-  left: 0;
 }

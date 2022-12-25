@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Logo } from "./logo";
 import Hamburger from "./hamburger";
 import { toggleHamburger } from '../features/hamburger/hamburgerSlice';
+import SideBar from "./sidebar";
 
 
 export const NavBar = (props) => {
@@ -17,21 +18,16 @@ export const NavBar = (props) => {
     }
     return (
         <>
-            <nav className="nav">
-                <ul>
-                    <li className="nav-logo">
-                        <Link 
-                            to='/'
-                            onClick={handleLogoClick}
-						>
-                            <Logo />
-                        </Link>
-                    </li>
-                    <li className="nav-ham">
-                        <Hamburger />
-                    </li>
-                </ul>
-            </nav>
+			<nav className="navbar">
+				<div className="container nav-body">
+					<NavLink className="navbar-link" aria-current="page" to='/'>
+						{/* <Logo /> */}
+						Home
+					</NavLink>
+					<Hamburger />
+					<SideBar />
+				</div>
+			</nav>
         </>
     )
 }
