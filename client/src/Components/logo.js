@@ -14,7 +14,7 @@ export const Logo = () => {
     return (
         <>
             <div className="logo">
-                <div className="logo__container">
+                {/* <div className="logo__container">
                     <div className="logo__circle">
                         <div className={`logo__cube`}>
                             <div line="1" className={`line`} />
@@ -22,7 +22,7 @@ export const Logo = () => {
                             <div line="3" className={`line`} />
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );

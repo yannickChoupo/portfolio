@@ -31,7 +31,7 @@ const SideBar = () => {
                                 className="side__link"
                                 to='/'
                                 onClick={handleSwitchClick}>
-                                <i className="fa fa-home" />
+                                <i className="fa fa-home"/>
                             </NavLink>
                         </li>
                         <li>

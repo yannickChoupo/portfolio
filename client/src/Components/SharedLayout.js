@@ -13,16 +13,16 @@ const SharedLayout = () => {
 
 	return (
 		<>
-			<div id="app">
+			<div id="app" className="app">
 				<NavBar  />
-		    	<SideBar />
+		    	{/* <SideBar /> */}
 				<TransitionGroup>
 					<CSSTransition
 						timeout={1000}
 						classNames="pages"
 						key={location.key}
 						nodeRef={page}>
-						<div className="page" ref={page}>
+						<div className="page container" ref={page}>
 							<Outlet />
 						</div>
 					</CSSTransition>

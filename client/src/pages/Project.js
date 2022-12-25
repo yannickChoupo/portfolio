@@ -290,7 +290,7 @@ const Project = () => {
 	console.log(project)
 
 	return (
-		<section  className="project page">
+		<section  className="project page container">
 			<NavLink
 				to='/works'
 				className="backHome-btn"

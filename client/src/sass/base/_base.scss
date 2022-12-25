@@ -1,28 +1,92 @@
+@use "../abstracts/mixins";
 html {
   box-sizing:  border-box;
 }
+
+html, 
+body {
+    height: 100%;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
+
 body, p, a, ul, li,h3,h2,h1 {
   margin: 0;
   padding: 0;
   text-decoration: none;
 }
+
 ul {
   list-style-type: none;
 }
+
 body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: normal;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
+}
+
+@mixin color-scheme($name) {
+	@media (prefers-color-scheme: #{$name}) {
+	  @content;
+	}
+}
+
+// @mixin after-overlay($suffix) {
+// 	& > * {
+// 	  position: relative;
+// 	  z-index: 2;
+// 	}
+// 	$color: map-get($levels, $suffix);
+// 	//$color: get-dp-color($suffix);
+// 	background-color: $color;
+// 	border-radius: inherit;
+// 	&::after {
+// 	  content: "";
+// 	  width: 100%;
+// 	  height: 100%;
+// 	  display: block;
+// 	  position: absolute;
+// 	  top: 0;
+// 	  left: 0;
+// 	  z-index: 1;
+// 	  // background-color: $color;
+// 	}
+  
+// 	//@include after($suffix);
+//   }
+
+#app {
+	@include color-scheme(dark) {
+		background-color: #0d1117;
+		color: white;
+	}
+  
+	@include color-scheme(light) {
+		background-color: white;
+		color: #0d1117;
+	}
+
+	&.light {
+		background-color: white;
+	    color: #0d1117;
+	}
+
+	&:hover {
+		nav {
+			@include mixins.after-overlay(1dp);
+		}
+	}
 }
 
 

@@ -91,7 +91,7 @@ export const RandomQuote = () => {
 
     return (
         <>
-            <div id="randomQuote" className="page" style={{ backgroundColor: curQuote.color }}>
+            <div id="randomQuote" className="" style={{ backgroundColor: curQuote.color }}>
                 <div className="quote-box">
                     <div className="quote-text" style={{ opacity: !inProp ? 1 : 0 }}>
                         <i className="fa fa-quote-left" />
