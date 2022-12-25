@@ -22,7 +22,7 @@ export const NavBar = (props) => {
 				<div className="container nav-body">
 					<NavLink className="navbar-link" aria-current="page" to='/'>
 						{/* <Logo /> */}
-						Home
+						&#9962;
 					</NavLink>
 					<Hamburger />
 					<SideBar />
