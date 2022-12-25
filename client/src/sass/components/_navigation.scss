@@ -2,7 +2,12 @@
 	.nav-body {
 		position: relative;
 		.navbar-link {
-			color: inherit;
+			width: 36px;
+			height: 36px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
 		}
 	}
 }
