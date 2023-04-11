@@ -280,6 +280,16 @@ const projects = [
             return techStack.some(elem => elem === tech);
         }
     },
+    {
+        // id: 4,
+        name: "Visuals",
+        techStack: ["Javascript", "d3"],
+        description: "Description .....",
+        status: "not available",
+        use: (techStack, tech) => {
+            return techStack.some(elem => elem === tech);
+        }
+    },
 ]
 
 const Project = () => {

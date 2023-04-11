@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 // import { firstLineData, initialState, secondLineData, thirdLineData } from "./calculatorData";
 // import {useDispatch, useSelector} from "react-redux";
-export const initialState = {
+const initialState = {
     curDisplay: '0',
     curNumber: '',
     formula: '',
@@ -22,7 +22,7 @@ const thirdLineData = [{ symbol: "1", ID: "one" },
 { symbol: "3", ID: "three" },
 { symbol: "+", ID: "add" }]
 
-export const Calculator = ({ unMountProject }) => {
+const Calculator = () => {
     const [state, setState] = useState({
         curDisplay: '0',
         curNumber: '',
@@ -77,6 +77,7 @@ export const Calculator = ({ unMountProject }) => {
         }
     }
     const reinitialize = () => {
+        console.log("reinitialize");
         setState(initialState);
         newFormulaValue = "";
         newCurDisplayValue = "";
@@ -203,19 +204,20 @@ export const Calculator = ({ unMountProject }) => {
                     <div className="row last">
 						<button type="button"
 							id="zero"
+                            className="btn"
 							value="0"
 							onClick={handleClick}>
 							0
 						</button>
 						<button type="button"
 							id="decimal"
-							className="btn-circle"
+							className="btn btn-circle"
 							value="."
 							onClick={handleClick}>
 							.
 						</button>
 						<button type="button" id="equals"
-							className="btn-circle"
+							className="btn btn-circle"
 							value="="
 							onClick={handleClick}>
 							=

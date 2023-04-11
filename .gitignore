@@ -3,3 +3,4 @@ client/Makefile
 server/node_modules/
 server/Makefile
 .idea/
+.vscode
