@@ -26,9 +26,9 @@ function App() {
 		<Router>
 			<Routes>
 				<Route exact path="/" element={ <SharedLayout/> }>
-					<Route index element={ <Home />} />
-					<Route path="works" element={ <SharedProjectLayout />}> 
-						<Route index element={<Works />} />
+					<Route index element={ <Home /> } />
+					<Route path="works" element={ <SharedProjectLayout /> }> 
+						<Route index element={ <Works /> } />
 						<Route path=":projectName" element={ <Project />} />
 					</Route>
 					<Route path="/contact" element={ <Contact />} />
