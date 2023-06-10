@@ -48,6 +48,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12",
-    "terser": "^3.14.1"
+    "terser": "^3.14.1",
+    "eslint": "^8.38.0",
+    "eslint-config-react-app": "^7.0.1"
   }
 }

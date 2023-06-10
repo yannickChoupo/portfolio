@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 // import { firstLineData, initialState, secondLineData, thirdLineData } from "./calculatorData";
 // import {useDispatch, useSelector} from "react-redux";
 const initialState = {
     curDisplay: '0',
-    curNumber: '0',
+    curNumber: '',
     formula: '',
     prevInput: ''
 }
@@ -25,15 +25,11 @@ const thirdLineData = [{ symbol: "1", ID: "one" },
 const Calculator = () => {
     const [state, setState] = useState({
         curDisplay: '0',
-        curNumber: '0',
+        curNumber: '',
         formula: '',
         prevInput: '',
         curInput: ''
     })
-
-    useEffect(() => {
-        console.log("Current Display Value on start : ", curDisplay);
-    }, [])
     const { formula, prevInput, curDisplay, curNumber, curInput } = state;
     let newFormulaValue = "";
     let newCurDisplayValue = "";
@@ -43,7 +39,7 @@ const Calculator = () => {
         setState({
             ...state,
             curDisplay: newCurDisplayValue,
-            curNumber: newCurDisplayValue,
+            curNumber: newCurNumber,
             formula: newFormulaValue,
             prevInput: newPrevInput
         })
@@ -51,30 +47,30 @@ const Calculator = () => {
 
     const handleClick = (e) => {
         const { value } = e.target;
-        console.log("tipped value : ", value);
-        registerLastInput(value);
+        // register the newly pressed 
+        // registerLastInput(value);
+        newPrevInput = value;
+        console.log("curDisplay.length : ", curDisplay, curDisplay.length);
         if (value === 'AC') {
             reinitialize();
-            return;
         }
-        if (/\d/.test(value) && (curDisplay.length <= 8)) {
-            handleNumbers(value);
-        }
-        if (value === '.') {
-            handleDecimal(value);
-        }
-        if (/[=]/.test(value)) {
-            if(curDisplay.length > 1) {
+        // if (curDisplay.length <= 8) {
+            if (/[=]/.test(value)) {
                 handleEqual();
             }
-        }
-        if (/[+-/x]/.test(value)) {
-            handleOperators(value);
-        }
-        // updateState();
+            if (/[+-/x]/.test(value)) {
+                handleOperators(value);
+            }
+            if (/\d/.test(value)) {
+                handleNumbers(value);
+            }
+            if (value === '.') {
+                handleDecimal(value);
+            }
+            updateState();
+        // }
     }
     const handleEqual = () => {
-        console.log("handle equal");
         if (prevInput !== "=") {
             let answer = eval(formula);
             const newValue = answer.toString();
@@ -86,7 +82,7 @@ const Calculator = () => {
         }
     }
     const reinitialize = () => {
-        console.log("reintialize all");
+        console.log("reinitialize");
         setState(initialState);
         newFormulaValue = "";
         newCurDisplayValue = "";
@@ -97,35 +93,33 @@ const Calculator = () => {
         newPrevInput = newInput;
     }
     const handleNumbers = (newNumber) => {
-        if (/^0/.test(curDisplay) && (newNumber === '0')) {
-            return;
-        }
-        if (/^0/.test(curDisplay) && (newNumber !== '0') && !(/^\d[.]/.test(curDisplay))) {
+        if (/^0/.test(curNumber) && (newNumber !== '0')) {
             newCurDisplayValue = newNumber;
+            newFormulaValue = newNumber;
             newCurNumber = newNumber;
-        } else {
-            newCurDisplayValue = curDisplay + newNumber;
-            newCurNumber = newCurDisplayValue
-            newFormulaValue = newCurDisplayValue;
         }
-        updateState();
+
+        if (/\d/.test(newNumber) && prevInput === '=') {
+            newCurDisplayValue = newNumber;
+            newFormulaValue = newNumber;
+            newCurNumber = newNumber;
+        } else if(/\d/.test(newNumber) && (prevInput !== '=')) {
+            newCurDisplayValue = curNumber + newNumber;
+            newFormulaValue = formula + newNumber;
+            newCurNumber = curNumber + newNumber;
+        } 
     }
     const handleDecimal = (decimalPoint) => {
+        const { curNumber, formula, curDisplay } = state;
         if (curNumber.indexOf('.') === -1) {
             newFormulaValue = formula + decimalPoint;
             newCurDisplayValue = curDisplay + decimalPoint;
             newCurNumber = curNumber + decimalPoint;
-            updateState();
         } else {
             console.log(curNumber, curNumber.indexOf('.'), "operation not allow");
         }
     }
     const handleOperators = (newOperator) => {
-        // const newOperatorInput = newOperator === "x" ? "*" : newOperator
-        // console.log("operator clicked : ", newOperatorInput);
-        // console.log("prevInput : ", newOperatorInput);
-        console.log("formula : ", newFormulaValue);
-
         const newOperatorInput = newOperator === "x" ? "*" : newOperator
         if (newOperator === prevInput) {
             newCurDisplayValue = curDisplay;
@@ -140,7 +134,6 @@ const Calculator = () => {
                 newFormulaValue = (prevInput === "=" ? curNumber : formula) + newOperatorInput;
             }
         }
-        updateState();
     }
     return (
         <div id="calculator">
@@ -151,89 +144,89 @@ const Calculator = () => {
                 </div>
                 <div id="main-board">
                     <div className="row first">
-                        <button
-                            id="clear"
-                            className="btn btn-wide"
-                            type="button"
-                            value="AC"
-                            onClick={handleClick}>
-                            AC
-                        </button>
-                        <button
-                            id="divide"
-                            type="button"
-                            className="btn btn-small btn-circle"
-                            onClick={handleClick}
-                            value="/">
-                            /
-                        </button>
+						<button 
+							id="clear"
+							className="btn btn-wide"
+							type="button"
+							value="AC"
+							onClick={handleClick}>
+							AC
+						</button>
+						<button 
+							id="divide"
+							type="button"
+							className="btn btn-small btn-circle"
+							onClick={handleClick}
+							value="/">
+							/
+						</button>
                     </div>
                     <div className="row">
                         {firstLineData.map((item, idx) => {
                             return (
-                                <button
-                                    id={item.ID}
+                                <button 
+									id={item.ID}
                                     className="btn btn-circle"
-                                    value={item.symbol}
+									value={item.symbol}
                                     key={idx}
-                                    onClick={handleClick}
-                                >
-                                    {item.symbol}
-                                </button>
+                                    onClick={handleClick} 
+								>
+									{item.symbol}
+								</button>
                             )
                         })}
                     </div>
                     <div className="row">
                         {secondLineData.map((item, idx) => {
                             return (
-                                <button
-                                    id={item.ID}
-                                    className="btn btn-circle"
-                                    value={item.symbol}
-                                    key={idx}
-                                    onClick={handleClick}
-                                >
-                                    {item.symbol}
-                                </button>
+								<button 
+									id={item.ID}
+									className="btn btn-circle"
+									value={item.symbol}
+									key={idx}
+									onClick={handleClick} 
+								>
+									{item.symbol}
+								</button>
                             )
                         })}
                     </div>
                     <div className="row">
                         {thirdLineData.map((item, idx) => {
                             return (
-                                <button
-                                    id={item.ID}
-                                    className="btn btn-circle"
-                                    value={item.symbol}
-                                    key={idx}
-                                    onClick={handleClick}
-                                >
-                                    {item.symbol}
-                                </button>
+								<button 
+									id={item.ID}
+									className="btn btn-circle"
+									value={item.symbol}
+									key={idx}
+									onClick={handleClick} 
+								>
+									{item.symbol}
+								</button>
                             )
                         })}
                     </div>
                     <div className="row last">
-                        <button type="button"
-                            id="zero"
+						<button type="button"
+							id="zero"
                             className="btn"
-                            value="0"
-                            onClick={handleClick}>
-                            0
-                        </button>
-                        <button type="button"
-                            id="decimal"
-                            className="btn btn-circle"
-                            value="."
-                            onClick={handleClick}>
-                            .
-                        </button>
-                        <button type="button" id="equals"
-                            className="btn btn-circle"
-                            value="="
-                            onClick={handleClick}>
-                            =
-                        </button>
+							value="0"
+							onClick={handleClick}>
+							0
+						</button>
+						<button type="button"
+							id="decimal"
+							className="btn btn-circle"
+							value="."
+							onClick={handleClick}>
+							.
+						</button>
+						<button type="button" id="equals"
+							className="btn btn-circle"
+							value="="
+							onClick={handleClick}>
+							=
+						</button>
                     </div>
                 </div>
             </div>
