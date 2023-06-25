@@ -8,21 +8,16 @@
 #barChart {
   font-family: 'Poppins', sans-serif;
   color: white;
-  width: 100vw;
-  height: 100vh;
-  padding-top: px-to-em(80px);
+  max-width: 100%;
+  // width: 100vw;
+  // height: 100vh;
+  padding-top: px-to-em(160px);
   background-color: #282c34;
 
   .body {
     #header {
       font-weight: 600;
       fill: $def-pri;
-    }
-    svg {
-      //text {
-      //  font-size: 1em;
-      //  fill: gray;
-      //}
     }
   }
 
