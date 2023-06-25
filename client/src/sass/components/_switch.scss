@@ -26,13 +26,14 @@
 		font-size: 10px;
 		margin: 0 2px;
 		position: absolute;
-		transition: left 1s easy;
+		transition: all ease;
+
+		&.light {
+			right: 0;
+		}
 		&.dark {
 			color: blueviolet;
 			left: 0;
-		}
-		&:not(.dark) {
-			right: 0;
 		}
 	}
   }

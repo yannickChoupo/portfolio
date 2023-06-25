@@ -295,11 +295,7 @@ const projects = [
 const Project = () => {
     let { projectName } = useParams();
 	return (
-<<<<<<< HEAD
-		<section  className="project page container">
-=======
 		<section  className="project">
->>>>>>> calculator
 			<NavLink
 				to='/works'
 				className="backHome-btn"
