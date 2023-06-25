@@ -2,11 +2,15 @@
 
 .project {
 	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	.backHome-btn {
 		padding: .5em;
 		position: absolute;
 		top: 1em;
-		left: px-to-em(18px);;
+		left: px-to-em(18px);
 		color: inherit;
 		border: 1px solid $def-pri;
 		border-radius: 6px;

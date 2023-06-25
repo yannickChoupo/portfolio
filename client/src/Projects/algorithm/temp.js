@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import $ from 'jquery'
+import React, { useState } from 'react'
 // import { firstLineData, initialState, secondLineData, thirdLineData } from "./calculatorData";
 // import {useDispatch, useSelector} from "react-redux";
 const initialState = {
@@ -29,21 +28,14 @@ const Calculator = () => {
         curNumber: '',
         formula: '',
         prevInput: '',
-        curInput: '',
-        newFormulaValue: "",
-        newCurDisplayValue: "",
-        newCurNumber: "",
-        newPrevInput: "",
+        curInput: ''
     })
-
-    let { formula, prevInput, curDisplay, curNumber, newFormulaValue, newCurDisplayValue, newCurNumber, newPrevInput } = state;
+    const { formula, prevInput, curDisplay, curNumber, curInput } = state;
+    let newFormulaValue = "";
+    let newCurDisplayValue = "";
+    let newCurNumber = "";
+    let newPrevInput = "";
     const updateState = () => {
-        console.log($('.display.formula').css('font-size'));
-        if(newFormulaValue.length >= 15) {
-            $('.display.formula').css('font-size', "25px")
-        } else {
-            $('.display.formula').css('font-size', "30px")
-        }
         setState({
             ...state,
             curDisplay: newCurDisplayValue,
@@ -56,27 +48,22 @@ const Calculator = () => {
     const handleClick = (e) => {
         const { value } = e.target;
         console.log("Formula : ", formula);
+        console.log("New Formula : ", newFormulaValue);
+
         // register the newly pressed 
         // registerLastInput(value);
         newPrevInput = value;
         console.log("curDisplay.length : ", curDisplay, curDisplay.length);
         if (value === 'AC') {
             reinitialize();
-            updateState();
-
         }
-        if (/[+-/x]/.test(value)) {
-            handleOperators(value);
-            updateState();
-
-        }
-        if (/[=]/.test(value)) {
-            handleEqual();
-            updateState();
-
-        }
-
-        if (curDisplay.length <= 8) {
+        // if (curDisplay.length <= 8) {
+            if (/[=]/.test(value)) {
+                handleEqual();
+            }
+            if (/[+-/x]/.test(value)) {
+                handleOperators(value);
+            }
             if (/\d/.test(value)) {
                 handleNumbers(value);
             }
@@ -84,13 +71,7 @@ const Calculator = () => {
                 handleDecimal(value);
             }
             updateState();
-
-        } else {
-            console.log("curdisplayed number already tooo big");
-            return;
-        }
-
-        // updateState();
+        // }
     }
     const handleEqual = () => {
         if (prevInput !== "=") {
@@ -125,11 +106,11 @@ const Calculator = () => {
             newCurDisplayValue = newNumber;
             newFormulaValue = newNumber;
             newCurNumber = newNumber;
-        } else if (/\d/.test(newNumber) && (prevInput !== '=')) {
+        } else if(/\d/.test(newNumber) && (prevInput !== '=')) {
             newCurDisplayValue = curNumber + newNumber;
             newFormulaValue = formula + newNumber;
             newCurNumber = curNumber + newNumber;
-        }
+        } 
     }
     const handleDecimal = (decimalPoint) => {
         const { curNumber, formula, curDisplay } = state;
@@ -142,117 +123,113 @@ const Calculator = () => {
         }
     }
     const handleOperators = (newOperator) => {
-        console.log("Handle  operator ");
         const newOperatorInput = newOperator === "x" ? "*" : newOperator
         if (newOperator === prevInput) {
-            console.log("SAME INPUT");
             newCurDisplayValue = curDisplay;
             newFormulaValue = formula;
             newCurNumber = curNumber;
             console.log("error");
         } else {
-            console.log("NEw Operator : ", (prevInput === "=" ? curNumber : formula));
             newCurDisplayValue = newOperatorInput;
-            // if (/[x/]/.test(newOperator) && /[x/]/.test(prevInput)) {
-            //     newFormulaValue = formula.replace(/[*/]$/, newOperatorInput)
-            // } else {
-            newFormulaValue = (prevInput === "=" ? curNumber : formula) + newOperatorInput;
-            // }
-            console.log();
+            if (/[x/]/.test(newOperator) && /[x/]/.test(prevInput)) {
+                newFormulaValue = formula.replace(/[*/]$/, newOperatorInput)
+            } else {
+                newFormulaValue = (prevInput === "=" ? curNumber : formula) + newOperatorInput;
+            }
         }
     }
     return (
         <div id="calculator">
             <div id="board">
                 <div id="screen">
-                    <div className="display formula">{state.formula}</div>
+                    <div className="display">{state.formula}</div>
                     <div className="display">{state.curDisplay}</div>
                 </div>
                 <div id="main-board">
                     <div className="row first">
-                        <button
-                            id="clear"
-                            className="btn btn-wide"
-                            type="button"
-                            value="AC"
-                            onClick={handleClick}>
-                            AC
-                        </button>
-                        <button
-                            id="divide"
-                            type="button"
-                            className="btn btn-small btn-circle"
-                            onClick={handleClick}
-                            value="/">
-                            /
-                        </button>
+						<button 
+							id="clear"
+							className="btn btn-wide"
+							type="button"
+							value="AC"
+							onClick={handleClick}>
+							AC
+						</button>
+						<button 
+							id="divide"
+							type="button"
+							className="btn btn-small btn-circle"
+							onClick={handleClick}
+							value="/">
+							/
+						</button>
                     </div>
                     <div className="row">
                         {firstLineData.map((item, idx) => {
                             return (
-                                <button
-                                    id={item.ID}
+                                <button 
+									id={item.ID}
                                     className="btn btn-circle"
-                                    value={item.symbol}
+									value={item.symbol}
                                     key={idx}
-                                    onClick={handleClick}
-                                >
-                                    {item.symbol}
-                                </button>
+                                    onClick={handleClick} 
+								>
+									{item.symbol}
+								</button>
                             )
                         })}
                     </div>
                     <div className="row">
                         {secondLineData.map((item, idx) => {
                             return (
-                                <button
-                                    id={item.ID}
-                                    className="btn btn-circle"
-                                    value={item.symbol}
-                                    key={idx}
-                                    onClick={handleClick}
-                                >
-                                    {item.symbol}
-                                </button>
+								<button 
+									id={item.ID}
+									className="btn btn-circle"
+									value={item.symbol}
+									key={idx}
+									onClick={handleClick} 
+								>
+									{item.symbol}
+								</button>
                             )
                         })}
                     </div>
                     <div className="row">
                         {thirdLineData.map((item, idx) => {
                             return (
-                                <button
-                                    id={item.ID}
-                                    className="btn btn-circle"
-                                    value={item.symbol}
-                                    key={idx}
-                                    onClick={handleClick}
-                                >
-                                    {item.symbol}
-                                </button>
+								<button 
+									id={item.ID}
+									className="btn btn-circle"
+									value={item.symbol}
+									key={idx}
+									onClick={handleClick} 
+								>
+									{item.symbol}
+								</button>
                             )
                         })}
                     </div>
                     <div className="row last">
-                        <button type="button"
-                            id="zero"
+						<button type="button"
+							id="zero"
                             className="btn"
-                            value="0"
-                            onClick={handleClick}>
-                            0
-                        </button>
-                        <button type="button"
-                            id="decimal"
-                            className="btn btn-circle"
-                            value="."
-                            onClick={handleClick}>
-                            .
-                        </button>
-                        <button type="button" id="equals"
-                            className="btn btn-circle"
-                            value="="
-                            onClick={handleClick}>
-                            =
-                        </button>
+							value="0"
+							onClick={handleClick}>
+							0
+						</button>
+						<button type="button"
+							id="decimal"
+							className="btn btn-circle"
+							value="."
+							onClick={handleClick}>
+							.
+						</button>
+						<button type="button" id="equals"
+							className="btn btn-circle"
+							value="="
+							onClick={handleClick}>
+							=
+						</button>
                     </div>
                 </div>
             </div>

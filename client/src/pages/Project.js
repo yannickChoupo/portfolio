@@ -280,17 +280,26 @@ const projects = [
             return techStack.some(elem => elem === tech);
         }
     },
+    {
+        // id: 4,
+        name: "Visuals",
+        techStack: ["Javascript", "d3"],
+        description: "Description .....",
+        status: "not available",
+        use: (techStack, tech) => {
+            return techStack.some(elem => elem === tech);
+        }
+    },
 ]
 
 const Project = () => {
     let { projectName } = useParams();
-    console.log(projectName);
-	const project = projects.find((project) => project.name === projectName);
-
-	console.log(project)
-
 	return (
+<<<<<<< HEAD
 		<section  className="project page container">
+=======
+		<section  className="project">
+>>>>>>> calculator
 			<NavLink
 				to='/works'
 				className="backHome-btn"
