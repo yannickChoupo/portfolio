@@ -47,6 +47,9 @@ const Calculator = () => {
 
     const handleClick = (e) => {
         const { value } = e.target;
+        console.log("Formula : ", formula);
+        console.log("New Formula : ", newFormulaValue);
+
         // register the newly pressed 
         // registerLastInput(value);
         newPrevInput = value;
