@@ -8,7 +8,7 @@ const Skills = [
     },
     {
         technologie: "Java",
-        description: "I got my the first Java experiences while visiting and optional class from the university and had then to use spring-boot in the framework of my job as working student by SyngenioAG to develop a backend application with some security features."
+        description: "I got my the first Java experiences while visiting and optional class from the university and had then to use Spring-boot in the framework of my job as working student by SyngenioAG to develop a backend application with some security features."
     },
     {
         technologie: "Javascript",
@@ -205,26 +205,26 @@ const About = () => {
 						</div>
 						<div className="tech-skills">
 							<div className="subtitle">Technical skills</div>
-								<ul className="list">
-									{Skills.map(({ technologie, description }) => {
-										return (
-											<li 
-												key={technologie}
-												>
-												<section className="header" 
-														 onClick={e => openDescription(e)}>
-													<div className="language">{technologie}</div>
-													<div className="arrow">→</div>
-												</section>
-												<section className="description">
-													<em>
-														{description}
-													</em>
-												</section>
-											</li>
-										)
-									})}
-								</ul>
+							<ul className="list">
+								{Skills.map(({ technologie, description }) => {
+									return (
+										<li 
+											key={technologie}
+											>
+											<section className="header" 
+														onClick={e => openDescription(e)}>
+												<div className="language">{technologie}</div>
+												<div className="arrow">→</div>
+											</section>
+											<section className="description">
+												<em>
+													{description}
+												</em>
+											</section>
+										</li>
+									)
+								})}
+							</ul>
 						</div>
 					</div>
 				</section>

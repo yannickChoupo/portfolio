@@ -107,18 +107,6 @@ $lines-color: rgba($def-pri, .87);
 		& > *{
 			margin-bottom: 1em;
 		}
-		&:first-child {
-			position: relative;
-			// background-color: red;
-			// &::before {
-			// 	content: "";
-			// 	width: .2em;
-			// 	height: 25%;
-			// 	position: absolute;
-			// 	top: 25%;
-			// 	background-color: $def-pri;
-			// }
-		}
 		.languages {
 			ul {
 				padding: 0 0 0 5ch;
@@ -146,14 +134,15 @@ $lines-color: rgba($def-pri, .87);
 
 
       .tech-skills {
-		.header {
-			padding: 0 0 0 5ch;
-		}
-		.list {
+		  .list {
 			li {
 				display: flex;
 				flex-direction: column;
 				border: .1em solid $def-pri;
+				margin-left: 3ch;
+				& > * {
+					padding-left: 1em;
+				}
 				.header {
 					margin: 0;
 					padding: .5em 1em;
@@ -162,8 +151,11 @@ $lines-color: rgba($def-pri, .87);
 					cursor: pointer;
 				}
 			    .description {
-					padding: .5em 1em;
-			        transition: display 3s ease-in;
+					margin-bottom: .3em;
+					// visibility: hidden;
+					// opacity: 0;
+			        // transition: visibility 0s, opacity 2s linear;
+					// transform: scale(0);
 			        display: none;
 			    }
 			    &.active {
@@ -171,34 +163,15 @@ $lines-color: rgba($def-pri, .87);
 						transform: rotate(90deg);
 					}
 					.description {
+						// visibility: visible;
+						// opacity: 1;
 			            display: block;
+						// transform: scale(1);
 					}
 			    }
 			}
 			
 		}
-
-        // .software-skills {
-		// 	.body {
-		// 		.header {
-		// 			margin: 0;
-		// 			padding: .5em 1em;
-		// 			display: flex;
-		// 			justify-content: space-between;
-		// 			border: .1em solid $def-pri;
-		// 		}
-	
-		// 		.description {
-		// 			letter-spacing: 1px;
-		// 			background-color: red;
-		// 			margin-left: 1em;
-		// 		}
-		// 		.arrow {
-		// 			color: $def-pri;
-		// 			// cursor: none;
-		// 		}
-		// 	}
-        // }
       }
     }
   }

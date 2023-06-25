@@ -5,7 +5,7 @@
 
 #calculator {
 	font-family: 'Poppins', sans-serif;
-	padding-top: px-to-em(80px);
+	margin-top: 80px;
 	#board {
 		background-color: #1C1C1C;
 		width: 320px;
@@ -20,7 +20,7 @@
 				width: 100%;
 				font-size: 30px;
 				text-align: right;
-				padding: 0 .7ch 0 0;
+				padding: 1em !important;
 			}
 		}
 		#main-board {
@@ -29,6 +29,10 @@
 				margin-top: 10px;
 				display: flex;
 				justify-content: space-between;
+
+				.btn {
+					cursor: pointer;
+				}
 
 				.btn-wide {
 					background-color: red;

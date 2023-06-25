@@ -35,3 +35,4 @@ $sec: "sec-variants";
 @function getPriVariant($color) {
   @return map-get($pri-variants, $color);
 }
+
