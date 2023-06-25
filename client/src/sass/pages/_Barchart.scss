@@ -1,18 +1,12 @@
 @import "../abstracts/mixins";
 @import "../abstracts/function";
 
-.bar {
-  background-color: red;
-}
-
 #barChart {
   font-family: 'Poppins', sans-serif;
   color: white;
   max-width: 100%;
-  // width: 100vw;
-  // height: 100vh;
-  padding-top: px-to-em(160px);
-  background-color: #282c34;
+  width: 100%;
+	padding-top: px-to-em(60px);
 
   .body {
     #header {

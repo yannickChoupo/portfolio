@@ -2,11 +2,11 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const SharedProjectLayout = () => {
 	return (
-		<>
-			<div className="page container">
+		<div className="project-wrapper container">
+			{/* <div className="page container */}
 				<Outlet />
-			</div>
-		</>
+			{/* </div> */}
+		</div>
 	)
 }
 
