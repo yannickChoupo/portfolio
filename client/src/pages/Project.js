@@ -8,6 +8,7 @@ import BarChart from "../Projects/dataviz/BarChart";
 import ScatterPlot from "../Projects/dataviz/Scatterplot";
 import TimesTamp from "../Projects/backend/timesTamp";
 import MarkDownPreviewer from "../Projects/algorithm/markDownPreviewer";
+import Heatmap from "../Projects/dataviz/heatmap";
 
 const projects = [
     {
@@ -308,6 +309,7 @@ const Project = () => {
 				: projectName === "Timer" ?  <Timer /> 
 				: projectName === "BarChart" ?  <BarChart /> 
 				: projectName === "ScatterPlot" ?  <ScatterPlot /> 
+                : projectName === "Heatmap" ?  <Heatmap /> 
 				: projectName === "Timestamp" ?  <TimesTamp /> 
 				: projectName === "MarkDownPreviewer" ?  <MarkDownPreviewer /> :
 				

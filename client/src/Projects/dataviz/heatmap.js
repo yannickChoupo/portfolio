@@ -307,15 +307,12 @@ const Heatmap = () => {
         <>
             <div id="scatterPlot" className="project">
                 <h1>Heat map</h1>
-                {/* <div className="body">
+                <div className="body">
                     <section className="svg-container">
                         <svg id="canvas">
-                            <text id="title" x="80" y="30">
-                                Doping in Professional Bicycle Racing
-                            </text>
                         </svg>
                     </section>
-                </div> */}
+                </div>
             </div>
         </>
     )
