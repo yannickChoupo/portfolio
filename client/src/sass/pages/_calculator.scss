@@ -3,9 +3,6 @@
 @import "../abstracts/breackpoints";
 @import "../abstracts/mixins";
 @import "../abstracts/utils";
-body {
-	background-color: white !important;
-}
 
 #calculator {
 	font-family: 'Poppins', sans-serif;
@@ -23,13 +20,6 @@ body {
 				font-size: 30px;
 				text-align: right;
 				padding: 1em !important;
-				color: red;
-				// display: flex;
-				// align-items: center;
-				// direction: rtl;
-				// overflow: hidden;
-				// padding: 0 .7ch 0 0;
-				// background-color: rebeccapurple;
 			}
 		}
 		#main-board {

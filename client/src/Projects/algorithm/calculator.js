@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react';
+import $ from 'jquery'
 // import { firstLineData, initialState, secondLineData, thirdLineData } from "./calculatorData";
 // import {useDispatch, useSelector} from "react-redux";
 const initialState = {
     curDisplay: '0',
-    curNumber: '0',
+    curNumber: '',
     formula: '',
     prevInput: ''
 }
@@ -25,25 +26,28 @@ const thirdLineData = [{ symbol: "1", ID: "one" },
 const Calculator = () => {
     const [state, setState] = useState({
         curDisplay: '0',
-        curNumber: '0',
+        curNumber: '',
         formula: '',
         prevInput: '',
-        curInput: ''
+        curInput: '',
+        newFormulaValue: "",
+        newCurDisplayValue: "",
+        newCurNumber: "",
+        newPrevInput: "",
     })
 
-    useEffect(() => {
-        console.log("Current Display Value on start : ", curDisplay);
-    }, [])
-    const { formula, prevInput, curDisplay, curNumber, curInput } = state;
-    let newFormulaValue = "";
-    let newCurDisplayValue = "";
-    let newCurNumber = "";
-    let newPrevInput = "";
+    let { formula, prevInput, curDisplay, curNumber, newFormulaValue, newCurDisplayValue, newCurNumber, newPrevInput } = state;
     const updateState = () => {
+        console.log($('.display.formula').css('font-size'));
+        if(newFormulaValue.length >= 15) {
+            $('.display.formula').css('font-size', "25px")
+        } else {
+            $('.display.formula').css('font-size', "30px")
+        }
         setState({
             ...state,
             curDisplay: newCurDisplayValue,
-            curNumber: newCurDisplayValue,
+            curNumber: newCurNumber,
             formula: newFormulaValue,
             prevInput: newPrevInput
         })
@@ -51,30 +55,44 @@ const Calculator = () => {
 
     const handleClick = (e) => {
         const { value } = e.target;
-        console.log("tipped value : ", value);
-        registerLastInput(value);
+        console.log("Formula : ", formula);
+        // register the newly pressed 
+        // registerLastInput(value);
+        newPrevInput = value;
+        console.log("curDisplay.length : ", curDisplay, curDisplay.length);
         if (value === 'AC') {
             reinitialize();
-            return;
-        }
-        if (/\d/.test(value) && (curDisplay.length <= 8)) {
-            handleNumbers(value);
-        }
-        if (value === '.') {
-            handleDecimal(value);
-        }
-        if (/[=]/.test(value)) {
-            if(curDisplay.length > 1) {
-                handleEqual();
-            }
+            updateState();
+
         }
         if (/[+-/x]/.test(value)) {
             handleOperators(value);
+            updateState();
+
         }
+        if (/[=]/.test(value)) {
+            handleEqual();
+            updateState();
+
+        }
+
+        if (curDisplay.length <= 8) {
+            if (/\d/.test(value)) {
+                handleNumbers(value);
+            }
+            if (value === '.') {
+                handleDecimal(value);
+            }
+            updateState();
+
+        } else {
+            console.log("curdisplayed number already tooo big");
+            return;
+        }
+
         // updateState();
     }
     const handleEqual = () => {
-        console.log("handle equal");
         if (prevInput !== "=") {
             let answer = eval(formula);
             const newValue = answer.toString();
@@ -86,7 +104,7 @@ const Calculator = () => {
         }
     }
     const reinitialize = () => {
-        console.log("reintialize all");
+        console.log("reinitialize");
         setState(initialState);
         newFormulaValue = "";
         newCurDisplayValue = "";
@@ -97,56 +115,57 @@ const Calculator = () => {
         newPrevInput = newInput;
     }
     const handleNumbers = (newNumber) => {
-        if (/^0/.test(curDisplay) && (newNumber === '0')) {
-            return;
-        }
-        if (/^0/.test(curDisplay) && (newNumber !== '0') && !(/^\d[.]/.test(curDisplay))) {
+        if (/^0/.test(curNumber) && (newNumber !== '0')) {
             newCurDisplayValue = newNumber;
+            newFormulaValue = newNumber;
             newCurNumber = newNumber;
-        } else {
-            newCurDisplayValue = curDisplay + newNumber;
-            newCurNumber = newCurDisplayValue
-            newFormulaValue = newCurDisplayValue;
         }
-        updateState();
+
+        if (/\d/.test(newNumber) && prevInput === '=') {
+            newCurDisplayValue = newNumber;
+            newFormulaValue = newNumber;
+            newCurNumber = newNumber;
+        } else if (/\d/.test(newNumber) && (prevInput !== '=')) {
+            newCurDisplayValue = curNumber + newNumber;
+            newFormulaValue = formula + newNumber;
+            newCurNumber = curNumber + newNumber;
+        }
     }
     const handleDecimal = (decimalPoint) => {
+        const { curNumber, formula, curDisplay } = state;
         if (curNumber.indexOf('.') === -1) {
             newFormulaValue = formula + decimalPoint;
             newCurDisplayValue = curDisplay + decimalPoint;
             newCurNumber = curNumber + decimalPoint;
-            updateState();
         } else {
             console.log(curNumber, curNumber.indexOf('.'), "operation not allow");
         }
     }
     const handleOperators = (newOperator) => {
-        // const newOperatorInput = newOperator === "x" ? "*" : newOperator
-        // console.log("operator clicked : ", newOperatorInput);
-        // console.log("prevInput : ", newOperatorInput);
-        console.log("formula : ", newFormulaValue);
-
+        console.log("Handle  operator ");
         const newOperatorInput = newOperator === "x" ? "*" : newOperator
         if (newOperator === prevInput) {
+            console.log("SAME INPUT");
             newCurDisplayValue = curDisplay;
             newFormulaValue = formula;
             newCurNumber = curNumber;
             console.log("error");
         } else {
+            console.log("NEw Operator : ", (prevInput === "=" ? curNumber : formula));
             newCurDisplayValue = newOperatorInput;
-            if (/[x/]/.test(newOperator) && /[x/]/.test(prevInput)) {
-                newFormulaValue = formula.replace(/[*/]$/, newOperatorInput)
-            } else {
-                newFormulaValue = (prevInput === "=" ? curNumber : formula) + newOperatorInput;
-            }
+            // if (/[x/]/.test(newOperator) && /[x/]/.test(prevInput)) {
+            //     newFormulaValue = formula.replace(/[*/]$/, newOperatorInput)
+            // } else {
+            newFormulaValue = (prevInput === "=" ? curNumber : formula) + newOperatorInput;
+            // }
+            console.log();
         }
-        updateState();
     }
     return (
         <div id="calculator">
             <div id="board">
                 <div id="screen">
-                    <div className="display">{state.formula}</div>
+                    <div className="display formula">{state.formula}</div>
                     <div className="display">{state.curDisplay}</div>
                 </div>
                 <div id="main-board">
