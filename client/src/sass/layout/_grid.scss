@@ -2,6 +2,7 @@
 @import "../abstracts/mixins";
 @import "../abstracts/function";
 @import "../abstracts/colors";
+@import "../abstracts/variables";
 
 body {
 	&.dark-mode {
@@ -30,4 +31,10 @@ body {
 		}
 		
 	}
+}
+
+.page {
+	padding: 0;
+	position: relative;
+	min-height: 100vh;
 }

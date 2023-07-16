@@ -2,21 +2,11 @@
 /// Vendors
 @use "vendors/vendors";
 
+@use "layout/layout_dir";
+
 // Base
 @use "abstracts/abstracts_dir";
 @use "base/base";
 @use "base/animations";
 @use "components/components_dir";
 @use "pages/pages_dir";
-
-.page {
-	margin: 0 auto;
-	padding-top: px-to-em(60px);
-	position: relative;
-	min-height: 100vh;
-}
-.logo {
-	background-color: rgba(rebeccapurple, 0.7);
-	width: 36px;
-	height: 36px;
-}

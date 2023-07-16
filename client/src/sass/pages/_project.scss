@@ -1,19 +1,23 @@
 @import "../abstracts/function";
 
 .project {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	// background-color: rebeccapurple;
+    padding-top: px-to-em(30px);
+	// position: relative;
+	// display: flex;
+	// align-items: center;
+	// justify-content: center;
+}
+.home-btn {
+	height: 4ch;
+}
 
-	.backHome-btn {
-		padding: .5em;
-		position: absolute;
-		top: 1em;
-		left: px-to-em(18px);
-		color: inherit;
-		border: 1px solid $def-pri;
-		border-radius: 6px;
-		cursor: pointer;
-	}
+.backHome-btn {
+	padding: .5em;
+	color: inherit;
+	border: 1px solid $def-pri;
+	border-radius: 6px;
+	margin-left: px-to-em(12px);
+	// margin-top: px-to-em(330px);
+	cursor: pointer;
 }

@@ -39,6 +39,7 @@ const Projects = [
         techStack: ["Javascript", "D3", "Ajax", "React", "HTML"],
         description: "calculate",
         status: "available",
+        link: "/dataviz/BarChart",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -49,6 +50,7 @@ const Projects = [
         techStack: ["Javascript", "D3", "HTML", "React"],
         description: "description...",
         status: "available",
+        link: "/dataviz/ScatterPlot",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -69,6 +71,7 @@ const Projects = [
         techStack: ["Javascript", "Ajax", "React"],
         description: "Description .....",
         status: "available",
+        link: "/dataviz/Heatmap",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -85,10 +88,11 @@ const Projects = [
     },
     {
         // id: 4,
-        name: "Choreploth",
+        name: "Choroploth",
         techStack: ["Javascript", "Ajax", "D3"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
+        link: "/dataviz/Choroploth",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -98,7 +102,8 @@ const Projects = [
         name: "Treemap",
         techStack: ["Javascript", "Ajax", "D3"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
+        link: "/dataviz/Treemap",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -461,7 +466,7 @@ const Works = () => {
 							&& status === "available") {
 							return (
 								<NavLink 
-										to={`/works/${name}`}
+										to={project.link ? project.link : `/works/${name}`}
 										className="list-item project-card"
 										key={name + techStack + idx}
 									>

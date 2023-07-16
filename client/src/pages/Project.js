@@ -4,10 +4,13 @@ import { NavLink, useParams } from "react-router-dom";
 import RandomQuote from "../Projects/algorithm/RamdomQuote";
 import Calculator from "../Projects/algorithm/calculator";
 import Timer from "../Projects/algorithm/Timer.js";
-import BarChart from "../Projects/dataviz/BarChart";
-import ScatterPlot from "../Projects/dataviz/Scatterplot";
+// import BarChart from "../Projects/dataviz/BarChart";
+// import ScatterPlot from "../Projects/dataviz/Scatterplot";
 import TimesTamp from "../Projects/backend/timesTamp";
 import MarkDownPreviewer from "../Projects/algorithm/markDownPreviewer";
+// import Heatmap from "../Projects/dataviz/heatmap";
+// import Choroploth from "../Projects/dataviz/Choroploth";
+// import Treemap from "../Projects/dataviz/treemap";
 
 const projects = [
     {
@@ -105,7 +108,7 @@ const projects = [
         name: "Treemap",
         techStack: ["Javascript", "Ajax", "D3"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -294,31 +297,31 @@ const projects = [
 
 const Project = () => {
     let { projectName } = useParams();
-	return (
-<<<<<<< HEAD
-		<section  className="project page container">
-=======
-		<section  className="project">
->>>>>>> calculator
-			<NavLink
+    return (
+        <>
+            {/* <NavLink
 				to='/works'
 				className="backHome-btn"
 			>
 				Back Home
-			</NavLink>
-			{
-				projectName === "Calculator" ? <Calculator /> 
-				: projectName === "Quote" ?  <RandomQuote /> 
-				: projectName === "Timer" ?  <Timer /> 
-				: projectName === "BarChart" ?  <BarChart /> 
-				: projectName === "ScatterPlot" ?  <ScatterPlot /> 
-				: projectName === "Timestamp" ?  <TimesTamp /> 
-				: projectName === "MarkDownPreviewer" ?  <MarkDownPreviewer /> :
-				
-				(<h4> the project {projectName} not jet available here</h4>)
-			}
-		</section>
-	)
+			</NavLink> */}
+            {
+                projectName === "Calculator" ? <Calculator />
+                    : projectName === "Quote" ? <RandomQuote />
+                        : projectName === "Timer" ? <Timer />
+                            // : projectName === "BarChart" ?  <BarChart /> 
+                            // : projectName === "ScatterPlot" ?  <ScatterPlot /> 
+                            // : projectName === "Heatmap" ?  <Heatmap /> 
+                            // : projectName === "Choroploth" ?  <Choroploth /> 
+                            : projectName === "Timestamp" ? <TimesTamp />
+                                : projectName === "MarkDownPreviewer" ? <MarkDownPreviewer /> :
+                                    // : projectName === "Treemap" ?  <Treemap /> :
+
+
+                                    (<h4> the project {projectName} not jet available here</h4>)
+            }
+        </>
+    )
 }
 
 
