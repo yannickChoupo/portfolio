@@ -12,15 +12,15 @@ const DrawScatterplot = (svg, curData) => {
             timeString[1]);
         return item;
     });
-    const svgWidth = window.getComputedStyle(document.querySelector("#dataviz")).getPropertyValue("width").replace("px", "");
+    const svgWidth = 960
     const svgHeight = window.innerHeight - 180;
+    d3.select(".svg-container").style("overflow", "auto");
     const padding = 40;
     const noDopingColor = "rgb(31, 119, 180)"
     const dopingColor = "rgb(255, 127, 14)"
 
 
-    const body = d3.select(".body");
-    body.style("position", "absolute");
+    const body = d3.select(".svg-container");
 
     const tooltip = body.append("div");
     tooltip.attr("id", "tooltip")
