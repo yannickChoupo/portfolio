@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 
 const Projects = [
     {
@@ -299,7 +298,6 @@ const Categories = [
     }
 ]
 const Works = () => {
-	const dispatch = useDispatch();
     const [curCategories, setcurCategories] = useState(Categories);
     const [curStack, setCurStack] = useState([])
 
@@ -370,7 +368,7 @@ const Works = () => {
             return item;
         })
         setcurCategories(newCategoriesList);
-    }, []);
+    }, [curCategories]);
 
     const handleCategorieChange = (e) => {
         const newCategories = curCategories.map(item => {
@@ -474,6 +472,7 @@ const Works = () => {
 								</NavLink>
 							)
 						}
+                        return null;
 					})}
 				</div>
 			</div>
