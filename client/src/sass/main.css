@@ -320,10 +320,10 @@ nav ul li[class=nav-ham] {
   background-color: rgba(96, 2, 237, 0.2);
 }
 .hamburger--open .hamburger__line::before {
-  bottom: calc(100% / 4);
+  bottom: calc(2em / 4);
 }
 .hamburger--open .hamburger__line::after {
-  top: calc(100% / 4);
+  top: calc(2em / 4);
 }
 .hamburger--close .hamburger__line:nth-child(1) {
   background-color: transparent;

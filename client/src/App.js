@@ -16,7 +16,6 @@ import Admin from "./pages/Admin";
 import LogInOut from "./pages/LogInOut";
 import Project from "./pages/Project";
 import SharedLayout from "./Components/SharedLayout";
-import ProtectetdRoute from "./Components/ProtectedRoute";
 import SharedProjectLayout from "./Components/ShareProjectLayout";
 import Dataviz from "./pages/Dataviz";
 import SharedDatavizLayout from "./Components/SharedDatavizLayout";
@@ -42,9 +41,7 @@ function App() {
 					<Route
 						path="/admin"
 						element={
-							// <ProtectetdRoute user={user} >
 							<Admin user={user} />
-							// </ProtectetdRoute>
 						}
 					/>
 					<Route path="/login" element={<LogInOut setUser={setUser} />} />

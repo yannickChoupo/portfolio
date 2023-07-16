@@ -14,7 +14,7 @@ const SharedDatavizLayout = () => {
     const ref = useRef();
     const [curData, setData] = useState();
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     searchParams.get("q")
 
 
@@ -84,18 +84,18 @@ const SharedDatavizLayout = () => {
                 });
         });
     }
-    const fetchTreemapData = () => {
-        let query = searchParams.get("q");
-        if (query === "video" || !query) {
-            fetchVideoGames();
-        }
-        if (query === "movie") {
-            fetchMovies();
-        }
-        if (query === "kickstarter") {
-            fetchKickStarter();
-        }
-    }
+    // const fetchTreemapData = () => {
+    //     let query = searchParams.get("q");
+    //     if (query === "video" || !query) {
+    //         fetchVideoGames();
+    //     }
+    //     if (query === "movie") {
+    //         fetchMovies();
+    //     }
+    //     if (query === "kickstarter") {
+    //         fetchKickStarter();
+    //     }
+    // }
     useEffect(() => {
         console.log("Dtataviz project name : ", projectName);
         if (projectName === "BarChart") {
@@ -115,13 +115,23 @@ const SharedDatavizLayout = () => {
 
         if (projectName === "Treemap") {
             // get the queryor set the query
-            fetchTreemapData();
+            // fetchTreemapData();
+            let query = searchParams.get("q");
+            if (query === "video" || !query) {
+                fetchVideoGames();
+            }
+            if (query === "movie") {
+                fetchMovies();
+            }
+            if (query === "kickstarter") {
+                fetchKickStarter();
+            }
         }
 
         if (!projectName) {
             d3.select(".svg-container").style("display", "none");
         }
-    }, [])
+    }, [projectName, searchParams])
     useEffect(() => {
         if (curData) {
             const svg = d3.select(ref.current);
@@ -149,7 +159,7 @@ const SharedDatavizLayout = () => {
                     break;
             }
         }
-    }, [curData])
+    }, [curData, searchParams, projectName])
     return (
         <div id="dataviz">
             <NavLink
