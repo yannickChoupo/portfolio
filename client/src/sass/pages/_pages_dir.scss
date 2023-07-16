@@ -3,15 +3,12 @@
 @use "home";
 @use "randomQuote";
 @use "work";
-@use "scatterPlot";
-@use "Barchart";
 @use "log";
 @use "contact";
 @use "message";
 @use "timer";
 @use "timestamp";
-@use "heatmap";
 @use "admin";
 @use "markDownPreviewer";
 @use "project";
-
+@use "dataviz"

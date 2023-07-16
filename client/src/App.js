@@ -3,7 +3,7 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Routes,
-  } from "react-router-dom";
+} from "react-router-dom";
 import './sass/main.scss';
 
 import Home from './pages/Home'
@@ -18,35 +18,41 @@ import Project from "./pages/Project";
 import SharedLayout from "./Components/SharedLayout";
 import ProtectetdRoute from "./Components/ProtectedRoute";
 import SharedProjectLayout from "./Components/ShareProjectLayout";
+import Dataviz from "./pages/Dataviz";
+import SharedDatavizLayout from "./Components/SharedDatavizLayout";
 
 function App() {
 	const [user, setUser] = useState(null);
 
-    return (
+	return (
 		<Router>
 			<Routes>
-				<Route exact path="/" element={ <SharedLayout/> }>
-					<Route index element={ <Home /> } />
-					<Route path="works" element={ <SharedProjectLayout /> }> 
-						<Route index element={ <Works /> } />
-						<Route path=":projectName" element={ <Project />} />
+				<Route exact path="/" element={<SharedLayout />}>
+					<Route index element={<Home />} />
+					<Route path="/works" element={<SharedProjectLayout />}>
+						<Route index element={<Works />} />
+						<Route path=":projectName" element={<Project />} />
 					</Route>
-					<Route path="/contact" element={ <Contact />} />
-					<Route path="/about" element={ <About /> } />
-					<Route 
+					<Route path="/dataviz" element={<SharedDatavizLayout />}>
+						<Route index element={<Dataviz />} />
+						<Route path=":projectName" element={<Dataviz />} />
+					</Route>
+					<Route path="/contact" element={<Contact />} />
+					<Route path="/about" element={<About />} />
+					<Route
 						path="/admin"
-						element = {
+						element={
 							// <ProtectetdRoute user={user} >
-								<Admin user={user} />
+							<Admin user={user} />
 							// </ProtectetdRoute>
-						} 
+						}
 					/>
-					<Route path="/login" element={ <LogInOut setUser={setUser} /> } />
-					<Route path="*" element={ <Error /> } />
+					<Route path="/login" element={<LogInOut setUser={setUser} />} />
+					<Route path="*" element={<Error />} />
 				</Route>
 			</Routes>
 		</Router>
-    );
+	);
 }
 
 export default App;

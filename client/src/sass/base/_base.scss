@@ -67,20 +67,20 @@ code {
 //   }
 
 #app {
-	@include color-scheme(dark) {
-		background-color: #0d1117;
-		color: white;
-	}
+	// @include color-scheme(dark) {
+	// 	background-color: #0d1117;
+	// 	color: white;
+	// }
   
-	@include color-scheme(light) {
-		background-color: white;
-		color: #0d1117;
-	}
+	// @include color-scheme(light) {
+	// 	background-color: white;
+	// 	color: #0d1117;
+	// }
 
-	&.light {
-		background-color: white;
-	    color: #0d1117;
-	}
+	// &.light {
+	// 	background-color: white;
+	//     color: #0d1117;
+	// }
 
 	&:hover {
 		nav {
