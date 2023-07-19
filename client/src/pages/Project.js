@@ -4,9 +4,13 @@ import { NavLink, useParams } from "react-router-dom";
 import RandomQuote from "../Projects/algorithm/RamdomQuote";
 import Calculator from "../Projects/algorithm/calculator";
 import Timer from "../Projects/algorithm/Timer.js";
+<<<<<<< Updated upstream
 // import BarChart from "../Projects/dataviz/BarChart";
 // import ScatterPlot from "../Projects/dataviz/Scatterplot";
-import TimesTamp from "../Projects/backend/timesTamp";
+import TimesTamp from "../Projects/backend/api/timesTamp";
+=======
+import TimesTamp from "../Projects/backend/api/timesTamp";
+>>>>>>> Stashed changes
 import MarkDownPreviewer from "../Projects/algorithm/markDownPreviewer";
 // import Heatmap from "../Projects/dataviz/heatmap";
 // import Choroploth from "../Projects/dataviz/Choroploth";
