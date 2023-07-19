@@ -262,13 +262,3 @@ ALTER TABLE ONLY public.appointments
 
 --
 -- Name: appointments fk_service; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
---
-
-ALTER TABLE ONLY public.appointments
-    ADD CONSTRAINT fk_service FOREIGN KEY (service_id) REFERENCES public.services(service_id);
-
-
---
--- PostgreSQL database dump complete
---
-
