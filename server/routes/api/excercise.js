@@ -2,10 +2,10 @@ const router = require('express').Router();
 const excerciseControllers = require('../../controllers/exercise');
 
 router.get('/', (req, res) => {
-    res.json("excersice microservice");
+    res.json("exersice microservice");
 })
 router.get('/users', async (req, res) => {
-    const users = await User.find();
+    const users = await Use.find();
     res.send(users)
 })
 

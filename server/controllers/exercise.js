@@ -1,5 +1,5 @@
 // import { model } from "mongoose";
-const ExerciseUser = require('../models/users');
+const ExerciseUser = require('../models/ExerciseUser.model');
 const dns = require('dns');
 
 
@@ -9,7 +9,8 @@ async function registerExerciseUser(req, res) {
         const existingUser = await ExerciseUser.find({ username })
         if (existingUser[0]) {
             res.send({
-                error: "User already exist"
+                error: "User already exist",
+                id: existingUser[0]._id
             })
             return
         }
@@ -31,33 +32,33 @@ async function registerExerciseUser(req, res) {
 
 const addExercise = async (req, res) => {
     const { id } = req.params;
+    console.log("ID : ", id);
+    console.log("request : ", req.body);
     let { description, duration, date } = req.body;
-    if (date === '' || typeof date === 'undefined') {
-        date = new Date().toDateString();
-    } else {
-        date = new Date(date).toDateString();
-    }
+
     try {
-        const existingUser = await User.find({ _id: id });
-        if (!existingUser[0]) {
+            const existingUser = await ExerciseUser.find({ _id: id });
+            if (!existingUser[0]) {
+                res.send({
+                    error: "user not found!!"
+                })
+                return
+            }
+            let findedUser = existingUser[0];
+            let newExercise = { description, duration, date }
+            console.log("new ex : ", newExercise);
+            let newExercisesArr = [...findedUser.log, newExercise]
+            duration = parseInt(duration);
+            const newUser = await ExerciseUser.findOneAndUpdate(
+                { _id: id }, { log: newExercisesArr })
+
             res.send({
-                error: "user not found!!"
+                _id: id,
+                username: findedUser.username,
+                date,
+                duration,
+                description
             })
-            return
-        }
-        let findedUser = existingUser[0];
-        let newExercise = { description, duration, date }
-        let newExercisesArr = [...findedUser.log, newExercise]
-        duration = parseInt(duration);
-        const newUser = await User.findOneAndUpdate(
-            { _id: id }, { log: newExercisesArr })
-        res.send({
-            _id: id,
-            username: findedUser.username,
-            date,
-            duration,
-            description
-        })
     } catch (error) {
         console.log(error);
         res.send({
@@ -69,7 +70,7 @@ const getLogs = async (req, res) => {
     const { _id } = req.params;
     let { from, to, limit } = req.query;
     try {
-        const existingUser = await User.find({ _id });
+        const existingUser = await ExerciseUser.find({ _id });
         if (!existingUser[0]) {
             res.send({
                 error: "user not found!!"
@@ -81,9 +82,10 @@ const getLogs = async (req, res) => {
         const count = findedUser.log.length;
         let { log, username } = findedUser;
         findedUser.log.forEach((log) => {
-            log.duration = parseInt(log.duration);
+            log.dur = parseInt(log.dur);
             return log;
         })
+
         limit = parseInt(limit);
 
         if (from || to || limit) {

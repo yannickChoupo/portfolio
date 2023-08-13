@@ -83,8 +83,9 @@ const DrawChart = function(svg, curData) {
         .attr("transform", "translate(" + padding + ",0)")
 
 
-    const body = d3.select('.body');
-    body.style("position", "absolute")
+    const body = d3.select('.svg-container');
+    body.style("overflow", "auto")
+    // body.style("position", "absolute")
 
     const tooltip = body.append("div");
     tooltip.attr("id", "tooltip")

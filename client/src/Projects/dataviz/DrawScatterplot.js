@@ -24,7 +24,7 @@ const DrawScatterplot = (svg, curData) => {
 
     const tooltip = body.append("div");
     tooltip.attr("id", "tooltip")
-        .style("position", "relative")
+        .style("position", "absolute")
         .style("color", "black")
         .style("background-color", "lightsteelblue")
         .style("width", "fit-content")
@@ -144,12 +144,12 @@ const DrawScatterplot = (svg, curData) => {
             let date = new Date(d.Time);
             let time = date.toISOString().substring(14, 19)
             tooltip.style("display", "block")
-                .style("top", -svgHeight + pointer[1] + "px")
+                .style("top", pointer[1] + "px")
                 .style("left", function (params) {
                     if (pointer[0] > (svgWidth - 150)) {
                         return (pointer[0] - 150) + "px"
                     } else {
-                        return pointer[0] + 5 + "px"
+                        return pointer[0] + 10 + "px"
                     }
 
                 })

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const timestampControllers = require('../../controllers/timestamp');
+// const timestampControllers = require('../../controllers/timestamp');
 
 router.get('/:date?', (req, res) => {
     let date = req.params.date;
@@ -13,16 +13,17 @@ router.get('/:date?', (req, res) => {
                 newDate = new Date(date);
                 utcValue = newDate.toUTCString();
                 unixValue = newDate.valueOf();
-                
                 return res.json({
                     "unix": unixValue,
                     "utc": utcValue
                 })
             }
         } else {
-            // newDate = new Date((date === "05 October 2011, GMT") ? "10/5/2011" : parseInt(date));
-            newDate = new Date(parseInt(date));
-            console.log("Date integer : ", parseInt(date))
+            if (!/^\d+$/g.test(date)) {
+                newDate = new Date((date));
+            } else {
+                newDate = new Date(parseInt(date));
+            }
             if (newDate === "Invalid Date") {
                 return res.json({ "error": "Invalid Date" });
             } else {

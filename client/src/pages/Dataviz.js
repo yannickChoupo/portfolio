@@ -49,6 +49,10 @@ const projects = [
     },
 ]
 
+/**
+ * For HTML elements -> getBoundingClientRect() instead of the SVG-only getBBox().
+ * Like so: d3.select("body").node().getBoundingClientRect().width
+ */
 const Dataviz = () => {
     let { projectName } = useParams();
     return (
