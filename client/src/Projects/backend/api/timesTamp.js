@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AXIOS from '../../../redux/services/axios';
+// import AXIOS from '../../redux/services/axios';
 
 const TimesTamp = () => {
     const [ResponseData, setResponseData] = useState({
@@ -7,51 +8,53 @@ const TimesTamp = () => {
         utc: ''
     })
     useEffect(() => {
-        AXIOS.get('api/timestamp').then((response) => {
+        getTimeStamp(value)
+    }, [])
+
+    const getTimeStamp = (urlParam) => {
+        AXIOS.get(`api/timestamp?${urlParam}`).then((response) => {
             console.log(response.data);
             setResponseData(response.data);
         })
-    }, [])
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        getTimeStamp(value);
+    }
+
+    const [value, setValue] = useState('')
+
+    const handleChange = (e) => {
+        // TODO check if valid input
+        console.log("handle changes....");
+        setValue(e.target.value)
+    }
+
     return (
         <>
             <div id="timestamp">
                 <h2>Timestamp Microservice</h2>
                 <div className="container">
-                    <div>
-
-                        <section>
-                            <h3>Example usage</h3>
-                            <ul>
-                                <li>[project url]/api/2015-12-25</li>
-                                <li>[project url]/api/1451001600000</li>
-                                <li><a href="/api/">Empty</a></li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h3>Example Output</h3>
-                            <p>
-                                "unix": 1451001600000,
-                            </p>
-                            <p>
-                                "utc": "Fri, 25 Dec 2015 00:00:00 GMT"
-                            </p>
-                        </section>
-                        <section>
-                            <h3>Api response</h3>
-                            <p>
-                                "unix": {ResponseData.unix}
-                            </p>
-                            <p>
-                                "utc": {ResponseData.utc}
-                            </p>
-                        </section>
-                    </div>
-                    <div>
-                        <h4>Test the API</h4>
-                        <div>
-                            
+                    <section id='example-usage'>
+                        <h3>Example usage</h3>
+                        <div className='body'>
+                            <div onSubmit={handleSubmit} className='form' id='request'>
+                                <textarea value={value} onChange={handleChange} className='text-area' />
+                                <div type="submit" className='submit' onClick={handleSubmit}>
+                                    <i class="fa-regular fa-paper-plane" />
+                                </div>
+                            </div>
+                            <div id='response'>
+                                <h3>
+                                    Response
+                                </h3>
+                                <code >
+                                    {JSON.stringify(ResponseData)}
+                                </code>
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </>

@@ -3,8 +3,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require("path");
 const bodyParser = require('body-parser');
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const config = require('./config/key');
 const jwt = require('jsonwebtoken');
+
 
 require('dotenv').config();
 
@@ -53,7 +56,7 @@ const fileMetaRouter = require('./routes/api/fileMetaData');
 app.use('/api/timestamp', timestampRouter);
 app.use('/api/whoiam', whoiamRouter);
 app.use('/api/shorturl', shortUrlRouter);
-app.use('/api/excercise', excerciseRouter);
+app.use('/api/exercise', excerciseRouter);
 app.use('/api/todo', todosRouter);
 app.use('/api/session', sessionRouter);
 app.use('/api/filemeta', fileMetaRouter);

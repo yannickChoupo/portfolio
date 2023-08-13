@@ -203,7 +203,7 @@ const Projects = [
         name: "RequestHeaderParser",
         techStack: ["Express"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -213,17 +213,17 @@ const Projects = [
         name: "URLShortener",
         techStack: ["Express"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
     },
     {
         // id: 4,
-        name: "FileMataData",
+        name: "FileMetaData",
         techStack: ["Express"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -274,6 +274,16 @@ const Projects = [
         techStack: ["Javascript", "Ajax", "React"],
         description: "Description .....",
         status: "not available",
+        use: (techStack, tech) => {
+            return techStack.some(elem => elem === tech);
+        }
+    },
+    {
+        // id: 4,
+        name: "ExerciseTracker",
+        techStack: ["Express", "MongoDB"],
+        description: "Description .....",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }

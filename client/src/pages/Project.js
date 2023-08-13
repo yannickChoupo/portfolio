@@ -4,14 +4,12 @@ import { NavLink, useParams } from "react-router-dom";
 import RandomQuote from "../Projects/algorithm/RamdomQuote";
 import Calculator from "../Projects/algorithm/calculator";
 import Timer from "../Projects/algorithm/Timer.js";
-<<<<<<< Updated upstream
-// import BarChart from "../Projects/dataviz/BarChart";
-// import ScatterPlot from "../Projects/dataviz/Scatterplot";
 import TimesTamp from "../Projects/backend/api/timesTamp";
-=======
-import TimesTamp from "../Projects/backend/api/timesTamp";
->>>>>>> Stashed changes
 import MarkDownPreviewer from "../Projects/algorithm/markDownPreviewer";
+import URLShortener from "../Projects/backend/api/urlShortener";
+import RequestHeaderParser from "../Projects/backend/api/requestHeaderParser";
+import FileMetaData from "../Projects/backend/api/fileMetaData";
+import ExerciseTracker from "../Projects/backend/api/exerciseTracker";
 // import Heatmap from "../Projects/dataviz/heatmap";
 // import Choroploth from "../Projects/dataviz/Choroploth";
 // import Treemap from "../Projects/dataviz/treemap";
@@ -212,7 +210,7 @@ const projects = [
         name: "RequestHeaderParser",
         techStack: ["Express"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -222,7 +220,7 @@ const projects = [
         name: "URLShortener",
         techStack: ["Express"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -289,10 +287,10 @@ const projects = [
     },
     {
         // id: 4,
-        name: "Visuals",
-        techStack: ["Javascript", "d3"],
+        name: "ExerciseTracker",
+        techStack: ["Express", "MongoDB"],
         description: "Description .....",
-        status: "not available",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -313,16 +311,14 @@ const Project = () => {
                 projectName === "Calculator" ? <Calculator />
                     : projectName === "Quote" ? <RandomQuote />
                         : projectName === "Timer" ? <Timer />
-                            // : projectName === "BarChart" ?  <BarChart /> 
-                            // : projectName === "ScatterPlot" ?  <ScatterPlot /> 
-                            // : projectName === "Heatmap" ?  <Heatmap /> 
-                            // : projectName === "Choroploth" ?  <Choroploth /> 
-                            : projectName === "Timestamp" ? <TimesTamp />
-                                : projectName === "MarkDownPreviewer" ? <MarkDownPreviewer /> :
-                                    // : projectName === "Treemap" ?  <Treemap /> :
-
-
-                                    (<h4> the project {projectName} not jet available here</h4>)
+                            : projectName === "URLShortener" ? <URLShortener />
+                                : projectName === "RequestHeaderParser" ? <RequestHeaderParser />
+                                    : projectName === "FileMetaData" ? <FileMetaData />
+                                        : projectName === "ExerciseTracker" ? <ExerciseTracker />
+                                            : projectName === "Timestamp" ? <TimesTamp />
+                                                : projectName === "MarkDownPreviewer" ? <MarkDownPreviewer /> :
+                                                    // : projectName === "Treemap" ?  <Treemap /> :
+                                                    (<h4> the project {projectName} not jet available here</h4>)
             }
         </>
     )

@@ -128,7 +128,8 @@ const DrawTreemap = (svg, curData) => {
 
     createTreeMap(hierarchy);
     let tiles = hierarchy.leaves();
-    const block = svg.append("g").attr("id", "block")
+    const block = svg.append("g")
+        .attr("id", "block")
         .selectAll('g')
         .data(tiles)
         .enter()
@@ -139,9 +140,12 @@ const DrawTreemap = (svg, curData) => {
     d3.select('.svg-container')
         .style("width", svgWidth)
         .style("heigth", svgHeight)
+        .style("position", "relative")
+
 
     const tooltip = d3.select(".svg-container").append("div").attr("id", "tooltip")
-    tooltip.style("position", "relative")
+    tooltip
+        .style("position", "absolute")
         .style("width", "fit-content")
         .style("padding", ".5em")
         .style("border-radius", "6px")
@@ -150,7 +154,7 @@ const DrawTreemap = (svg, curData) => {
         .style("box-shadow", "1px 1px 10px rgba(128, 128, 128, 0.6)")
         .style("display", "none")
 
-    svg.style('position', "absolute");
+    // svg.style('position', "absolute");
 
 
     block.append('rect')
@@ -164,7 +168,9 @@ const DrawTreemap = (svg, curData) => {
         .attr('data-value', (item) => item.data.value)
         .attr('width', (item) => item['x1'] - item['x0'])
         .attr('height', (item) => item['y1'] - item['y0'])
+
     block.on('mousemove', function (Event, dataItem) {
+        console.log("DTA : ", dataItem);
         let name = dataItem.data.name
         let category = dataItem.data.category;
         let value = dataItem.data.value;
@@ -180,15 +186,16 @@ const DrawTreemap = (svg, curData) => {
 
         tooltip.style("display", "block")
             .style('left', function () {
-                if ((Event.pageX - margin.left + 20) > (svgWidth - tooltipTextLength)) {
-                    return ((Event.pageX - margin.left + 20) - tooltipTextLength - 40) + "px"
+                if ((dataItem.x0 - margin.left + 20) > (svgWidth - tooltipTextLength)) {
+                    return (dataItem.x0 - tooltipTextLength) + "px"
 
                 } else {
-                    return (Event.pageX - margin.left + 20) + "px"
+                    return (dataItem.x0) + "px"
                 }
             })
             .style('top', function () {
-                return Event.screenY - 5 * margin.bottom + 'px';
+                // return dataItem.y1;
+                return Event.pageY - 7 * margin.bottom - legendHeight + 'px';
             })
 
         tooltip.style("opacity", 0.9)
@@ -198,9 +205,9 @@ const DrawTreemap = (svg, curData) => {
             "category : " + category + "<br>" +
             "value : " + value + "<br>")
     })
-        .on('mouseout', function () {
-            tooltip.style("display", "none")
-        })
+    .on('mouseout', function () {
+        tooltip.style("display", "none")
+    })
 
 
 
@@ -209,6 +216,7 @@ const DrawTreemap = (svg, curData) => {
         .style("font-size", ".5em")
         .html(function (item) {
             let result = "";
+            console.log(d3.select("parent"));
             let texts = item.data.name.split(" ");
             let reducedText;
             if (title === "Video Games Sales") {
@@ -221,11 +229,12 @@ const DrawTreemap = (svg, curData) => {
                 reducedText = texts
             }
             reducedText.forEach((element, idx) => {
-                result += ("<tspan x=0 y=2ch dy=" + 2 * idx + "ch dx=.5ch style='cursor: pointer'>" + element + "</tspan>")
+                if(idx < 2) {
+                    result += ("<tspan x=0 y=2ch dy=" + 2 * idx + "ch dx=.5ch style='cursor: pointer'>" + element + "</tspan>")
+                }
             });
             return result;
-        }
-        )
+        })
 
     const legend = svg.append("g")
         .attr("id", "legend")

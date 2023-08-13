@@ -1,10 +1,14 @@
+const dns = require('node:dns');
+const urlParser = require('node:url');
+
 const router = require('express').Router();
 const Url = require('../../models/url');
 
 // const shControllers = require('../../controllers/timestamp');
 
-router.post('/shorturl', async (req, res) => {
+router.post('/', async (req, res) => {
     const { url } = req.body;
+    console.log("URL : ", url);
     dns.lookup(urlParser.parse(url).hostname, (error, address) => {
         if (!address) {
             res.json({ error: "invalid url" })
@@ -36,7 +40,7 @@ router.post('/shorturl', async (req, res) => {
     }
 });
 
-router.get('/shorturl/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     const { id } = req.params;
     const originalUrl = await Url.find({ short_url: id });
     if (originalUrl[0]) {

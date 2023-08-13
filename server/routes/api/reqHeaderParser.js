@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const reqHeaderControllers = require('../../controllers/timestamp');
+// const reqHeaderControllers = require('../../controllers/timestamp');
 
 router.get('/', (req, res) => {
     let { headers, accept } = req;
