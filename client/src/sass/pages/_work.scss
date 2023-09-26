@@ -5,7 +5,7 @@
 @import "../abstracts/mixins";
 @import "../abstracts/colors";
 #work {
-    padding: px-to-em(40px) 0 0 px-to-em(12px);
+    padding: 0 0 0 px-to-em(12px);
 	.filters {
 		margin-bottom: px-to-em(20px);
 		width: 100%;
@@ -46,7 +46,12 @@
 				bottom: .1em solid $def-pri;
 				left: .1em solid $def-pri
 			};
+
+			.disabled {
+				display: none;
+			}
 		}
+
 	  }
 }
 //////////////////////////////////////////////////////////////////////

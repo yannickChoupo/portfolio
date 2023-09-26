@@ -159,5 +159,4 @@ const DrawChart = function(svg, curData) {
 
 }
 
-
 export default DrawChart

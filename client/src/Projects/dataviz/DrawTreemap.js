@@ -26,13 +26,7 @@ let margin = {
     "bottom": 40,
     "top": 40
 }
-let legendWidth = 1000, legendHeight = 180;
-let legendMargin = {
-    "top": 30,
-    "bottom": 30,
-    "left": 40,
-    "right": 40
-}
+let legendHeight = 180;
 
 const ajustVideoGamesText = (texts, itemName) => {
     return texts.reduce(

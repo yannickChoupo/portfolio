@@ -56,32 +56,29 @@ const projects = [
 const Dataviz = () => {
     let { projectName } = useParams();
     return (
-        <div id="dataviz-home">
-            <h1>Dataviz home </h1>
-            <div className="dataviz-list">
-                {projects.map((project, idx) => {
-                    const {
-                        name,
-                        techStack,
-                        status
-                    } = project;
-                    // const activeStack = curStack.filter(({ active }) => active);
-                    // const activeStacks = activeStack.map(item => item.tech);
-                    // if (activeStacks.some(elem => project.use(techStack, elem))
-                    // 	&& status === "available") {
-                    return (
-                        <NavLink
-                            to={project.link ? project.link : `/works/${name}`}
-                            className="list-item project-card"
-                            key={name + techStack + idx}
-                        >
-                            {name}
-                        </NavLink>
-                    )
-                    // }
-                })}
+        !projectName && (
+            <div id="dataviz-home">
+                <h1>Dataviz home </h1>
+                <div className="dataviz-list">
+                    {projects.map((project, idx) => {
+                        const {
+                            name,
+                            techStack,
+                        } = project;
+                        return (
+                            <NavLink
+                                to={project.link ? project.link : `/dataviz/${name}`}
+                                className="list-item project-card"
+                                key={name + techStack + idx}
+                            >
+                                {name}
+                            </NavLink>
+                        )
+                        // }
+                    })}
+                </div>
             </div>
-        </div>
+        )
     )
 }
 
