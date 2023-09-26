@@ -5,14 +5,14 @@ import geoData from "./custom.geo";
 const DrawChoroploth = (svg, curData) => {
     const header = d3.select("#dataviz header");
     header.style("background-color", "white")
-    .style("color", "black")
-    .style("text-align", "center")
+        .style("color", "black")
+        .style("text-align", "center")
 
     header.append("h1").style("margin-bottom", "0").text("United States Educational Attainment")
     header.append("h6")
-    .style("margin-bottom", "0")
-    .style("font-size", ".7em")
-    .text("Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)")
+        .style("margin-bottom", "0")
+        .style("font-size", ".7em")
+        .text("Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)")
 
     let educationData, percentageArr;
     let svgWidth, svgHeight
@@ -35,25 +35,15 @@ const DrawChoroploth = (svg, curData) => {
         '#006d2c'
     ]
 
-    const windowWidth = window.getComputedStyle(document.querySelector(".dataviz")).getPropertyValue("width").replace("px", "");
-    // if (windowWidth < 600) {
-    //     d3.select('svg-container').style("overflow", "auto")
-        svgWidth = 960
-    // } else {
-        // svgWidth = windowWidth;
-    // }
-
+    svgWidth = 960
     svgHeight = 600;
-    svg
-    // .attr("width", svgWidth + "px")
-    // .attr("height", svgHeight + "px")
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + svgWidth + " " + svgHeight)
-    .style("max-width", "100%")
-    .style("height", "auto")
-    .style("height", "intrinsic")
-    .style("background-color", "white")
-    .style("color", "black")
+    svg.attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 " + svgWidth + " " + svgHeight)
+        .style("max-width", "100%")
+        .style("height", "auto")
+        .style("height", "intrinsic")
+        .style("background-color", "white")
+        .style("color", "black")
 
     let legendThreshold = d3.scaleLinear()
         .domain(d3.range(minPercentage,
@@ -61,14 +51,9 @@ const DrawChoroploth = (svg, curData) => {
             (maxiPercentage - minPercentage) / 8))
         .range(legendColors);
 
-    const projection = d3.geoMercator()
-    const pathgenerator = d3.geoPath().projection(projection);
-
-    const body = d3.select(".body")
-
     var path = d3.geoPath()
     const paths = svg.append("g").attr("id", "paths")
-    
+
     const tooltipGroup = svg.append("g").attr("id", "tooltip-group");
     const tootlipContainer = tooltipGroup.append("rect").attr("id", "tooltip-container").attr("rx", 6).attr("ry", 6)
     const tooltipText = tooltipGroup.append("text").attr("id", "tooltip-text").attr("x", "2ch").attr("y", "-1ch").style("display", "none");
@@ -104,7 +89,7 @@ const DrawChoroploth = (svg, curData) => {
         .tickFormat(d3.format('.1f'));
     legend.append("g")
         .attr("transform",
-            "translate(" + svgWidth/2 + "," + (legendHeight - legendMargin.bottom) + ")")
+            "translate(" + svgWidth / 2 + "," + (legendHeight - legendMargin.bottom) + ")")
         .call(legendXAxis)
         .attr("id", "y-legend")
     legendCellWidth = (legendWidth - 2 * margin.right) / legendDomain.length
@@ -115,7 +100,7 @@ const DrawChoroploth = (svg, curData) => {
         .attr("class", "legend")
         .attr("height", 20)
         .attr("width", legendCellWidth)
-        .attr("x", (value, index) => (svgWidth/2 ) + legendMargin.left + index * legendCellWidth)
+        .attr("x", (value, index) => (svgWidth / 2) + legendMargin.left + index * legendCellWidth)
         .attr("y", legendHeight - legendMargin.bottom - 20)
         .attr("fill", (value) => legendThreshold(value))
 
@@ -151,18 +136,17 @@ const DrawChoroploth = (svg, curData) => {
             let pointer = d3.pointer(Event);
 
             tooltipGroup
-            .style("display", "block")
-            .attr("transform", `translate(${pointer[0]} , ${pointer[1]})`)
+                .style("display", "block")
+                .attr("transform", `translate(${pointer[0]} , ${pointer[1]})`)
 
-            
+
             let tooltipTextLength;
             let tooltipContent = countyName + ", " + state + ": " + percentage + "%";
             tooltipText
                 .style("display", "block")
                 .text(tooltipContent)
                 .each(function (params) {
-                    var self = d3.select(this),
-                        textLength = self.node().getComputedTextLength(), text = self.text();
+                    var self = d3.select(this);
                     tooltipTextLength = self.node().getComputedTextLength();
                 })
 
