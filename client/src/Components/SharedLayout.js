@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import NavBar from "./navBar";
-import SideBar from "./sidebar";
+import NavBar from "./navigation/navBar";
+import SideBar from "./navigation/sidebar";
 import {
 	CSSTransition,
 	TransitionGroup,

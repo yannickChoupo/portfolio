@@ -5,174 +5,285 @@
 
 
 $lines-color: rgba($def-pri, .87);
+
 #about {
-  padding: 2em 0 0 px-to-em(18px);
-  h2 {
-	  margin-bottom: 1em;
-  }
+	padding: 2em 0 0 px-to-em(18px);
 
-  h3 {
-    padding: .6em 0 .1em 0;
-    border-bottom: 2px solid $def-pri;
-  }
+	h2 {
+		margin-bottom: 1em;
+	}
 
-  #education {
-	.body {
-		margin: 1em 0;
-		.period {
-			&:first-child  {
-				position: relative;
-				margin-bottom: 1em;
-				&::before {
-					content: "";
-					width: .2em;
-					height: calc(75% + 1em);
-					position: absolute;
-					left: 0;
-					top: 25%;
-					background-color: $def-pri;
-				}
-			}
-			&:last-child {
-				position: relative;
-				&::before {
-					content: "";
-					width: .2em;
-					height: 25%;
-					position: absolute;
-					// z-index: 1000;
-					left: 0;
-					top: 0;
-					background-color: $def-pri;
-				}
-			}
+	h3 {
+		padding: .6em 0 .1em 0;
+		border-bottom: 2px solid $def-pri;
+	}
 
-			&:not(:first-child, :last-child) {
-				position: relative;
-				margin-bottom: 1em;
+	#education {
+		.body {
+			margin: 1em 0;
 
-				&::before {
-					content: "";
-					width: .2em;
-					height: calc(100% + 1em);
-					position: absolute;
-					left: 0;
-					top: 0;
-					background-color: $def-pri;
-				}
-			}
-			.years {
-				& > * {
-					display: inline-block;
-					width: 13ch;
-				}
-				.from {
+			.period {
+				&:first-child {
 					position: relative;
-					margin: 0 0 0 5ch;
+					margin-bottom: 1em;
+
 					&::before {
 						content: "";
-						height: 0.2em;
-						width: 3ch;
+						width: .2em;
+						height: calc(85% + 1em);
 						position: absolute;
-						left: -5ch;
-						top: calc(50% - .1em);
+						left: 0;
+						top: 16%;
 						background-color: $def-pri;
 					}
 				}
-				.to {
+
+				&:last-child {
 					position: relative;
-					text-align: left;
-					margin-left: 5ch;
+
 					&::before {
 						content: "";
-						height: 0.2em;
-						width: 3ch;
+						width: .2em;
+						height: 24%;
 						position: absolute;
-						left: -5ch;
-						top: calc(50% - .1em);
+						// z-index: 1000;
+						left: 0;
+						top: 0;
 						background-color: $def-pri;
 					}
 				}
-			}
-			.activity {
-				padding: .5em 0 0 5ch;
-			}
-		}
-    }
-}
 
-#skills {
-	.body {
-		margin: 1em 0;
-		& > *{
-			margin-bottom: 1em;
-		}
-		.languages {
-			ul {
-				padding: 0 0 0 5ch;
-				width: fit-content;
-			}
-		}
+				&:not(:first-child, :last-child) {
+					position: relative;
+					margin-bottom: 1em;
 
-      .subtitle {
-        width: 30ch;
-        font-size: 1em;
-        position: relative;
-        margin-left: 5ch;
-		margin-bottom: .5em;
-
-        &::before {
-			content: "";
-			height: 0.2em;
-			width: 3ch;
-			position: absolute;
-			left: -5ch;
-			top: calc(50% - .1em);
-			background-color: $def-pri;
-        }
-      }
-
-
-      .tech-skills {
-		  .list {
-			li {
-				display: flex;
-				flex-direction: column;
-				border: .1em solid $def-pri;
-				margin-left: 3ch;
-				& > * {
-					padding-left: 1em;
-				}
-				.header {
-					margin: 0;
-					padding: .5em 1em;
-					display: flex;
-					justify-content: space-between;
-					cursor: pointer;
-				}
-			    .description {
-					margin-bottom: .3em;
-					// visibility: hidden;
-					// opacity: 0;
-			        // transition: visibility 0s, opacity 2s linear;
-					// transform: scale(0);
-			        display: none;
-			    }
-			    &.active {
-					.arrow {
-						transform: rotate(90deg);
+					&::before {
+						content: "";
+						width: .2em;
+						height: calc(100% + 1em);
+						position: absolute;
+						left: 0;
+						top: 0;
+						background-color: $def-pri;
 					}
-					.description {
-						// visibility: visible;
-						// opacity: 1;
-			            display: block;
-						// transform: scale(1);
+				}
+
+				.years {
+					&>* {
+						display: inline-block;
+						width: 13ch;
 					}
-			    }
+
+					.from {
+						position: relative;
+						margin: 0 0 0 5ch;
+
+						&::before {
+							content: "";
+							height: 0.2em;
+							width: 3ch;
+							position: absolute;
+							left: -5ch;
+							top: calc(50% - .1em);
+							background-color: $def-pri;
+						}
+					}
+
+					.to {
+						position: relative;
+						text-align: left;
+						margin-left: 5ch;
+
+						&::before {
+							content: "";
+							height: 0.2em;
+							width: 3ch;
+							position: absolute;
+							left: -5ch;
+							top: calc(50% - .1em);
+							background-color: $def-pri;
+						}
+					}
+				}
+
+				.activity {
+					padding: .5em 0 0 5ch;
+				}
 			}
-			
 		}
-      }
-    }
-  }
+	}
+
+	#professional {
+		.body {
+			margin: 1em 0;
+			.period {
+				&:first-child {
+					position: relative;
+					margin-bottom: 1em;
+
+					&::before {
+						content: "";
+						width: .2em;
+						height: calc(100% + 2em);
+						position: absolute;
+						left: 0;
+						top: .5em;
+						background-color: $def-pri;
+					}
+				}
+
+				&:last-child {
+					position: relative;
+
+					&::before {
+						content: "";
+						width: .2em;
+						height: .5em;
+						position: absolute;
+						left: 0;
+						background-color: $def-pri;
+					}
+				}
+
+				&:not(:first-child, :last-child) {
+					position: relative;
+					margin-bottom: 1em;
+
+					&::before {
+						content: "";
+						width: .2em;
+						height: calc(100% + 1em);
+						position: absolute;
+						left: 0;
+						top: 0;
+						background-color: $def-pri;
+					}
+				}
+
+				.years {
+					&>* {
+						display: inline-block;
+						width: 13ch;
+					}
+
+					.from {
+						position: relative;
+						margin: 0 0 0 5ch;
+
+						&::before {
+							content: "";
+							height: 0.2em;
+							width: 3ch;
+							position: absolute;
+							left: -5ch;
+							top: calc(50% - .1em);
+							background-color: $def-pri;
+						}
+					}
+
+					.to {
+						position: relative;
+						text-align: left;
+						margin-left: 5ch;
+
+						&::before {
+							content: "";
+							height: 0.2em;
+							width: 3ch;
+							position: absolute;
+							left: -5ch;
+							top: calc(50% - .1em);
+							background-color: $def-pri;
+						}
+					}
+				}
+
+				.activity {
+					padding: .5em 0 0 5ch;
+				}
+			}
+		}
+	}
+
+	#skills {
+		.body {
+			margin: 1em 0;
+
+			&>* {
+				margin-bottom: 1em;
+			}
+
+			.languages {
+				ul {
+					padding: 0 0 0 5ch;
+					width: fit-content;
+				}
+			}
+
+			.subtitle {
+				width: 30ch;
+				font-size: 1em;
+				position: relative;
+				margin-left: 5ch;
+				margin-bottom: .5em;
+
+				&::before {
+					content: "";
+					height: 0.2em;
+					width: 3ch;
+					position: absolute;
+					left: -5ch;
+					top: calc(50% - .1em);
+					background-color: $def-pri;
+				}
+			}
+
+
+			.tech-skills {
+				.list {
+					li {
+						display: flex;
+						flex-direction: column;
+						border: .1em solid $def-pri;
+						margin-left: 3ch;
+
+						&>* {
+							padding-left: 1em;
+						}
+
+						.header {
+							margin: 0;
+							padding: .5em 1em;
+							display: flex;
+							justify-content: space-between;
+							cursor: pointer;
+						}
+
+						.description {
+							margin-bottom: .3em;
+							// visibility: hidden;
+							// opacity: 0;
+							// transition: visibility 0s, opacity 2s linear;
+							// transform: scale(0);
+							display: none;
+						}
+
+						&.active {
+							.arrow {
+								transform: rotate(90deg);
+							}
+
+							.description {
+								// visibility: visible;
+								// opacity: 1;
+								display: block;
+								// transform: scale(1);
+							}
+						}
+					}
+
+				}
+			}
+		}
+	}
 }

@@ -1,20 +1,25 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { Switch } from "./switch"
-import { toggleHamburger } from '../features/hamburger/hamburgerSlice';
-import CSSTransition from "react-transition-group/cjs/CSSTransition";
+import { toggleHamburger } from '../../features/hamburger/hamburgerSlice';
+// import CSSTransition from "react-transition-group/cjs/CSSTransition";
+import Switch from '../switch';
+import { CSSTransition } from 'react-transition-group';
+import {  Add24Regular, Briefcase24Regular, BuildingHome24Regular, Person24Regular } from '@fluentui/react-icons';
 
 const SideBar = () => {
-    const { isOpen } = useSelector(state => state.hamburger);
+    const { isOpen } = useSelector((state: any) => state.hamburger);
     const dispatch = useDispatch();
 
-    const handleSwitchClick = () => {
+    const handleThemeSwitchClick = () => {
         dispatch(toggleHamburger());
     }
 
-	const sideBar = React.useRef(null);
+    const handlelinkClick= () => {
+        dispatch(toggleHamburger());
+    }
+
+    const sideBar = React.useRef(null);
     return (
         <>
             <CSSTransition
@@ -22,7 +27,7 @@ const SideBar = () => {
                 classNames="show"
                 timeout={500}
                 unmountOnExit
-				nodeRef={sideBar}>
+                nodeRef={sideBar}>
                 <div className="sideBar" ref={sideBar}>
                     <ul>
                         <li>
@@ -30,8 +35,9 @@ const SideBar = () => {
                                 title="home"
                                 className="side__link"
                                 to='/'
-                                onClick={handleSwitchClick}>
-                                <i className="fa fa-home"/>
+                                onClick={handlelinkClick}>
+                                <BuildingHome24Regular />
+                                <i className="fa fa-home" />
                             </NavLink>
                         </li>
                         <li>
@@ -39,8 +45,9 @@ const SideBar = () => {
                                 title="about"
                                 className="side__link"
                                 to='/about'
-                                onClick={handleSwitchClick}>
+                                onClick={handlelinkClick}>
                                 <i className="fa fa-id-card " />
+                                <Person24Regular />
                             </NavLink>
                         </li>
                         <li >
@@ -48,8 +55,9 @@ const SideBar = () => {
                                 title="work"
                                 className="side__link"
                                 to='/works'
-                                onClick={handleSwitchClick}>
+                                onClick={handlelinkClick}>
                                 <i className="fa fa-briefcase " />
+                                <Briefcase24Regular />
                             </NavLink>
                         </li>
                         <li>
@@ -57,12 +65,13 @@ const SideBar = () => {
                                 title="contact"
                                 className="side__link"
                                 to='/contact'
-                                onClick={handleSwitchClick}>
+                                onClick={handlelinkClick}>
                                 <i className="fa fa-address-card" />
+                                <Add24Regular />
                             </NavLink>
                         </li>
                         <li>
-                            <Switch handleSwitchClick={handleSwitchClick} />
+                            <Switch handleSwitchClick={handleThemeSwitchClick} />
                         </li>
                     </ul>
                 </div>

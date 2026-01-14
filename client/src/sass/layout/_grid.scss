@@ -24,7 +24,7 @@ body {
 			position: relative;
 			margin: 0 auto;
 			&:hover {
-				nav {
+				.navbar {
 					@include after-overlay(1dp);
 				}
 			}

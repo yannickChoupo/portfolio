@@ -58,7 +58,7 @@ const Projects = [
         // id: 4,
         name: "Timestamp",
         techStack: ["Express"],
-        description: "description .....",
+        description: "Timestamp Microservice - Convert dates between Unix timestamp and UTC ISO-8601 formats. FreeCodeCamp API certification project.",
         status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
@@ -78,8 +78,8 @@ const Projects = [
     {
         // id: 4,
         name: "MarkDownPreviewer",
-        techStack: ["Javascript", "HTML", "SCSS", ""],
-        description: "Description .....",
+        techStack: ["Javascript", "HTML", "SCSS", "React"],
+        description: "Markdown Previewer - Live markdown editor with real-time preview using marked.js. Supports code blocks, tables, lists, and more.",
         status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
@@ -201,8 +201,8 @@ const Projects = [
         // id: 4,
         name: "RequestHeaderParser",
         techStack: ["Express"],
-        description: "Description .....",
-        status: "not available",
+        description: "Request Header Parser Microservice - Parse HTTP request headers to extract client IP, language, and software information. FreeCodeCamp API certification project.",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -210,19 +210,39 @@ const Projects = [
     {
         // id: 4,
         name: "URLShortener",
-        techStack: ["Express"],
-        description: "Description .....",
-        status: "not available",
+        techStack: ["Express", "MongoDB"],
+        description: "URL Shortener Microservice - Create short URLs that redirect to original long URLs. Includes URL validation and database storage. FreeCodeCamp API certification project.",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
     },
     {
         // id: 4,
-        name: "FileMataData",
-        techStack: ["Express"],
-        description: "Description .....",
-        status: "not available",
+        name: "FileMetadata",
+        techStack: ["Express", "Multer"],
+        description: "File Metadata Microservice - Upload files and receive metadata including file name, type, and size. Uses multer for file handling. FreeCodeCamp API certification project.",
+        status: "available",
+        use: (techStack, tech) => {
+            return techStack.some(elem => elem === tech);
+        }
+    },
+    {
+        // id: 4,
+        name: "ExerciseTracker",
+        techStack: ["Express", "MongoDB"],
+        description: "Exercise Tracker Microservice - Create users, add exercises, and retrieve exercise logs. Full CRUD functionality with MongoDB. FreeCodeCamp API certification project.",
+        status: "available",
+        use: (techStack, tech) => {
+            return techStack.some(elem => elem === tech);
+        }
+    },
+    {
+        // id: 4,
+        name: "TodoManager",
+        techStack: ["Express", "MongoDB"],
+        description: "Todo Manager API - Create, read, update, and delete tasks with full CRUD functionality. Manage your tasks with MongoDB storage.",
+        status: "available",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
         }
@@ -300,6 +320,33 @@ const Categories = [
 const Works = () => {
     const [curCategories, setcurCategories] = useState(Categories);
     const [curStack, setCurStack] = useState([])
+    
+    useEffect(() => {
+        let newStackList = [];
+        Categories.map((projectItem, idx) => {
+            projectItem.techStack.forEach((tech) => {
+                if (idx === 0) {
+                    newStackList.push({ tech: tech, active: true })
+                } else {
+                    newStackList.push({ tech: tech, active: false })
+                }
+                return tech;
+            })
+            return projectItem;
+        })
+        setCurStack(newStackList);
+
+        const newCategoriesList = curCategories.map((item, idx) => {
+            if (idx === 0) {
+                item.active = true;
+            } else {
+                item.active = false;
+            }
+            return item;
+        })
+        setcurCategories(newCategoriesList);
+    }, []);
+
 
     const updateStack = () => {
         let newStackList = [];
@@ -344,31 +391,6 @@ const Works = () => {
         })
         setcurCategories(newCategoriesList);
     }
-    useEffect(() => {
-        let newStackList = [];
-        Categories.map((projectItem, idx) => {
-            projectItem.techStack.forEach((tech) => {
-                if (idx === 0) {
-                    newStackList.push({ tech: tech, active: true })
-                } else {
-                    newStackList.push({ tech: tech, active: false })
-                }
-                return tech;
-            })
-            return projectItem;
-        })
-        setCurStack(newStackList);
-
-        const newCategoriesList = curCategories.map((item, idx) => {
-            if (idx === 0) {
-                item.active = true;
-            } else {
-                item.active = false;
-            }
-            return item;
-        })
-        setcurCategories(newCategoriesList);
-    }, [curCategories]);
 
     const handleCategorieChange = (e) => {
         const newCategories = curCategories.map(item => {
@@ -408,77 +430,76 @@ const Works = () => {
     return (
         <>
             <div id="work">
-				<h2>Work</h2>
-				<div className="filters">
-					<div id="categorie">
-						<h4>Categorie</h4>
-						<ul className="filter-list close">
-							{
-								curCategories.map((curCategorie, idx) => {
-									const { active } = curCategorie;
-									return (
-										<li
-											id={curCategorie.name}
-											className={active ? "active" : ""}
-											onClick={handleCategorieChange}
-											key={curCategorie.name + idx}
-										>
-											{curCategorie.name}
-										</li>
-									)
-								})
-							}
-						</ul>
-					</div>
-					<div id="techStack">
-						<h4>Tech stack</h4>
-						<ul className="filter-list">
-							{
-								curStack.map((stack, idx) => {
-									const { tech, active } = stack;
-									return (
-										<li
-											id={tech}
-											className={active ? "active" : ""}
-											onClick={handleTechStackChange}
-											key={tech + idx}
-											>
-											{tech}
-										</li>
-									)
-								})
-							}
-						</ul>
-					</div>
-				</div>
-				<div className="work-list">
-					{Projects.map((project, idx) => {
-						const {
-							name,
-							techStack,
-							status
-						} = project;
-						const activeStack = curStack.filter(({ active }) => active);
-						const activeStacks = activeStack.map(item => item.tech);
-						if (activeStacks.some(elem => project.use(techStack, elem))
-							&& status === "available") {
-							return (
-								<NavLink 
-										to={project.link ? project.link : `/works/${name}`}
-										className="list-item project-card"
-										key={name + techStack + idx}
-									>
-										{name}
-								</NavLink>
-							)
-						}
+                <h2>Work</h2>
+                <div className="filters">
+                    <div id="categorie">
+                        <h4>Categorie</h4>
+                        <ul className="filter-list close">
+                            {
+                                curCategories.map((curCategorie, idx) => {
+                                    const { active } = curCategorie;
+                                    return (
+                                        <li
+                                            id={curCategorie.name}
+                                            className={active ? "active" : ""}
+                                            onClick={handleCategorieChange}
+                                            key={curCategorie.name + idx}
+                                        >
+                                            {curCategorie.name}
+                                        </li>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+                    <div id="techStack">
+                        <h4>Tech stack</h4>
+                        <ul className="filter-list">
+                            {
+                                curStack.map((stack, idx) => {
+                                    const { tech, active } = stack;
+                                    return (
+                                        <li
+                                            id={tech}
+                                            className={active ? "active" : ""}
+                                            onClick={handleTechStackChange}
+                                            key={tech + idx}
+                                        >
+                                            {tech}
+                                        </li>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div className="work-list">
+                    {Projects.map((project, idx) => {
+                        const {
+                            name,
+                            techStack,
+                            status
+                        } = project;
+                        const activeStack = curStack.filter(({ active }) => active);
+                        const activeStacks = activeStack.map(item => item.tech);
+                        if (activeStacks.some(elem => project.use(techStack, elem))
+                            && status === "available") {
+                            return (
+                                <NavLink
+                                    to={project.link ? project.link : `/works/${name}`}
+                                    className="list-item project-card"
+                                    key={name + techStack + idx}
+                                >
+                                    {name}
+                                </NavLink>
+                            )
+                        }
                         return null;
-					})}
-				</div>
-			</div>
+                    })}
+                </div>
+            </div>
         </>
     )
 }
 
 export default Works;
- 

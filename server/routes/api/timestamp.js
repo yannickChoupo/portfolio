@@ -3,6 +3,7 @@ const timestampControllers = require('../../controllers/timestamp');
 
 router.get('/', (req, res) => {
     let newDate = new Date(), unixValue, utcValue;
+
     utcValue = newDate.toUTCString();
     unixValue = newDate.valueOf();
     res.json({
@@ -10,7 +11,7 @@ router.get('/', (req, res) => {
         "utc": utcValue
     })
 })
-router.post('/:date', timestampControllers.timestamp);
+router.get('/:date', timestampControllers.timestamp);
 
 
 module.exports = router;

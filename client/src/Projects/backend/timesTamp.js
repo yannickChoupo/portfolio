@@ -6,12 +6,14 @@ const TimesTamp = () => {
         unix: '',
         utc: ''
     })
-    useEffect(() => {
-        AXIOS.get('api/timestamp').then((response) => {
-            console.log(response.data);
-            setResponseData(response.data);
-        })
-    }, [])
+
+    // useEffect(() => {
+    //     AXIOS.get('api/timestamp').then((response) => {
+    //         console.log(response.data);
+    //         setResponseData(response.data);
+    //     })
+    // }, [])
+    
     return (
         <>
             <div id="timestamp">
