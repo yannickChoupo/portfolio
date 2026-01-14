@@ -113,7 +113,8 @@ async function updateTodos(req, res) {
     let {
         id,
         name,
-        description
+        description,
+        completed
     } = body;
 
     try {
@@ -125,22 +126,32 @@ async function updateTodos(req, res) {
             });
         }
 
-        const { foundedTodoName, foundedTodoDescrition } = existingTodo[0];
-
-        const newTodo = new Todo();
-
-        if (foundedTodoName != name) {
-            newTodo.name = name;
+        const foundedTodo = existingTodo[0];
+        
+        // Build update object with only changed fields
+        const updateData = {};
+        
+        if (name !== undefined && name !== foundedTodo.name) {
+            updateData.name = name;
         }
-        if (foundedTodoDescrition != description) {
-            newTodo.description = description
+        if (description !== undefined && description !== foundedTodo.description) {
+            updateData.description = description;
+        }
+        if (completed !== undefined && completed !== foundedTodo.completed) {
+            updateData.completed = completed;
         }
 
-        const savedTodo = await Todo.save(newTodo);
+        // Update the todo
+        const updatedTodo = await Todo.findOneAndUpdate(
+            { id: id }, 
+            updateData,
+            { new: true }
+        );
+
         return res.send({
             success: true,
             message: "todo edited",
-            todo: savedTodo
+            todo: updatedTodo
         })
 
     } catch (error) {

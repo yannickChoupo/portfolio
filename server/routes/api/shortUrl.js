@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Url = require('../../models/url');
-
-// const shControllers = require('../../controllers/timestamp');
+const dns = require('dns');
+const urlParser = require('url');
 
 router.post('/shorturl', async (req, res) => {
     const { url } = req.body;
@@ -40,10 +40,7 @@ router.get('/shorturl/:id', async (req, res) => {
     const { id } = req.params;
     const originalUrl = await Url.find({ short_url: id });
     if (originalUrl[0]) {
-        //   console.log("originalUrl : " + originalUrl[0].original_url);
-        //   console.log("short_url : " + originalUrl[0].short_url);
         const redirectUrl = originalUrl[0].original_url;
-        //   console.log(redirectUrl);
         res.redirect(redirectUrl);
     } else {
         res.send({

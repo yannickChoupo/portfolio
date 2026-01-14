@@ -1,21 +1,36 @@
+@import "../abstracts/variables";
+@import "../abstracts/function";
+
+
+
 .navbar {
+	width: 100%;
+	
 	.nav-body {
+		height: 50px;
 		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
 		.navbar-link {
-			width: 36px;
+			display: flex;
+			justify-content: center;
+			width: 80px;
 			height: 36px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			cursor: pointer;
+			font-size: 20px;
 		}
 	}
 }
+
 // nav {
 //   width: 100%;
-//   height: $nav-height;
 //   position: relative;
-  
+
 //   @include breakpoint--small {
 //     display: flex;
 //     justify-content: center;

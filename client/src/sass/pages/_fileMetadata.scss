@@ -1,0 +1,184 @@
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+@import "../abstracts/variables";
+
+#file-metadata {
+  font-family: 'Montserrat', sans-serif;
+  padding: px-to-em(40px) px-to-em(23px);
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .container {
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid rgba($def-pri, 0.2);
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: $def-pri;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+        color: rgba($def-pri, 0.7);
+        font-weight: 300;
+      }
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background-color: rgba($def-pri, 0.03);
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: $def-pri;
+        border-bottom: 2px solid rgba($def-pri, 0.2);
+        padding-bottom: 0.5rem;
+      }
+    }
+
+    .endpoints {
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+
+        thead {
+          background-color: rgba($def-pri, 0.1);
+          
+          th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid rgba($def-pri, 0.2);
+          }
+        }
+
+        tbody {
+          tr {
+            &:nth-child(even) {
+              background-color: rgba($def-pri, 0.02);
+            }
+
+            td {
+              padding: 1rem;
+              border: 1px solid rgba($def-pri, 0.2);
+              vertical-align: top;
+
+              code {
+                background-color: rgba($def-pri, 0.1);
+                padding: 0.3rem 0.6rem;
+                border-radius: 4px;
+                font-family: 'Courier New', monospace;
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .try-it {
+      background-color: rgba($def-pri, 0.08);
+
+      form {
+        .form-group {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: $def-pri;
+          }
+
+          input[type="file"] {
+            padding: 0.8rem;
+            border: 2px dashed rgba($def-pri, 0.3);
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            background-color: rgba($def-pri, 0.02);
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+              border-color: $def-pri;
+              background-color: rgba($def-pri, 0.05);
+            }
+          }
+
+          .file-info {
+            padding: 0.5rem;
+            background-color: rgba($def-pri, 0.1);
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+          }
+
+          button {
+            background-color: $def-pri;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover:not(:disabled) {
+              background-color: darken($def-pri, 10%);
+              transform: translateY(-2px);
+            }
+
+            &:disabled {
+              opacity: 0.6;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+    }
+
+    .api-response {
+      background-color: rgba($def-pri, 0.05);
+      border-left: 4px solid $def-pri;
+
+      pre {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 1.5rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin-top: 1rem;
+        
+        code {
+          font-family: 'Courier New', monospace;
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+      }
+
+      .file-details {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: rgba($def-pri, 0.1);
+        border-radius: 5px;
+
+        p {
+          margin-bottom: 0.5rem;
+          
+          strong {
+            color: $def-pri;
+          }
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,11 @@
 @use "timer";
 @use "timestamp";
 @use "admin";
-@use "markDownPreviewer";
+@use "markdownPreviewer";
 @use "project";
-@use "dataviz"
+@use "dataviz";
+@use "headerParser";
+@use "urlShortener";
+@use "fileMetadata";
+@use "exerciseTracker";
+@use "todoManager";

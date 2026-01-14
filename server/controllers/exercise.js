@@ -37,8 +37,11 @@ const addExercise = async (req, res) => {
     } else {
         date = new Date(date).toDateString();
     }
+
+    console.log("new req : ", id, date, );
+    
     try {
-        const existingUser = await User.find({ _id: id });
+        const existingUser = await ExerciseUser.find({ _id: id });
         if (!existingUser[0]) {
             res.send({
                 error: "user not found!!"
@@ -49,7 +52,7 @@ const addExercise = async (req, res) => {
         let newExercise = { description, duration, date }
         let newExercisesArr = [...findedUser.log, newExercise]
         duration = parseInt(duration);
-        const newUser = await User.findOneAndUpdate(
+        const newUser = await ExerciseUser.findOneAndUpdate(
             { _id: id }, { log: newExercisesArr })
         res.send({
             _id: id,
@@ -69,7 +72,7 @@ const getLogs = async (req, res) => {
     const { _id } = req.params;
     let { from, to, limit } = req.query;
     try {
-        const existingUser = await User.find({ _id });
+        const existingUser = await ExerciseUser.find({ _id });
         if (!existingUser[0]) {
             res.send({
                 error: "user not found!!"

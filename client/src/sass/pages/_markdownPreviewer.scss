@@ -1,0 +1,65 @@
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+@import "../abstracts/variables";
+
+#markdown-previewer {
+  font-family: 'Montserrat', sans-serif;
+  padding: px-to-em(40px) px-to-em(23px);
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .container {
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid rgba($def-pri, 0.2);
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: $def-pri;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+        color: rgba($def-pri, 0.7);
+        font-weight: 300;
+      }
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background-color: rgba($def-pri, 0.03);
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: $def-pri;
+        border-bottom: 2px solid rgba($def-pri, 0.2);
+        padding-bottom: 0.5rem;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        color: $def-pri;
+      }
+
+      p {
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .about {
+      p {
+        font-size: 1.05rem;
+      }
+    }
+
+  }
+}

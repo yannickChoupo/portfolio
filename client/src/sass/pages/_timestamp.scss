@@ -1,35 +1,345 @@
 @import "../abstracts/mixins";
 @import "../abstracts/function";
-#timestamp {
-  font-family: sans-serif;
-  padding: px-to-em(40px) px-to-em(23px) 0 px-to-em(23px);
-  height: 100vh;
-  // background-color: #282c34;
+@import "../abstracts/variables";
 
-  h2 {
-    margin-bottom: 1em;
-  }
+#timestamp {
+  font-family: 'Montserrat', sans-serif;
+  padding: px-to-em(40px) px-to-em(23px);
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
 
   .container {
-    // background-color: #605EFF;
-    p {
-      margin-bottom: .2em;
-    }
-    section {
-      margin-bottom: .7em;
-      h3 {
-      margin-bottom: .1em;
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid rgba($def-pri, 0.2);
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: $def-pri;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+        color: rgba($def-pri, 0.7);
+        font-weight: 300;
       }
     }
 
-    ul {
-      list-style-type: lower-roman;
-      list-style-position: inside;
-      li {
-        margin-bottom: .2em;
+    section {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background-color: rgba($def-pri, 0.03);
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: $def-pri;
+        border-bottom: 2px solid rgba($def-pri, 0.2);
+        padding-bottom: 0.5rem;
       }
-      :first-child {
-        margin-left: .5ch;
+
+      p {
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .about {
+      p {
+        font-size: 1.05rem;
+      }
+    }
+
+    .endpoints {
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+
+        thead {
+          background-color: rgba($def-pri, 0.1);
+          
+          th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid rgba($def-pri, 0.2);
+          }
+        }
+
+        tbody {
+          tr {
+            &:nth-child(even) {
+              background-color: rgba($def-pri, 0.02);
+            }
+
+            td {
+              padding: 1rem;
+              border: 1px solid rgba($def-pri, 0.2);
+              vertical-align: top;
+
+              code {
+                background-color: rgba($def-pri, 0.1);
+                padding: 0.3rem 0.6rem;
+                border-radius: 4px;
+                font-family: 'Courier New', monospace;
+                font-size: 0.9rem;
+                white-space: nowrap;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .usage {
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 0.8rem;
+          padding-left: 1.5rem;
+          position: relative;
+
+          &::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: $def-pri;
+            font-weight: bold;
+          }
+
+          code {
+            background-color: rgba($def-pri, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .example-output {
+      pre {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 1.5rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 1rem 0;
+        
+        code {
+          font-family: 'Courier New', monospace;
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+      }
+
+      .error-example {
+        margin-top: 1.5rem;
+        font-weight: 600;
+        color: #ff6b6b;
+      }
+    }
+
+    .try-it {
+      background-color: rgba($def-pri, 0.08);
+
+      form {
+        margin-bottom: 1rem;
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
+
+          label {
+            font-weight: 600;
+            color: $def-pri;
+          }
+
+          input {
+            padding: 0.8rem;
+            border: 2px solid rgba($def-pri, 0.3);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
+            transition: border-color 0.3s;
+
+            &:focus {
+              outline: none;
+              border-color: $def-pri;
+            }
+
+            &::placeholder {
+              color: rgba($def-pri, 0.4);
+            }
+          }
+
+          button {
+            padding: 0.8rem 1.5rem;
+            background-color: $def-pri;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            &:hover:not(:disabled) {
+              background-color: darken($def-pri, 10%);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 8px rgba($def-pri, 0.3);
+            }
+
+            &:disabled {
+              opacity: 0.6;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+
+      > button {
+        padding: 0.8rem 1.5rem;
+        background-color: transparent;
+        color: $def-pri;
+        border: 2px solid $def-pri;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover:not(:disabled) {
+          background-color: $def-pri;
+          color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba($def-pri, 0.3);
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .api-response {
+      background-color: rgba($def-pri, 0.05);
+      border-left: 4px solid $def-pri;
+
+      pre {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 1.5rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin-top: 1rem;
+        
+        code {
+          font-family: 'Courier New', monospace;
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+      }
+
+      .error {
+        pre {
+          border-left: 4px solid #ff6b6b;
+          
+          code {
+            color: #ff6b6b;
+          }
+        }
+      }
+    }
+
+    .how-to-use {
+      pre {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 1.5rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        
+        code {
+          font-family: 'Courier New', monospace;
+          font-size: 0.95rem;
+          line-height: 1.8;
+        }
+      }
+    }
+
+    .feedback {
+      background-color: rgba($def-pri, 0.05);
+      border-radius: 8px;
+      text-align: center;
+      
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+        
+        strong {
+          color: $def-pri;
+        }
+      }
+    }
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    padding: px-to-em(20px) px-to-em(15px);
+
+    .container {
+      header {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+      }
+
+      section {
+        padding: 1rem;
+
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      .endpoints {
+        table {
+          font-size: 0.9rem;
+
+          thead th,
+          tbody td {
+            padding: 0.6rem;
+          }
+        }
+      }
+
+      .try-it {
+        .form-group {
+          button {
+            width: 100%;
+          }
+        }
+
+        > button {
+          width: 100%;
+          margin-top: 0.5rem;
+        }
       }
     }
   }

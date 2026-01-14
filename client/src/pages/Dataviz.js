@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
 const projects = [
@@ -49,7 +49,7 @@ const projects = [
     },
 ]
 
-const Dataviz = () => {
+const Dataviz: React.FC = () => {
     let { projectName } = useParams();
     return (
         !projectName && (
