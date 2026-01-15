@@ -28,3 +28,4 @@ services:
     volumes:
       - ./server:/app
       - /app/node_modules
+    env_file: ../.env

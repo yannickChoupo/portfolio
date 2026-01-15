@@ -14,7 +14,8 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const uri = process.env.NODE_ENV === "production" ? process.env.ATLAS_URI : config.ATLAS_URI;
+const uri = process.env.MONGO_URI || config.ATLAS_URI;
+console.log("URI : ", uri);
 
 mongoose.connect(
     uri,
