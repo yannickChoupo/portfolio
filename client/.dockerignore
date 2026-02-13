@@ -1,7 +1,6 @@
 .git
 *Dockerfile*
 node_modules
-build
 .dockerignore
 Dockerfile-dev
 Dockerfile-prod
