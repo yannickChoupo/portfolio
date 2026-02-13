@@ -1,0 +1,9 @@
+export { default as Home } from './Home';
+export { default as About } from './About';
+export { default as Work } from './Work';
+export { default as ErrorPage } from './ErrorPage';
+export { default as Contact } from './Contact';
+export { default as Admin } from './Admin';
+export { default as LogInOut } from './LogInOut';
+export { default as Project } from './Project';
+export { default as Dataviz } from './Dataviz';

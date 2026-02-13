@@ -1,0 +1,27 @@
+// This disables content hashing in filenames
+// Use ONLY if you want stable filenames like main.js instead of main.dabcf44c.js
+// WARNING: You'll need to manually bust cache (versioning, query params, etc.)
+
+const path = require('path');
+
+module.exports = {
+  webpack: {
+    configure: (webpackConfig) => {
+      // Disable hashing in production build
+      if (webpackConfig.mode === 'production') {
+        webpackConfig.output.filename = 'static/js/[name].js';
+        webpackConfig.output.chunkFilename = 'static/js/[name].chunk.js';
+        
+        // Update CSS filename
+        const miniCssExtractPlugin = webpackConfig.plugins.find(
+          plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
+        );
+        if (miniCssExtractPlugin) {
+          miniCssExtractPlugin.options.filename = 'static/css/[name].css';
+          miniCssExtractPlugin.options.chunkFilename = 'static/css/[name].chunk.css';
+        }
+      }
+      return webpackConfig;
+    }
+  }
+};

@@ -1,10 +1,29 @@
 @import "../abstracts/mixins";
 @import "../abstracts/function";
+
 .logo {
+  font-size: 1.6em !important;
+  text-decoration: none;
+  color: #6002ed;
+  display: flex;
+  justify-content: center;
+  width: fit-content !important;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:active {
+    color: #6002ed
+  }
+
   .logo__container {
     @include flexCenter;
+
     .logo__circle {
       background-color: white;
+
       .logo__cube {
         background-color: white;
       }
@@ -26,7 +45,7 @@
   height: 20px;
   position: relative;
 
-  & > div {
+  &>div {
     background-color: $def-pri;
     height: 2px;
     width: 100%;
@@ -36,10 +55,12 @@
     border: 0;
     outline: 0;
   }
+
   [line="1"] {
     &.fade {
       animation-name: fade;
     }
+
     top: 0;
   }
 
@@ -47,6 +68,7 @@
     &.fade {
       animation-name: fade;
     }
+
     animation-delay: 200ms;
     top: 50%;
     transform: translateY(-50%);
@@ -56,8 +78,8 @@
     &.fade {
       animation-name: fade;
     }
+
     animation-delay: 400ms;
     bottom: 0;
   }
 }
-

@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from "./App";
 import { Provider } from "react-redux";
@@ -11,11 +11,11 @@ if (!container) throw new Error('Failed to find the root element');
 const root = createRoot(container);
 
 root.render(
-	<React.StrictMode>
+	// <React.StrictMode>
 		<Provider store={store}>
 			<FluentProvider theme={webLightTheme}>
 				<App />
 			</FluentProvider>
 		</Provider>
-	</React.StrictMode>
+	// </React.StrictMode>
 );

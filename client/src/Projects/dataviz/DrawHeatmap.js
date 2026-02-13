@@ -6,7 +6,7 @@ const DrawHeatmap = (svg, curData) => {
     const data = curData;
 
     const margin = {
-        "left": 60,
+        "left": 30,
         "right": 40,
         "bottom": 40,
         "top": 40
@@ -79,14 +79,14 @@ const DrawHeatmap = (svg, curData) => {
 
     svg.append("text")
         .text("Monthly Global Land-Surface Temperature")
-        .attr("x", svgWidth / 2)
+        .attr("x", 15 * margin.left)
         .attr("y", "3ch")
         .attr("text-anchor", "middle")
         .style("font-size", "1.1em")
 
     svg.append("text")
         .text("1753 - 2015: base temperature 8.66℃")
-        .attr("x", svgWidth / 2)
+        .attr("x", 15 * margin.left)
         .attr("y", "6ch")
         .attr("text-anchor", "middle")
         .style("font-size", ".9em")
@@ -98,7 +98,7 @@ const DrawHeatmap = (svg, curData) => {
         .style("font-family", "roboto")
         .style("fill", "black")
         .attr("x", -svgHeight / 2 + "px")
-        .attr("y", margin.left + "px")
+        .attr("y", margin.left / 2 + "px")
         .style("text-anchor", "middle")
         .text("Months")
 

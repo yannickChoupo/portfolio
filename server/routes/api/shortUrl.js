@@ -1,19 +1,39 @@
 const router = require('express').Router();
 const Url = require('../../models/url');
 const dns = require('dns');
-const urlParser = require('url');
+// using WHATWG URL API instead of deprecated url.parse
+const { URL } = require('url');
 
 router.post('/shorturl', async (req, res) => {
     const { url } = req.body;
-    dns.lookup(urlParser.parse(url).hostname, (error, address) => {
-        if (!address) {
-            res.json({ error: "invalid url" })
-        }
-    });
+    console.log(url);
+
+    // basic URL syntax check
+    let hostname;
     try {
+        hostname = new URL(url).hostname;
+    } catch (e) {
+        return res.json({ error: "invalid url" });
+    }
 
+    // perform DNS lookup before proceeding
+    const lookupAsync = (name) => new Promise((resolve, reject) => {
+        dns.lookup(name, (error, address) => {
+            if (error || !address) {
+                return reject(new Error('lookup failed'));
+            }
+            resolve(address);
+        });
+    });
+
+    try {
+        await lookupAsync(hostname);
+    } catch (err) {
+        return res.json({ error: "invalid url" });
+    }
+
+    try {
         const existingUrl = await Url.find({ original_url: url });
-
         if (existingUrl[0]) {
             return res.send({
                 success: false,
@@ -32,7 +52,7 @@ router.post('/shorturl', async (req, res) => {
             short_url: savedUrl.short_url
         });
     } catch (error) {
-        return res.send({ error: error.message })
+        return res.send({ error: error.message });
     }
 });
 

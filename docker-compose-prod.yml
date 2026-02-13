@@ -4,6 +4,8 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile-prod
+      args:
+        PUBLIC_URL: /portfolio
     restart: unless-stopped
     ports:
       - "127.0.0.1:3000:80"
@@ -22,7 +24,8 @@ services:
       - "127.0.0.1:5000:5000"
     environment:
       - NODE_ENV=production
-    env_file: .env
+    env_file:
+      - .env
     networks:
       - portfolio_network
 

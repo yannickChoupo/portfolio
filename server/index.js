@@ -71,6 +71,6 @@ app.get('/',(req,res) => {
     res.send("Yannick Njilo Portfolio backend");
 })
 
-app.listen(process.env.PORT || 5000, function () {
-    console.log(`Server is running on port : ${process.env.PORT || 5000}`);
+app.listen(process.env.SERVERPORT || 5000, function () {
+    console.log(`Server is running on port : ${process.env.SERVERPORT || 5000}`);
 })

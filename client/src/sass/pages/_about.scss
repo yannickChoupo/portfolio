@@ -15,6 +15,7 @@ $lines-color: rgba($def-pri, .87);
 
 	h3 {
 		padding: .6em 0 .1em 0;
+		line-height: 2em;
 		border-bottom: 2px solid $def-pri;
 	}
 
@@ -108,6 +109,8 @@ $lines-color: rgba($def-pri, .87);
 
 				.activity {
 					padding: .5em 0 0 5ch;
+					line-height: 1.5em;
+
 				}
 			}
 		}
@@ -116,6 +119,7 @@ $lines-color: rgba($def-pri, .87);
 	#professional {
 		.body {
 			margin: 1em 0;
+
 			.period {
 				&:first-child {
 					position: relative;
@@ -200,6 +204,16 @@ $lines-color: rgba($def-pri, .87);
 
 				.activity {
 					padding: .5em 0 0 5ch;
+
+					strong {
+						line-height: 2em;
+					}
+
+					ul {
+						li {
+							line-height: 1.5em;
+						}
+					}
 				}
 			}
 		}
@@ -215,6 +229,9 @@ $lines-color: rgba($def-pri, .87);
 
 			.languages {
 				ul {
+					display: flex;
+					flex-direction: column;
+					gap: .7em;
 					padding: 0 0 0 5ch;
 					width: fit-content;
 				}
@@ -241,11 +258,15 @@ $lines-color: rgba($def-pri, .87);
 
 			.tech-skills {
 				.list {
+					display: flex;
+					flex-direction: column;
+					gap: .7em;
+
 					li {
 						display: flex;
 						flex-direction: column;
 						border: .1em solid $def-pri;
-						margin-left: 3ch;
+						// margin-left: 3ch;
 
 						&>* {
 							padding-left: 1em;
@@ -261,23 +282,19 @@ $lines-color: rgba($def-pri, .87);
 
 						.description {
 							margin-bottom: .3em;
-							// visibility: hidden;
-							// opacity: 0;
-							// transition: visibility 0s, opacity 2s linear;
-							// transform: scale(0);
 							display: none;
 						}
 
 						&.active {
 							.arrow {
-								transform: rotate(90deg);
+								transform: rotate(180deg);
+								transition: ease 500 transform;
 							}
 
 							.description {
-								// visibility: visible;
-								// opacity: 1;
 								display: block;
-								// transform: scale(1);
+								padding: 0 1em;
+								line-height: 1.5em;
 							}
 						}
 					}
