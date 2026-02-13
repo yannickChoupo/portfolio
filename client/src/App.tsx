@@ -1,40 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import {
 	BrowserRouter as Router,
 	Route,
 	Routes,
 } from "react-router-dom";
+import './sass/main.scss';
 
-import Home from './pages/Home';
-import About from './pages/About';
-import Works from './pages/Work';
-import Error from './pages/ErrorPage';
-import Contact from "./pages/Contact";
-import Admin from "./pages/Admin";
-import LogInOut from "./pages/LogInOut";
-import Project from "./pages/Project";
+import {
+	Home,
+	About,
+	Work as Works,
+	ErrorPage as Error,
+	Contact,
+	Admin,
+	LogInOut,
+	Project,
+	Dataviz
+} from './pages';
 import SharedLayout from "./Components/SharedLayout";
 import SharedProjectLayout from "./Components/ShareProjectLayout";
-import Dataviz from "./pages/Dataviz";
 import SharedDatavizLayout from "./Components/SharedDatavizLayout";
 
-interface User {
-	id: string;
-	username: string;
-	email?: string;
-}
-
 const App: React.FC = () => {
-	const [user, setUser] = useState<User | null>(null);
-
 	return (
 		<Router>
 			<Routes>
 				<Route path="/" element={<SharedLayout />}>
 					<Route index element={<Home />} />
-					<Route path="/works" element={<SharedProjectLayout />}>
+					<Route path="/works">
 						<Route index element={<Works />} />
-						<Route path=":projectName" element={<Project />} />
+						<Route element={<SharedProjectLayout />} >
+							<Route path=":projectName" element={<Project />} />
+						</Route>
 					</Route>
 					<Route path="/dataviz" element={<SharedDatavizLayout />}>
 						<Route index element={<Dataviz />} />
@@ -44,9 +41,9 @@ const App: React.FC = () => {
 					<Route path="/about" element={<About />} />
 					<Route
 						path="/admin"
-						element={<Admin user={user} />}
+						element={<Admin />}
 					/>
-					<Route path="/login" element={<LogInOut setUser={setUser} />} />
+					<Route path="/login" element={<LogInOut />} />
 					<Route path="*" element={<Error />} />
 				</Route>
 			</Routes>

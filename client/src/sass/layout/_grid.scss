@@ -24,9 +24,9 @@ body {
 			position: relative;
 			margin: 0 auto;
 			&:hover {
-				.navbar {
-					@include after-overlay(1dp);
-				}
+				// .navbar {
+				// 	@include after-overlay(1dp);
+				// }
 			}
 		}
 		

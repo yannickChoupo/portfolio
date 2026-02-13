@@ -1,9 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import hamburgerReducer from './features/hamburger/hamburgerSlice';
+import hamburgerReducer from './features/hamburgerSlice';
+import themeReducer from './features/themeslice';
+
 
 const store = configureStore({
 	reducer: {
 		hamburger: hamburgerReducer,
+		theme: themeReducer
 	},
 });
 

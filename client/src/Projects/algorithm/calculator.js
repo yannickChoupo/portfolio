@@ -89,8 +89,6 @@ const Calculator = () => {
             console.log("curdisplayed number already tooo big");
             return;
         }
-
-        // updateState();
     }
     const handleEqual = () => {
         if (prevInput !== "=") {
@@ -153,11 +151,7 @@ const Calculator = () => {
         } else {
             console.log("NEw Operator : ", (prevInput === "=" ? curNumber : formula));
             newCurDisplayValue = newOperatorInput;
-            // if (/[x/]/.test(newOperator) && /[x/]/.test(prevInput)) {
-            //     newFormulaValue = formula.replace(/[*/]$/, newOperatorInput)
-            // } else {
             newFormulaValue = (prevInput === "=" ? curNumber : formula) + newOperatorInput;
-            // }
             console.log();
         }
     }

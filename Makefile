@@ -11,7 +11,12 @@ build-local:
 run-local:
 	docker-compose up
 build-production:
-	cd client && $(MAKE) build-production
-	cd server && $(MAKE) build
+	docker compose -f docker-compose-prod.yml build
 run-production:
-	docker-compose up
+	docker compose -f docker-compose-prod.yml up -d
+stop-production:
+	docker compose -f docker-compose-prod.yml down
+logs-production:
+	docker compose -f docker-compose-prod.yml logs -f
+restart-production:
+	docker compose -f docker-compose-prod.yml restart
