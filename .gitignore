@@ -1,6 +1,7 @@
 /node_modules
 client/Makefile
 client/build/
+client/package-lock.json
 server/node_modules/
 server/Makefile
 .idea/
@@ -15,3 +16,5 @@ build/
 .DS_Store
 .idea/
 .vscode/
+config/
+package-lock.json
