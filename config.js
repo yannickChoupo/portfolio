@@ -1,17 +1,16 @@
 // initialization script for development MongoDB container
-// it will create the root user if it doesn't already exist
+// it will create the root user in the admin database if it doesn't already exist
 const user = process.env.MONGO_INITDB_ROOT_USERNAME || 'admin';
 const pwd = process.env.MONGO_INITDB_ROOT_PASSWORD || 'admin123';
-const dbName = process.env.MONGO_INITDB_DATABASE || 'portfolio_dev';
 
-const db = db.getSiblingDB(dbName);
+const adminDb = db.getSiblingDB('admin');
 try {
-  db.createUser({
+  adminDb.createUser({
     user,
     pwd,
     roles: [{ role: 'root', db: 'admin' }]
   });
-  print('created root user', user);
+  print('created root user', user, 'in admin database');
 } catch (e) {
-  print('user creation failed or already exists:', e);
+  print('user creation failed or already exists:', e.message);
 }

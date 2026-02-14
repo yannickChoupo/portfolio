@@ -1,33 +1,39 @@
 import React, { useState } from "react";
-import { setInStorage, getFromStorage } from "../utils/storage";
+import AXIOS from "../redux/services/axios";
 
 const Contact: React.FC = () => {
-    const [message, setMessage] = useState<string>("");
+	const [message, setMessage] = useState<string>("");
 
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-        const textArea = e.currentTarget;
-        const newValue = textArea.value;
-        const rows = 2 + Math.floor(newValue.length / 28);
-        textArea.rows = rows;
-        setMessage(newValue);
-    }
+	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+		const textArea = e.currentTarget;
+		const newValue = textArea.value;
+		const rows = 2 + Math.floor(newValue.length / 28);
+		textArea.rows = rows;
+		setMessage(newValue);
+	}
 
-    const saveMessage = (): void => {
-        if(message) {
-            const actualStorage = getFromStorage("main_storage");
-            if (actualStorage) {
-                actualStorage.message = message;
-                setInStorage("main_storage", actualStorage);
-            }
-            setMessage("");
-        } else {
-            console.log("no message")
-        }
-    }
+	const saveMessage = async (): Promise<void> => {
+		if (message.trim()) {
+			try {
+				// Use the shared AXIOS instance (baseURL configured in redux/services/axios)
+				const response = await AXIOS.post('/api/contact/message', { text: message });
+				if (response && response.status === 200) {
+					console.log('saved message', response.data?.message || response.data);
+					setMessage("");
+				} else {
+					console.error('error saving message', response?.data || response);
+				}
+			} catch (e) {
+				console.error('network error', e);
+			}
+		} else {
+			console.log("no message");
+		}
+	}
 
-    return (
-        <>
-            <div id="contact">
+	return (
+		<>
+			<div id="contact">
 				<h2>CONTACT</h2>
 				<section className="infos">
 					<p>
@@ -54,17 +60,17 @@ const Contact: React.FC = () => {
 				<section>
 					<h3> Drop a message</h3>
 					<textarea className="message-area"
-								name="message-area"
-								placeholder="please consider living a message ...."
-								onChange={handleChange}
-								value={message}
-								rows={2}>
+						name="message-area"
+						placeholder="please consider living a message ...."
+						onChange={handleChange}
+						value={message}
+						rows={2}>
 					</textarea>
 					<button type="button" onClick={saveMessage}>send</button>
 				</section>
-            </div>
-        </>
-    );
+			</div>
+		</>
+	);
 }
 
 export default Contact;
