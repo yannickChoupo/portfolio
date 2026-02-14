@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require("path");
 const bodyParser = require('body-parser');
-const config = require('./config/key');
 const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
@@ -14,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const uri = process.env.MONGO_URI || config.ATLAS_URI;
+const uri = process.env.MONGO_URI;
 console.log("URI : ", uri);
 
 mongoose.connect(
@@ -50,6 +49,7 @@ const shortUrlRouter = require('./routes/api/shortUrl');
 const todosRouter = require('./routes/api/todo');
 const sessionRouter = require('./routes/api/session');
 const fileMetaRouter = require('./routes/api/fileMetaData');
+const contactRouter = require('./routes/api/contact');
 
 app.use('/api/timestamp', timestampRouter);
 app.use('/api/whoiam', whoiamRouter);
@@ -58,6 +58,7 @@ app.use('/api/excercise', excerciseRouter);
 app.use('/api/todo', todosRouter);
 app.use('/api/session', sessionRouter);
 app.use('/api/filemeta', fileMetaRouter);
+app.use('/api/contact', contactRouter);
 
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));

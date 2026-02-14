@@ -53,7 +53,7 @@ const Projects: Project[] = [
         name: "BarChart",
         techStack: ["Javascript", "D3", "Ajax", "React", "HTML"],
         description: "calculate",
-        status: "available",
+        status: "not available",
         link: "/dataviz/BarChart",
         use: (techStack, tech) => {
             return techStack.some(elem => elem === tech);
