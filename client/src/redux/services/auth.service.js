@@ -1,13 +1,23 @@
 import axios from 'axios';
 import { getFromStorage } from "../../utils/storage";
-const SERVER_Request = axios.create(
-    {
-        baseURL: `${process.env.NODE_ENV === "production" ?
-            'https://yannick-njilo-portfolio.herokuapp.com'
-            :
-            'http://localhost:5000'}`
-    }
-);
+import AXIOS from './axios';
+
+// const API_BASE =
+//     process.env.NODE_ENV === "production"
+//         ? (process.env.REACT_APP_API_URL || "/portfolio/api")
+//         : (process.env.REACT_APP_API_URL || "http://localhost:5000");
+
+
+// const AXIOS = axios.create({ baseURL: API_BASE });
+
+// const SERVER_Request = axios.create(
+//     {
+//         baseURL: `${process.env.NODE_ENV === "production" ?
+//             process.env.REACT_APP_API_URL
+//             :
+//             'http://localhost:5000'}`
+//     }
+// );
 
 // SERVER_Request.interceptors.request.use((req) => {
 //     if (req.url === "/signOut") {
@@ -23,28 +33,18 @@ const SERVER_Request = axios.create(
 
 /////////////////////////////////////////////////////////////////////////////////////////
 export const visitorSignIn = (userName, password) => {
-    return SERVER_Request.post('/signIn', { userName, password });
+    return AXIOS.post('/signIn', { userName, password });
 }
 ///////////////////////////////////////////////////////////////////////////
 export const visitorSignOut = () => {
     const storage = getFromStorage("main_storage");
-    return SERVER_Request.post('/signOut', { message: storage.message });
+    return AXIOS.post('/signOut', { message: storage.message });
 }
 ///////////////////////////////////////////////////////////////////////////////
 export const visitorSignUp = (userName, password) => {
-    return SERVER_Request.post('/register', { userName, password });
+    return AXIOS.post('/register', { userName, password });
 }
 
 export const session = () => {
-    return SERVER_Request.post('/session', {});
+    return AXIOS.post('/session', {});
 }
-
-// export default {
-// signIn,
-// signUp,
-// signOut,
-// deleteAccount,
-// authenticate,
-// visitorSignUp,
-// visitorSignIn
-// }

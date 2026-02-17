@@ -1,17 +1,9 @@
 
 import React, { useState} from 'react';
-// import $ from "jquery";
-import history from "../../helpers/history";
-// import {BrowserView, MobileView} from 'react-device-detect';
-
-
 import {useDispatch, useSelector} from "react-redux"
 import { visitorSignIn, visitorSignUp} from "../../redux/actions/auth";
-
-// import {getFromStorage} from "../utils/storage";
-
 import {clearMessage} from "../../redux/actions/message";
-// import {setIsLoading, clearIsLoading} from "../redux/actions/request";
+import { useNavigate } from 'react-router-dom';
 
 const userName = 'userName';
 
@@ -27,6 +19,7 @@ const Sign = () => {
         password: ""
     })
     const [isSignUp, setIsSignUp] = useState(true);
+    const navigate = useNavigate();
 
     // const {isLoggedIn} = useSelector(state => state.auth);
 
@@ -36,7 +29,7 @@ const Sign = () => {
         const {userName, password} = fieldState;
         setTimeout(submitHandler, 1000);
         if (isSignUp) {
-            dispatch(visitorSignUp(userName, password, history))
+            dispatch(visitorSignUp(userName, password))
                 .then((response) => {
                     console.log("response : ", response.data);
                     if (response.data.success) {
@@ -44,10 +37,10 @@ const Sign = () => {
                     }
                 })
         } else {
-            dispatch(visitorSignIn(userName, password, history))
+            dispatch(visitorSignIn(userName, password))
                 .then((response) => {
                     if (response.data.success) {
-                        history.push('/');
+                        navigate("/")
                         window.location.reload(true);
                     }
                 })

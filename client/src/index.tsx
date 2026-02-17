@@ -12,10 +12,10 @@ const root = createRoot(container);
 
 root.render(
 	// <React.StrictMode>
-		<Provider store={store}>
-			<FluentProvider theme={webLightTheme}>
-				<App />
-			</FluentProvider>
-		</Provider>
+	<Provider store={store}>
+		<FluentProvider theme={webLightTheme}>
+			<App />
+		</FluentProvider>
+	</Provider>
 	// </React.StrictMode>
 );

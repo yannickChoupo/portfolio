@@ -9,8 +9,6 @@ const Footer: React.FC = () => {
 	console.log('Current page URL:', location.pathname);
 	console.log('Full location object:', location,location.pathname.toString().includes("dataviz"));
 
-
-
 	return (
 		<>
 			{
