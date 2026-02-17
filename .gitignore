@@ -9,8 +9,8 @@ server/Makefile
 package-lock.json
 
 node_modules/
-.env
-.env.dev
+.env/
+.env.dev/
 dist/
 build/
 .DS_Store
