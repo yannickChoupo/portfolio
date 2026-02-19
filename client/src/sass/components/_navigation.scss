@@ -4,8 +4,8 @@
 .navbar {
 	position: relative;
 	width: 100%;
-	padding: 0 1em 0 1em;
-	
+	padding: 0 px-to-em(12px) 0 px-to-em(12px);
+
 	.nav-body {
 		height: 50px;
 		display: flex;

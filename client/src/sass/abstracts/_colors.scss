@@ -1,3 +1,5 @@
+@use "sass:map";
+
 //$def-pri: hsl(264, 98%, 47%); // primary main 600
 $pri-variants: (
   900: #0000db,
@@ -29,10 +31,10 @@ $sec-variants: (
 $pri: "pri-variants";
 $sec: "sec-variants";
 @function getSecVariant($color) {
-  @return map-get($sec-variants, $color);
+  @return map.get($sec-variants, $color);
 }
 
 @function getPriVariant($color) {
-  @return map-get($pri-variants, $color);
+  @return map.get($pri-variants, $color);
 }
 

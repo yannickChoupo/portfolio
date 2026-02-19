@@ -1,5 +1,6 @@
+@use "../abstracts/function";
+@import "../abstracts/variables";
 @import "../abstracts/mixins";
-@import "../abstracts/function";
 
 .logo {
   font-size: 1.6em !important;
@@ -40,7 +41,6 @@
 }
 
 .logo__cube {
-  //@include width-and-height(20px);
   width: 20px;
   height: 20px;
   position: relative;

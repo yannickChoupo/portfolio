@@ -1,13 +1,11 @@
 @import "../abstracts/function";
+@import "../abstracts/variables";
 
 .project {
-	// background-color: rebeccapurple;
-    padding-top: px-to-em(30px);
-	// position: relative;
-	// display: flex;
-	// align-items: center;
-	// justify-content: center;
+	height: 100%;
+	padding: 0 px-to-em(12px);
 }
+
 .home-btn {
 	height: 4ch;
 }

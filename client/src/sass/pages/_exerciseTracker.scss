@@ -1,3 +1,4 @@
+@use "sass:color";
 @import "../abstracts/mixins";
 @import "../abstracts/function";
 @import "../abstracts/variables";
@@ -126,7 +127,7 @@
             transition: all 0.3s ease;
 
             &:hover:not(:disabled) {
-              background-color: darken($def-pri, 10%);
+              background-color: color.adjust($def-pri, $lightness: -10%);
               transform: translateY(-2px);
             }
 
@@ -182,7 +183,7 @@
             transition: all 0.3s ease;
 
             &:hover {
-              background-color: darken($def-pri, 10%);
+              background-color: color.adjust($def-pri, $lightness: -10%) ;
             }
           }
         }
