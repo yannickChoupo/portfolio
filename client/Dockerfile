@@ -1,9 +1,9 @@
-FROM node:18-alpine as build-stage
+FROM node:20-alpine AS build-stage
 
 WORKDIR /usr/src/app
 
 # Accept PUBLIC_URL as build argument
-ARG PUBLIC_URL=/portfolio
+ARG PUBLIC_URL
 ENV PUBLIC_URL=$PUBLIC_URL
 
 COPY package*.json ./

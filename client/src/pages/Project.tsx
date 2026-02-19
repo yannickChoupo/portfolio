@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 
 import RandomQuote from "../Projects/algorithm/RamdomQuote";
 import Calculator from "../Projects/algorithm/calculator";
@@ -19,14 +19,6 @@ const Project: React.FC = () => {
 
     return (
         <>
-            <div className="home-btn">
-                <NavLink
-                    to='/works'
-                    className="backHome-btn"
-                >
-                    Back Home
-                </NavLink>
-            </div>
             {
                 projectName === "Calculator" ? <Calculator />
                     : projectName === "Quote" ? <RandomQuote />

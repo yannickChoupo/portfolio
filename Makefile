@@ -1,10 +1,12 @@
 build:
 	docker-compose up
 build-dev:
-	cd client && $(MAKE) build-dev
-	cd server && $(MAKE) build
+# 	cd client && $(MAKE) build-dev
+# 	cd server && $(MAKE) build 
+	docker compose -f docker-compose-dev.yml --env-file .env.dev up -d --build 
 run-dev:
-	docker-compose up
+	docker compose -f docker-compose-dev.yml --env-file=.env.dev up 
+
 build-local:
 	cd client && $(MAKE) build-local
 	cd server && $(MAKE) build

@@ -56,7 +56,7 @@ const FileMetadata: React.FC = () => {
     return (
         <>
             <div id="file-metadata">
-                <div className="container">
+                <div className="api-container">
                     <header>
                         <h1>File Metadata Microservice</h1>
                         <p className="subtitle">Analyze File Information</p>

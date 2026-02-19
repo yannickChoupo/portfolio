@@ -43,26 +43,28 @@ And here. | Okay. | I think we get it.
 1. And last but not least, let's not forget embedded images:
 `;
 
+
+
 class MarkDownPreviewer extends React.Component<{}, MarkDownPrevieverState> {
     state: MarkDownPrevieverState = {
         text: initialState
     }
-    
+
     handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         this.setState({
             text: e.target.value
         });
     }
-    
+
     render() {
         const { text } = this.state;
         const markdown = marked(text, {
             breaks: true
         });
-        
+
         return (
             <>
-                <div id="markdown-previewer">
+                <div className="markdownPreviewer">
                     <div className="container">
                         <header>
                             <h1>Markdown Previewer</h1>
@@ -72,7 +74,7 @@ class MarkDownPreviewer extends React.Component<{}, MarkDownPrevieverState> {
                         <section className="about">
                             <h2>About</h2>
                             <p>
-                                A live markdown editor with real-time preview using marked.js. 
+                                A live markdown editor with real-time preview using marked.js.
                                 Type your markdown in the editor and see it rendered instantly in the preview pane.
                             </p>
                         </section>
@@ -101,15 +103,15 @@ class MarkDownPreviewer extends React.Component<{}, MarkDownPrevieverState> {
                                     />
                                 </div>
                             </div>
+                            <div className="preview">
+                                <h3>Preview</h3>
+                                <div
+                                    className="api-response"
+                                    dangerouslySetInnerHTML={{ __html: markdown }}
+                                ></div>
+                            </div>
                         </section>
 
-                        <section className="api-response">
-                            <h2>Preview</h2>
-                            <div 
-                                id="preview"
-                                dangerouslySetInnerHTML={{ __html: markdown }}
-                            ></div>
-                        </section>
                     </div>
                 </div>
             </>

@@ -185,7 +185,6 @@ const SharedDatavizLayout: React.FC = () => {
 					Back Home
 				</NavLink>
 			</div>
-			{/* <Title1 className={styles.title}>{projectName}</Title1> */}
 			<div className={styles.dataviz}>
 				<header className={styles.header}></header>
 				<div className={styles.body}>

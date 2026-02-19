@@ -60,8 +60,8 @@ const TimesTamp: React.FC = () => {
 
     return (
         <>
-            <div id="timestamp">
-                <div className="container">
+            <div id="timestamp" className="api">
+                <div className="api-container">
                     <header>
                         <h1>Timestamp Microservice</h1>
                         <p className="subtitle">Simple API Project</p>
