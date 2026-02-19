@@ -1,19 +1,18 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { makeStyles } from "@fluentui/react-components";
-
-const useStyles = makeStyles({
-	project: {
-		width: "100%",
-		padding: "20px",
-	},
-});
+import { NavLink } from "react-router-dom";
 
 const SharedProjectLayout: React.FC = () => {
-	const styles = useStyles();
-
 	return (
-		<div className={styles.project}>
+		<div className="project">
+			<div className="home-btn">
+				<NavLink
+					to='/works'
+					className="backHome-btn"
+				>
+					Back Home
+				</NavLink>
+			</div>
 			<Outlet />
 		</div>
 	);

@@ -155,7 +155,7 @@ const TodoManager: React.FC = () => {
     return (
         <>
             <div id="todo-manager">
-                <div className="container">
+                <div className="api-container">
                     <header>
                         <h1>Todo Manager Microservice</h1>
                         <p className="subtitle">Manage Your Tasks</p>

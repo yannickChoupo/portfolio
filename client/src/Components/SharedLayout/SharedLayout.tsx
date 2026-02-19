@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from 'react';
 import { Outlet, useLocation } from "react-router-dom";
 import NavBar from "../navigation/navBar";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -21,28 +22,30 @@ const useStyles = makeStyles({
 });
 
 const SharedLayout: React.FC = () => {
-	const location = useLocation();
 	const page = React.useRef<HTMLDivElement>(null);
 	const styles = useStyles();
+	const location = useLocation();
+	const nodeRef = useRef<HTMLDivElement>(null);
 
 	return (
 		<>
+			<NavBar />
 			<div id="app" className={styles.app}>
-				<NavBar />
 				<TransitionGroup className="transitiongroup">
 					<CSSTransition
 						timeout={1000}
 						classNames="pages"
-						key={location.key}
+						key={location.pathname}
 						nodeRef={page}
+						unmountOnExit
 					>
-						<div className={styles.pageContainer} ref={page}>
+						<div className={styles.pageContainer} ref={nodeRef}>
 							<Outlet />
 						</div>
 					</CSSTransition>
 				</TransitionGroup>
-				<Footer />
 			</div>
+			<Footer />
 		</>
 	);
 };

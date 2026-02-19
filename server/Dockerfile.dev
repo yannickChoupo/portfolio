@@ -7,8 +7,11 @@ WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app/
 
+# RUN npm install -g nodemon
+
 ## Installing dependencies
-RUN npm install
+# RUN npm install
+RUN npm install --production=false
 
 # copy local files to app folder
 COPY . .

@@ -1,5 +1,5 @@
 import React from "react";
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Home: React.FC = () => {
 	return (
@@ -9,7 +9,8 @@ const Home: React.FC = () => {
 			</section>
 			<section className="home-body text-center fs-3 pt-5 l">
 				<p>
-					Hi, I’m Yannick — great to have you here!
+					Hi, I’m Yannick<br />
+					great to have you here!
 				</p>
 				<p>
 					I’m passionate about <strong>digitalization</strong> and the endless possibilities technology
@@ -20,9 +21,8 @@ const Home: React.FC = () => {
 					automate processes, and turn ideas into impactful solutions.<br />
 				</p>
 				<p>
-					Currently, I’m studying Electrical Engineering with a focus on
-					<strong>Systems Automation</strong> at the
-					<strong>darmstadt university of applied sciences</strong><br />
+					Currently, I’m studying Electrical Engineering with a focus on <strong>Systems Automation</strong> at the
+					<strong> darmstadt university of applied sciences </strong><br />
 					Throughout my studies, I’ve developed a strong technical
 					foundation in engineering principles, automation, and system design.
 				</p>
@@ -30,10 +30,10 @@ const Home: React.FC = () => {
 					Alongside my academic path, I’ve built solid skills in web development and
 					project management. Driven by curiosity and personal interest,
 					I’ve learned various web technologies and applied them in
-					practical projects — including this website and several<NavLink
+					practical projects — including this website and several<br />
+					<NavLink
 						className="p-link"
 						to='works'>
-						{/* <em>Demos</em> */}
 						smaller applications
 					</NavLink>.
 				</p>
@@ -45,7 +45,12 @@ const Home: React.FC = () => {
 					I’m always eager to learn, grow, and collaborate with others who share
 					a passion for innovation and technology.
 					If you’d like to connect, exchange ideas, or work together on exciting projects,
-					feel free to reach out.<br />
+					feel free to <NavLink
+						className="p-link"
+						to='contact'>
+						reach out.
+					</NavLink>
+					<br />
 					Looking forward to hearing from you! 🚀
 				</p>
 			</section>

@@ -44,7 +44,7 @@ const RequestHeaderParser: React.FC = () => {
     return (
         <>
             <div id="header-parser">
-                <div className="container">
+                <div className="api-container">
                     <header>
                         <h1>Request Header Parser Microservice</h1>
                         <p className="subtitle">API Project - Parse HTTP Request Headers</p>

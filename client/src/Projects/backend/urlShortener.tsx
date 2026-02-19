@@ -43,7 +43,7 @@ const UrlShortener: React.FC = () => {
     return (
         <>
             <div id="url-shortener">
-                <div className="container">
+                <div className="api-container">
                     <header>
                         <h1>URL Shortener Microservice</h1>
                         <p className="subtitle">Shorten Long URLs</p>
