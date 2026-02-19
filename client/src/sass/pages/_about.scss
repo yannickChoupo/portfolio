@@ -7,7 +7,7 @@
 $lines-color: rgba($def-pri, .87);
 
 #about {
-	padding: 2em 0 0 px-to-em(18px);
+	padding: 0 px-to-em(12px);
 
 	h2 {
 		margin-bottom: 1em;
@@ -31,11 +31,16 @@ $lines-color: rgba($def-pri, .87);
 					&::before {
 						content: "";
 						width: .2em;
-						height: calc(85% + 1em);
+						height: calc(85% + 2em);
 						position: absolute;
 						left: 0;
-						top: 16%;
+						top: 8%;
 						background-color: $def-pri;
+
+						@include breakpoint--small {
+							height: calc(85% + 1em);
+							top: 15%;
+						}
 					}
 				}
 
@@ -110,7 +115,6 @@ $lines-color: rgba($def-pri, .87);
 				.activity {
 					padding: .5em 0 0 5ch;
 					line-height: 1.5em;
-
 				}
 			}
 		}

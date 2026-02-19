@@ -1,56 +1,18 @@
 @import "../abstracts/mixins";
 @import "../abstracts/function";
 
-footer {
-  //position: relative;
-  //box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5);
-  //@include after-overlay(4dp);
+.footer {
+  padding: 0 px-to-em(12px);
   display: flex;
   flex-direction: column;
   gap: 2em;
-  padding-left: 1em;
-  // border: 1px solid $def-pri;
-  // margin: 1.6em 0;
   width: 100%;
-
-  .contact {
-    width: 100%;
-    gap: 1em;
-
-    textarea {
-      color: inherit;
-      resize: none;
-      overflow: hidden;
-      border: none;
-      outline: none;
-      background: transparent;
-      width: 100%;
-      padding: .5em .5em 0 .5em;
-      margin-bottom: .5em;
-      font-size: 1.3em;
-      border-left: .1em solid $def-pri;
-    }
-
-    h2 {
-      margin-bottom: 1.5em;
-    }
-
-    h3 {
-      margin-bottom: .5em;
-    }
-
-    button {
-      border: none;
-      padding: .5em 1em;
-      color: $def-pri;
-    }
-
-  }
 
   .socialList {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     gap: "20px";
     padding-left: 1em;
     padding: 0;
@@ -59,8 +21,10 @@ footer {
 
   .socialIcons {
     display: flex;
+    gap: 10px;
+
     .socialIcon {
-      width: 40px;
+      width: fit-content;
       height: 40px;
       @include flexCenter;
       text-decoration: none;
@@ -69,7 +33,7 @@ footer {
       position: relative;
       transition: "color 0.2s ease";
       cursor: pointer;
-  
+
       &::after {
         content: "";
         width: 100%;
@@ -83,20 +47,20 @@ footer {
         left: 0;
         z-index: 1;
       }
-  
+
       &>* {
         position: relative;
         z-index: 2;
       }
-  
+
       &:hover {
         color: gray;
-  
+
         &::after {
           opacity: 20%;
         }
       }
     }
   }
-  
+
 }

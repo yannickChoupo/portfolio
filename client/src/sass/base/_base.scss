@@ -2,6 +2,7 @@
 
 html {
   box-sizing: border-box;
+  
 }
 
 html, 
@@ -42,17 +43,3 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
-// #app {
-//   &:hover {
-//     nav {
-//       @include mixins.after-overlay(1dp);
-//     }
-//   }
-// }
-
-
-
-
-
-

@@ -1,17 +1,18 @@
 @import "../abstracts/breackpoints";
 @import "../abstracts/mixins";
 @import "../abstracts/function";
+@import "../abstracts/variables";
+
 
 
 #home {
-  padding: calc(60px + 2em) 0 0 px-to-em(18px);
   .home-header {
     display: flex;
     justify-content: center;
 
     .image {
       background-size: cover;
-      background-image: url("../../images/image1.jpg");
+      background-image: url("../../images/home-img.png");
       background-position: center;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 50%);
       width: 15em;
