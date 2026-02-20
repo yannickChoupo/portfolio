@@ -52,14 +52,10 @@ services:
         REACT_APP_API_URL: ${REACT_APP_API_URL}
         PUBLIC_URL: ${PUBLIC_URL}
     restart: unless-stopped
-    working_dir: /app
+    working_dir: /usr/src/app
     environment:
       CHOKIDAR_USEPOLLING: "true"
       NODE_ENV: ${NODE_ENV}
-    volumes:
-      - ./client/src:/app/src
-      - ./client/public:/app/public
-      - /app/node_modules
     ports:
       - "127.0.0.1:8080:80"
     depends_on:

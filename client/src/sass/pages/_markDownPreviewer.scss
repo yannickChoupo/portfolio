@@ -56,6 +56,7 @@
 
         .editor-section {
             margin-bottom: 1em;
+
             textarea {
                 width: 100%;
                 max-width: 100%;
@@ -65,6 +66,16 @@
         }
 
         .preview {
+            .api-response {
+                box-sizing: border-box;
+                width: 100%;
+                max-width: 100%;
+                min-height: 150px;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                padding: 5px;
+            }
+
             h3 {
                 margin-bottom: 1rem;
                 color: $def-pri;

@@ -44,8 +44,8 @@ const SharedLayout: React.FC = () => {
 						</div>
 					</CSSTransition>
 				</TransitionGroup>
+				<Footer />
 			</div>
-			<Footer />
 		</>
 	);
 };

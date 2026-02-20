@@ -4,8 +4,12 @@
 @import "../abstracts/breackpoints";
 @import "../abstracts/mixins";
 @import "../abstracts/colors";
+@import "../abstracts/function";
+
 
 #work {
+
+
 	h2 {
 		padding: 0 px-to-em(9px);
 	}
@@ -66,6 +70,22 @@
 			}
 		}
 
+	}
+
+	@include breakpoint--small {
+		padding: 0 px-to-em(12px);
+
+		.filters {
+			padding: 0;
+		}
+
+		h2 {
+			padding: 0;
+		}
+
+		.work-list {
+			padding: 0 0;
+		}
 	}
 }
 

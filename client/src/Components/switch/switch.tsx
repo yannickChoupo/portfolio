@@ -1,52 +1,48 @@
-import $ from "jquery";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleHamburger } from "../../features/hamburgerSlice";
 import { setDarkThemeIsActiv } from "../../features/themeslice";
 import { RootState } from "../../store";
+import {
+  getSavedTheme,
+  getSystemTheme,
+  setTheme,
+  applyTheme
+} from "../../utils/theme";
 
 const Switch = (): React.ReactElement => {
   const dispatch = useDispatch();
   const { isOpen } = useSelector((state: RootState) => state.hamburger);
-
-  const darkThemeIsActiv = () =>
-    document.querySelector("body")?.className.includes("dark-mode") ?? false;
-
-  const setIcon = (isDark: boolean) => {
-    if (isDark) {
-      $(".switch__con .icon").toggleClass("light", false).addClass("dark");
-    } else {
-      $(".switch__con .icon").toggleClass("dark", false).addClass("light");
-    }
-  };
+  const darkMode = useSelector((state: RootState) => state.theme.darkThemeIsActiv);
 
   const handleSwitchClick = () => {
-    const nextDark = !darkThemeIsActiv();
+    const nextDark = !darkMode;
 
-    // update icon
-    setIcon(nextDark);
+    // save + apply theme
+    setTheme(nextDark ? "dark" : "light");
 
-    // update redux theme state
+    // update redux
     dispatch(setDarkThemeIsActiv(nextDark));
 
-    // toggle body class
-    $("body").toggleClass("dark-mode");
-
-    // ✅ toggle hamburger only if necessary (close it if open)
-    if (isOpen) {
-      dispatch(toggleHamburger());
-    }
+    // close hamburger if open
+    if (isOpen) dispatch(toggleHamburger());
   };
 
+  // On mount: initialize theme
   useEffect(() => {
-    // set correct icon on mount based on current body class
-    setIcon(darkThemeIsActiv());
-  }, []);
+    const saved = getSavedTheme();
+    const initial = saved ?? getSystemTheme();
+
+    applyTheme(initial);
+    dispatch(setDarkThemeIsActiv(initial === "dark"));
+  }, [dispatch]);
 
   return (
     <div className="switch" onClick={handleSwitchClick}>
       <div className="switch__con">
-        <span className="icon">&#9788;</span>
+        <span className={`icon ${darkMode ? "dark" : "light"}`}>
+          {darkMode ? "🌙" : "☀️"}
+        </span>
       </div>
     </div>
   );
