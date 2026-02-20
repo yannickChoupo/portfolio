@@ -1,7 +1,10 @@
 @import "../abstracts/function";
 @import "../abstracts/variables";
+@import "../abstracts/mixins";
+
 
 body {
+	margin: 0;
 	height: 100%;
 
 	&.dark-mode {
@@ -22,26 +25,31 @@ body {
 	}
 
 	#root {
-		max-width: px-to-em(960px);
+		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
-		position: relative;
+		max-width: px-to-em(960px);
 		margin: 0 auto;
-
+		width: 100%;
+		&:hover {
+			.navbar {
+				// @include after-overlay(1dp);
+			}
+		}
 		#app {
 			min-height: 100vh;
-			&:hover {
-				// .navbar {
-				// 	@include after-overlay(1dp);
-				// }
-			}
 		}
 
 	}
 }
 
+html,
+body {
+	height: 100%;
+}
+
 .page {
 	padding: 0;
 	position: relative;
-	min-height: 100vh;
+	min-height: 100%;
 }

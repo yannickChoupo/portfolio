@@ -1,5 +1,6 @@
 import React from "react";
 import { marked } from "marked"
+import DOMPurify from "dompurify";
 
 interface MarkDownPrevieverState {
     text: string;
@@ -58,10 +59,7 @@ class MarkDownPreviewer extends React.Component<{}, MarkDownPrevieverState> {
 
     render() {
         const { text } = this.state;
-        const markdown = marked(text, {
-            breaks: true
-        });
-
+        const markdown = DOMPurify.sanitize(marked(text));
         return (
             <>
                 <div className="markdownPreviewer">

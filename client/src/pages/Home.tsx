@@ -45,7 +45,8 @@ const Home: React.FC = () => {
 					I’m always eager to learn, grow, and collaborate with others who share
 					a passion for innovation and technology.
 					If you’d like to connect, exchange ideas, or work together on exciting projects,
-					feel free to <NavLink
+					feel free to<br />
+					<NavLink
 						className="p-link"
 						to='contact'>
 						reach out.

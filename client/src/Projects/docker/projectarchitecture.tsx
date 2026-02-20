@@ -1,71 +1,181 @@
-import React from "react";
+import React from 'react';
 import { marked } from "marked";
-// import mermaid from "mermaid";
-import "./projectarchitecture.scss"; // add CSS for full page
+import DOMPurify from "dompurify";
 
-interface MarkDownPrevieverState {
-    text: string;
-}
+const initialState = `# 
+A full-stack portfolio platform combining:
 
-const initialState = `# MERN Application Architecture
+- 🧩 **Drupal CMS** (PHP-FPM + MariaDB)
+- ⚛️ **React Frontend**
+- 🟢 **Node.js / Express API**
+- 🍃 **MongoDB**
+- 🐳 **Docker-based development & deployment**
 
+---
 
+## 🏗 Architecture Overview
 
+\`\`\`
+Browser
+   │
+   ▼
+Nginx (Reverse Proxy)
+   ├── /     → Drupal CMS or React Client 
+   |           (based on Docker profile)
+   └── /api  → Express API
+\`\`\`
 
-## Components
+The active root service (\`/\`) depends on the selected Docker profile.
 
-- **Root**: workspace containing two main folders and Docker configuration.
-- **client/**: React frontend (with live markdown previewer component).
-- **server/**: Express backend using Mongoose to talk to MongoDB.
-- **db**: MongoDB instance – local container in development, Atlas in production.
+---
 
-## Environment
+## 🖥 Tech Stack
 
-## Development Workflow
+### Backend
+- Node.js (Express)
+- MongoDB
+- JWT Authentication
 
-2. The backend waits for the Mongo container to be healthy before listening.
-3. Editor and preview occupy the full page; edit markdown to document architecture.
+### CMS
+- Drupal 10
+- MariaDB
 
-## Production Behavior
+### Frontend
+- React
+- TypeScript
+- Axios
 
-- Frontend served statically behind Nginx, backend connects to Atlas using environment variables.
+### DevOps
+- Docker
+- Docker Compose (profiles)
+- Nginx reverse proxy
+
+---
+
+## 🐳 Docker Profiles
+
+The project uses Docker Compose profiles to separate services.
+
+| Profile     | Description            |
+|------------|------------------------|
+| \`drupal\`    | Drupal CMS stack       |
+| \`portfolio\` | React + Node API stack |
+
+### ▶ Run Portfolio Only
+
+\`\`\`bash
+docker compose --profile portfolio up -d
+\`\`\`
+
+### ▶ Run Drupal Only
+
+\`\`\`bash
+docker compose --profile drupal up -d
+\`\`\`
+
+### ▶ Run Full Stack
+
+\`\`\`bash
+docker compose --profile drupal --profile portfolio up -d
+\`\`\`
+
+---
+
+## 🌍 Live Deployment
+
+Production domain:  
+https://www.njiloportfolio.de
+
+---
+
+## 📂 Project Structure
+
+\`\`\`
+Portfolio-Drupal/
+│
+├── portfolio/
+│   ├── client/      # React frontend
+│   └── server/      # Express API
+│
+├── Portfolio-Drupal/  # Drupal CMS
+│
+├── nginx/
+├── docker-compose.yml
+└── docker-compose-dev.yml
+\`\`\`
+
+---
+
+## 🚀 Production Deployment
+
+### Build & Push Updated Images
+
+\`\`\`bash
+docker build -t yannickkloud/portfolio:client-latest ./portfolio/client
+docker build -t yannickkloud/portfolio:server-latest ./portfolio/server
+
+docker push yannickkloud/portfolio:client-latest
+docker push yannickkloud/portfolio:server-latest
+\`\`\`
+
+### Pull & Recreate on Server
+
+\`\`\`bash
+docker compose --profile portfolio pull portfolio-client portfolio-server
+docker compose --profile portfolio up -d --force-recreate
+\`\`\`
+
+---
+
+## 🧪 Useful Commands
+
+### View Logs
+\`\`\`bash
+docker compose logs -f
+\`\`\`
+
+### Restart API
+\`\`\`bash
+docker compose restart portfolio-server
+\`\`\`
+
+### Rebuild Client
+\`\`\`bash
+docker compose build --no-cache portfolio-client
+\`\`\`
+
+### Stop All Services
+\`\`\`bash
+docker compose down
+\`\`\`
+
+---
+
+## 📄 License
+
+MIT
 `;
 
-class ProjectArchitecture extends React.Component<{}> {
-    state: MarkDownPrevieverState = {
-        text: initialState
-    }
-
-    handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        this.setState({
-            text: e.target.value
-        });
-    }
-    
-    render() {
-        const { text } = this.state;
-        const markdown = marked(text, {
-            breaks: true
-        });
-        
-        return (
-            <>
-                <div id="ProjectArchitecture" className="fullpage">
-                    <div className="container fullpage">
-                        <header>
-                            <h1>Project Architecture Markdown Previewer</h1>
-                        </header>
-                        <section className="api-response">
-                            <div 
-                                id="preview"
-                                dangerouslySetInnerHTML={{ __html: markdown }}
-                            ></div>
-                        </section>
-                    </div>
+const ProjectArchitecture: React.FC = () => {
+    const text = initialState;
+    const markdown = DOMPurify.sanitize(marked(text));
+    return (
+        <>
+            <div id="ProjectArchitecture">
+                <div className="container">
+                    <header>
+                        <h1>Project Architecture</h1>
+                    </header>
+                    <section>
+                        <div
+                            id="preview"
+                            dangerouslySetInnerHTML={{ __html: markdown }}
+                        ></div>
+                    </section>
                 </div>
-            </>
-        );
-    }
+            </div>
+        </>
+    );
 }
 
 export default ProjectArchitecture;
