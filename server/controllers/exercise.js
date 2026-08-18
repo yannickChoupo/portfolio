@@ -35,23 +35,17 @@ const addExercise = async (req, res) => {
     console.log("ID : ", id);
     console.log("request : ", req.body);
     let { description, duration, date } = req.body;
+    if (date === '' || typeof date === 'undefined') {
+        date = new Date().toDateString();
+    } else {
+        date = new Date(date).toDateString();
+    }
 
+    console.log("new req : ", id, date, );
+    
     try {
-            const existingUser = await ExerciseUser.find({ _id: id });
-            if (!existingUser[0]) {
-                res.send({
-                    error: "user not found!!"
-                })
-                return
-            }
-            let findedUser = existingUser[0];
-            let newExercise = { description, duration, date }
-            console.log("new ex : ", newExercise);
-            let newExercisesArr = [...findedUser.log, newExercise]
-            duration = parseInt(duration);
-            const newUser = await ExerciseUser.findOneAndUpdate(
-                { _id: id }, { log: newExercisesArr })
-
+        const existingUser = await ExerciseUser.find({ _id: id });
+        if (!existingUser[0]) {
             res.send({
                 _id: id,
                 username: findedUser.username,
@@ -59,6 +53,21 @@ const addExercise = async (req, res) => {
                 duration,
                 description
             })
+            return
+        }
+        let findedUser = existingUser[0];
+        let newExercise = { description, duration, date }
+        let newExercisesArr = [...findedUser.log, newExercise]
+        duration = parseInt(duration);
+        const newUser = await ExerciseUser.findOneAndUpdate(
+            { _id: id }, { log: newExercisesArr })
+        res.send({
+            _id: id,
+            username: findedUser.username,
+            date,
+            duration,
+            description
+        })
     } catch (error) {
         console.log(error);
         res.send({

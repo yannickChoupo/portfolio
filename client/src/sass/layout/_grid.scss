@@ -1,40 +1,55 @@
-@import "../abstracts/breackpoints";
-@import "../abstracts/mixins";
 @import "../abstracts/function";
-@import "../abstracts/colors";
 @import "../abstracts/variables";
+@import "../abstracts/mixins";
+
 
 body {
+	margin: 0;
+	height: 100%;
+
 	&.dark-mode {
-	  &::-webkit-scrollbar {
-		width: .5em;
+		&::-webkit-scrollbar {
+			width: .5em;
+			background-color: $bg-color--dark;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: $def-pri;
+		}
+
+		&>* {
+			color: white;
+		}
+
 		background-color: $bg-color--dark;
-	  }
-	  &::-webkit-scrollbar-thumb {
-		background-color: $def-pri;
-	  }
-	  & > * {
-		color: white;
-	  }
-	  background-color: $bg-color--dark;
 	}
+
 	#root {
-		#app {
-			max-width: px-to-em(960px);
-			position: relative;
-			margin: 0 auto;
-			&:hover {
-				nav {
-					@include after-overlay(1dp);
-				}
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		max-width: px-to-em(960px);
+		margin: 0 auto;
+		width: 100%;
+		&:hover {
+			.navbar {
+				// @include after-overlay(1dp);
 			}
 		}
-		
+		#app {
+			min-height: 100vh;
+		}
+
 	}
+}
+
+html,
+body {
+	height: 100%;
 }
 
 .page {
 	padding: 0;
 	position: relative;
-	min-height: 100vh;
+	min-height: 100%;
 }

@@ -1,4 +1,3 @@
-@import "function";
 $breakpoint--small:   480px  !default;
 $breakpoint--medium:  640px  !default;
 $breakpoint--large:   960px  !default;
@@ -11,6 +10,8 @@ $sl-breakpoints: (
         large:   $breakpoint--large,
         x-large: $breakpoint--x-large,
 );
+
+
 @mixin breakpoint($breakpoint) {
   @media only screen and (min-width: #{px-to-em($breakpoint)}) {
     @content;

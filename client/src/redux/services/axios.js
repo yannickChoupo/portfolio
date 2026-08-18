@@ -1,25 +1,15 @@
 import axios from "axios";
-import { getFromStorage } from '../../utils/storage';
+import { getFromStorage } from "../../utils/storage";
 
-let AXIOS = axios.create(
-    {
-        baseURL: `${process.env.NODE_ENV === "production" ?
-            'https://yannick-njilo-portfolio.herokuapp.com'
-            :
-            'http://localhost:5000'}`
-    }
-);
+const AXIOS = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || "",
+});
 
+console.log("AXIOS baseURL:", process.env.REACT_APP_API_URL, AXIOS.defaults.baseURL);
 AXIOS.interceptors.request.use((req) => {
-    const mainStorage = getFromStorage("session");
-    let token = ''
-    if (mainStorage) {
-        token = mainStorage;
-    }
-    req.headers.Authorization = `Bearer ${token}`;
-    return req;
-}, err => {
-    console.log(err);
-})
+  const token = getFromStorage("session") || "";
+  req.headers.Authorization = `Bearer ${token}`;
+  return req;
+});
 
 export default AXIOS;

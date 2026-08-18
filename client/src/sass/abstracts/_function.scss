@@ -1,12 +1,13 @@
 @use "sass:math";
-@import "../abstracts/mixins";
-@import "../abstracts/variables";
+@use "sass:map";
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
 
 $browser-context: 16;
 
 
 @function get-element($list,$theme,$order) {
-  @return map-get(map-get($list,$theme),$order)
+  @return map.get(map.get($list,$theme),$order);
 }
 
 
@@ -34,12 +35,12 @@ $browser-context: 16;
 }
 
 @function px-to-em($size) {
-  @return ($size / 16px) * 1em;
+  @return calc($size / 16px) * 1em;
 }
 
 
 @function get-dp-color ($dp) {
-  @return map-get($levels,$dp);
+  @return map.get($levels,$dp);
 }
 //////////////////////////*************************///////////////////////////
 // Visual functions
