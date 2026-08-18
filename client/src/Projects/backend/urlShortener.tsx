@@ -18,7 +18,7 @@ const UrlShortener: React.FC = () => {
         e.preventDefault();
         if (inputUrl.trim()) {
             setLoading(true);
-            AXIOS.post('/api/shorturl/shorturl', { url: inputUrl })
+            AXIOS.post('/shorturl/shorturl', { url: inputUrl })
                 .then((response) => {
                     console.log(response.data);
                     setResponseData(response.data);
@@ -35,7 +35,7 @@ const UrlShortener: React.FC = () => {
 
     const getShortUrlLink = () => {
         if (responseData && responseData.short_url) {
-            return `${window.location.origin}/api/shorturl/shorturl/${responseData.short_url}`;
+            return `${window.location.origin}/api/shorturl/${responseData.short_url}`;
         }
         return '';
     };

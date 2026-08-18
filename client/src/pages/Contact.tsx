@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
 		if (message.trim()) {
 			try {
 				// Use the shared AXIOS instance (baseURL configured in redux/services/axios)
-				const response = await AXIOS.post('/api/contact/message', { text: message });
+				const response = await AXIOS.post('/contact/', { text: message });
 				if (response && response.status === 200) {
 					console.log('saved message', response.data?.message || response.data);
 					setMessage("");

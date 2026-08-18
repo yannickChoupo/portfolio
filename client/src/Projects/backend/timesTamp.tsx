@@ -17,7 +17,7 @@ const TimesTamp: React.FC = () => {
 
     const fetchCurrentTimestamp = () => {
         setLoading(true);
-        AXIOS.get('/api/timestamp')
+        AXIOS.get('/timestamp')
             .then((response) => {
                 console.log(response.data);
                 setResponseData(response.data);
@@ -33,7 +33,7 @@ const TimesTamp: React.FC = () => {
 
     const fetchCustomTimestamp = (dateParam: string) => {
         setLoading(true);
-        AXIOS.get(`/api/timestamp/${dateParam}`)
+        AXIOS.get(`/timestamp/${dateParam}`)
             .then((response) => {
                 console.log(response.data);
                 setResponseData(response.data);
