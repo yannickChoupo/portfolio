@@ -1,26 +1,37 @@
-@use "../abstracts/colors" as color ;
+@use "../abstracts/colors" as color;
 @import "../abstracts/variables";
 @import "../abstracts/mixins";
 @import "../abstracts/breackpoints";
 @import "../abstracts/mixins";
 @import "../abstracts/colors";
+@import "../abstracts/function";
+
+
 #work {
-    padding: 0 0 0 px-to-em(12px);
+
+
+	h2 {
+		padding: 0 px-to-em(9px);
+	}
+
 	.filters {
+		padding: 0 px-to-em(12px);
 		margin-bottom: px-to-em(20px);
 		width: 100%;
-		& > * {
+
+		&>* {
 			margin-bottom: 1em;
 		}
+
 		&.close {
 			transform: scale(0);
 		}
-		
+
 		.filter-list {
 			font-size: .7em;
-        	display: grid;
-        	grid-template-columns: repeat(auto-fit,minmax(7em,1fr));
-			
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(7em, 1fr));
+
 			& li {
 				display: flex;
 				border-radius: .4em;
@@ -29,50 +40,74 @@
 				margin: .2em;
 				cursor: pointer;
 			}
+
 			.active {
 				color: white;
 				background-color: $def-pri;
 			}
 		}
 	}
+
 	.work-list {
+		padding: 0 px-to-em(12px);
+
 		.list-item {
 			margin: 0 1em 1em 0;
 			padding: 1em;
 			display: inline-block;
 			width: fit-content;
 			color: inherit;
+
 			border: {
 				bottom: .1em solid $def-pri;
 				left: .1em solid $def-pri
-			};
+			}
+
+			;
 
 			.disabled {
 				display: none;
 			}
 		}
 
-	  }
+	}
+
+	@include breakpoint--small {
+		padding: 0 px-to-em(12px);
+
+		.filters {
+			padding: 0;
+		}
+
+		h2 {
+			padding: 0;
+		}
+
+		.work-list {
+			padding: 0 0;
+		}
+	}
 }
+
 //////////////////////////////////////////////////////////////////////
 .launch-enter {
-  opacity: 0;
-  transform: translateX(-100%);
+	opacity: 0;
+	transform: translateX(-100%);
 }
 
 .launch-enter-active {
-  background-color: red;
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 500ms, transform 500ms;
+	background-color: red;
+	opacity: 1;
+	transform: translateX(0);
+	transition: opacity 500ms, transform 500ms;
 }
 
 .launch-exit {
-  opacity: 1;
+	opacity: 1;
 }
 
 .launch-exit-active {
-  opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 500ms, transform 500ms;
+	opacity: 0;
+	transform: translateX(100%);
+	transition: opacity 500ms, transform 500ms;
 }

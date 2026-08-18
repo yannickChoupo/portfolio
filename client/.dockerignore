@@ -1,7 +1,10 @@
+.env
+.env.dev
+.env.prod
+.env.local
 .git
 *Dockerfile*
 node_modules
-build
 .dockerignore
 Dockerfile-dev
 Dockerfile-prod

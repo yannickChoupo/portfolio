@@ -12,7 +12,7 @@ import * as api from "../services/auth.service";
 
 // import {setInStorage} from "../../utils/storage";
 
-export const visitorSignUp = (userName, password, history) => async (dispatch) => {
+export const visitorSignUp = (userName, password) => async (dispatch) => {
     return api.visitorSignUp(userName, password).then(
         (response) => {
             if (!response.data.success) {

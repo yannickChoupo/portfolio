@@ -1,0 +1,217 @@
+@use "../abstracts/breackpoints";
+
+#ProjectArchitecture {
+  background: #fafafa;
+  min-height: 100vh;
+  padding: 24px 6px;
+  height: 100%;
+  background: #fafafa;
+
+  textarea {
+    resize: none;
+  }
+
+  header {
+    margin-bottom: 18px;
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  #preview {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .08);
+    padding: 0 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+    line-height: 1.7;
+    font-size: 16px;
+
+    /* nicer spacing */
+    >*+* {
+      margin-top: 14px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0, 0, 0, .06);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.25rem;
+      margin: 0;
+
+      li {
+        margin: 6px 0;
+      }
+    }
+
+    /* code blocks */
+    pre {
+      margin: 12px 0 0 0;
+      padding: 14px 16px;
+      border-radius: 10px;
+      overflow-x: auto;
+      background: #0b1020;
+      color: #e6e8ee;
+      border: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    code {
+      padding: 0.15rem 0.35rem;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, .05);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.95em;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      font-size: 0.9em;
+    }
+
+    /* tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(0, 0, 0, .03);
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* links */
+    a {
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 0, 0, .25);
+    }
+
+    a:hover {
+      border-bottom-color: rgba(0, 0, 0, .6);
+    }
+
+    /* horizontal rules */
+    hr {
+      border: 0;
+      height: 1px;
+      background: rgba(0, 0, 0, .08);
+      margin: 20px 0;
+    }
+
+    /* make emojis + bullets feel less cramped */
+    strong {
+      font-weight: 650;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  #ProjectArchitecture {
+    padding: 0 !important;
+    background-color: transparent;
+  }
+}
+
+/* ===========================
+   DARK MODE
+=========================== */
+
+body.dark-mode {
+  #ProjectArchitecture {
+    background: #111;
+
+    #preview {
+      background: #1b1b1b;
+      color: #e4e6eb;
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        color: #ffffff;
+      }
+
+      p,
+      li {
+        color: #d0d3d8;
+      }
+
+      a {
+        color: #4da3ff;
+        border-bottom-color: rgba(77, 163, 255, 0.4);
+      }
+
+      a:hover {
+        border-bottom-color: rgba(77, 163, 255, 0.8);
+      }
+
+      hr {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      table {
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      th {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      td {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      /* inline code */
+      code {
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffcc66;
+      }
+
+      /* code blocks */
+      pre {
+        background: #0f1115;
+        color: #e6e8ee;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+}

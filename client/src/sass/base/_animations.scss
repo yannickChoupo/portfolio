@@ -1,7 +1,15 @@
 /*
   Animation for the first line from the top
  */
- .pages-enter {
+
+.transitiongroup {
+  &>div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.pages-enter {
   opacity: 0;
   transform: translateX(-100%);
 }
@@ -11,6 +19,15 @@
   transform: translateX(0);
   transition: opacity 500ms, transform 500ms;
 }
+
+.pages-enter,
+.pages-exit {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
 /////////////////////////////////////////////////////////////////////////////
 .edit-enter {
   opacity: 0;
@@ -66,6 +83,3 @@
 //     opacity: 1;
 //   }
 // }
-
-
-

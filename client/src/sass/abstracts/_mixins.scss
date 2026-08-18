@@ -1,5 +1,5 @@
-@import "variables";
-//@import "function";
+@use "sass:map";
+
 // Add property
 @mixin element($name) {
   @at-root #{&}__#{$name} {
@@ -191,7 +191,7 @@
     position: relative;
     z-index: 2;
   }
-  $color: map-get($levels, $suffix);
+  $color: map.get($levels, $suffix);
   //$color: get-dp-color($suffix);
   background-color: $color;
   border-radius: inherit;
@@ -204,6 +204,7 @@
     top: 0;
     left: 0;
     z-index: 1;
+    pointer-events: none;
     // background-color: $color;
   }
 

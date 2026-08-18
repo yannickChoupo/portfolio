@@ -1,0 +1,9 @@
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+@import "../abstracts/variables";
+
+#todo-manager {
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  margin: 0 auto;
+}

@@ -1,0 +1,83 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const path = require("path");
+const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+
+const dotenv = require("dotenv");
+dotenv.config();
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const mongoUri =
+    `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}` +
+    `@${process.env.MONGO_HOST}/${process.env.MONGO_DATABASE}` +
+    `?retryWrites=true&w=majority&appName=Cluster0`;
+
+mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => {
+        console.log("MongoDB Connected");
+    })
+    .catch((error) => {
+        console.error("MongoDB connection error:", error.message);
+    });
+
+mongoose.connection.once("open", () => {
+    console.log("MongoDB database connection established successfully");
+});
+
+app.use((req, res, next) => {
+    let sendedToken = '';
+    let decodedToken = '';
+    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+        sendedToken = req.headers.authorization.split(' ')[1];
+        decodedToken = jwt.decode(sendedToken);
+    } else if (req.query && req.query.token) {
+    }
+    next();
+})
+
+const timestampRouter = require('./routes/api/timestamp');
+const whoiamRouter = require('./routes/api/reqHeaderParser');
+const excerciseRouter = require('./routes/api/excercise');
+const shortUrlRouter = require('./routes/api/shortUrl');
+const todosRouter = require('./routes/api/todo');
+const sessionRouter = require('./routes/api/session');
+const fileMetaRouter = require('./routes/api/fileMetaData');
+const contactRouter = require('./routes/api/contact');
+
+app.use('/api/timestamp', timestampRouter);
+app.use('/api/whoiam', whoiamRouter);
+app.use('/api/shorturl', shortUrlRouter);
+app.use('/api/excercise', excerciseRouter);
+app.use('/api/todo', todosRouter);
+app.use('/api/session', sessionRouter);
+app.use('/api/filemeta', fileMetaRouter);
+app.use('/api/contact', contactRouter);
+
+
+// app.use(express.static(path.resolve(__dirname, "../client/build")));
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.resolve(__dirname, "../client/build")));
+//     app.get("*", function (req, res) {
+//         res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+//     });
+// }
+
+app.get("/health", (req, res) => res.status(200).send("ok"));
+
+app.get('/', (req, res) => {
+    res.send("Yannick Njilo Portfolio backend");
+})
+
+app.listen(process.env.SERVERPORT || 5000, function () {
+    console.log(`Server is running on port : ${process.env.SERVERPORT || 5000}`);
+})

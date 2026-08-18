@@ -12,4 +12,10 @@
 @use "markDownPreviewer";
 @use "project";
 @use "dataviz";
-@use "excerciseTracker"; 
+@use "headerParser";
+@use "urlShortener";
+@use "fileMetadata";
+@use "exerciseTracker";
+@use "todoManager";
+
+@use "projectarchitecture"

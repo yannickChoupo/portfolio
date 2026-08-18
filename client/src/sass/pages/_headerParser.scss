@@ -1,0 +1,9 @@
+@import "../abstracts/mixins";
+@import "../abstracts/function";
+@import "../abstracts/variables";
+
+#header-parser {
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100%;
+  margin: 0 auto;
+}
