@@ -4,7 +4,7 @@ const dns = require('dns');
 // using WHATWG URL API instead of deprecated url.parse
 const { URL } = require('url');
 
-router.post('/shorturl', async (req, res) => {
+router.post('/', async (req, res) => {
     const { url } = req.body;
     console.log(url);
 
@@ -56,7 +56,7 @@ router.post('/shorturl', async (req, res) => {
     }
 });
 
-router.get('/shorturl/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     const { id } = req.params;
     const originalUrl = await Url.find({ short_url: id });
     if (originalUrl[0]) {

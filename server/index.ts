@@ -1,11 +1,12 @@
-export {}; const express = require('express');
+const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require("path");
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
-require('dotenv').config();
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
 
@@ -13,20 +14,23 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const uri = process.env.MONGO_URI;
-console.log("URI : ", uri);
+const mongoUri =
+    `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}` +
+    `@${process.env.MONGO_HOST}/${process.env.MONGO_DATABASE}` +
+    `?retryWrites=true&w=majority&appName=Cluster0`;
 
-mongoose.connect(
-    uri,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => {
+        console.log("MongoDB Connected");
     })
-    .then(() => console.log('MongoDB Connected'))
-    .catch((error) => console.log(error)
-);
+    .catch((error) => {
+        console.error("MongoDB connection error:", error.message);
+    });
 
-mongoose.connection.once('open', () => {
+mongoose.connection.once("open", () => {
     console.log("MongoDB database connection established successfully");
 });
 
@@ -70,7 +74,7 @@ app.use('/api/contact', contactRouter);
 
 app.get("/health", (req, res) => res.status(200).send("ok"));
 
-app.get('/',(req,res) => {
+app.get('/', (req, res) => {
     res.send("Yannick Njilo Portfolio backend");
 })
 
