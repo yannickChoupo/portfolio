@@ -26,7 +26,7 @@ const FileMetadata: React.FC = () => {
             formData.append('upfile', selectedFile);
 
             setLoading(true);
-            AXIOS.post('/api/filemeta/fileanalyse', formData, {
+            AXIOS.post('/filemeta/fileanalyse', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

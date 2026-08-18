@@ -36,7 +36,7 @@ const ExerciseTracker: React.FC = () => {
     }, []);
 
     const fetchUsers = () => {
-        AXIOS.get('/api/excercise/users')
+        AXIOS.get('/excercise/users')
             .then((response) => {
                 console.log('Users:', response.data);
                 setUsers(response.data);
@@ -50,7 +50,7 @@ const ExerciseTracker: React.FC = () => {
         e.preventDefault();
         if (username.trim()) {
             setLoading(true);
-            AXIOS.post('/api/excercise/users', { username })
+            AXIOS.post('/excercise/users', { username })
                 .then((response) => {
                     console.log(response.data);
                     setResponseData(response.data);
@@ -85,7 +85,7 @@ const ExerciseTracker: React.FC = () => {
             console.log('Selected User ID:', selectedUserId, date, exerciseData);
 
 
-            AXIOS.post(`/api/excercise/users/${selectedUserId}/exercises`, exerciseData)
+            AXIOS.post(`/excercise/users/${selectedUserId}/exercises`, exerciseData)
                 .then((response) => {
                     console.log(response.data);
                     setResponseData(response.data);
@@ -105,7 +105,7 @@ const ExerciseTracker: React.FC = () => {
 
     const handleGetLogs = (userId: string) => {
         setLoading(true);
-        AXIOS.get(`/api/excercise/users/${userId}/logs`)
+        AXIOS.get(`/excercise/users/${userId}/logs`)
             .then((response) => {
                 console.log('Logs:', response.data);
                 setLogs(response.data);

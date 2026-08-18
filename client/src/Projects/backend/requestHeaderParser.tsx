@@ -18,7 +18,7 @@ const RequestHeaderParser: React.FC = () => {
 
     const fetchHeaderInfo = () => {
         setLoading(true);
-        AXIOS.get('/api/whoiam')
+        AXIOS.get('/whoiam')
             .then((response) => {
                 console.log(response.data);
                 setResponseData(response.data);

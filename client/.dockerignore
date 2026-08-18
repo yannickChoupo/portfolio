@@ -1,3 +1,7 @@
+.env
+.env.dev
+.env.prod
+.env.local
 .git
 *Dockerfile*
 node_modules

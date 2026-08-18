@@ -16,7 +16,14 @@ interface AdminProps {
     user?: any;
 }
 
+interface Message {
+    _id: string;
+    text: string;
+    createdAt?: string;
+}
+
 const Admin: React.FC<AdminProps> = ({ }) => {
+    const [messages, setMessages] = useState<Message[]>([]);
     const [sessions, setSession] = useState<any[]>([]);
     const [todos, setTodos] = useState<TodoItem[]>([]);
     const [isEditing, setEditing] = useState<boolean>(false);
@@ -25,15 +32,38 @@ const Admin: React.FC<AdminProps> = ({ }) => {
     const nameFieldRef = useRef<HTMLInputElement>(null);
 
     const getTodos = (): void => {
-        AXIOS.get('/api/todo/getTodos').then(response => {
+        AXIOS.get('/todo/getTodos').then(response => {
             setTodos(response.data.todos);
         });
     }
 
+    const getMessages = async (): Promise<void> => {
+        try {
+            // setLoading(true);
+            // setError(null);
+
+            const response = await AXIOS.get("/contact/all");
+            console.log("Messages : ", response.data.messages);
+
+            setMessages(response.data.messages || []);
+        } catch (err) {
+            console.error("Failed to load messages:", err);
+            // setError("Unable to load messages.");
+        } 
+        // finally {
+        //     setLoading(false);
+        // }
+    };
+
+
     useEffect(() => {
         getTodos();
-        AXIOS.get('/api/session/all').then((response) => {
+        getMessages();
+        console.log(messages);
+        
+        AXIOS.get('/session/all').then((response) => {
             setSession(response.data.sessions);
+            console.log("Sessions : ", response.data.sessions);
         })
     }, []);
 
@@ -53,16 +83,16 @@ const Admin: React.FC<AdminProps> = ({ }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        
+
         if (newTodoName && newTodoDescription) {
-            AXIOS.post('/api/todo/storeTodo',
+            AXIOS.post('/todo/storeTodo',
                 {
                     name: newTodoName,
                     description: newTodoDescription
                 }).then(() => {
                     getTodos();
                 })
-            
+
             setNewTodoName('');
             setNewTodoDescription('');
             desactiveEditView();
@@ -70,7 +100,7 @@ const Admin: React.FC<AdminProps> = ({ }) => {
     }
 
     const deleteTask = (id: string): void => {
-        AXIOS.post('/api/todo/removeTodo',
+        AXIOS.post('/todo/removeTodo',
             {
                 id: id,
             }).then(() => {
@@ -98,12 +128,12 @@ const Admin: React.FC<AdminProps> = ({ }) => {
                             <CSSTransition
                                 timeout={500}
                                 classNames="edit"
-                                in={isEditing} 
+                                in={isEditing}
                                 unmountOnExit>
                                 <form className="form" onSubmit={handleSubmit}>
                                     <div className="form-group name">
                                         <label htmlFor="taskName">name</label>
-                                        <input 
+                                        <input
                                             id="taskName"
                                             className="todo-text"
                                             type="text"
@@ -115,7 +145,7 @@ const Admin: React.FC<AdminProps> = ({ }) => {
                                     </div>
                                     <div className="form-group description">
                                         <label htmlFor="taskDescription">description</label>
-                                        <input 
+                                        <input
                                             id="taskDescription"
                                             className="todo-text"
                                             type="text"
@@ -124,13 +154,13 @@ const Admin: React.FC<AdminProps> = ({ }) => {
                                             required={true} />
                                     </div>
                                     <div className="btn-group">
-                                        <button 
-                                            type="button" 
+                                        <button
+                                            type="button"
                                             className="btn todo-cancel"
                                             onClick={desactiveEditView}>
                                             Cancel
                                         </button>
-                                        <button 
+                                        <button
                                             type="submit"
                                             className="btn btn__primary todo-edit">
                                             Save

@@ -33,7 +33,7 @@ const TodoManager: React.FC = () => {
     }, []);
 
     const fetchTodos = () => {
-        AXIOS.get('/api/todo/getTodos')
+        AXIOS.get('/todo/getTodos')
             .then((response) => {
                 console.log('Todos:', response.data);
                 if (response.data.success && response.data.todos) {
@@ -49,7 +49,7 @@ const TodoManager: React.FC = () => {
         e.preventDefault();
         if (name.trim() && description.trim()) {
             setLoading(true);
-            AXIOS.post('/api/todo/storeTodo', { name, description })
+            AXIOS.post('/todo/storeTodo', { name, description })
                 .then((response) => {
                     console.log(response.data);
                     setResponseData(response.data);
@@ -72,7 +72,7 @@ const TodoManager: React.FC = () => {
     const handleUpdateTodo = (id: string) => {
         if (editName.trim() && editDescription.trim()) {
             setLoading(true);
-            AXIOS.post('/api/todo/updateTodo', { id, name: editName, description: editDescription, completed: editCompleted })
+            AXIOS.post('/todo/updateTodo', { id, name: editName, description: editDescription, completed: editCompleted })
                 .then((response) => {
                     console.log(response.data);
                     setResponseData(response.data);
@@ -95,7 +95,7 @@ const TodoManager: React.FC = () => {
 
     const handleToggleComplete = (todo: Todo) => {
         setLoading(true);
-        AXIOS.post('/api/todo/updateTodo', {
+        AXIOS.post('/todo/updateTodo', {
             id: todo.id,
             name: todo.name,
             description: todo.description,
@@ -120,7 +120,7 @@ const TodoManager: React.FC = () => {
     const handleDeleteTodo = (id: string) => {
         if (window.confirm('Are you sure you want to delete this todo?')) {
             setLoading(true);
-            AXIOS.post('/api/todo/removeTodo', { id })
+            AXIOS.post('/todo/removeTodo', { id })
                 .then((response) => {
                     console.log(response.data);
                     setResponseData(response.data);
