@@ -10,7 +10,6 @@ import { getFromStorage, setInStorage } from "../../utils/storage";
 
 const mainStorage = getFromStorage("main_storage");
 
-console.log("main storage : ", mainStorage);
 const initialState = mainStorage ?
     { isLoggedIn: true, visitor: mainStorage.visitor }
     : { isLoggedIn: false };

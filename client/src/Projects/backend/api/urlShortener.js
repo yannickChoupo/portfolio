@@ -13,21 +13,17 @@ const URLShortener = () => {
         AXIOS.post('api/shorturl', {
             url: startValue
         }).then((response) => {
-            console.log(response.data);
             setResponseData(response.data);
         })
     }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("Form submit");
     }
 
     const [value, setValue] = useState('" "')
 
     const handleChange = (e) => {
-        // TODO check if valid input
-        console.log("handle changes....");
         setValue(e.target.value)
     }
 

@@ -19,14 +19,12 @@ const VisitorSchema = new Schema({
 })
 
 VisitorSchema.methods.generateHash = function (password) {
-    // console.log(password.toString());
     return bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds), null);
 }
 VisitorSchema.methods.validPassword = function (password) {
-    // console.log(password,this.password)
     return bcrypt.compareSync(this.password, password);
 }
 
 const Visitor = mongoose.model('Visitor', VisitorSchema);
 
-module.exports = Visitor;
+export default Visitor;

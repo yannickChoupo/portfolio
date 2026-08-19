@@ -35,23 +35,14 @@ const UserSchema = new Schema({
 })
 
 UserSchema.methods.generateHash = async function (password: string) {
-    console.log(password.toString());
     const hash = await bcrypt.hash(password, saltRounds);
     return hash;
 }
 
 
 UserSchema.methods.validPassword = async function (password: string) {
-    console.log(password, this.password);
     const result = await bcrypt.compare(password, this.password);
     return result;
 }
-
-
-// const User = mongoose.model('User', UserSchema);
-
-// const User =
-//   mongoose.models.User ||
-//   mongoose.model('User', UserSchema);
 
 export default mongoose.models.User;

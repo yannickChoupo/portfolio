@@ -41,8 +41,6 @@ async function createAppUser(): Promise<void> {
         },
       ],
     });
-
-    console.log(`MongoDB user "${appUser}" created for database "${dbName}"`);
   } finally {
     await client.close();
   }

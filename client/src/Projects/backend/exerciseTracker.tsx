@@ -38,7 +38,6 @@ const ExerciseTracker: React.FC = () => {
     const fetchUsers = () => {
         AXIOS.get('/excercise/users')
             .then((response) => {
-                console.log('Users:', response.data);
                 setUsers(response.data);
             })
             .catch((error) => {
@@ -52,7 +51,6 @@ const ExerciseTracker: React.FC = () => {
             setLoading(true);
             AXIOS.post('/excercise/users', { username })
                 .then((response) => {
-                    console.log(response.data);
                     setResponseData(response.data);
                     setUsername('');
                     fetchUsers(); // Refresh user list
@@ -69,7 +67,6 @@ const ExerciseTracker: React.FC = () => {
 
     const handleAddExercise = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Selected User ID:', selectedUserId, description, duration);
         const durationValue = !duration ? "30" : duration;
         if (selectedUserId && description && durationValue) {
             setLoading(true);
@@ -82,12 +79,8 @@ const ExerciseTracker: React.FC = () => {
                 exerciseData.date = date;
             }
 
-            console.log('Selected User ID:', selectedUserId, date, exerciseData);
-
-
             AXIOS.post(`/excercise/users/${selectedUserId}/exercises`, exerciseData)
                 .then((response) => {
-                    console.log(response.data);
                     setResponseData(response.data);
                     setDescription('');
                     setDuration('');
@@ -107,7 +100,6 @@ const ExerciseTracker: React.FC = () => {
         setLoading(true);
         AXIOS.get(`/excercise/users/${userId}/logs`)
             .then((response) => {
-                console.log('Logs:', response.data);
                 setLogs(response.data);
             })
             .catch((error) => {

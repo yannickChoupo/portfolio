@@ -10,7 +10,6 @@ const getAllExerciseUsers = async (
     res: Response,
 ): Promise<void> => {
     const users = await User.find();
-    console.log(users);
     res.status(200).json(users);
 };
 
@@ -44,16 +43,12 @@ const addExercise = async (
     next: NextFunction) => {
     const { id } = req.params;
 
-    console.log("ID : ", id);
-    console.log("request : ", req.body);
     let { description, duration, date } = req.body;
     if (date === '' || typeof date === 'undefined') {
         date = new Date().toDateString();
     } else {
         date = new Date(date).toDateString();
     }
-
-    console.log("new req : ", id, date,);
 
     try {
         const existingUser = await ExerciseUser.find({ _id: id });
@@ -110,11 +105,8 @@ const addExercise = async (
 
 //         if (from || to || limit) {
 //             let filteredLogs;
-//             console.log("Query provided", from, to, limit);
 //             if (!from && !to && limit) {
-//                 console.log("Just limit provided")
 //                 filteredLogs = log.reduce((acc, curExercise) => {
-//                     console.log(acc.length);
 //                     if (acc.length < limit) {
 //                         acc.push(curExercise);
 //                     }
@@ -129,7 +121,6 @@ const addExercise = async (
 //                 })
 //                 return
 //             }
-//             console.log("from and to provided")
 //             from = new Date(from);
 //             to = new Date(to);
 //             if (from.toUTCString() === "Invalid Date" || to.toUTCString() === "Invalid Date") {
@@ -140,7 +131,6 @@ const addExercise = async (
 //             }
 //             filteredLogs = log.reduce((acc, curExercise) => {
 //                 let curDate = new Date(curExercise.date);
-//                 console.log(acc.length);
 //                 if (curDate.getTime() >= from.getTime() &&
 //                     curDate.getTime() <= to.getTime()) {
 //                     acc.push(curExercise);
@@ -162,7 +152,6 @@ const addExercise = async (
 //             log
 //         })
 //     } catch (error) {
-//         console.log(error);
 //         res.send({
 //             message: "backend : something went wrong"
 //         })

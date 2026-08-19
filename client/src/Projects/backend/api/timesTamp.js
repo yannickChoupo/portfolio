@@ -13,7 +13,6 @@ const TimesTamp = () => {
 
     const getTimeStamp = (urlParam) => {
         AXIOS.get(`api/timestamp?${urlParam}`).then((response) => {
-            console.log(response.data);
             setResponseData(response.data);
         })
     }
@@ -27,7 +26,6 @@ const TimesTamp = () => {
 
     const handleChange = (e) => {
         // TODO check if valid input
-        console.log("handle changes....");
         setValue(e.target.value)
     }
 

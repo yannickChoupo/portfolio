@@ -22,13 +22,13 @@ import AXIOS from './axios';
 // SERVER_Request.interceptors.request.use((req) => {
 //     if (req.url === "/signOut") {
 //         // req.body.token = storage.to= {message: storage.message, token: storage.token};
-//         console.log("Interceptor -> request url : ", req.url);
+//         console.info("Interceptor -> request url : ", req.url);
 //         req.headers.authorization = `Bearer ${getFromStorage("main_storage").token}`;
 //         return req;
 //     }
 //     return req;
 // }, err => {
-//     console.log(err);
+//     console.info(err);
 // })
 
 /////////////////////////////////////////////////////////////////////////////////////////

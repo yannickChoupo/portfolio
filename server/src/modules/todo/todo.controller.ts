@@ -12,7 +12,6 @@ const getTodo = async (req: Request, res: Response) => {
                 message: 'Error: no todo added jet'
             });
         }
-        console.log("exiting todos : ", todos)
         // Send back all the todos
         return res.send({
             success: true,
@@ -100,7 +99,6 @@ const storeTodo = async (req: Request, res: Response) => {
             todo: savedTodo
         });
     } catch (error) {
-        console.log(error)
         return res.send({
             success: false,
             message: `something went wrong: ${error}`
@@ -168,8 +166,6 @@ const removeTodo = async (req: Request, res: Response) => {
     let {
         id
     } = body;
-
-    console.log("Delete Request");
 
     try {
         const existingTodo = await Todo.find({ id: id });

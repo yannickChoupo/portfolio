@@ -164,7 +164,6 @@ const DrawTreemap = (svg, curData) => {
         .attr('height', (item) => item['y1'] - item['y0'])
 
     block.on('mousemove', function (Event, dataItem) {
-        console.log("DTA : ", dataItem);
         let name = dataItem.data.name
         let category = dataItem.data.category;
         let value = dataItem.data.value;
@@ -210,7 +209,6 @@ const DrawTreemap = (svg, curData) => {
         .style("font-size", ".5em")
         .html(function (item) {
             let result = "";
-            console.log(d3.select("parent"));
             let texts = item.data.name.split(" ");
             let reducedText;
             if (title === "Video Games Sales") {

@@ -19,7 +19,6 @@ const lookupAsync = (hostname: string): Promise<string> => {
 
 router.post('/', async (req: Request, res: Response) => {
   const { url } = req.body;
-  console.log('Received URL:', url);
 
   if (!url || typeof url !== 'string') {
     return res.status(400).json({

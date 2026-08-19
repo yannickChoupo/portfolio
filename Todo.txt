@@ -1,0 +1,76 @@
+The goal should be that a potential employer/client can visit the site and immediately see:
+
+
+#### 1
+TODO: Frontend quality — polished UI, responsive design, good UX.
+TODO: Backend engineering — APIs, authentication, persistence, validation, error handling.
+TODO: DevOps — Docker, environment separation, deployment.
+TODO: TypeScript architecture — modular controllers/services/routes.
+TODO: Real functionality — not just demo pages.
+
+#### 2
+TODO: Backend structure & deployment architecture
+| Project                     | What it demonstrates                                                |
+| --------------------------- | ------------------------------------------------------------------- |
+| **URL Shortener**           | REST API, MongoDB, validation, frontend/backend integration         |
+| **Exercise Tracker**        | Authentication, protected APIs, MongoDB, filtering/query parameters |
+| **Timestamp API**           | API design and request validation                                   |
+| **File Metadata API**       | Multipart uploads, backend processing                               |
+| **Contact / Portfolio API** | Form handling, validation, persistence                              |
+| **Data Visualization**      | React, D3, data processing, interactive UI                          |
+
+#### 3 
+TODO: Add an interactive API playground
+
+### 4 
+TODO: Add a technical-project page
+URL SHORTENER
+
+React
+TypeScript
+Express
+MongoDB
+Docker
+
+Problem
+...
+
+Architecture
+...
+
+Key implementation
+...
+
+Challenges
+...
+
+What I learned
+...
+
+[Live Demo] [API] [GitHub]
+
+
+### 5
+TODO: I'd add a small “System Status” section
+SYSTEM STATUS
+
+Frontend       ● Operational
+REST API       ● Operational
+MongoDB        ● Connected
+Deployment     ● Production
+
+Last deployment
+August 19, 2026
+
+
+TODO: Polish the landing page
+TODO: Create a Projects/Case Studies section
+TODO: Create a Backend/API showcase
+TODO: Add interactive API playground
+TODO: Add /health endpoint + system status
+TODO: Add API documentation
+TODO: Add architecture/deployment visualization
+TODO: Improve loading/error/empty states
+TODO: Add proper frontend/backend validation
+TODO: Add automated tests
+TODO: Expose CI/CD/deployment information

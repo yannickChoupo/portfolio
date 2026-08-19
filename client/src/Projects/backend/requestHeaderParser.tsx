@@ -20,7 +20,6 @@ const RequestHeaderParser: React.FC = () => {
         setLoading(true);
         AXIOS.get('/whoiam')
             .then((response) => {
-                console.log(response.data);
                 setResponseData(response.data);
             })
             .catch((error) => {
@@ -134,8 +133,8 @@ const RequestHeaderParser: React.FC = () => {
                         <pre>
                             <code>
                                 {`fetch('/api/whoiam')
-  .then(response => response.json())
-  .then(data => console.log(data));`}
+                                    .then(response => response.json())
+                                    .then(data => console.info(data));`}
                             </code>
                         </pre>
                     </section>

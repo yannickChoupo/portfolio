@@ -23,7 +23,6 @@ const ExerciseTracker = () => {
         e.preventDefault();
         const formData = new FormData();
         AXIOS.post('/api/exercise/users', formData).then((response) => {
-            console.log(response.data.id);
             setResponseData(response.data);
             setCurExercise({ ...curExercise, uid: response.data.id })
         })
@@ -32,15 +31,13 @@ const ExerciseTracker = () => {
     const handleAddExerciseSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData();
-        console.log(curExercise.uid);
         formData.append("data", curExercise);
         if (curExercise.uid) {
             AXIOS.post(`/api/exercise/users/${curExercise.uid}/exercises`, curExercise).then((response) => {
-                console.log(response.data);
                 setResponseData(response.data);
             })
         } else {
-            console.log("create first a user id");
+            console.error("create first a user id");
         }
     }
 
@@ -51,7 +48,6 @@ const ExerciseTracker = () => {
     const handleExerciseChange = (e) => {
         curExercise[e.target.id] = e.target.value;
         setCurExercise({ ...curExercise })
-        console.log(curExercise);
     }
 
     return (

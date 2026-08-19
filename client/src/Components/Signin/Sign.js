@@ -31,7 +31,6 @@ const Sign = () => {
         if (isSignUp) {
             dispatch(visitorSignUp(userName, password))
                 .then((response) => {
-                    console.log("response : ", response.data);
                     if (response.data.success) {
                         switchMode();
                     }
@@ -48,7 +47,6 @@ const Sign = () => {
         submitHandler();
     }
     const switchMode = () => {
-        console.log("switch mode");
         resetFields();
         setIsSignUp(!isSignUp);
     }
@@ -60,7 +58,6 @@ const Sign = () => {
     }
     const updateFields = (e) => {
         setFieldState({...fieldState, [e.target.name]: e.target.value});
-        console.log(fieldState);
     }
 
     const {message} = useSelector(state => state.message);

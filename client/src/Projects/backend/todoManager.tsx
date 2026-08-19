@@ -35,7 +35,6 @@ const TodoManager: React.FC = () => {
     const fetchTodos = () => {
         AXIOS.get('/todo/getTodos')
             .then((response) => {
-                console.log('Todos:', response.data);
                 if (response.data.success && response.data.todos) {
                     setTodos(response.data.todos);
                 }
@@ -51,7 +50,6 @@ const TodoManager: React.FC = () => {
             setLoading(true);
             AXIOS.post('/todo/storeTodo', { name, description })
                 .then((response) => {
-                    console.log(response.data);
                     setResponseData(response.data);
                     if (response.data.success) {
                         setName('');
@@ -74,7 +72,6 @@ const TodoManager: React.FC = () => {
             setLoading(true);
             AXIOS.post('/todo/updateTodo', { id, name: editName, description: editDescription, completed: editCompleted })
                 .then((response) => {
-                    console.log(response.data);
                     setResponseData(response.data);
                     if (response.data.success) {
                         setEditingId(null);
@@ -102,7 +99,6 @@ const TodoManager: React.FC = () => {
             completed: !todo.completed
         })
             .then((response) => {
-                console.log(response.data);
                 setResponseData(response.data);
                 if (response.data.success) {
                     fetchTodos(); // Refresh todo list
@@ -122,7 +118,6 @@ const TodoManager: React.FC = () => {
             setLoading(true);
             AXIOS.post('/todo/removeTodo', { id })
                 .then((response) => {
-                    console.log(response.data);
                     setResponseData(response.data);
                     if (response.data.success) {
                         fetchTodos(); // Refresh todo list
