@@ -39,31 +39,22 @@ const Admin: React.FC<AdminProps> = ({ }) => {
 
     const getMessages = async (): Promise<void> => {
         try {
-            // setLoading(true);
-            // setError(null);
-
             const response = await AXIOS.get("/contact/all");
-            console.log("Messages : ", response.data.messages);
-
             setMessages(response.data.messages || []);
         } catch (err) {
             console.error("Failed to load messages:", err);
-            // setError("Unable to load messages.");
         } 
-        // finally {
-        //     setLoading(false);
-        // }
     };
 
 
     useEffect(() => {
         getTodos();
         getMessages();
-        console.log(messages);
+        console.info(messages);
         
         AXIOS.get('/session/all').then((response) => {
             setSession(response.data.sessions);
-            console.log("Sessions : ", response.data.sessions);
+            console.info("Sessions : ", response.data.sessions);
         })
     }, []);
 

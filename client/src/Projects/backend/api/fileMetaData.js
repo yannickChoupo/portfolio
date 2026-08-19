@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import AXIOS from '../../../redux/services/axios';
-// import AXIOS from '../../redux/services/axios';
 
 const FileMetaData = () => {
     const [ResponseData, setResponseData] = useState({
@@ -14,7 +13,6 @@ const FileMetaData = () => {
     }, [])
 
     const handleFileSelect = (event) => {
-        console.log(event.target.files[0]);
         setSelectedFile(event.target.files[0])
       }
 
@@ -28,7 +26,6 @@ const FileMetaData = () => {
         AXIOS.post('/api/filemeta', formData, {
             headers: { "Content-Type": "multipart/form-data" },
         }).then((response) => {
-            console.log(response.data);
             setResponseData(response.data);
         })
     }
@@ -36,7 +33,6 @@ const FileMetaData = () => {
     const [value, setValue] = useState('')
 
     const handleChange = (e) => {
-        console.log("handle changes....");
         setValue(e.target.value)
     }
 

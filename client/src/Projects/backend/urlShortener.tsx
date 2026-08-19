@@ -20,7 +20,6 @@ const UrlShortener: React.FC = () => {
             setLoading(true);
             AXIOS.post('/shorturl', { url: inputUrl })
                 .then((response) => {
-                    console.log(response.data);
                     setResponseData(response.data);
                 })
                 .catch((error) => {
@@ -184,7 +183,7 @@ const UrlShortener: React.FC = () => {
   body: JSON.stringify({ url: 'https://www.example.com' })
 })
   .then(response => response.json())
-  .then(data => console.log(data));`}
+  .then(data => console.info(data));`}
                             </code>
                         </pre>
                     </section>

@@ -32,7 +32,6 @@ const FileMetadata: React.FC = () => {
                 },
             })
                 .then((response) => {
-                    console.log(response.data);
                     setResponseData(response.data);
                 })
                 .catch((error) => {
@@ -176,18 +175,18 @@ const FileMetadata: React.FC = () => {
                         <pre>
                             <code>
                                 {`const formData = new FormData();
-formData.append('upfile', fileInput.files[0]);
+                                    formData.append('upfile', fileInput.files[0]);
 
-fetch('/api/filemeta/fileanalyse', {
-  method: 'POST',
-  body: formData
-})
-  .then(response => response.json())
-  .then(data => console.log(data));`}
+                                    fetch('/api/filemeta/fileanalyse', {
+                                    method: 'POST',
+                                    body: formData
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => console.info(data));`}
                             </code>
                         </pre>
                     </section>
-
+''
                     <section className="feedback">
                         <p>
                             This project is part of the <strong>freeCodeCamp Backend Development and APIs</strong> certification.

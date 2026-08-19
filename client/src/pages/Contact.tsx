@@ -18,7 +18,6 @@ const Contact: React.FC = () => {
 				// Use the shared AXIOS instance (baseURL configured in redux/services/axios)
 				const response = await AXIOS.post('/contact/', { text: message });
 				if (response && response.status === 200) {
-					console.log('saved message', response.data?.message || response.data);
 					setMessage("");
 				} else {
 					console.error('error saving message', response?.data || response);
@@ -27,7 +26,7 @@ const Contact: React.FC = () => {
 				console.error('network error', e);
 			}
 		} else {
-			console.log("no message");
+			console.error("no message");
 		}
 	}
 

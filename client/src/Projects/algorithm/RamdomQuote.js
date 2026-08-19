@@ -7,26 +7,21 @@ import React, { useEffect, useState } from 'react';
 const sendHttpRequest = (method, url) => {
     const promise = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        console.log(xhr)
         xhr.responseType = "json";
-
         xhr.open(method, url);
-        console.log("Request opened...");
 
         xhr.onprogress = () => {
-            console.log('LOADING', xhr.status);
+            console.info('LOADING', xhr.status);
         }
 
-
         xhr.onload = (response) => {
-            console.log('DONE respone status : ', xhr.status)
             if (xhr.status !== 200) {
                 reject('Something went wrong');
             }
             resolve(xhr.response);
         }
         xhr.onerror = (response) => {
-            console.log('Response status code : ', xhr.status)
+            console.error('Response status code : ', xhr.status)
         }
         xhr.send();
     });

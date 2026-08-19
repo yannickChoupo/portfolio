@@ -38,7 +38,6 @@ const Calculator = () => {
 
     let { formula, prevInput, curDisplay, curNumber, newFormulaValue, newCurDisplayValue, newCurNumber, newPrevInput } = state;
     const updateState = () => {
-        console.log($('.display.formula').css('font-size'));
         if(newFormulaValue.length >= 15) {
             $('.display.formula').css('font-size', "25px")
         } else {
@@ -55,11 +54,7 @@ const Calculator = () => {
 
     const handleClick = (e) => {
         const { value } = e.target;
-        console.log("Formula : ", formula);
-        // register the newly pressed 
-        // registerLastInput(value);
         newPrevInput = value;
-        console.log("curDisplay.length : ", curDisplay, curDisplay.length);
         if (value === 'AC') {
             reinitialize();
             updateState();
@@ -86,7 +81,6 @@ const Calculator = () => {
             updateState();
 
         } else {
-            console.log("curdisplayed number already tooo big");
             return;
         }
     }
@@ -98,11 +92,10 @@ const Calculator = () => {
             newCurDisplayValue = newValue;
             newFormulaValue = formula + "=" + newValue;
         } else {
-            console.log("error equal");
+            console.error("error equal");
         }
     }
     const reinitialize = () => {
-        console.log("reinitialize");
         setState(initialState);
         newFormulaValue = "";
         newCurDisplayValue = "";
@@ -136,23 +129,18 @@ const Calculator = () => {
             newCurDisplayValue = curDisplay + decimalPoint;
             newCurNumber = curNumber + decimalPoint;
         } else {
-            console.log(curNumber, curNumber.indexOf('.'), "operation not allow");
+            console.error(curNumber, curNumber.indexOf('.'), "operation not allow");
         }
     }
     const handleOperators = (newOperator) => {
-        console.log("Handle  operator ");
         const newOperatorInput = newOperator === "x" ? "*" : newOperator
         if (newOperator === prevInput) {
-            console.log("SAME INPUT");
             newCurDisplayValue = curDisplay;
             newFormulaValue = formula;
             newCurNumber = curNumber;
-            console.log("error");
         } else {
-            console.log("NEw Operator : ", (prevInput === "=" ? curNumber : formula));
             newCurDisplayValue = newOperatorInput;
             newFormulaValue = (prevInput === "=" ? curNumber : formula) + newOperatorInput;
-            console.log();
         }
     }
     return (

@@ -50,7 +50,6 @@ export const getCurrentUser = async (req: AuthRequest, res: Response, next: Next
 
 //   try {
 //     const { name, email, phone, password } = req.body
-//     console.log('REGISTER REQUEST:', { name, email, phone, password })
 
 //     if (!phone || !password || !name || !email) {
 //       return res.status(400).json({ error: 'All fields are required' })
@@ -68,7 +67,6 @@ export const getCurrentUser = async (req: AuthRequest, res: Response, next: Next
 //       user.password,
 //     );
 
-//     console.log('REGISTER PASSWORD CHECK:', passwordWorks);
 
 //     const accessToken = signAccessToken({
 //       userId: user.id,
@@ -103,10 +101,8 @@ export const getCurrentUser = async (req: AuthRequest, res: Response, next: Next
 // export const login = async (req: Request, res: Response) => {
 //   const { phone, password } = req.body;
 
-//   console.log('LOGIN REQUEST:', { phone, password });
 
 //   const user = await findUserByPhone(phone);
-//   console.log('FOUND USER:', user);
 
 //   if (!user) {
 //     return res.status(401).json({ error: 'Invalid credentials' });
@@ -115,7 +111,6 @@ export const getCurrentUser = async (req: AuthRequest, res: Response, next: Next
 //   const isValid = await bcrypt.compare(password, user.password);
 
 //   if (!isValid) {
-//     console.log('INVALID PASSWORD FOR USER:', user.id);
 //     return res.status(401).json({ error: 'Invalid credentials' });
 //   }
 
@@ -151,7 +146,6 @@ export const getCurrentUser = async (req: AuthRequest, res: Response, next: Next
 
 // export const logout = async (req: Request, res: Response) => {
 //   const { refreshToken } = req.body;
-//   console.log('LOGOUT REQUEST:', { refreshToken });
 
 //   await prisma.refreshToken.deleteMany({
 //     where: { token: refreshToken },

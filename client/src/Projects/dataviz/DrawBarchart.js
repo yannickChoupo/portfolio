@@ -3,7 +3,6 @@ import * as d3 from 'd3';
 
 const DrawChart = function(svg, curData) {
     // get data
-    console.log(curData);
     const data = [...curData.data];
     let heightScale;
     let xScale;
@@ -20,7 +19,6 @@ const DrawChart = function(svg, curData) {
     } else {
         svgWidth = windowWidth;
     }
-    console.log("window width : ", svgWidth);
     svgHeight = 600;
     svg.attr("width", svgWidth)
         .attr("height", svgHeight)

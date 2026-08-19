@@ -13,7 +13,6 @@ const RequestHeaderParser = () => {
 
     const getTimeStamp = (urlParam) => {
         AXIOS.get(`api/whoiam`).then((response) => {
-            console.log(response.data);
             setResponseData(response.data);
         })
     }
@@ -26,7 +25,6 @@ const RequestHeaderParser = () => {
     const [value, setValue] = useState('')
 
     const handleChange = (e) => {
-        console.log("handle changes....");
         setValue(e.target.value)
     }
 

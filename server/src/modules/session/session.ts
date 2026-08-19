@@ -32,7 +32,7 @@ router.get('/', async (req: Request, res: Response) => {
             message: 'session added'
         })
     } catch (error) {
-        console.log(`Error: something went wrong: ${error}`);
+        console.error(`Error: something went wrong: ${error}`);
     }
 });
 
@@ -47,13 +47,12 @@ router.get('/all', async (req: Request, res: Response) => {
             message: 'sessions'
         })
     } catch (error) {
-        console.log(`Error: something went wrong: ${error}`);
+        console.error(`Error: something went wrong: ${error}`);
     }
 });
 
 router.post('/:id', async (req: Request, res: Response) => {
     const { id } = req.params;
-    console.log("session delete request: ", id);
     try {
         const existingSession = await UserSession.find({ id: id });
 
@@ -66,13 +65,12 @@ router.post('/:id', async (req: Request, res: Response) => {
 
         const remainingSession = await UserSession.deleteOne({ id: id })
 
-        console.log(remainingSession);
         res.send({
             success: true,
             message: 'session deleted'
         })
     } catch (error) {
-        console.log(`Error: something went wrong: ${error}`);
+        console.error(`Error: something went wrong: ${error}`);
     }
 });
 

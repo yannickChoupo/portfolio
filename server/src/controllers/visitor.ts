@@ -47,14 +47,12 @@
 
 //         // Authenticate password
 //         const isPasswordCorrect = await bcrypt.compare(password, existingVisitor.password);
-//         console.log("result : ", isPasswordCorrect);
 //         if (!isPasswordCorrect) {
 //             return res.send({
 //                 success: false,
 //                 message: 'Error: password incorrect'
 //             })
 //         }
-//         console.log("EXISTING USER : ", existingVisitor)
 //         // Create JWT string with secret
 //         const token = jwt.sign(
 //             {
@@ -83,7 +81,7 @@
 // }
 
 // const visitorSignUp = async (req, res) => {
-//     console.log("sign up request : ", req.body);
+//     console.info("sign up request : ", req.body);
 //     const { body } = req;
 //     let {
 //         userName,
@@ -106,7 +104,7 @@
 
 //         // Check exiting visitor
 //         const existingVisitor = await Visitor.find({ userName: userName });
-//         console.log("existing visitor : ", existingVisitor);
+//         console.info("existing visitor : ", existingVisitor);
 //         if (existingVisitor[0]) {
 //             return res.send({
 //                 success: false,
@@ -133,7 +131,7 @@
 
 
 // const visitorSignOut = async (req, res) => {
-//     // console.log(req);
+//     // console.info(req);
 //     const {
 //         body
 //     } = req;

@@ -35,23 +35,19 @@ const mongoUri =
     `mongodb://${username}:${password}` +
     `@${host}:${port}/${database}?authSource=admin`;
 
-console.log(
-    `Connecting to MongoDB database: ${mongoUri}`
-);
-
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
     .then(() => {
-        console.log("MongoDB Connected");
+        console.info("MongoDB Connected");
     })
     .catch((error) => {
         console.error("MongoDB connection error:", error.message);
     });
 
 mongoose.connection.once("open", () => {
-    console.log("MongoDB database connection established successfully");
+    console.info("MongoDB database connection established successfully");
 });
 /* -------------------------------------------------------------------------- */
 /* Routes                                                                     */
@@ -107,8 +103,6 @@ const PORT = Number(process.env.SERVERPORT) || 5000;
 app.listen(
     PORT,
     () => {
-        console.log(
-            `Server is running on port : ${PORT}`
-        );
+        console.info(`Server is running on port : ${PORT}`);
     }
 );

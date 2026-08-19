@@ -19,7 +19,6 @@ const TimesTamp: React.FC = () => {
         setLoading(true);
         AXIOS.get('/timestamp')
             .then((response) => {
-                console.log(response.data);
                 setResponseData(response.data);
             })
             .catch((error) => {
@@ -35,7 +34,6 @@ const TimesTamp: React.FC = () => {
         setLoading(true);
         AXIOS.get(`/timestamp/${dateParam}`)
             .then((response) => {
-                console.log(response.data);
                 setResponseData(response.data);
             })
             .catch((error) => {

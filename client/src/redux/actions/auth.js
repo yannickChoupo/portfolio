@@ -76,9 +76,11 @@ export const visitorSignOut = () => (dispatch) => {
             return response;
         })
 }
+
+
 // export const authenticate = (userName) => (dispatch) => {
 //     // AuthService.signOut(token);
-//     console.log("authentication Request : ", userName);
+//     console.info("authentication Request : ", userName);
 //     return AuthService.authenticate(userName)
 //         .then((response) => {
 //             if (response.data.success) {
@@ -87,8 +89,8 @@ export const visitorSignOut = () => (dispatch) => {
 //                 })
 //                 return response;
 //             }
-//             console.log("response : ", response);
-//             console.log("response : ", response.data);
+//             console.info("response : ", response);
+//             console.info("response : ", response.data);
 //             return response;
 //         })
 // }

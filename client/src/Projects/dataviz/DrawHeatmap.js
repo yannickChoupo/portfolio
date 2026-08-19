@@ -2,7 +2,6 @@ import * as d3 from 'd3';
 
 
 const DrawHeatmap = (svg, curData) => {
-    console.log("drw hwatmap");
     const data = curData;
 
     const margin = {
@@ -23,7 +22,6 @@ const DrawHeatmap = (svg, curData) => {
 
     // Extract the base Temperature from the the reponse Datas
     const { baseTemperature, monthlyVariance } = data;
-    console.log(monthlyVariance);
 
     // format the data object in array of object with the year and the data as keys
     let dataPerYearArr = [];
