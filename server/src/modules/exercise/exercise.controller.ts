@@ -3,12 +3,14 @@ import ExerciseUser from "../../models/ExerciseUser.model";
 import { ErrorResponse, ExerciseLog, ExerciseUserResponse, LogParams, LogQuery } from "../../types/api";
 import * as ExerciseService from "./exercise.services";
 import { AppError } from "../../errors/AppError";
+import User from "../../models/user.model";
 
 const getAllExerciseUsers = async (
     req: Request,
     res: Response,
 ): Promise<void> => {
-    const users = await ExerciseService.getAllExerciseUsers();
+    const users = await User.find();
+    console.log(users);
     res.status(200).json(users);
 };
 
@@ -194,141 +196,144 @@ const addExercise = async (
 //     limit?: string;
 // }
 
-// const getLogs = async (
-//     // req: Request<LogParams, unknown, unknown, LogQuery>,
-//     // res: Response<ExerciseUserResponse | ErrorResponse>
-//     req: Request,
-//     res: Response,
-//     next: NextFunction
-// ): Promise<void> => {
+const getLogs = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+): Promise<void> => {
 
-//     const { _id } = req.params;
-//     const { from, to, limit: limitParam } = req.query;
+    const { _id } = req.params;
+    const { from, to, limit: limitParam } = req.query;
 
-//     try {
-//         const existingUser = await ExerciseUser.find({
-//             _id
-//         });
+    try {
+        const existingUser = await ExerciseUser.find({ _id });
 
-//         if (!existingUser[0]) {
-//             res.status(404).json({
-//                 error: "user not found!!"
-//             });
+        if (!existingUser[0]) {
+            res.status(404).json({
+                error: "user not found!!"
+            });
+            return;
+        }
 
-//             return;
-//         }
+        const findedUser = existingUser[0];
 
-//         const findedUser = existingUser[0];
+        const { log, username } = findedUser;
+        const count = log.length;
 
-//         const count = findedUser.log.length;
-//         const { log, username } = findedUser;
+        const normalizedLog: ExerciseLog[] = log.map(
+            (exercise: ExerciseLog) => ({
+                ...exercise,
+                duration: Number(exercise.duration)
+            })
+        );
 
-//         // Convert duration to number
-//         const normalizedLog: ExerciseLog[] = log.map(
-//             (exercise: ExerciseLog) => ({
-//                 ...exercise,
-//                 duration: Number(exercise.duration)
-//             })
-//         );
+        /*
+         * Validate limit
+         */
+        let limit: number | undefined;
 
-//         const limit = limitParam
-//             ? Number.parseInt(limitParam, 10)
-//             : undefined;
+        if (limitParam !== undefined) {
+            if (typeof limitParam !== 'string') {
+                res.status(400).json({
+                    error: "Invalid limit"
+                });
+                return;
+            }
 
-//         /*
-//          * Only limit
-//          */
-//         if (
-//             !from &&
-//             !to &&
-//             limit !== undefined
-//         ) {
+            limit = Number.parseInt(limitParam, 10);
 
-//             const filteredLogs =
-//                 normalizedLog.slice(0, limit);
+            if (Number.isNaN(limit) || limit < 1) {
+                res.status(400).json({
+                    error: "Limit must be a positive number"
+                });
+                return;
+            }
+        }
 
-//             res.json({
-//                 username,
-//                 _id,
-//                 count,
-//                 log: filteredLogs
-//             });
+        /*
+         * Only limit
+         */
+        if (
+            from === undefined &&
+            to === undefined &&
+            limit !== undefined
+        ) {
+            const filteredLogs = normalizedLog.slice(0, limit);
 
-//             return;
-//         }
+            res.json({
+                username,
+                _id,
+                count,
+                log: filteredLogs
+            });
 
-//         /*
-//          * from / to filtering
-//          */
-//         if (from || to) {
+            return;
+        }
 
-//             if (!from || !to) {
-//                 res.status(400).json({
-//                     error: "Both 'from' and 'to' are required"
-//                 });
+        /*
+         * from / to filtering
+         */
+        if (from !== undefined || to !== undefined) {
 
-//                 return;
-//             }
+            if (
+                typeof from !== 'string' ||
+                typeof to !== 'string'
+            ) {
+                res.status(400).json({
+                    error: "Both 'from' and 'to' are required"
+                });
+                return;
+            }
 
-//             const fromDate = new Date(from);
-//             const toDate = new Date(to);
+            const fromDate = new Date(from);
+            const toDate = new Date(to);
 
-//             if (
-//                 Number.isNaN(fromDate.getTime()) ||
-//                 Number.isNaN(toDate.getTime())
-//             ) {
-//                 res.status(400).json({
-//                     error: "Invalid query String format"
-//                 });
+            if (
+                Number.isNaN(fromDate.getTime()) ||
+                Number.isNaN(toDate.getTime())
+            ) {
+                res.status(400).json({
+                    error: "Invalid query string date format"
+                });
+                return;
+            }
 
-//                 return;
-//             }
+            const filteredLogs = normalizedLog.filter(
+                (exercise: ExerciseLog) => {
+                    const exerciseDate = new Date(exercise.date);
 
-//             const filteredLogs =
-//                 normalizedLog.filter(
-//                     (exercise: ExerciseLog) => {
+                    return (
+                        exerciseDate.getTime() >= fromDate.getTime() &&
+                        exerciseDate.getTime() <= toDate.getTime()
+                    );
+                }
+            );
 
-//                         const exerciseDate =
-//                             new Date(exercise.date);
+            res.json({
+                username,
+                _id,
+                count,
+                log: filteredLogs
+            });
 
-//                         return (
-//                             exerciseDate.getTime() >=
-//                             fromDate.getTime() &&
-//                             exerciseDate.getTime() <=
-//                             toDate.getTime()
-//                         );
-//                     }
-//                 );
+            return;
+        }
 
-//             res.json({
-//                 username,
-//                 _id,
-//                 count,
-//                 log: filteredLogs
-//             });
+        /*
+         * No query parameters
+         */
+        res.json({
+            username,
+            _id,
+            count,
+            log: normalizedLog
+        });
 
-//             return;
-//         }
+    } catch (error: unknown) {
+        console.error(error);
 
-//         /*
-//          * No query parameters
-//          */
-//         res.json({
-//             username,
-//             _id,
-//             count,
-//             log: normalizedLog
-//         });
+        next(error);
+    }
+};
 
-//     } catch (error: unknown) {
-
-//         console.error(error);
-
-//         res.status(500).json({
-//             error: "Backend: something went wrong"
-//         });
-//     }
-// };
-
-
-export { addExercise, registerExerciseUser, getAllExerciseUsers };
+export { addExercise, registerExerciseUser, getLogs, getAllExerciseUsers };

@@ -36,14 +36,10 @@ const UserSchema = new Schema({
 
 UserSchema.methods.generateHash = async function (password: string) {
     console.log(password.toString());
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+    const hash = await bcrypt.hash(password, saltRounds);
+    return hash;
 }
 
-
-UserSchema.methods.validPassword = function (password: string) {
-    console.log(password, this.password);
-    bcrypt.compare(password, this.password);
-}
 
 UserSchema.methods.validPassword = async function (password: string) {
     console.log(password, this.password);
@@ -52,6 +48,10 @@ UserSchema.methods.validPassword = async function (password: string) {
 }
 
 
-const User = mongoose.model('User', UserSchema);
+// const User = mongoose.model('User', UserSchema);
 
-export default User;
+// const User =
+//   mongoose.models.User ||
+//   mongoose.model('User', UserSchema);
+
+export default mongoose.models.User;

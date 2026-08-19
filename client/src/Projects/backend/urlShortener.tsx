@@ -18,7 +18,7 @@ const UrlShortener: React.FC = () => {
         e.preventDefault();
         if (inputUrl.trim()) {
             setLoading(true);
-            AXIOS.post('/shorturl/shorturl', { url: inputUrl })
+            AXIOS.post('/shorturl', { url: inputUrl })
                 .then((response) => {
                     console.log(response.data);
                     setResponseData(response.data);
@@ -34,8 +34,8 @@ const UrlShortener: React.FC = () => {
     };
 
     const getShortUrlLink = () => {
-        if (responseData && responseData.short_url) {
-            return `${window.location.origin}/api/shorturl/${responseData.short_url}`;
+        if (responseData?.short_url) {
+            return responseData.short_url?.toString();
         }
         return '';
     };
@@ -69,12 +69,12 @@ const UrlShortener: React.FC = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><code>POST /api/shorturl/shorturl</code></td>
+                                    <td><code>POST /api/shorturl</code></td>
                                     <td>POST</td>
                                     <td>Create a short URL from a long URL</td>
                                 </tr>
                                 <tr>
-                                    <td><code>GET /api/shorturl/shorturl/:id</code></td>
+                                    <td><code>GET /api/shorturl/:id</code></td>
                                     <td>GET</td>
                                     <td>Redirect to the original URL using the short URL ID</td>
                                 </tr>
@@ -85,8 +85,8 @@ const UrlShortener: React.FC = () => {
                     <section className="usage">
                         <h2>Example Usage</h2>
                         <ul>
-                            <li><code>POST /api/shorturl/shorturl</code> with body: <code>&#123;"url": "https://www.example.com"&#125;</code></li>
-                            <li><code>GET /api/shorturl/shorturl/1</code> - Redirects to the original URL</li>
+                            <li><code>POST /api/shorturl</code> with body: <code>&#123;"url": "https://www.example.com"&#125;</code></li>
+                            <li><code>GET /api/shorturl/1</code> - Redirects to the original URL</li>
                         </ul>
                     </section>
 
