@@ -23,7 +23,7 @@ router.post(
 
 router.get(
     "/users/:_id/logs",
-    //  asyncHandler(exerciseController.getLogs)
+     asyncHandler(exerciseController.getLogs)
 );
 
 export default router;

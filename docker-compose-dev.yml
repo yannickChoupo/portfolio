@@ -39,7 +39,6 @@ services:
       - /usr/src/app/node_modules
     environment:
       NODE_ENV: ${NODE_ENV}
-      MONGO_URI: ${MONGO_URI}
       JWT_SECRET: ${JWT_SECRET}
       PORT: 5000
     depends_on:

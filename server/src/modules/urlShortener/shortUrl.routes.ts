@@ -19,6 +19,7 @@ const lookupAsync = (hostname: string): Promise<string> => {
 
 router.post('/', async (req: Request, res: Response) => {
   const { url } = req.body;
+  console.log('Received URL:', url);
 
   if (!url || typeof url !== 'string') {
     return res.status(400).json({
@@ -73,9 +74,12 @@ router.post('/', async (req: Request, res: Response) => {
     const savedUrl: any = await newUrl.save();
     const { original_url, short_url } = savedUrl;
 
+    const shortUrl = `${req.protocol}://${req.get('host')}/api/shorturl/${short_url}`;
+
+
     return res.status(201).json({
       original_url,
-      short_url,
+      short_url: shortUrl,
     });
   } catch (error) {
     console.error('URL creation error:', error);
