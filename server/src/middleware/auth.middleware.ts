@@ -1,6 +1,5 @@
-import { Request, Response, NextFunction } from 'express'
+import { Request } from 'express'
 import 'dotenv/config'
-import { verifyAccessToken } from '../../src/utils/jwt'
 import { Role } from '../types/api'
 
 export interface AuthRequest extends Request {
@@ -11,26 +10,26 @@ export interface AuthRequest extends Request {
   }
 }
 
-export const authenticate = (
-  req: AuthRequest,
-  res: Response,
-  next: NextFunction,
-) => {
-  const authHeader = req.headers.authorization;
+// export const authenticate = (
+//   req: AuthRequest,
+//   res: Response,
+//   next: NextFunction,
+// ) => {
+//   const authHeader = req.headers.authorization;
 
-  if (!authHeader?.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'No token' });
-  }
+//   if (!authHeader?.startsWith('Bearer ')) {
+//     return res.status(401).json({ error: 'No token' });
+//   }
 
-  const token = authHeader.split(' ')[1];
+//   const token = authHeader.split(' ')[1];
 
-  try {
-    const decoded = verifyAccessToken(token) as any;
+//   try {
+//     const decoded = verifyAccessToken(token) as any;
 
-    req.user = decoded;
+//     req.user = decoded;
 
-    next();
-  } catch {
-    return res.status(401).json({ error: 'Invalid token' });
-  }
-};
+//     next();
+//   } catch {
+//     return res.status(401).json({ error: 'Invalid token' });
+//   }
+// };

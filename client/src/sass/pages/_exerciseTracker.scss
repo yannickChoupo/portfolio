@@ -1,7 +1,5 @@
 @use "sass:color";
-@import "../abstracts/mixins";
-@import "../abstracts/function";
-@import "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 #exercise-tracker {
   font-family: 'Montserrat', sans-serif;

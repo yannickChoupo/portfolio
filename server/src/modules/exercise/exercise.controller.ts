@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import ExerciseUser from "../../models/ExerciseUser.model";
-import { ErrorResponse, ExerciseLog, ExerciseUserResponse, LogParams, LogQuery } from "../../types/api";
+import { ExerciseLog } from "../../types/api";
 import * as ExerciseService from "./exercise.services";
 import { AppError } from "../../errors/AppError";
 import User from "../../models/user.model";
 
 const getAllExerciseUsers = async (
-    req: Request,
+    _req: Request,
     res: Response,
 ): Promise<void> => {
     const users = await User.find();
@@ -37,7 +37,8 @@ const registerExerciseUser = async (
     }
 }
 
-const addExercise = async (
+const 
+addExercise = async (
     req: Request,
     res: Response,
     next: NextFunction) => {
@@ -67,8 +68,10 @@ const addExercise = async (
         let newExercise = { description, duration, date }
         let newExercisesArr = [...findedUser.log, newExercise]
         duration = parseInt(duration);
-        const newUser = await ExerciseUser.findOneAndUpdate(
-            { _id: id }, { log: newExercisesArr })
+        // const newUser = 
+        await ExerciseUser.findOneAndUpdate(
+            { _id: id }, { log: newExercisesArr });
+
         res.send({
             _id: id,
             username: findedUser.username,

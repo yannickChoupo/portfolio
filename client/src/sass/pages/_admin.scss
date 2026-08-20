@@ -1,8 +1,8 @@
 @use "sass:color";
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
-@import "../abstracts/function";
-@import "../abstracts/breackpoints";
+@use "../abstracts/variables" as *;
+// @use "../abstracts/mixins";
+// @use "../abstracts/function";
+@use "../abstracts/breackpoints" as *;
 
 #admin {
   font-family: 'Montserrat', sans-serif;

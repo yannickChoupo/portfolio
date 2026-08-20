@@ -1,13 +1,4 @@
-import { NextFunction, Request, Response } from 'express'
-import bcrypt from 'bcryptjs'
-import { signAccessToken, signRefreshToken } from '../../utils/jwt'
-
-import {
-  createUser,
-  findUserByPhone,
-  createUserWithPosts,
-  logoutUser,
-} from './auth.service'
+import { NextFunction, Response } from 'express'
 import { AuthRequest } from '../../types/api'
 import User from '../../models/user.model'
 import { AppError } from '../../errors/AppError'
@@ -42,7 +33,7 @@ export const getCurrentUser = async (req: AuthRequest, res: Response, next: Next
       user: alreadyExists,
     })
   } catch (error) {
-    next(error);
+    return next(error);
   }
 }
 

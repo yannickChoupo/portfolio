@@ -4,7 +4,7 @@ import DOMPurify from "dompurify";
 
 interface MarkDownPrevieverState {
     text: string;
-}
+};
 
 const initialState = `# Heading 1
 ## Heading 2

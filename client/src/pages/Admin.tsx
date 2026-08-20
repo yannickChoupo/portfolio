@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import AXIOS from "../redux/services/axios";
 import { CSSTransition } from "react-transition-group";
-
+import AXIOS from "../redux/services/axios";
 import Todo from "../Components/todo";
 
 interface TodoItem {
@@ -44,8 +43,7 @@ const emptyProject = {
 };
 
 const Admin: React.FC<AdminProps> = () => {
-
-    const [messages, setMessages] = useState<Message[]>([]);
+    const [_messages, setMessages] = useState<Message[]>([]);
     const [visitors, setVisitors] = useState<any[]>([]);
     const [todos, setTodos] = useState<TodoItem[]>([]);
     const [projects, setProjects] = useState<Project[]>([]);
@@ -72,7 +70,6 @@ const Admin: React.FC<AdminProps> = () => {
     const getMessages = async (): Promise<void> => {
         try {
             const response = await AXIOS.get("/contact/all");
-            console.log(messages);
             
             setMessages(response.data.messages || []);
         } catch (error) {
@@ -88,10 +85,6 @@ const Admin: React.FC<AdminProps> = () => {
             console.error("Failed to load visitor stats:", error);
         }
     };
-
-    /*
-     * Projects
-     */
 
     const getProjects = async (): Promise<void> => {
         try {
@@ -109,10 +102,6 @@ const Admin: React.FC<AdminProps> = () => {
         getVisitorsCount();
         getProjects();
     }, []);
-
-    /*
-     * Todo actions
-     */
 
     const activeTodoEditView = (): void => {
         setEditingTodo(true);

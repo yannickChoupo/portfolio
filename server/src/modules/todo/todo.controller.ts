@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Todo from "../../models/todo";
 
-const getTodo = async (req: Request, res: Response) => {
+const getTodo = async (_req: Request, res: Response) => {
     try {
         // Authenticate userName
         const todos = await Todo.find();
@@ -26,10 +26,9 @@ const getTodo = async (req: Request, res: Response) => {
     }
 }
 
-const getTodos = async (req: Request, res: Response) => {
-    const { body } = req;
+const getTodos = async (_req: Request, res: Response) => {
+    // const { body } = req;
     // let { id } = body;
-
     try {
         const todos = await Todo.find();
         if (!todos[0]) {

@@ -5,7 +5,7 @@ import * as projectService from "./project.service";
  * GET /api/projects
  */
 export const getProjects = async (
-    req: Request,
+    _req: Request,
     res: Response
 ): Promise<void> => {
     const projects = await projectService.getProjects();

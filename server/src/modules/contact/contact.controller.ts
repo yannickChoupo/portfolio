@@ -28,7 +28,7 @@ export const createMessage = async (
 };
 
 export const getAllMessages = async (
-  req: Request,
+  _req: Request,
   res: Response,
   next: NextFunction,
 ): Promise<void> => {

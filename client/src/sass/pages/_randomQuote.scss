@@ -1,6 +1,6 @@
-@import "../abstracts/mixins";
-@import "../abstracts/function";
-@import "../abstracts/breackpoints";
+@use "../abstracts/mixins" as mixins;
+@use "../abstracts/function" as *;
+@use "../abstracts/breackpoints" as *;
 
 #randomQuote {
   font-family: 'Poppins', sans-serif;
@@ -80,7 +80,7 @@
           border: 1px solid white;
           border-radius: 3px;
           background-color: transparent;
-          @include flexCenter;
+          @include mixins.flexCenter;
         }
 
         &:hover {

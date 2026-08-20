@@ -1,8 +1,4 @@
-@import "../abstracts/breackpoints";
-@import "../abstracts/mixins";
-@import "../abstracts/function";
-@import "../abstracts/variables";
-
+@use "../abstracts/variables" as *;
 
 #contact {
   // padding: calc(60px + 2em) 0 0 px-to-em(18px);

@@ -1,13 +1,12 @@
 
-import { Request, Response, Router } from 'express';
+import { Request, Response, Router, NextFunction } from 'express';
 const UserSession = require('../../models/usersession.model');
 const jwt = require('jsonwebtoken');
 
 const router = Router();
 
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response, next: NextFunction ) => {
     const { headers } = req;
-
     try {
         const session = new UserSession();
         session.hostName = headers.host;
@@ -32,11 +31,13 @@ router.get('/', async (req: Request, res: Response) => {
             message: 'session added'
         })
     } catch (error) {
-        console.error(`Error: something went wrong: ${error}`);
+        // console.error(`Error: something went wrong: ${error}`);
+        return next(error);
+
     }
 });
 
-router.get('/all', async (req: Request, res: Response) => {
+router.get('/all', async (_req: Request, res: Response,  next: NextFunction) => {
 
     try {
         const curSession = await UserSession.find();
@@ -48,10 +49,12 @@ router.get('/all', async (req: Request, res: Response) => {
         })
     } catch (error) {
         console.error(`Error: something went wrong: ${error}`);
+        return next(error);
+
     }
 });
 
-router.post('/:id', async (req: Request, res: Response) => {
+router.post('/:id', async (req: Request, res: Response,  next: NextFunction) => {
     const { id } = req.params;
     try {
         const existingSession = await UserSession.find({ id: id });
@@ -63,7 +66,8 @@ router.post('/:id', async (req: Request, res: Response) => {
             })
         }
 
-        const remainingSession = await UserSession.deleteOne({ id: id })
+        // const remainingSession = 
+        await UserSession.deleteOne({ id: id })
 
         res.send({
             success: true,
@@ -71,6 +75,8 @@ router.post('/:id', async (req: Request, res: Response) => {
         })
     } catch (error) {
         console.error(`Error: something went wrong: ${error}`);
+       return next(error);
+
     }
 });
 

@@ -13,9 +13,9 @@ build-local:
 run-local:
 	docker-compose up
 build-production:
-	docker compose -f docker-compose-prod.yml build
+	docker compose -f docker-compose.yml --env-file=.env build
 run-production:
-	docker compose -f docker-compose-prod.yml up -d
+	docker compose -f docker-compose.yml --env-file=.env up
 stop-production:
 	docker compose -f docker-compose-prod.yml down
 logs-production:

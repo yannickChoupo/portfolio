@@ -1,19 +1,27 @@
-@use "../abstracts/function";
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
+@use "../abstracts/function" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breackpoints" as *;
+
 
 .logo {
-  font-size: 1.6em !important;
   text-decoration: none;
   color: #6002ed;
   display: flex;
   justify-content: center;
-  width: fit-content !important;
+  // width: px-to-em(40px);
+  width: px-to-em(32px);
   height: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  @include breakpoint--small {
+    width: px-to-em(40px);
+    height: 52px;
+  }
+
 
   &:active {
     color: #6002ed

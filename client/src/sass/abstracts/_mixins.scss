@@ -1,4 +1,6 @@
 @use "sass:map";
+@use "../abstracts/variables"  as *;
+
 
 // Add property
 @mixin element($name) {
@@ -183,30 +185,32 @@
   opacity: $dp;
 }
 
-//@function get-dp-color ($dp) {
-//  @return map-get($levels,$dp);
-//}
-@mixin after-overlay($suffix) {
-  & > * {
-    position: relative;
-    z-index: 2;
-  }
-  $color: map.get($levels, $suffix);
-  //$color: get-dp-color($suffix);
-  background-color: $color;
-  border-radius: inherit;
-  &::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    pointer-events: none;
-    // background-color: $color;
-  }
+@function get-dp-color ($dp) {
+ @return map.get($levels,$dp);
+}
 
-  //@include after($suffix);
+@mixin after-overlay($suffix) {
+    position: relative;
+    isolation: isolate;
+
+    $color: get-dp-color($suffix);
+
+    background-color: $color;
+    border-radius: inherit;
+
+    & > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+
+        pointer-events: none;
+        background-color: $color;
+        border-radius: inherit;
+    }
 }

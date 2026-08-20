@@ -3,7 +3,7 @@ import { getTodo, getTodos, removeTodo, storeTodo, updateTodos } from './todo.co
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
+router.get('/', (_req: Request, res: Response) => {
     return res.send("todo manage");
 })
 router.get('/getTodos', getTodos);

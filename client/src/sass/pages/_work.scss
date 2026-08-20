@@ -1,21 +1,23 @@
-@use "../abstracts/colors" as color;
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
-@import "../abstracts/breackpoints";
-@import "../abstracts/mixins";
-@import "../abstracts/colors";
-@import "../abstracts/function";
+@use "../abstracts/variables" as *;
+@use "../abstracts/breackpoints" as *;
+@use "../abstracts/function" as *;
+@use "../abstracts/colors" as *;
 
 
 #work {
-
-
-	h2 {
-		padding: 0 px-to-em(9px);
+	@include breakpoint--small {
+		.filters {
+			padding: 0;
+		}
+		h2 {
+			padding: 0;
+		}
+		.work-list {
+			padding: 0 0;
+		}
 	}
 
 	.filters {
-		padding: 0 px-to-em(12px);
 		margin-bottom: px-to-em(20px);
 		width: 100%;
 
@@ -49,8 +51,6 @@
 	}
 
 	.work-list {
-		padding: 0 px-to-em(12px);
-
 		.list-item {
 			margin: 0 1em 1em 0;
 			padding: 1em;
@@ -62,9 +62,6 @@
 				bottom: .1em solid $def-pri;
 				left: .1em solid $def-pri
 			}
-
-			;
-
 			.disabled {
 				display: none;
 			}
@@ -72,21 +69,6 @@
 
 	}
 
-	@include breakpoint--small {
-		padding: 0 px-to-em(12px);
-
-		.filters {
-			padding: 0;
-		}
-
-		h2 {
-			padding: 0;
-		}
-
-		.work-list {
-			padding: 0 0;
-		}
-	}
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -96,7 +78,6 @@
 }
 
 .launch-enter-active {
-	background-color: red;
 	opacity: 1;
 	transform: translateX(0);
 	transition: opacity 500ms, transform 500ms;

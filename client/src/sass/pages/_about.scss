@@ -1,12 +1,12 @@
-@import "../abstracts/variables";
-@import "../abstracts/function";
-@import "../abstracts/mixins";
-@import "../abstracts/breackpoints";
+@use "../abstracts/variables" as *;
+@use "../abstracts/function" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breackpoints" as *;
 
 $lines-color: rgba($def-pri, .87);
 
 #about {
-	padding: 0 px-to-em(12px);
+	// padding: 0 px-to-em(12px);
 
 	h2 {
 		margin-bottom: 1em;

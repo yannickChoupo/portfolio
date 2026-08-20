@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface PrivacyState {
     accepted: boolean | null;
@@ -25,9 +26,8 @@ const privacySlice = createSlice({
         },
 
         loadPrivacyConsent: (state) => {
-            const consent =
-                localStorage.getItem("privacy-consent");
-
+            const consent = localStorage.getItem("privacy-consent");
+            
             if (consent === "accepted") {
                 state.accepted = true;
             } else if (consent === "rejected") {

@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import {
     useLocation,
 } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+    loadPrivacyConsent,
+    setPrivacyConsent,
+} from "../../features/privacySlice";
+import type { RootState } from "../../store";
 import AXIOS from "../../redux/services/axios";
 import Privacy from "../../pages/Privacy";
-import { useSelector, useDispatch } from "react-redux";
-import { loadPrivacyConsent, setPrivacyConsent } from "../../features/privacySlice";
-import { RootState } from "../../store";
 
 
 let visitorRegistrationPromise: Promise<any> | null = null;
@@ -36,10 +39,8 @@ export const VisitorTracker: React.FC = () => {
     }
 
     const onReject = () => {
-        dispatch(setPrivacyConsent(true));
+        dispatch(setPrivacyConsent(false));
     }
-
-
 
     useEffect(() => {
         if (privacyConsent !== true) {
@@ -54,14 +55,21 @@ export const VisitorTracker: React.FC = () => {
             return;
         }
 
-        AXIOS.post("/visitor")
+        const visitorRegistered =
+            localStorage.getItem("visitorRegistered");
+
+        if (visitorRegistered === "true") {
+            return;
+        }
+
+        registerVisitorOnce()
+            .then(() => {
+                localStorage.setItem("visitorRegistered", "true");
+            })
             .catch((error) => {
-                console.error(
-                    "Visitor tracking failed:",
-                    error
-                );
+                console.error("Visitor tracking failed:", error);
             });
-    }, [privacyConsent, location.pathname]);
+    }, [privacyConsent]);
 
     if (privacyConsent == null) {
         return <Privacy onAccept={onAccept} onReject={onReject} />

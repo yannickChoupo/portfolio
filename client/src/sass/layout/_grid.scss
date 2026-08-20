@@ -1,6 +1,8 @@
-@import "../abstracts/function";
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
+@use "../abstracts/function" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breackpoints" as *;
+
 
 
 body {
@@ -31,13 +33,26 @@ body {
 		max-width: px-to-em(960px);
 		margin: 0 auto;
 		width: 100%;
+
 		&:hover {
 			.navbar {
 				// @include after-overlay(1dp);
+				z-index: 10;
 			}
 		}
+
 		#app {
 			min-height: 100vh;
+
+
+			.pageContainer {
+				padding: px-to-em(6px);
+
+				@include breakpoint--small {
+					padding: px-to-em(12px);
+				}
+			}
+
 		}
 
 	}

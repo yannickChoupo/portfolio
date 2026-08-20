@@ -24,10 +24,10 @@ const router = Router();
 
 
 const storage = multer.diskStorage({
-    destination: (req: Request, file: Express.Multer.File, cb: (error: Error | null, destination: string) => void) => {
+    destination: (_req: Request, _file: Express.Multer.File, cb: (error: Error | null, destination: string) => void) => {
         cb(null, tmpDir);
     },
-    filename: (req: Request,
+    filename: (_req: Request,
         file: Express.Multer.File,
         cb: (error: Error | null, filename: string) => void) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -79,7 +79,7 @@ router.post('/fileanalyse', (req: Request, res: Response) => {
         });
 
         // Return metadata
-        res.json(fileMetadata);
+        return res.json(fileMetadata);
     });
 })
 

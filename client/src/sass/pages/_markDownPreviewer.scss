@@ -1,5 +1,4 @@
-@import "../abstracts/variables";
-@import "../abstracts/function";
+@use "../abstracts/variables" as *;
 
 .markdownPreviewer {
     header {

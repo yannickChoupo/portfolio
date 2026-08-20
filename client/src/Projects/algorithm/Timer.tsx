@@ -1,6 +1,22 @@
 import React from "react"
 
-class Timer extends React.Component {
+interface TimerState {
+    breakLength: number;
+    sessionLength: number;
+    curSecondes: number;
+    curMinutes: number;
+    curType: string;
+    counterOn: boolean;
+    curDisplay: Number,
+    breakOn: boolean
+}
+
+interface TimerProps { }
+
+class Timer extends React.Component<TimerProps, TimerState> {
+    private audio = React.createRef<HTMLAudioElement>();
+    private interval: ReturnType<typeof setInterval> | null = null;
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -24,7 +40,7 @@ class Timer extends React.Component {
     }
 
     timer() {
-        const {breakLength, sessionLength, curSecondes, curMinutes, curType} = this.state;
+        const { breakLength, sessionLength, curSecondes, curMinutes, curType } = this.state;
         let newSecondes;
         let newMinutes;
         let newTypes;
@@ -51,14 +67,14 @@ class Timer extends React.Component {
     }
 
     incrementBreak() {
-        const {breakLength} = this.state;
+        const { breakLength } = this.state;
         this.setState({
             breakLength: breakLength + 1 > 60 ? breakLength : breakLength + 1,
         })
     }
 
     incrementSession() {
-        const {sessionLength} = this.state;
+        const { sessionLength } = this.state;
         let newSessionLength = sessionLength + 1 > 60 ? sessionLength : sessionLength + 1;
         this.setState({
             sessionLength: newSessionLength,
@@ -67,14 +83,14 @@ class Timer extends React.Component {
     }
 
     decrementBreak() {
-        const {breakLength} = this.state;
+        const { breakLength } = this.state;
         this.setState({
             breakLength: breakLength - 1 < 1 ? breakLength : breakLength - 1
         })
     }
 
     decrementSession() {
-        const {sessionLength} = this.state;
+        const { sessionLength } = this.state;
         let newSessionLength = sessionLength - 1 < 1 ? sessionLength : sessionLength - 1;
         this.setState({
             sessionLength: newSessionLength,
@@ -100,7 +116,7 @@ class Timer extends React.Component {
     }
 
     handleOnOff() {
-        const {counterOn} = this.state;
+        const { counterOn } = this.state;
         this.setState({
             counterOn: !counterOn
         })
@@ -166,9 +182,9 @@ class Timer extends React.Component {
                     </section>
                 </div>
                 <audio id="beep"
-                       preload="auto"
-                       src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
-                       ref={this.audio}/>
+                    preload="auto"
+                    src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+                    ref={this.audio} />
             </div>
         );
     }
