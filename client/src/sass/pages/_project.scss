@@ -1,10 +1,6 @@
-@import "../abstracts/function";
-@import "../abstracts/variables";
-
-.project {
-	height: 100%;
-	padding: 0 px-to-em(12px);
-}
+@use "../abstracts/variables" as *;
+@use "../abstracts/function" as *;
+@use "../abstracts/breackpoints" as *;
 
 .home-btn {
 	height: 4ch;

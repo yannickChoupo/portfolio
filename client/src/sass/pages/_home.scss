@@ -1,9 +1,6 @@
-@import "../abstracts/breackpoints";
-@import "../abstracts/mixins";
-@import "../abstracts/function";
-@import "../abstracts/variables";
-
-
+@use "../abstracts/breackpoints" as *;
+@use "../abstracts/function" as *;
+@use "../abstracts/variables" as *;
 
 #home {
   .home-header {
@@ -12,7 +9,7 @@
 
     .image {
       background-size: cover;
-      background-image: url("../../images/home-img.png");
+      background-image: url("/home-img.png");
       background-position: center;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 50%);
       width: 15em;
@@ -20,9 +17,12 @@
       border-radius: 50%;
     }
   }
+
   .home-body {
 	text-align: center;
 	font-size: 1.5em;
+	padding: 0 px-to-em(12px) 0 px-to-em(12px);
+
 	@include breakpoint--small {
 	  padding: 2em;
 	}

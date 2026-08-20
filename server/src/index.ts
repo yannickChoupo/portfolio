@@ -1,15 +1,11 @@
 import express, {
     Request,
     Response,
-    NextFunction
 } from "express";
-
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
-import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { notFound } from "./middleware/notFound";
 import cookieParser from "cookie-parser";
 dotenv.config();
 
@@ -21,6 +17,8 @@ const app = express();
 const allowedOrigins = [
     "http://localhost:3000",
     "https://www.njiloportfolio.de",
+    "http://localhost:8080",
+    "http://localhost:5173"
 ];
 
 app.use(cors({
@@ -42,24 +40,14 @@ const host = process.env.MONGO_HOST || "localhost";
 const port = process.env.MONGO_PORT || "27017";
 const database = process.env.MONGO_DATABASE || "portfolio_db_dev";
 
+
 const mongoUri =
-    `mongodb://${username}:${password}` +
-    `@${host}:${port}/${database}?authSource=admin`;
-
-mongoose.connect(mongoUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-    .then(() => {
-        console.info("MongoDB Connected");
-    })
-    .catch((error) => {
-        console.error("MongoDB connection error:", error.message);
-    });
-
-mongoose.connection.once("open", () => {
-    console.info("MongoDB database connection established successfully");
-});
+    process.env.MONGO_URI ||
+    (
+        process.env.NODE_ENV === "production"
+            ? `mongodb+srv://${username}:${password}@${host}/${database}?retryWrites=true&w=majority&appName=Cluster0`
+            : `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`
+    );
 /* -------------------------------------------------------------------------- */
 /* Routes                                                                     */
 /* -------------------------------------------------------------------------- */
@@ -74,6 +62,7 @@ import fileMetaRouter from "./modules/fileMetaData/fileMetaData";
 import projectRoutes from "./modules/project/project.routes";
 import visitorRoutes from "./modules/visitor/visitor.routes";
 import { errorHandler } from "./middleware/error.middleware";
+import { notFound } from "./middleware/notFound";
 
 app.use("/api/timestamp", timestampRouter);
 app.use("/api/whoiam", whoiamRouter);
@@ -86,37 +75,70 @@ app.use("/api/contact", contactRouter);
 app.use("/api/projects", projectRoutes);
 app.use("/api/visitor", visitorRoutes);
 
+app.get("/health", (_req: Request, res: Response) => {
+    const mongoState = mongoose.connection.readyState;
+
+    const mongoStatus = {
+        0: "disconnected",
+        1: "connected",
+        2: "connecting",
+        3: "disconnecting",
+    };
+
+    const isHealthy = mongoState === 1;
+
+    res.status(isHealthy ? 200 : 503).json({
+        status: isHealthy ? "healthy" : "unhealthy",
+        service: "portfolio-backend",
+        environment: process.env.NODE_ENV || "development",
+        uptime: Math.floor(process.uptime()),
+        timestamp: new Date().toISOString(),
+
+        server: {
+            nodeVersion: process.version,
+            platform: process.platform,
+            pid: process.pid,
+        },
+
+        database: {
+            status: mongoStatus[mongoState as keyof typeof mongoStatus],
+            connected: isHealthy,
+        },
+    });
+});
+
+app.get("/", (_req: Request, res: Response) => {
+    res.send("Yannick Njilo Portfolio backend");
+});
+
 app.use(errorHandler);
 app.use(notFound);
 
-/* -------------------------------------------------------------------------- */
-/* Health check                                                               */
-/* -------------------------------------------------------------------------- */
-app.get(
-    "/health",
-    (req: Request, res: Response) => {
-        res.status(200).send("ok");
-    }
-);
-
-/* -------------------------------------------------------------------------- */
-/* Root                                                                       */
-/* -------------------------------------------------------------------------- */
-app.get(
-    "/",
-    (req: Request, res: Response) => {
-        res.send("Yannick Njilo Portfolio backend");
-    }
-);
 
 /* -------------------------------------------------------------------------- */
 /* Start server                                                               */
 /* -------------------------------------------------------------------------- */
 const PORT = Number(process.env.SERVERPORT) || 5000;
 
-app.listen(
-    PORT,
-    () => {
-        console.info(`Server is running on port : ${PORT}`);
+const startServer = async () => {
+    try {
+        if (!mongoUri) {
+            throw new Error("MONGO_URI is not defined");
+        }
+        await mongoose.connect(mongoUri,
+            {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            }
+        );
+        console.info("MongoDB Connected");
+        app.listen(PORT, "0.0.0.0", () => {
+            console.info(`Server is running on port : ${PORT}`);
+        });
+    } catch (error) {
+        console.error("MongoDB connection failed:", error);
+        process.exit(1);
     }
-);
+};
+
+startServer();

@@ -1,18 +1,15 @@
-# Build express server
-FROM node:lts-buster-slim
+FROM node:20
 
-# Working directory be app
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-
-# Installing dependencies
 RUN npm install
-RUN npm ci
 
-# copy local files to app folder
-COPY . .
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
 
 EXPOSE 5000
 
-CMD ["npm","run","start"]
+CMD ["npm", "start"]

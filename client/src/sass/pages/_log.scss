@@ -1,7 +1,7 @@
-@import "../abstracts/breackpoints";
-@import "../abstracts/mixins";
-@import "../abstracts/function";
-@import "../abstracts/variables";
+@use "../abstracts/breackpoints" as *;
+@use "../abstracts/mixins" as mixins;
+// @use "../abstracts/function";
+@use "../abstracts/variables" as *;
 
 #sign {
   background-color: #282c34;
@@ -93,7 +93,7 @@
   //}
 
   label {
-    @include flexCenter;
+    @include mixins.flexCenter;
     // width: 40px;
     // color: rgba($def-pri, .87);
     // margin-right: 1em;

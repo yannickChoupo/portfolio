@@ -4,7 +4,7 @@ import * as exerciseController from "./exercise.controller";
 
 const router = Router();
 
-router.get("/", (req: Request, res: Response): void => {
+router.get("/", (_req: Request, res: Response): void => {
     res.json("exercise microservice");
 });
 

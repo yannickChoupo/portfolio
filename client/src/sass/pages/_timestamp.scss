@@ -1,8 +1,6 @@
 @use "sass:color";
-@import "../abstracts/mixins";
-@import "../abstracts/function";
-@import "../abstracts/variables";
-@import "../abstracts/breackpoints";
+@use "../abstracts/variables" as *;
+@use "../abstracts/breackpoints" as *;
 
 
 #timestamp .api {

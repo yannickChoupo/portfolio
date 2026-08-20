@@ -1,6 +1,6 @@
-@import "../abstracts/mixins";
-@import "../abstracts/function";
-@import "../abstracts/variables";
+// @use "../abstracts/mixins";
+// @use "../abstracts/function";
+@use "../abstracts/variables" as *;
 
 #dataviz-home {
     .list-item {

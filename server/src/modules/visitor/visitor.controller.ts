@@ -42,7 +42,7 @@ export const registerVisit = async (
 };
 
 export const getStats = async (
-    req: Request,
+    _req: Request,
     res: Response
 ): Promise<void> => {
     const stats = await visitorService.getVisitorStats();

@@ -1,15 +1,11 @@
-import bcrypt from 'bcryptjs'
-import User from '../../models/user.model'
-import ExerciseUser from '../../models/ExerciseUser.model'
-
-export const getCurrentTimestamp = async (username: string) => {
+export const getCurrentTimestamp = async () => {
     let newDate = new Date(), unixValue, utcValue;
     utcValue = newDate.toUTCString();
     unixValue = newDate.valueOf();
     return { unix: unixValue, utc: utcValue };
 }
 
-export const getAllExerciseUsers = async ( date: string) => {
+export const getTimestampByDate = async ( date: string) => {
     let newDate, unixValue, utcValue;
     if (!isNaN(Number(date))) {
         newDate = new Date(Number(date));

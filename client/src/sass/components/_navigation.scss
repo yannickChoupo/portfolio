@@ -1,21 +1,31 @@
-@import "../abstracts/variables";
-@import "../abstracts/function";
+@use "../abstracts/variables" as *;
+@use "../abstracts/function" as *;
+@use "../abstracts/breackpoints" as *;
+
 
 .navbar {
 	position: relative;
+	isolation: isolate;
 	width: 100%;
-	padding: 0 px-to-em(12px) 0 px-to-em(12px);
+	
+	@include breakpoint--small {
+		// padding: 0 px-to-em(12px) 0 px-to-em(12px);
+	}
 
 	.nav-body {
 		height: 50px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		position: relative;
+		z-index: 2;
 
+
+		
 		.navbar-link {
 			display: flex;
 			justify-content: center;
-			width: 80px;
+			// width: 80px;
 			height: 36px;
 			display: flex;
 			justify-content: center;

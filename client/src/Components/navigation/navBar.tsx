@@ -3,8 +3,6 @@ import SideBar from "./sidebar";
 import Hamburger from "../hamburger";
 import { BuildingHome32Regular } from '@fluentui/react-icons';
 
-
-
 export const NavBar = () => {
     return (
         <>

@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from 'react';
-// import {
-//     CSSTransition,
-//     TransitionGroup
-// } from "react-transition-group";
+import { useEffect, useState } from 'react';
 
 const sendHttpRequest = (method, url) => {
     const promise = new Promise((resolve, reject) => {
@@ -10,17 +6,17 @@ const sendHttpRequest = (method, url) => {
         xhr.responseType = "json";
         xhr.open(method, url);
 
-        xhr.onprogress = () => {
-            console.info('LOADING', xhr.status);
-        }
+        // xhr.onprogress = () => {
+        //     console.info('LOADING', xhr.status);
+        // }
 
-        xhr.onload = (response) => {
+        xhr.onload = (_response) => {
             if (xhr.status !== 200) {
                 reject('Something went wrong');
             }
             resolve(xhr.response);
         }
-        xhr.onerror = (response) => {
+        xhr.onerror = (_response) => {
             console.error('Response status code : ', xhr.status)
         }
         xhr.send();
@@ -49,7 +45,7 @@ export const RandomQuote = () => {
     }
 
     useEffect(() => {
-        sendHttpRequest('GET', url).then((data) => {
+        sendHttpRequest('GET', url).then((data: any) => {
             const randomIndex = generateRandomNum();
             const newQuote = data.quotes[randomIndex];
             const { quote, author } = newQuote;

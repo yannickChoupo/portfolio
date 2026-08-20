@@ -1,8 +1,11 @@
 import axios from "axios";
 import { getFromStorage } from "../../utils/storage";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AXIOS = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "",
+  baseURL: API_URL || "",
+  withCredentials: true
 });
 
 AXIOS.interceptors.request.use((req) => {

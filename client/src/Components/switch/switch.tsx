@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleHamburger } from "../../features/hamburgerSlice";
 import { setDarkThemeIsActiv } from "../../features/themeslice";
-import { RootState } from "../../store";
 import {
   getSavedTheme,
   getSystemTheme,
   setTheme,
   applyTheme
 } from "../../utils/theme";
+import type { RootState } from "../../store";
 
 const Switch = (): React.ReactElement => {
   const dispatch = useDispatch();

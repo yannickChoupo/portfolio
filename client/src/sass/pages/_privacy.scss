@@ -1,7 +1,5 @@
-@import "../abstracts/variables";
-@import "../abstracts/function";
-@import "../abstracts/mixins";
-@import "../abstracts/breackpoints";
+@use "../abstracts/function" as *;
+@use "../abstracts/variables" as *;
 
 .privacy-page {
     padding: px-to-em(12px) !important;

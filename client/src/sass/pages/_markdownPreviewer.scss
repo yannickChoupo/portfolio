@@ -1,6 +1,4 @@
-@import "../abstracts/mixins";
-@import "../abstracts/function";
-@import "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 #markdown-previewer {
   font-family: 'Montserrat', sans-serif;
