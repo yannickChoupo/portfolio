@@ -5,6 +5,7 @@ import NavBar from "../navigation/navBar";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { makeStyles } from "@fluentui/react-components";
 import Footer from "../footer";
+import { VisitorTracker } from "../VisitorTracker/visitorTracker";
 
 const useStyles = makeStyles({
 	app: {
@@ -31,6 +32,7 @@ const SharedLayout: React.FC = () => {
 		<>
 			<NavBar />
 			<div id="app" className={styles.app}>
+				<VisitorTracker />
 				<TransitionGroup className="transitiongroup">
 					<CSSTransition
 						timeout={1000}

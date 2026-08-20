@@ -10,6 +10,7 @@ import bodyParser from "body-parser";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { notFound } from "./middleware/notFound";
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app = express();
@@ -17,9 +18,19 @@ const app = express();
 /* -------------------------------------------------------------------------- */
 /* Middleware                                                                 */
 /* -------------------------------------------------------------------------- */
-app.use(cors());
+const allowedOrigins = [
+    "http://localhost:3000",
+    "https://www.njiloportfolio.de",
+];
+
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true,
+}));
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 /* -------------------------------------------------------------------------- */
 /* MongoDB                                                                    */
@@ -60,6 +71,8 @@ import todosRouter from "./modules/todo/todo";
 import sessionRouter from "./modules/session/session";
 import contactRouter from "./modules/contact/contact.routes";
 import fileMetaRouter from "./modules/fileMetaData/fileMetaData";
+import projectRoutes from "./modules/project/project.routes";
+import visitorRoutes from "./modules/visitor/visitor.routes";
 import { errorHandler } from "./middleware/error.middleware";
 
 app.use("/api/timestamp", timestampRouter);
@@ -70,7 +83,8 @@ app.use("/api/todo", todosRouter);
 app.use("/api/session", sessionRouter);
 app.use("/api/filemeta", fileMetaRouter);
 app.use("/api/contact", contactRouter);
-
+app.use("/api/projects", projectRoutes);
+app.use("/api/visitor", visitorRoutes);
 
 app.use(errorHandler);
 app.use(notFound);

@@ -8,7 +8,7 @@
 
 //     try {
 //         const existingSession = await UserSession.find({ id });
-//         console.log(existingSession[0]);
+//         console.info(existingSession[0]);
 //         if (existingSession[0]) {
 //             // return;
 //             next();
@@ -34,7 +34,7 @@
 //         })
 //         next();
 //     } catch (error) {
-//         console.log(`Error: something went wrong: ${error}`);
+//         console.info(`Error: something went wrong: ${error}`);
 //         next()
 //     }
 // }

@@ -2,6 +2,7 @@
 client/Makefile
 client/build/
 client/package-lock.json
+server/package-lock.json
 server/node_modules/
 server/Makefile
 .idea/

@@ -25,5 +25,4 @@ const UserSessionSchema = new Schema({
 
 const UserSession = mongoose.model('UserSession', UserSessionSchema);
 
-
-module.exports = UserSession;
+export default UserSession;
