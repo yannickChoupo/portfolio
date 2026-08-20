@@ -1,129 +1,346 @@
-@use "../abstracts/colors" as color ;
+@use "sass:color";
 @import "../abstracts/variables";
 @import "../abstracts/mixins";
+@import "../abstracts/function";
 @import "../abstracts/breackpoints";
-@import "../abstracts/mixins";
-@import "../abstracts/colors";
 
 #admin {
-    position: relative;
-    font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  margin: 0 auto;
 
-    h2 {
-      margin-bottom: px-to-em(5px);
+  .page-container {
+    min-height: 100vh;
+    padding: px-to-em(40px) 0 0 px-to-em(23px);
+
+    > h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: $def-pri;
     }
+
+    > * {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  // ----------------------------------------
+  // Shared admin sections
+  // ----------------------------------------
+
+  #summary,
+  #todos,
+  .todoList {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: rgba($def-pri, 0.03);
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    margin: 0 0 1rem;
+    color: $def-pri;
+    border-bottom: 2px solid rgba($def-pri, 0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  // ----------------------------------------
+  // Summary
+  // ----------------------------------------
+
+  #summary {
+    border-left: 4px solid $def-pri;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 0.8rem 1rem;
+        border-radius: 6px;
+        background-color: rgba($def-pri, 0.05);
+        line-height: 1.6;
+
+        strong {
+          color: $def-pri;
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Todo management
+  // ----------------------------------------
+
+  #todos {
+    background-color: rgba($def-pri, 0.03);
+
+    .todos {
+      margin-bottom: 1.5rem;
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        h3 {
+          flex: 1;
+          margin-bottom: 0;
+        }
+
+        button {
+          padding: 0.7rem 1.2rem;
+          background-color: $def-pri;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          font-size: 0.95rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s;
+
+          &:hover {
+            background-color: color.adjust(
+              $def-pri,
+              $lightness: -10%
+            );
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba($def-pri, 0.25);
+          }
+        }
+      }
+    }
+
+    // ----------------------------------------
+    // Add/edit form
+    // ----------------------------------------
+
+    .form {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background-color: rgba($def-pri, 0.05);
+      border-left: 4px solid $def-pri;
+
+      > * {
+        margin-bottom: 1rem;
+      }
+
+      > *:last-child {
+        margin-bottom: 0;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+
+        label {
+          color: $def-pri;
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+
+        input {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 0.8rem;
+          border: 2px solid rgba($def-pri, 0.3);
+          border-radius: 6px;
+          background-color: transparent;
+          color: inherit;
+          font-size: 1rem;
+          font-family: inherit;
+          transition: border-color 0.3s;
+
+          &:focus {
+            outline: none;
+            border-color: $def-pri;
+          }
+
+          &::placeholder {
+            color: rgba($def-pri, 0.4);
+          }
+        }
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+
+        button {
+          padding: 0.7rem 1.2rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s;
+          text-transform: uppercase;
+
+          &.todo-cancel {
+            background-color: transparent;
+            color: $def-pri;
+            border: 2px solid $def-pri;
+
+            &:hover {
+              background-color: $def-pri;
+              color: white;
+            }
+          }
+
+          &.todo-edit {
+            background-color: $def-pri;
+            color: white;
+            border: 2px solid $def-pri;
+
+            &:hover {
+              background-color: color.adjust(
+                $def-pri,
+                $lightness: -10%
+              );
+              transform: translateY(-2px);
+              box-shadow: 0 4px 8px rgba($def-pri, 0.25);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Todo list
+  // ----------------------------------------
+
+  .todoList {
+    margin-top: 1.5rem;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+        padding: 1rem;
+        border: 1px solid rgba($def-pri, 0.15);
+        border-radius: 8px;
+        background-color: rgba($def-pri, 0.02);
+        transition: all 0.3s;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &:hover {
+          background-color: rgba($def-pri, 0.06);
+          border-color: rgba($def-pri, 0.3);
+        }
+
+        div {
+          flex: 1;
+          width: auto;
+          padding: 0;
+
+          &:first-child {
+            font-weight: 600;
+            color: $def-pri;
+          }
+        }
+
+        button {
+          width: fit-content;
+          padding: 0.6rem 1rem;
+          border: 2px solid $def-pri;
+          background-color: transparent;
+          color: $def-pri;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s;
+
+          &:hover {
+            background-color: $def-pri;
+            color: white;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Responsive
+  // ----------------------------------------
+
+  @include breakpoint--small {
     .page-container {
-        min-height: 100vh;
-        padding: px-to-em(40px) 0 0 px-to-em(23px);
-        & > * {
-           margin-bottom: 1em;
-        }
-        .todoList {
-            margin: 0 px-to-em(30px) 0 0;
-
-            ul {
-                li {
-                    margin-bottom: .5em;
-                    display: flex;
-
-                    div {
-                        display: block;
-                        width: 70%;
-                        padding: .3em;
-
-                    }
-                    button {
-                        width: fit-content;
-                        border: 0;
-                        background-color: transparent;
-                        border-radius: .4em;
-                        border: .1em solid $def-pri;
-                        padding: .3em;
-                        color: inherit;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-        .todos {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1em;
-            .header {
-                display: flex;
-                margin: 0 px-to-em(30px) 0 0;
-                h3 {
-                    width: fit-content;
-                    width: 70%;
-                }
-                button {
-                    width: 6.5ch;
-                    border: 0;
-                    background-color: transparent;
-                    border-radius: .4em;
-                    border: .1em solid $def-pri;
-                    padding: .3em;
-                    color: inherit;
-                    cursor: pointer;
-                    &:hover {
-                        color: white;
-                        background-color: $def-pri;
-                    } 
-                }
-            }
-            .form {
-                margin: 0 px-to-em(30px) 0 0;
-                 & > * {
-                        margin: 1em 0 0 0 ;
-                    }
-                .form-group {
-                    width: 70%;
-                   
-                    &.name {
-                        display: flex;
-                    }
-                    &.description {
-                        display: flex;
-                    }
-                }
-                label {
-                    display: block;
-                    min-width: 20%;
-                    padding: .3em 0;
-                    text-transform: capitalize;
-                    font-size: .8em;
-                    margin: 0 1em 0 0;
-                    padding: .3em;
-                }
-                input {
-                    border: 0;
-                    border-bottom: 1px solid $def-pri;
-                    display: block;
-                    width: 100%;
-                    padding: 0 0 0 1em;
-                    background-color: transparent;
-                    color: inherit;
-                    &:focus {
-                        outline: 0;
-                    }
-                }
-
-                button {
-                    border: 0;
-                    background-color: transparent;
-                    border-radius: .4em;
-                    border: .1em solid $def-pri;
-                    padding: .3em;
-                    margin: .3em;
-                    color: inherit;
-                    text-transform: uppercase;
-                    cursor: pointer;
-                    &:hover {
-                        color: white;
-                        background-color: $def-pri;
-                    } 
-                }
-            }
-        }
+      padding: 2rem 1rem;
     }
+
+    .page-container > h2 {
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    #summary,
+    #todos,
+    .todoList {
+      padding: 1rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    #todos {
+      .todos {
+        .header {
+          align-items: flex-start;
+
+          h3 {
+            font-size: 1.5rem;
+          }
+
+          button {
+            flex-shrink: 0;
+          }
+        }
+
+        .form {
+          padding: 1rem;
+        }
+      }
+    }
+
+    .todoList {
+      ul {
+        li {
+          flex-direction: column;
+          align-items: stretch;
+
+          div {
+            width: 100%;
+          }
+
+          button {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .btn-group {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
 }

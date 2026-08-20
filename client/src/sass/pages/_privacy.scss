@@ -1,0 +1,85 @@
+@import "../abstracts/variables";
+@import "../abstracts/function";
+@import "../abstracts/mixins";
+@import "../abstracts/breackpoints";
+
+.privacy-page {
+    padding: px-to-em(12px) !important;
+
+    h2 {
+        padding: .2em;
+    }
+
+    .privacy-settings {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .privacy-settings-button {
+            border-radius: 0.4em;
+            background-color: $def-pri;
+            color: white;
+            padding: .7em;
+            cursor: pointer;
+        }
+    }
+}
+
+.privacy-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.privacy-popup {
+    position: relative;
+    z-index: 999999;
+    width: min(90%, 700px);
+    height: 80%;
+    padding: px-to-em(12px);
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 12px;
+    color: black;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+.privacy-actions {
+    margin-top: 1em;
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+    .privacy-reject {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $def-pri;
+        font-size: 1.3em;
+        display: flex;
+        border-radius: 0.4em;
+        color: white;
+        cursor: pointer;
+    }
+
+    .privacy-accept {
+        height: 100%;
+        width: 50%;
+        background-color: $def-pri;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3em;
+        display: flex;
+        border-radius: 0.4em;
+        color: white;
+        cursor: pointer;
+    }
+}

@@ -58,7 +58,6 @@ export function clearTheme() {
 ---------------------------- */
 export function watchSystemTheme() {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
-
     media.addEventListener("change", () => {
         if (getSavedTheme() !== null) return; // user override exists
         applyTheme(media.matches ? "dark" : "light");

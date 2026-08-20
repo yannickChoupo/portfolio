@@ -21,11 +21,15 @@
 
   .socialIcons {
     display: flex;
-    gap: 10px;
+    gap: 5px;
+    :nth-child(2) {
+      padding-top: 2.68px;
+    }
 
     .socialIcon {
       width: fit-content;
       height: 40px;
+      width: 40px;
       @include flexCenter;
       text-decoration: none;
       border-radius: 50%;

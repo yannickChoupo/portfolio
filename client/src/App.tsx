@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from 'react';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -20,8 +20,16 @@ import {
 import SharedLayout from "./Components/SharedLayout";
 import SharedProjectLayout from "./Components/ShareProjectLayout";
 import SharedDatavizLayout from "./Components/SharedDatavizLayout";
+import { initTheme, watchSystemTheme } from './utils/theme';
+
 
 const App: React.FC = () => {
+
+	useEffect(() => {
+		initTheme();
+		watchSystemTheme();
+	}, []);
+
 	return (
 		<Router>
 			<Routes>

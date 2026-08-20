@@ -63,10 +63,49 @@ Last deployment
 August 19, 2026
 
 
-TODO: Polish the landing page
 TODO: Create a Projects/Case Studies section
 TODO: Create a Backend/API showcase
 TODO: Add interactive API playground
+
+Project
+│
+├── 1. Hero
+│   ├── Project name
+│   ├── Short description
+│   ├── Tech stack badges
+│   └── GitHub / Live Demo links
+│
+├── 2. Overview
+│   ├── What problem does it solve?
+│   └── Why was it built?
+│
+├── 3. Architecture
+│   └── Frontend → API → Database
+│
+├── 4. Backend / API
+│   ├── Endpoints
+│   ├── HTTP methods
+│   ├── Parameters
+│   └── Response format
+│
+├── 5. API Playground
+│   ├── Endpoint selector
+│   ├── Parameters
+│   ├── Execute button
+│   └── Live response
+│
+├── 6. Example
+│   ├── Request
+│   └── Response
+│
+└── 7. Technical Details
+    ├── React / TypeScript
+    ├── Node / Express
+    ├── MongoDB
+    ├── Docker
+    └── Deployment
+
+    
 TODO: Add /health endpoint + system status
 TODO: Add API documentation
 TODO: Add architecture/deployment visualization
