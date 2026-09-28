@@ -104,23 +104,28 @@ jobs:
           script: |
             set -eu
             cd "${DEPLOY_PATH:-/var/www/html}"
-            git pull --ff-only origin master
 
             test -f docker-compose.yml
 
-            export DOCKER_USERNAME IMAGE_TAG
-            docker compose pull portfolio-server portfolio-client
-            docker compose up -d --no-deps --force-recreate portfolio-server portfolio-client
+            server_image="$DOCKER_USERNAME/portfolio:server-$IMAGE_TAG"
+            client_image="$DOCKER_USERNAME/portfolio:client-$IMAGE_TAG"
+
+            docker pull "$server_image"
+            docker pull "$client_image"
+            docker tag "$server_image" "$DOCKER_USERNAME/portfolio:server-latest"
+            docker tag "$client_image" "$DOCKER_USERNAME/portfolio:client-latest"
+
+            docker compose --profile portfolio up -d --no-deps --force-recreate portfolio-server portfolio-client
 
             attempts=0
-            until docker compose exec -T portfolio-server node -e \
+            until docker compose --profile portfolio exec -T portfolio-server node -e \
               "fetch('http://127.0.0.1:5000/health').then(r => { if (!r.ok) process.exit(1) }).catch(() => process.exit(1))"; do
               attempts=$((attempts + 1))
               if [ "$attempts" -ge 12 ]; then
-                docker compose logs --tail=100 portfolio-server
+                docker compose --profile portfolio logs --tail=100 portfolio-server
                 exit 1
               fi
               sleep 5
             done
 
-            docker compose ps portfolio-server portfolio-client
+            docker compose --profile portfolio ps portfolio-server portfolio-client
