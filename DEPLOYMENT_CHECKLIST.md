@@ -20,10 +20,8 @@ Use this checklist when deploying the portfolio client, API, MongoDB integration
 ## 2. One-time VPS setup
 
 - [ ] Install Docker Engine and the Docker Compose plugin.
-- [ ] Clone the repository on the VPS.
-- [ ] Check out `master` in the deployment directory.
-- [ ] Ensure the deployment checkout has no local source-code modifications.
-- [ ] Configure SSH access so the VPS can run `git pull --ff-only origin master`.
+- [ ] Keep the shared production `docker-compose.yml` in `SERVER_PATH` (normally `/var/www/html`).
+- [ ] Confirm the shared Compose file defines `portfolio-server` and `portfolio-client` in the `portfolio` profile.
 - [ ] Authenticate Docker with Docker Hub if the image repository is private.
 - [ ] Create the production `.env` file on the VPS.
 - [ ] Restrict `.env` permissions to the deployment user.
