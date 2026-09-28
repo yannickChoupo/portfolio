@@ -2,8 +2,16 @@
 @use "../abstracts/function" as *;
 @use "../abstracts/breackpoints" as *;
 
+.project-heading {
+	padding: px-to-em(6px);
+}
+
 .home-btn {
 	height: 4ch;
+	min-height: fit-content;
+	display: flex;
+	padding: 0 px-to-em(6px);
+	margin-bottom: px-to-em(20px);
 }
 
 .backHome-btn {

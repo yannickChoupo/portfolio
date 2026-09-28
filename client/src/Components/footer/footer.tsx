@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
 				(location.pathname !== "/works") &&
 				(!location.pathname.toString().includes("dataviz")) &&
 				(location.pathname !== "/about") &&
-				<div className="footer">
+				<footer className="footer">
 					<div className="socialList">
 						<div
 							className="socialIcons"
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
 							<Switch />
 						</div>
 					</div>
-				</div>
+				</footer>
 			}
 		</>
 	)
