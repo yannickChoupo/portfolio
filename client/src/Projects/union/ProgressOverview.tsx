@@ -15,6 +15,16 @@ type ProgressOverviewProps = {
     requirementLabels: RequirementLabel[];
 };
 
+const activeTaskStatuses = new Set([
+    "in progress",
+    "in review",
+]);
+
+const isTaskInProgress = (todo: ProjectTodo) =>
+    activeTaskStatuses.has(
+        todo.status?.trim().toLowerCase()
+    );
+
 const calculateProgress = (todos: ProjectTodo[]) => {
     if (todos.length === 0) {
         return 0;
@@ -135,7 +145,7 @@ const ProgressOverview: React.FC<
                 (todo) =>
                     !todo.completed &&
                     todo.state !== "CLOSED" &&
-                    todo.status === "In Progress"
+                    isTaskInProgress(todo)
             ).length;
 
         const remainingTodos =
@@ -143,7 +153,7 @@ const ProgressOverview: React.FC<
                 (todo) =>
                     !todo.completed &&
                     todo.state !== "CLOSED" &&
-                    todo.status !== "In Progress"
+                    !isTaskInProgress(todo)
             ).length;
 
         /*
