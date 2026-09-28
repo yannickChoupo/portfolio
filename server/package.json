@@ -9,9 +9,13 @@
     "start": "NODE_OPTIONS=--no-deprecation node dist/index.js",
     "build": "tsc",
     "dev": "nodemon --exec ts-node ./src/index.ts",
-    "dev-local": "nodemon --exec \"ts-node -r dotenv/config ./src/index.ts dotenv_config_path=.env.dev\""
+    "dev-local": "nodemon --exec \"ts-node -r dotenv/config ./src/index.ts dotenv_config_path=.env.dev\"",
+    "seed": "tsx src/database/portfolio/dev_seed.ts",
+    "seed:reset": "tsx src/database/portfolio/dev_seed.ts --reset",
+    "seed:test-data": "tsx src/database/portfolio/dev_seed.ts --test-data"
   },
   "dependencies": {
+    "axios": "^1.20.0",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -36,6 +40,7 @@
     "@types/node": "^26.2.0",
     "nodemon": "^3.0.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.23.13",
     "typescript": "^5.0.0"
   }
 }
