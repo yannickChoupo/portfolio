@@ -204,6 +204,8 @@ Docker Compose is used to orchestrate the services.
 
 ```bash
 docker compose -f docker-compose-dev.yml up -d
+docker compose --env-file env.dev -f docker-compose-dev.yml up -d --build
+docker compose --env-file env.dev -f docker-compose-dev.yml up -d
 ```
 
 ### Production
@@ -259,13 +261,33 @@ docker build -t yannickkloud/portfolio:server-latest ./server
 ```bash
 docker push yannickkloud/portfolio:client-latest
 docker push yannickkloud/portfolio:server-latest
+
+
 ```
+
+├── Seed dummy users
+├── Seed dummy credentials
+├── Seed test game
+├── Implement configurable application time
+├── Implement time simulation
+├── Simulate attendance reminder
+├── Simulate game start
+├── Simulate device unlock
+├── Simulate arrival registration
+├── Simulate task completion
+└── Test complete game lifecycle
+
+
+
 
 ### 3. Deploy on the VPS
 
 ```bash
 docker compose pull
+docker compose --profile portfolio pull
+
 docker compose up -d --force-recreate
+docker compose --profile portfolio up -d --force-recreate
 ```
 
 ### 4. Verify Containers
