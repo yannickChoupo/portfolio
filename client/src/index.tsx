@@ -6,7 +6,7 @@ import './index.css'
 import App from './App.tsx'
 import { Provider } from "react-redux";
 import "./sass/main.scss";
-import { store } from "./store";
+import { store } from "./redux/store.ts";
 
 // const container = document.getElementById('root');
 // if (!container) throw new Error('Failed to find the root element');

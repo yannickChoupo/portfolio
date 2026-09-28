@@ -1,0 +1,837 @@
+// .progress-overview {
+//     width: 100%;
+//     max-width: 1100px;
+//     margin: 0 auto;
+//     padding: 40px 24px 80px;
+// }
+
+// .progress-header {
+//     margin-bottom: 28px;
+// }
+
+// .progress-eyebrow {
+//     display: block;
+//     margin-bottom: 8px;
+//     font-size: 12px;
+//     font-weight: 600;
+//     letter-spacing: 0.12em;
+//     text-transform: uppercase;
+//     opacity: 0.5;
+// }
+
+// .progress-header h2 {
+//     margin: 0;
+//     font-size: 32px;
+//     line-height: 1.15;
+// }
+
+// .progress-header p {
+//     max-width: 650px;
+//     margin: 10px 0 0;
+//     line-height: 1.6;
+//     opacity: 0.65;
+// }
+
+// /* Filters */
+
+// .progress-filters {
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 8px;
+//     margin-bottom: 24px;
+// }
+
+// .filter-button {
+//     border: 1px solid rgba(128, 128, 128, 0.25);
+//     background: transparent;
+//     padding: 8px 16px;
+//     border-radius: 8px;
+//     cursor: pointer;
+//     font: inherit;
+//     transition:
+//         background 0.2s ease,
+//         border-color 0.2s ease,
+//         transform 0.2s ease;
+// }
+
+// .filter-button:hover {
+//     transform: translateY(-1px);
+// }
+
+// .filter-button.active {
+//     background: var(--accent-color, currentColor);
+//     color: white;
+//     border-color: transparent;
+// }
+
+// /* Overall */
+
+// .overall-progress-card {
+//     padding: 24px;
+//     border: 1px solid rgba(128, 128, 128, 0.2);
+//     border-radius: 16px;
+//     margin-bottom: 40px;
+// }
+
+// .overall-progress-top {
+//     display: flex;
+//     align-items: flex-end;
+//     justify-content: space-between;
+//     gap: 24px;
+// }
+
+// .card-label {
+//     display: block;
+//     margin-bottom: 4px;
+//     font-size: 13px;
+//     opacity: 0.55;
+// }
+
+// .overall-progress-top strong {
+//     display: block;
+//     font-size: 42px;
+//     line-height: 1;
+// }
+
+// .progress-stats {
+//     display: flex;
+//     gap: 28px;
+// }
+
+// .progress-stats div {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-end;
+// }
+
+// .progress-stats span {
+//     font-size: 20px;
+//     font-weight: 600;
+// }
+
+// .progress-stats small {
+//     font-size: 12px;
+//     opacity: 0.55;
+// }
+
+// .progress-bar,
+// .requirement-progress {
+//     width: 100%;
+//     height: 7px;
+//     margin-top: 24px;
+//     overflow: hidden;
+//     border-radius: 999px;
+//     background: rgba(128, 128, 128, 0.15);
+// }
+
+// .progress-bar-value,
+// .requirement-progress-value {
+//     height: 100%;
+//     border-radius: inherit;
+//     background: currentColor;
+//     transition: width 0.4s ease;
+// }
+
+// /* Requirements */
+
+// .requirements-header {
+//     margin-bottom: 18px;
+// }
+
+// .requirements-header h3,
+// .gantt-section h3 {
+//     margin: 0;
+//     font-size: 21px;
+// }
+
+// .requirements-header p,
+// .gantt-section p {
+//     margin: 6px 0 0;
+//     font-size: 14px;
+//     opacity: 0.55;
+// }
+
+// .requirements-list {
+//     display: grid;
+//     gap: 14px;
+// }
+
+// .requirement-card {
+//     padding: 22px;
+//     border: 1px solid rgba(128, 128, 128, 0.2);
+//     border-radius: 14px;
+// }
+
+// .requirement-top {
+//     display: flex;
+//     justify-content: space-between;
+//     gap: 20px;
+// }
+
+// .requirement-top h4 {
+//     margin: 0;
+//     font-size: 17px;
+// }
+
+// .requirement-top p {
+//     margin: 5px 0 0;
+//     font-size: 13px;
+//     opacity: 0.55;
+// }
+
+// .requirement-percentage {
+//     flex-shrink: 0;
+//     font-size: 20px;
+//     font-weight: 600;
+// }
+
+// .requirement-progress {
+//     height: 4px;
+//     margin-top: 18px;
+// }
+
+// /* Todos */
+
+// .todo-list {
+//     margin-top: 18px;
+// }
+
+// .todo-row {
+//     display: flex;
+//     align-items: center;
+//     gap: 10px;
+//     padding: 9px 0;
+//     border-top: 1px solid rgba(128, 128, 128, 0.1);
+// }
+
+// .todo-status {
+//     display: flex;
+//     width: 20px;
+//     height: 20px;
+//     align-items: center;
+//     justify-content: center;
+//     border-radius: 50%;
+//     font-size: 13px;
+// }
+
+// .todo-status.done {
+//     background: rgba(0, 160, 80, 0.15);
+// }
+
+// .todo-status.in_progress {
+//     background: rgba(220, 160, 0, 0.15);
+// }
+
+// .todo-status.todo {
+//     background: rgba(128, 128, 128, 0.12);
+// }
+
+// .todo-title {
+//     flex: 1;
+//     font-size: 14px;
+// }
+
+// .todo-repository {
+//     font-size: 11px;
+//     opacity: 0.45;
+//     text-transform: uppercase;
+// }
+
+// /* Gantt */
+
+// .gantt-section {
+//     margin-top: 48px;
+// }
+
+// .gantt-placeholder {
+//     display: flex;
+//     min-height: 220px;
+//     margin-top: 18px;
+//     align-items: center;
+//     justify-content: center;
+//     flex-direction: column;
+//     gap: 6px;
+//     border: 1px dashed rgba(128, 128, 128, 0.3);
+//     border-radius: 14px;
+// }
+
+// .gantt-placeholder span {
+//     font-size: 16px;
+//     font-weight: 600;
+// }
+
+// .gantt-placeholder small {
+//     opacity: 0.5;
+// }
+
+// /* Mobile */
+
+// @media (max-width: 700px) {
+//     .progress-overview {
+//         padding: 28px 16px 60px;
+//     }
+
+//     .progress-header h2 {
+//         font-size: 26px;
+//     }
+
+//     .overall-progress-top {
+//         align-items: flex-start;
+//         flex-direction: column;
+//     }
+
+//     .progress-stats {
+//         width: 100%;
+//         justify-content: space-between;
+//     }
+
+//     .progress-stats div {
+//         align-items: flex-start;
+//     }
+
+//     .todo-repository {
+//         display: none;
+//     }
+// }
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/function" as *;
+@use "../abstracts/breackpoints" as *;
+
+.progress {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* --------------------------------------------------
+   Header
+-------------------------------------------------- */
+
+.progress-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+
+    font-size: 1.5em;
+    line-height: 1em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    opacity: 0.55;
+}
+
+.progress-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.progress-header p {
+    max-width: 650px;
+    margin: 0.6rem 0 0;
+
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    opacity: 0.65;
+}
+
+.progress-percentage {
+    flex-shrink: 0;
+
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+/* --------------------------------------------------
+   Main progress bar
+-------------------------------------------------- */
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: rgba(128, 128, 128, 0.18);
+}
+
+.progress-bar-fill {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: currentColor;
+
+    transition: width 0.4s ease;
+}
+
+/* --------------------------------------------------
+   Repository filters
+-------------------------------------------------- */
+
+.repository-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.repository-filters button {
+    padding: 0.55rem 1rem;
+
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    border-radius: 999px;
+
+    background: transparent;
+    color: inherit;
+
+    font: inherit;
+    font-size: 0.85rem;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.repository-filters button:hover {
+    border-color: rgba(128, 128, 128, 0.5);
+    transform: translateY(-1px);
+}
+
+.repository-filters button.active {
+    background: $def-pri;
+    color: white;
+    border-color: currentColor;
+}
+
+/* --------------------------------------------------
+   Statistics
+-------------------------------------------------- */
+
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+.progress-stat {
+    padding: 1rem 1.2rem;
+
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 12px;
+
+    background: rgba(128, 128, 128, 0.04);
+}
+
+.progress-stat strong {
+    display: block;
+
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.progress-stat span {
+    display: block;
+
+    margin-top: 0.3rem;
+
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* --------------------------------------------------
+   Requirement list
+-------------------------------------------------- */
+
+.requirement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    // .requirement {
+    //     background-color: #4caf50;
+
+    //     .requirement-header {
+    //         display: flex;
+    //         align-items: flex-start;
+    //         justify-content: space-between;
+    //         gap: 1rem;
+            
+    //         .requirement-title {
+                
+    //             .requirement-number {
+    //                 background-color: #ff9800; 
+
+    //             }
+
+    //         }
+
+    //         .requirement-meta {
+
+    //         }
+    //     }
+    // }
+
+
+}
+
+/* --------------------------------------------------
+   Requirement card
+-------------------------------------------------- */
+
+.requirement-card {
+    padding: 1.25rem;
+
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 14px;
+
+    background: rgba(128, 128, 128, 0.035);
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.requirement-card:hover {
+    border-color: rgba(128, 128, 128, 0.4);
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------------
+   Requirement header
+-------------------------------------------------- */
+
+// .requirement-header {
+//     background-color: #ff9800;
+//     // display: flex;
+//     // align-items: flex-start;
+//     // justify-content: space-between;
+//     // gap: 1rem;
+// }
+
+.requirement-header h3 {
+    margin: 0.35rem 0 0;
+
+    font-size: 1.05rem;
+    line-height: 1.3;
+}
+
+.requirement-header p {
+    max-width: 700px;
+    margin: 0.5rem 0 0;
+
+    font-size: 0.85rem;
+    line-height: 1.5;
+
+    opacity: 0.6;
+}
+
+.requirement-header strong {
+    flex-shrink: 0;
+
+    font-size: 1.1rem;
+}
+
+/* --------------------------------------------------
+   Requirement scope
+-------------------------------------------------- */
+
+.requirement-scope {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 0.25rem 0.55rem;
+
+    border-radius: 5px;
+
+    background: rgba(128, 128, 128, 0.12);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    opacity: 0.75;
+}
+
+/* --------------------------------------------------
+   Requirement progress
+-------------------------------------------------- */
+
+.requirement-progress {
+    width: 100%;
+    height: 6px;
+
+    margin-top: 1rem;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: rgba(128, 128, 128, 0.15);
+}
+
+.requirement-progress-fill {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: currentColor;
+
+    transition: width 0.4s ease;
+}
+
+/* --------------------------------------------------
+   Todos
+-------------------------------------------------- */
+
+.requirement-todos {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1rem;
+
+    border-top: 1px solid rgba(128, 128, 128, 0.12);
+}
+
+.requirement-todo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    padding: 0.7rem 0;
+
+    font-size: 0.85rem;
+
+    border-bottom: 1px solid rgba(128, 128, 128, 0.08);
+}
+
+.requirement-todo:last-child {
+    border-bottom: none;
+}
+
+.todo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(128, 128, 128, 0.35);
+    border-radius: 50%;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.todo-icon.done {
+    border-color: currentColor;
+}
+
+.todo-icon.in_progress {
+    border-color: currentColor;
+
+    font-size: 1rem;
+}
+
+.todo-icon.todo {
+    opacity: 0.5;
+}
+
+.no-todos {
+    margin: 0;
+    padding: 1rem 0;
+
+    font-size: 0.8rem;
+
+    opacity: 0.5;
+}
+
+/* --------------------------------------------------
+   Gantt
+-------------------------------------------------- */
+
+.progress-gantt {
+    margin-top: 2rem;
+}
+
+.progress-gantt h3 {
+    margin: 0 0 1rem;
+
+    font-size: 1.1rem;
+}
+
+.gantt-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 220px;
+
+    padding: 2rem;
+
+    border: 1px dashed rgba(128, 128, 128, 0.3);
+    border-radius: 14px;
+
+    font-size: 0.85rem;
+
+    opacity: 0.5;
+}
+
+/* --------------------------------------------------
+   Responsive
+-------------------------------------------------- */
+
+@media (max-width: 800px) {
+    .progress {
+        padding: 1.5rem 0;
+    }
+
+    .progress-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .progress-percentage {
+        font-size: 2rem;
+    }
+
+    .progress-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .progress-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .progress-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+    }
+
+    .progress-stat {
+        padding: 0.8rem;
+    }
+
+    .progress-stat strong {
+        font-size: 1.25rem;
+    }
+
+    .repository-filters {
+        gap: 0.4rem;
+    }
+
+    .repository-filters button {
+        padding: 0.45rem 0.75rem;
+    }
+
+    .requirement-card {
+        padding: 1rem;
+    }
+
+    .requirement-header {
+        background-color: #4caf50;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .requirement-header h3 {
+        font-size: 0.95rem;
+    }
+}
+
+.progress-gantt {
+    margin-top: 4rem;
+
+    h3 {
+        margin-bottom: 0.5rem;
+    }
+
+    >p {
+        margin-bottom: 2rem;
+        opacity: 0.7;
+    }
+}
+
+.gantt-chart {
+    width: 100%;
+    overflow-x: auto;
+
+    svg {
+        display: block;
+        min-width: 800px;
+    }
+
+    .gantt-label {
+        font-size: 0.8rem;
+        fill: $def-pri;
+    }
+
+    .gantt-bar {
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+
+    .gantt-bar-done {
+        fill: #4caf50;
+    }
+
+    .gantt-bar-in_progress {
+        fill: #ff9800;
+    }
+
+    .gantt-bar-todo {
+        fill: #777;
+    }
+
+    .gantt-grid {
+        line {
+            stroke: rgba($def-pri, 0.08);
+        }
+
+        path {
+            stroke: none;
+        }
+    }
+
+    .domain {
+        stroke: rgba($def-pri, 0.25);
+    }
+
+    .tick line {
+        stroke: rgba($def-pri, 0.15);
+    }
+
+    .tick text {
+        fill: $def-pri;
+        font-size: 0.7rem;
+    }
+}

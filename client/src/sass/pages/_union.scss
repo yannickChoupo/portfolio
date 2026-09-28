@@ -1,0 +1,1400 @@
+@use "sass:color";
+@use "../abstracts/variables" as *;
+@use "../abstracts/breackpoints" as *;
+
+// ==================================================
+// UNION PAGE
+// ==================================================
+
+.union {
+  min-height: 100vh;
+
+  font-family: "Montserrat", sans-serif;
+  color: $def-pri;
+
+  * {
+    box-sizing: border-box;
+  }
+
+
+  .back-to-nav {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+
+    text-decoration: none;
+    background: #222;
+    color: white;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.2s ease;
+  }
+
+  .back-to-nav:hover {
+    transform: translateY(-3px);
+  }
+}
+
+// ==================================================
+// OVERVIEW
+// ==================================================
+
+#overview {
+  padding-top: 3rem;
+  border-top: 1px solid rgba($def-pri, 0.15);
+  p {
+    font-size: 1.05rem;
+  }
+
+  &.case-study-section {
+
+    .content-grid {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
+// ==================================================
+// CONTAINER
+// ==================================================
+
+.union-container {
+  width: min(1200px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 6rem 0 10rem;
+}
+
+// ==================================================
+// HERO
+// ==================================================
+
+.union-hero {
+  max-width: 1000px;
+  margin-bottom: 5rem;
+
+  .project-label {
+    margin: 0 0 1.25rem;
+
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    opacity: 0.5;
+  }
+
+  h1 {
+    margin: 0;
+
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+
+    color: $def-pri;
+  }
+
+  .subtitle {
+    max-width: 760px;
+    margin: 2rem 0 0;
+
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.7;
+
+    color: rgba($def-pri, 0.7);
+  }
+
+  // ----------------------------------------------
+  // Project metadata
+  // ----------------------------------------------
+
+  .project-meta {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba($def-pri, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .project-details {
+    display: flex;
+    flex-direction: column;
+    // display: grid;
+    // grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    margin: 0;
+  }
+
+  .project-details>div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+
+    min-width: 0;
+  }
+
+  .project-details strong {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    opacity: 0.5;
+  }
+
+  .project-details span {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  // ----------------------------------------------
+  // Stack tags
+  // ----------------------------------------------
+
+  .stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .stack-tags span {
+    padding: 0.45rem 0.75rem;
+
+    border: 1px solid rgba($def-pri, 0.2);
+    border-radius: 999px;
+
+    font-size: 0.75rem;
+    font-weight: 500;
+
+    color: rgba($def-pri, 0.75);
+  }
+}
+
+// ==================================================
+// NAVIGATION
+// ==================================================
+
+.case-study-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  display: flex;
+  // display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  margin-bottom: 5rem;
+  padding: 0.65rem 0;
+
+  overflow-x: auto;
+
+  border-bottom: 1px solid rgba($def-pri, 0.15);
+  backdrop-filter: blur(10px);
+  scrollbar-width: none;
+
+  strong {
+    margin-bottom: 0.5rem;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  a {
+    flex-shrink: 0;
+    padding: 0.5rem 0.7rem;
+    border-radius: 4px;
+    color: rgba($def-pri, .9);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    white-space: nowrap;
+
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover {
+      color: $def-pri;
+      background-color: rgba($def-pri, 0.06);
+    }
+  }
+}
+
+// ==================================================
+// GENERAL SECTIONS
+// ==================================================
+
+#requirements {
+
+  &.case-study-section {
+
+    .content-grid {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
+#implementation {
+
+  .implementation-section {
+    display: flex;
+    flex-direction: column;
+
+  }
+}
+
+#testing {
+  .content-grid {
+    display: flex;
+    flex-direction: column;
+
+    article {
+      // padding: 1em 0;
+    }
+  }
+}
+
+#decisions {
+  article {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+#current {
+  .current-state {
+    display: flex;
+    flex-direction: column;
+
+    article {
+      // padding: 0
+    }
+  }
+}
+
+#product {
+  .product-feature {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.case-study-section {
+  max-width: 1000px;
+  margin-bottom: 10rem;
+  scroll-margin-top: 5rem;
+
+  .section-number {
+    display: block;
+
+    margin-bottom: 0.75rem;
+
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+
+    opacity: 0.4;
+  }
+
+  h2 {
+    margin: 0 0 2.5rem;
+
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+
+    color: $def-pri;
+  }
+
+  h3 {
+    margin: 3rem 0 1rem;
+
+    font-size: 1.35rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+
+    color: $def-pri;
+  }
+
+  h4 {
+    margin: 0 0 0.75rem;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  p {
+    max-width: 760px;
+    margin: 0 0 1.25rem;
+
+    font-size: 0.95rem;
+    line-height: 1.85;
+
+    color: rgba($def-pri, 0.72);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+
+    color: rgba($def-pri, 0.7);
+
+    li {
+      margin-bottom: 0.55rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+// ==================================================
+// MOTIVATION
+// ==================================================
+
+.motivation {
+  max-width: 1050px;
+
+  >p:first-of-type {
+    max-width: 850px;
+
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    line-height: 1.5;
+    letter-spacing: -0.025em;
+
+    color: $def-pri;
+  }
+
+  .content-grid {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 2.5rem;
+  }
+
+  .content-grid article {
+    padding: 0;
+
+    background: transparent;
+    border: none;
+  }
+
+  h3 {
+    margin-top: 5rem;
+    padding-top: 2rem;
+
+    border-top: 1px solid rgba($def-pri, 0.15);
+  }
+}
+
+// ==================================================
+// CONTENT GRID
+// ==================================================
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+
+  margin-top: 2rem;
+}
+
+.content-grid article {
+  padding: 1.25rem;
+
+  background: rgba($def-pri, 0.04);
+
+  border: 1px solid rgba($def-pri, 0.1);
+
+  h3,
+  h4 {
+    margin-top: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+
+    font-size: 0.9rem;
+  }
+
+  ul {
+    list-style: disc;
+  }
+}
+
+// ==================================================
+// REQUIREMENTS
+// ==================================================
+
+// ==================================================
+// REQUIREMENT LIST
+// ==================================================
+
+.requirement-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+// Individual requirement
+.requirement {
+  width: 100%;
+
+  padding: 1.5rem 0;
+
+  border-top: 1px solid rgba($def-pri, 0.15);
+
+  &:last-child {
+    border-bottom: 1px solid rgba($def-pri, 0.15);
+  }
+}
+
+// --------------------------------------------------
+// Requirement header
+// --------------------------------------------------
+
+.requirement-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: $def-pri;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  &:hover {
+    .requirement-title {
+      opacity: 0.65;
+    }
+  }
+}
+
+.requirement-title {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+  transition: opacity 0.2s ease;
+}
+
+.requirement-number {
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  opacity: 0.4;
+}
+
+.requirement-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+// --------------------------------------------------
+// Requirement meta
+// --------------------------------------------------
+
+.requirement-meta {
+  display: flex;
+  align-items: baseline;
+  // min-width: 0;
+  // margin-top: 2.5rem;
+  // align-items: center;
+  // flex-shrink: 0;
+  // gap: 1rem;
+  // font-size: 0.7rem;
+  // opacity: 0.55;
+}
+
+.requirement-meta span {
+  white-space: nowrap;
+}
+
+// --------------------------------------------------
+// Requirement progress
+// --------------------------------------------------
+
+.requirement-progress {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  flex: 1;
+
+  height: 4px;
+
+  overflow: hidden;
+
+  background: rgba($def-pri, 0.1);
+}
+
+.progress-bar-fill {
+  height: 100%;
+
+  background: $def-pri;
+
+  transition: width 0.3s ease;
+}
+
+.requirement-progress>span {
+  flex-shrink: 0;
+
+  font-size: 0.65rem;
+
+  opacity: 0.5;
+}
+
+// --------------------------------------------------
+// Requirement labels
+// --------------------------------------------------
+
+.requirement-labels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  // margin-top: 1rem;
+}
+
+.requirement-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba($def-pri, 0.15);
+  border-radius: 999px;
+
+  font-size: 0.65rem;
+  font-weight: 500;
+
+  color: rgba($def-pri, 0.65);
+}
+
+// --------------------------------------------------
+// TODOs
+// --------------------------------------------------
+
+.requirement-todos {
+  margin-top: 1.25rem;
+  padding-left: 1.25rem;
+
+  border-left: 1px solid rgba($def-pri, 0.15);
+}
+
+.requirement-todos>p {
+  margin: 0;
+
+  font-size: 0.8rem;
+
+  opacity: 0.5;
+}
+
+.requirement-todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding: 0.75rem 0;
+
+  border-bottom: 1px solid rgba($def-pri, 0.08);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.requirement-todo>div:first-child {
+  min-width: 0;
+}
+
+.todo-number {
+  margin-right: 0.75rem;
+
+  font-size: 0.65rem;
+
+  opacity: 0.4;
+}
+
+.todo-title {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.todo-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  flex-shrink: 0;
+
+  gap: 0.4rem;
+}
+
+.todo-label {
+  padding: 0.3rem 0.55rem;
+
+  border: 1px solid rgba($def-pri, 0.15);
+  border-radius: 999px;
+
+  font-size: 0.6rem;
+
+  color: rgba($def-pri, 0.6);
+}
+
+.todo-status {
+  font-size: 0.65rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  opacity: 0.5;
+}
+
+// --------------------------------------------------
+// Requirement status
+// --------------------------------------------------
+
+.todo-status-finished {
+  opacity: 0.8;
+}
+
+.todo-status-in-progress {
+  opacity: 0.7;
+}
+
+.todo-status-backlog {
+  opacity: 0.45;
+}
+
+.todo-status-planning {
+  opacity: 0.6;
+}
+
+.todo-status-not-in-project {
+  opacity: 0.35;
+}
+
+// ==================================================
+// MOBILE
+// ==================================================
+
+@include breakpoint--small {
+
+  .requirement {
+    padding: 1.25rem 0;
+  }
+
+  .requirement-header {
+    align-items: flex-start;
+
+    gap: 0.75rem;
+  }
+
+  .requirement-title {
+    align-items: flex-start;
+  }
+
+  .requirement-number {
+    // margin-top: 0.2rem;
+  }
+
+  .requirement-header h3 {
+    font-size: 0.9rem;
+  }
+
+  .requirement-meta {
+    // flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+    font-size: 0.6rem;
+  }
+
+  .requirement-progress {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 0.5rem;
+  }
+
+  .progress-bar {
+    width: 100%;
+  }
+
+  .requirement-todos {
+    padding-left: 0.75rem;
+  }
+
+  .requirement-todo {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 0.5rem;
+  }
+
+  .todo-meta {
+    justify-content: flex-start;
+  }
+}
+
+// ==================================================
+// ARCHITECTURE
+// ==================================================
+
+.architecture {
+  max-width: 1100px;
+
+  .architecture-diagram {
+    min-height: 420px;
+    margin: 3rem 0;
+    border: 1px solid rgba($def-pri, 0.15);
+    border-radius: 8px;
+    // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+
+  &.case-study-section {
+
+    .content-grid {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
+#api {
+  &.case-study-section {
+
+    .content-grid {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
+#device {
+  &.case-study-section {
+
+    .content-grid {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
+#lifecycle {
+  &.case-study-section {
+
+    .content-grid {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
+#observability {
+  &.case-study-section {
+
+    .content-grid {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
+#reliability {
+  &.case-study-section {
+
+    .content-grid {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
+#scaling {
+  &.case-study-section {
+
+    .content-grid {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
+// ==================================================
+// TECHNOLOGY STACK
+// ==================================================
+
+.stack {
+  max-width: 1100px;
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 0;
+
+    border: 1px solid rgba($def-pri, 0.15);
+  }
+
+  .stack-grid article {
+    padding: 1.25rem;
+
+    border-right: 1px solid rgba($def-pri, 0.15);
+
+    &:last-child {
+      border-right: none;
+    }
+
+    h3 {
+      margin: 0 0 0.75rem;
+
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    p {
+      margin: 0;
+
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// ==================================================
+// PROGRESS
+// ==================================================
+
+.progress {
+  max-width: 1100px;
+
+  .progress-overview {
+    margin-top: 3rem;
+  }
+
+  .progress-gantt {
+    margin-top: 3rem;
+  }
+}
+
+// ==================================================
+// PROGRESS OVERVIEW
+// ==================================================
+
+.progress-overview {
+  width: 100%;
+}
+
+// ==================================================
+// CURRENT STATE
+// ==================================================
+
+.current {
+  max-width: 1100px;
+
+  .current-state {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 1px;
+
+    margin-top: 3rem;
+
+    border: 1px solid rgba($def-pri, 0.15);
+  }
+
+  .current-state article {
+    padding: 1.25rem;
+
+    border-right: 1px solid rgba($def-pri, 0.15);
+
+    &:last-child {
+      border-right: none;
+    }
+
+    >span {
+      display: inline-block;
+
+      margin-bottom: 1.5rem;
+
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      opacity: 0.45;
+    }
+
+    h3 {
+      margin: 0 0 0.75rem;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+// ==================================================
+// PRODUCT
+// ==================================================
+
+.product {
+  max-width: 1100px;
+
+  .product-feature {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 3rem;
+
+    padding: 2rem 0;
+
+    border-top: 1px solid rgba($def-pri, 0.15);
+
+    &:last-child {
+      border-bottom: 1px solid rgba($def-pri, 0.15);
+    }
+
+    h3 {
+      margin: 0;
+
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin-bottom: 0.9rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ==================================================
+// IMPLEMENTATION
+// ==================================================
+
+.implementation {
+  max-width: 1100px;
+
+  .implementation-section {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 2rem;
+
+    padding: 3rem 0;
+
+    border-top: 1px solid rgba($def-pri, 0.15);
+
+    &:last-child {
+      border-bottom: 1px solid rgba($def-pri, 0.15);
+    }
+
+    h3 {
+      margin: 0;
+
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    p {
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ==================================================
+// TESTING
+// ==================================================
+
+.testing {
+  .content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-grid article {
+    padding: 1.25rem;
+  }
+}
+
+// ==================================================
+// ENGINEERING DECISIONS
+// ==================================================
+
+.decisions {
+  max-width: 1000px;
+
+  >article {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 2rem;
+
+    padding: 2rem 0;
+
+    border-top: 1px solid rgba($def-pri, 0.15);
+
+    &:last-child {
+      border-bottom: 1px solid rgba($def-pri, 0.15);
+    }
+
+    h3 {
+      margin: 0;
+
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+// ==================================================
+// LEARNINGS
+// ==================================================
+
+.learnings {
+  max-width: 850px;
+
+  padding-top: 2rem;
+
+  border-top: 1px solid rgba($def-pri, 0.15);
+
+  p {
+    font-size: 1rem;
+  }
+
+  p:last-child {
+    font-size: 1.1rem;
+
+    color: $def-pri;
+  }
+}
+
+// ==================================================
+// CODE
+// ==================================================
+
+.architecture pre,
+.code-example pre {
+  margin: 2rem 0;
+  padding: 1.5rem;
+
+  overflow-x: auto;
+
+  border-radius: 6px;
+
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+
+  code {
+    font-family: "Courier New", monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    white-space: pre;
+  }
+}
+
+// ==================================================
+// PROJECT LINKS
+// ==================================================
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  margin-top: 2rem;
+
+  a,
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.75rem 1.1rem;
+
+    border: 1px solid $def-pri;
+    border-radius: 5px;
+
+    background: $def-pri;
+    color: white;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background: transparent;
+      color: $def-pri;
+
+      transform: translateY(-1px);
+    }
+  }
+
+  .secondary {
+    background: transparent;
+    color: $def-pri;
+
+    &:hover {
+      background: $def-pri;
+      color: white;
+    }
+  }
+}
+
+// ==================================================
+// SMALL SCREENS
+// ==================================================
+
+@include breakpoint--small {
+
+  .union-container {
+    width: min(100% - 2rem, 700px);
+
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+  }
+
+  // ----------------------------------------------
+  // Hero
+  // ----------------------------------------------
+
+  .union-hero {
+    margin-bottom: 4rem;
+
+    h1 {
+      font-size: clamp(3.5rem, 18vw, 5rem);
+    }
+
+    .subtitle {
+      margin-top: 1.5rem;
+
+      font-size: 1.05rem;
+    }
+
+    .project-meta {
+      margin-top: 2rem;
+    }
+
+    .project-details {
+      grid-template-columns: 1fr;
+
+      gap: 1.25rem;
+    }
+  }
+
+  // ----------------------------------------------
+  // Navigation
+  // ----------------------------------------------
+
+  .case-study-nav {
+    margin-bottom: 4rem;
+  }
+
+  // ----------------------------------------------
+  // Sections
+  // ----------------------------------------------
+
+  .case-study-section {
+    margin-bottom: 7rem;
+
+    h2 {
+      margin-bottom: 2rem;
+
+      font-size: 2.4rem;
+    }
+
+    h3 {
+      // margin-top: 2.5rem;
+    }
+  }
+
+  // ----------------------------------------------
+  // Content grids
+  // ----------------------------------------------
+
+  .content-grid,
+  .testing .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-grid article {
+    border-right: none;
+    border-bottom: 1px solid rgba($def-pri, 0.15);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  // ----------------------------------------------
+  // Stack
+  // ----------------------------------------------
+
+  .stack {
+    .stack-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stack-grid article {
+      border-right: none;
+      border-bottom: 1px solid rgba($def-pri, 0.15);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  // ----------------------------------------------
+  // Current state
+  // ----------------------------------------------
+
+  .current {
+    .current-state {
+      grid-template-columns: 1fr;
+    }
+
+    .current-state article {
+      border-right: none;
+      border-bottom: 1px solid rgba($def-pri, 0.15);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  // ----------------------------------------------
+  // Product
+  // ----------------------------------------------
+
+  .product {
+    .product-feature {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+
+      padding: 2rem 0;
+    }
+  }
+
+  // ----------------------------------------------
+  // Implementation
+  // ----------------------------------------------
+
+  .implementation {
+    .implementation-section {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+
+      padding: 2rem 0;
+    }
+  }
+
+  // ----------------------------------------------
+  // Decisions
+  // ----------------------------------------------
+
+  .decisions {
+    >article {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+
+      padding: 2rem 0;
+    }
+  }
+
+  // ----------------------------------------------
+  // Architecture
+  // ----------------------------------------------
+
+  .architecture {
+    .architecture-diagram {
+      min-height: 300px;
+      margin: 2rem 0;
+    }
+  }
+
+  // ----------------------------------------------
+  // Code
+  // ----------------------------------------------
+
+  .architecture pre,
+  .code-example pre {
+    padding: 1rem;
+
+    code {
+      font-size: 0.75rem;
+    }
+  }
+
+  // ----------------------------------------------
+  // Links
+  // ----------------------------------------------
+
+  .project-links {
+    flex-direction: column;
+
+    a,
+    button {
+      width: 100%;
+    }
+  }
+}

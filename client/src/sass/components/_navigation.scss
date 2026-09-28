@@ -6,8 +6,8 @@
 .navbar {
 	position: relative;
 	isolation: isolate;
-	width: 100%;
-	
+	// width: 100%;
+
 	@include breakpoint--small {
 		// padding: 0 px-to-em(12px) 0 px-to-em(12px);
 	}
@@ -19,19 +19,36 @@
 		align-items: center;
 		position: relative;
 		z-index: 2;
-
-
+		padding: 0 px-to-em(6px);
 		
+		& .logo {
+			text-decoration: none;
+			color: #6002ed;
+			text-decoration: none;
+			color: #6002ed;
+			cursor: pointer;
+
+			@include breakpoint--small {
+				width: fit-content;
+				height: 52px;
+			}
+		}
+
+
+
 		.navbar-link {
-			display: flex;
-			justify-content: center;
-			// width: 80px;
 			height: 36px;
-			display: flex;
 			justify-content: center;
 			align-items: center;
 			cursor: pointer;
 			font-size: 20px;
+
+			&:focus-visible {
+				outline: none !important;
+				// outline: 2px solid $def-pri;
+				// outline-offset: 3px;
+				// border-radius: 4px;
+			}
 		}
 	}
 }

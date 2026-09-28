@@ -54,7 +54,7 @@ const FileMetadata: React.FC = () => {
 
     return (
         <>
-            <div id="file-metadata">
+            <section id="file-metadata" className="page">
                 <div className="api-container">
                     <header>
                         <h1>File Metadata Microservice</h1>
@@ -186,14 +186,13 @@ const FileMetadata: React.FC = () => {
                             </code>
                         </pre>
                     </section>
-''
                     <section className="feedback">
                         <p>
                             This project is part of the <strong>freeCodeCamp Backend Development and APIs</strong> certification.
                         </p>
                     </section>
                 </div>
-            </div>
+            </section>
         </>
     );
 };

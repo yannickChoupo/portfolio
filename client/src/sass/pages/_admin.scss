@@ -1,337 +1,1170 @@
 @use "sass:color";
 @use "../abstracts/variables" as *;
-// @use "../abstracts/mixins";
-// @use "../abstracts/function";
 @use "../abstracts/breackpoints" as *;
 
+// =========================================================
+// Admin
+// =========================================================
+
 #admin {
-  font-family: 'Montserrat', sans-serif;
+  width: 100%;
   min-height: 100vh;
-  margin: 0 auto;
+  box-sizing: border-box;
 
-  .page-container {
-    min-height: 100vh;
-    padding: px-to-em(40px) 0 0 px-to-em(23px);
+  font-family: "Montserrat", sans-serif;
+  color: $def-pri;
 
-    > h2 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: $def-pri;
-    }
+  // =======================================================
+  // Base HTML
+  // =======================================================
 
-    > * {
-      margin-bottom: 2.5rem;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin-top: 0;
   }
 
-  // ----------------------------------------
-  // Shared admin sections
-  // ----------------------------------------
-
-  #summary,
-  #todos,
-  .todoList {
-    padding: 1.5rem;
-    border-radius: 8px;
-    background-color: rgba($def-pri, 0.03);
-  }
-
-  h3 {
-    font-size: 1.8rem;
-    margin: 0 0 1rem;
+  h1,
+  h2,
+  h3,
+  h4 {
     color: $def-pri;
-    border-bottom: 2px solid rgba($def-pri, 0.2);
-    padding-bottom: 0.5rem;
   }
 
-  // ----------------------------------------
-  // Summary
-  // ----------------------------------------
+  p {
+    line-height: 1.6;
+  }
+
+  button {
+    width: auto;
+    padding: 0.7rem 1.1rem;
+
+    border: 2px solid $def-pri;
+    border-radius: 6px;
+
+    background: $def-pri;
+    color: white;
+
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease,
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+
+    &:hover {
+      background: color.adjust(
+        $def-pri,
+        $lightness: -10%
+      );
+
+      border-color: color.adjust(
+        $def-pri,
+        $lightness: -10%
+      );
+
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 4px 10px rgba($def-pri, 0.2);
+    }
+  }
+
+  // =======================================================
+  // Page header
+  // =======================================================
+
+  > header {
+    margin-bottom: 2.5rem;
+
+    h1 {
+      margin-bottom: 0.5rem;
+
+      font-size: 2.5rem;
+      line-height: 1.2;
+    }
+
+    p {
+      max-width: 700px;
+      margin-bottom: 0;
+
+      color: rgba($def-pri, 0.65);
+      font-size: 1rem;
+    }
+  }
+
+  // =======================================================
+  // Loading
+  // =======================================================
+
+  > .admin-loading {
+    margin-bottom: 2rem;
+    padding: 1rem;
+
+    border-radius: 8px;
+    border: 1px solid rgba($def-pri, 0.12);
+
+    background: rgba($def-pri, 0.04);
+
+    color: rgba($def-pri, 0.7);
+    font-size: 0.85rem;
+  }
+
+  // =======================================================
+  // Main sections
+  // =======================================================
+
+  > section {
+    margin-bottom: 2.5rem;
+  }
+
+  // =======================================================
+  // Section headers
+  // =======================================================
+
+  .admin-section-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    h2,
+    h3,
+    h4 {
+      margin-bottom: 0.35rem;
+    }
+
+    p {
+      margin-bottom: 0;
+
+      color: rgba($def-pri, 0.6);
+      font-size: 0.9rem;
+    }
+
+    button {
+      flex-shrink: 0;
+    }
+  }
+
+  // =======================================================
+  // Eyebrow
+  // =======================================================
+
+  .admin-eyebrow {
+    display: block;
+
+    margin-bottom: 0.35rem;
+
+    color: rgba($def-pri, 0.5);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  // =======================================================
+  // Overview
+  //
+  // Expected HTML:
+  //
+  // <section id="summary">
+  //   <h2>...</h2>
+  //   <div class="admin-summary">
+  //     <article class="summary-card">...</article>
+  //   </div>
+  // </section>
+  // =======================================================
 
   #summary {
+    padding: 1.5rem;
+
     border-left: 4px solid $def-pri;
+    border-radius: 10px;
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    background: rgba($def-pri, 0.03);
 
-      li {
-        padding: 0.8rem 1rem;
-        border-radius: 6px;
-        background-color: rgba($def-pri, 0.05);
-        line-height: 1.6;
+    > h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.6rem;
+    }
 
-        strong {
-          color: $def-pri;
+    .admin-summary {
+      display: grid;
+
+      grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+      gap: 1rem;
+    }
+
+    .summary-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      min-height: 100px;
+      padding: 1.25rem;
+
+      box-sizing: border-box;
+
+      border: 1px solid rgba($def-pri, 0.12);
+      border-radius: 8px;
+
+      background: rgba($def-pri, 0.03);
+
+      transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+
+        background: rgba($def-pri, 0.06);
+
+        border-color: rgba($def-pri, 0.25);
+      }
+
+      strong {
+        margin-bottom: 0.4rem;
+
+        color: $def-pri;
+
+        font-size: 2rem;
+        line-height: 1;
+      }
+
+      span {
+        color: rgba($def-pri, 0.65);
+
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // =======================================================
+  // Projects section
+  // =======================================================
+
+  #projects-admin {
+    .admin-section-header {
+      padding-bottom: 1rem;
+
+      border-bottom:
+        2px solid rgba($def-pri, 0.12);
+
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    // -----------------------------------------------------
+    // Project list
+    // -----------------------------------------------------
+
+    .project-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    // -----------------------------------------------------
+    // Project article
+    // -----------------------------------------------------
+
+    article.project-admin-card {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      gap: 1.5rem;
+
+      padding: 1.5rem;
+
+      border: 1px solid rgba($def-pri, 0.12);
+      border-radius: 10px;
+
+      background: rgba($def-pri, 0.025);
+
+      transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+      &:hover,
+      &.active {
+        border-color: rgba($def-pri, 0.3);
+
+        background: rgba($def-pri, 0.05);
+      }
+
+      &.active {
+        box-shadow:
+          0 0 0 2px rgba($def-pri, 0.08);
+      }
+    }
+
+    .project-admin-info {
+      min-width: 0;
+      flex: 1;
+
+      h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      > p {
+        margin-bottom: 1rem;
+
+        color: rgba($def-pri, 0.65);
+      }
+    }
+
+    .project-meta,
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-meta {
+      margin-bottom: 0.75rem;
+
+      span {
+        padding: 0.3rem 0.65rem;
+
+        border-radius: 999px;
+
+        background: rgba($def-pri, 0.08);
+
+        color: $def-pri;
+
+        font-size: 0.7rem;
+        font-weight: 700;
+
+        text-transform: uppercase;
+      }
+    }
+
+    .project-tech {
+      span {
+        padding: 0.3rem 0.6rem;
+
+        border-radius: 4px;
+
+        background: rgba($def-pri, 0.05);
+
+        color: rgba($def-pri, 0.7);
+
+        font-size: 0.75rem;
+      }
+    }
+
+    .project-admin-actions {
+      display: flex;
+      align-items: center;
+
+      gap: 0.5rem;
+      flex-shrink: 0;
+
+      button {
+        padding: 0.55rem 0.8rem;
+
+        background: transparent;
+        color: $def-pri;
+
+        border-width: 1px;
+
+        font-size: 0.75rem;
+
+        &:hover {
+          background: $def-pri;
+          color: white;
         }
       }
     }
   }
 
-  // ----------------------------------------
-  // Todo management
-  // ----------------------------------------
+  // =======================================================
+  // Project manager
+  //
+  // HTML:
+  //
+  // <section id="project-manager">
+  //   <div class="admin-section-header">...</div>
+  //
+  //   <ProjectManager />
+  // </section>
+  // =======================================================
 
-  #todos {
-    background-color: rgba($def-pri, 0.03);
+  #project-manager {
+    padding: 1.5rem;
 
-    .todos {
+    border: 1px solid rgba($def-pri, 0.12);
+    border-radius: 10px;
+
+    background: rgba($def-pri, 0.025);
+
+    // -----------------------------------------------------
+    // Manager content
+    // -----------------------------------------------------
+
+    .project-manager-content {
+      width: 100%;
+    }
+
+    // -----------------------------------------------------
+    // Manager header
+    // -----------------------------------------------------
+
+    .project-manager-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      gap: 2rem;
+
+      padding-bottom: 1.5rem;
       margin-bottom: 1.5rem;
 
-      .header {
+      border-bottom:
+        2px solid rgba($def-pri, 0.12);
+
+      > div:first-child {
+        min-width: 0;
+        flex: 1;
+      }
+
+      h3 {
+        margin-bottom: 0.5rem;
+
+        color: $def-pri;
+
+        font-size: 1.8rem;
+        line-height: 1.2;
+      }
+
+      p {
+        max-width: 800px;
+        margin-bottom: 0;
+
+        color: rgba($def-pri, 0.65);
+        font-size: 0.9rem;
+      }
+    }
+
+    // -----------------------------------------------------
+    // Status
+    // -----------------------------------------------------
+
+    .project-manager-status {
+      flex-shrink: 0;
+
+      span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 32px;
+        padding: 0.4rem 0.8rem;
+
+        border:
+          1px solid rgba($def-pri, 0.2);
+
+        border-radius: 999px;
+
+        background: rgba($def-pri, 0.06);
+
+        color: $def-pri;
+
+        font-size: 0.7rem;
+        font-weight: 700;
+
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    // -----------------------------------------------------
+    // Progress
+    // -----------------------------------------------------
+
+    .project-progress {
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+
+      border:
+        1px solid rgba($def-pri, 0.1);
+
+      border-radius: 8px;
+
+      background: rgba($def-pri, 0.025);
+    }
+
+    .project-progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      margin-bottom: 0.75rem;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      strong {
+        color: $def-pri;
+        font-size: 0.9rem;
+      }
+
+      span {
+        color: rgba($def-pri, 0.55);
+        font-size: 0.75rem;
+      }
+
+      > strong {
+        font-size: 1.1rem;
+      }
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+
+      overflow: hidden;
+
+      border-radius: 999px;
+
+      background: rgba($def-pri, 0.1);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+
+      border-radius: inherit;
+
+      background: $def-pri;
+
+      transition: width 0.4s ease;
+    }
+
+    // -----------------------------------------------------
+    // Requirement summary
+    // -----------------------------------------------------
+
+    .requirement-summary {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 1rem;
+
+      margin-bottom: 2rem;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        padding: 1.25rem;
+
+        border:
+          1px solid rgba($def-pri, 0.1);
+
+        border-radius: 8px;
+
+        background: rgba($def-pri, 0.025);
+      }
+
+      strong {
+        margin-bottom: 0.35rem;
+
+        color: $def-pri;
+
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      span {
+        color: rgba($def-pri, 0.6);
+
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+    }
+
+    // -----------------------------------------------------
+    // Requirements
+    // -----------------------------------------------------
+
+    .project-requirements {
+      margin-top: 2rem;
+
+      > .admin-section-header {
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+
+        border-bottom:
+          2px solid rgba($def-pri, 0.12);
+
+        h3 {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  // =======================================================
+  // Requirements
+  // =======================================================
+
+  .requirement-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .requirement-card {
+    padding: 1rem;
+
+    border:
+      1px solid rgba($def-pri, 0.12);
+
+    border-radius: 8px;
+
+    background: rgba($def-pri, 0.02);
+  }
+
+  .requirement-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .requirement-toggle {
+    display: flex;
+    align-items: center;
+
+    flex: 1;
+    gap: 0.75rem;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+    color: inherit;
+
+    text-align: left;
+
+    box-shadow: none;
+
+    &:hover {
+      background: transparent;
+      color: inherit;
+      transform: none;
+      box-shadow: none;
+    }
+
+    > span {
+      width: 1rem;
+
+      color: $def-pri;
+
+      font-size: 1.1rem;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    strong {
+      color: $def-pri;
+      font-size: 0.95rem;
+    }
+
+    small {
+      color: rgba($def-pri, 0.5);
+
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+  }
+
+  .requirement-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    flex-shrink: 0;
+
+    span {
+      color: $def-pri;
+
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    button {
+      padding: 0.55rem 0.8rem;
+
+      border-width: 1px;
+
+      background: transparent;
+      color: $def-pri;
+
+      font-size: 0.75rem;
+
+      &:hover {
+        background: $def-pri;
+        color: white;
+      }
+    }
+  }
+
+  .requirement-progress {
+    height: 5px;
+
+    margin-top: 0.8rem;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: rgba($def-pri, 0.08);
+  }
+
+  .requirement-progress-bar {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: $def-pri;
+
+    transition: width 0.3s ease;
+  }
+
+  .requirement-description {
+    margin: 0.9rem 0 0;
+
+    color: rgba($def-pri, 0.6);
+
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  // =======================================================
+  // Requirement todos
+  // =======================================================
+
+  .requirement-todos {
+    margin-top: 1rem;
+    padding: 1rem;
+
+    border-radius: 8px;
+
+    background: rgba($def-pri, 0.025);
+
+    .admin-section-header {
+      margin-bottom: 1rem;
+
+      h4 {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .requirement-todo-content {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr) 380px;
+
+    gap: 1.5rem;
+
+    align-items: start;
+  }
+
+  .requirement-todo-list {
+    display: grid;
+
+    gap: 0.6rem;
+
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+  }
+
+  .todo-admin-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    padding: 0.8rem;
+
+    border:
+      1px solid rgba($def-pri, 0.1);
+
+    border-radius: 6px;
+
+    background: rgba($def-pri, 0.02);
+  }
+
+  .todo-admin-info {
+    min-width: 0;
+    flex: 1;
+
+    .todo-status {
+      display: inline-block;
+
+      margin-right: 0.6rem;
+
+      color: $def-pri;
+
+      font-size: 0.65rem;
+      font-weight: 700;
+
+      text-transform: uppercase;
+    }
+
+    strong {
+      color: $def-pri;
+      font-size: 0.85rem;
+    }
+
+    p {
+      margin: 0.35rem 0 0;
+
+      color: rgba($def-pri, 0.55);
+
+      font-size: 0.75rem;
+    }
+  }
+
+  .todo-admin-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    flex-shrink: 0;
+
+    button {
+      padding: 0.55rem 0.8rem;
+
+      border-width: 1px;
+
+      background: transparent;
+      color: $def-pri;
+
+      font-size: 0.75rem;
+
+      &:hover {
+        background: $def-pri;
+        color: white;
+      }
+    }
+  }
+
+  // =======================================================
+  // Forms
+  // =======================================================
+
+  .project-form,
+  .requirement-form,
+  .todo-form {
+    width: 100%;
+
+    display: grid;
+
+    gap: 1rem;
+
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+
+    box-sizing: border-box;
+
+    border-left:
+      4px solid $def-pri;
+
+    border-radius: 8px;
+
+    background: rgba($def-pri, 0.04);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.45rem;
+
+    label {
+      color: $def-pri;
+
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+
+      box-sizing: border-box;
+
+      padding: 0.75rem;
+
+      border:
+        1px solid rgba($def-pri, 0.2);
+
+      border-radius: 6px;
+
+      outline: none;
+
+      background: transparent;
+      color: inherit;
+
+      font-family: inherit;
+      font-size: 0.9rem;
+
+      transition:
+        border-color 0.2s ease;
+
+      &:focus {
+        border-color: $def-pri;
+      }
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    small {
+      color: rgba($def-pri, 0.5);
+      font-size: 0.75rem;
+    }
+
+    &.checkbox {
+      flex-direction: row;
+      align-items: center;
+
+      label {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+
+        gap: 0.5rem;
+
+        cursor: pointer;
+      }
+
+      input {
+        width: auto;
+      }
+    }
+  }
+
+  .btn-group {
+    display: flex;
+
+    gap: 0.75rem;
+
+    margin-top: 0.5rem;
+
+    button:first-child {
+      background: transparent;
+      color: $def-pri;
+
+      &:hover {
+        background: $def-pri;
+        color: white;
+      }
+    }
+  }
+
+  // =======================================================
+  // Empty states
+  // =======================================================
+
+  .admin-empty-state {
+    padding: 2.5rem 1.5rem;
+
+    border:
+      1px dashed rgba($def-pri, 0.2);
+
+    border-radius: 8px;
+
+    background: rgba($def-pri, 0.02);
+
+    text-align: center;
+
+    h3,
+    h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 0;
+
+      color: rgba($def-pri, 0.6);
+
+      font-size: 0.85rem;
+    }
+
+    button {
+      margin-top: 1rem;
+    }
+  }
+
+  // =======================================================
+  // Mobile
+  // =======================================================
+
+  @include breakpoint--small {
+
+    padding: 1.25rem;
+
+    > header {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    #summary {
+      padding: 1rem;
+
+      .admin-summary {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .admin-section-header {
+      flex-direction: column;
+      align-items: stretch;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    #projects-admin {
+      article.project-admin-card {
+        flex-direction: column;
+
+        padding: 1rem;
+      }
+
+      .project-admin-actions {
+        width: 100%;
+
+        button {
+          flex: 1;
+        }
+      }
+    }
+
+    #project-manager {
+      padding: 1rem;
+
+      .project-manager-header {
+        flex-direction: column;
+
         gap: 1rem;
 
         h3 {
-          flex: 1;
-          margin-bottom: 0;
-        }
-
-        button {
-          padding: 0.7rem 1.2rem;
-          background-color: $def-pri;
-          color: white;
-          border: none;
-          border-radius: 6px;
-          font-size: 0.95rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s;
-
-          &:hover {
-            background-color: color.adjust(
-              $def-pri,
-              $lightness: -10%
-            );
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba($def-pri, 0.25);
-          }
+          font-size: 1.5rem;
         }
       }
-    }
 
-    // ----------------------------------------
-    // Add/edit form
-    // ----------------------------------------
-
-    .form {
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      border-radius: 8px;
-      background-color: rgba($def-pri, 0.05);
-      border-left: 4px solid $def-pri;
-
-      > * {
-        margin-bottom: 1rem;
-      }
-
-      > *:last-child {
-        margin-bottom: 0;
-      }
-
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+      .project-manager-status {
         width: 100%;
 
-        label {
-          color: $def-pri;
-          font-weight: 600;
-          font-size: 0.9rem;
-        }
-
-        input {
+        span {
           width: 100%;
           box-sizing: border-box;
-          padding: 0.8rem;
-          border: 2px solid rgba($def-pri, 0.3);
-          border-radius: 6px;
-          background-color: transparent;
-          color: inherit;
-          font-size: 1rem;
-          font-family: inherit;
-          transition: border-color 0.3s;
-
-          &:focus {
-            outline: none;
-            border-color: $def-pri;
-          }
-
-          &::placeholder {
-            color: rgba($def-pri, 0.4);
-          }
         }
       }
 
-      .btn-group {
-        display: flex;
-        gap: 0.75rem;
-        margin-top: 1.5rem;
-
-        button {
-          padding: 0.7rem 1.2rem;
-          border-radius: 6px;
-          font-size: 0.9rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s;
-          text-transform: uppercase;
-
-          &.todo-cancel {
-            background-color: transparent;
-            color: $def-pri;
-            border: 2px solid $def-pri;
-
-            &:hover {
-              background-color: $def-pri;
-              color: white;
-            }
-          }
-
-          &.todo-edit {
-            background-color: $def-pri;
-            color: white;
-            border: 2px solid $def-pri;
-
-            &:hover {
-              background-color: color.adjust(
-                $def-pri,
-                $lightness: -10%
-              );
-              transform: translateY(-2px);
-              box-shadow: 0 4px 8px rgba($def-pri, 0.25);
-            }
-          }
-        }
-      }
-    }
-  }
-
-  // ----------------------------------------
-  // Todo list
-  // ----------------------------------------
-
-  .todoList {
-    margin-top: 1.5rem;
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-
-      li {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 0.8rem;
+      .project-progress {
         padding: 1rem;
-        border: 1px solid rgba($def-pri, 0.15);
-        border-radius: 8px;
-        background-color: rgba($def-pri, 0.02);
-        transition: all 0.3s;
+      }
 
-        &:last-child {
-          margin-bottom: 0;
-        }
+      .project-progress-header {
+        align-items: flex-start;
 
-        &:hover {
-          background-color: rgba($def-pri, 0.06);
-          border-color: rgba($def-pri, 0.3);
-        }
-
-        div {
-          flex: 1;
-          width: auto;
-          padding: 0;
-
-          &:first-child {
-            font-weight: 600;
-            color: $def-pri;
-          }
-        }
-
-        button {
-          width: fit-content;
-          padding: 0.6rem 1rem;
-          border: 2px solid $def-pri;
-          background-color: transparent;
-          color: $def-pri;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: all 0.3s;
-
-          &:hover {
-            background-color: $def-pri;
-            color: white;
-            transform: translateY(-2px);
-          }
+        > strong {
+          font-size: 1rem;
         }
       }
-    }
-  }
 
-  // ----------------------------------------
-  // Responsive
-  // ----------------------------------------
+      .requirement-summary {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
 
-  @include breakpoint--small {
-    .page-container {
-      padding: 2rem 1rem;
-    }
-
-    .page-container > h2 {
-      text-align: center;
-      font-size: 2rem;
-    }
-
-    #summary,
-    #todos,
-    .todoList {
-      padding: 1rem;
-    }
-
-    h3 {
-      font-size: 1.5rem;
-    }
-
-    #todos {
-      .todos {
-        .header {
-          align-items: flex-start;
-
-          h3 {
-            font-size: 1.5rem;
-          }
-
-          button {
-            flex-shrink: 0;
-          }
-        }
-
-        .form {
-          padding: 1rem;
+        > div:last-child {
+          grid-column: 1 / -1;
         }
       }
     }
 
-    .todoList {
-      ul {
-        li {
-          flex-direction: column;
-          align-items: stretch;
+    .requirement-todo-content {
+      grid-template-columns: 1fr;
 
-          div {
-            width: 100%;
-          }
+      .todo-form {
+        position: static;
+      }
+    }
 
-          button {
-            width: 100%;
-          }
-        }
+    .requirement-header {
+      align-items: flex-start;
+    }
+
+    .requirement-actions {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+
+      span {
+        width: 100%;
+        text-align: right;
+      }
+    }
+
+    .todo-admin-item {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .todo-admin-actions {
+      width: 100%;
+
+      button {
+        flex: 1;
       }
     }
 

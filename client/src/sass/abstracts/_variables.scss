@@ -1,25 +1,72 @@
+// $levels: (
+//         0dp: rgba(0,0,0,0),
+//         1dp: rgba(0,0,0,0.05),
+//         2dp: rgba(0,0,0,0.07),
+//         3dp: rgba(0,0,0,0.08),
+//         4dp: rgba(0,0,0,0.09),
+//         6dp: rgba(0,0,0,0.11),
+//         8dp: rgba(0,0,0,0.12),
+//         12dp: rgba(0,0,0,0.14),
+//         16dp: rgba(0,0,0,0.15),
+//         24dp: rgba(0,0,0,0.16),
+// );
+
+// $box-shadow: 0 2px 1px rgba(0,0,0,.125);
+
+// $def-pri: hsl(264, 98%, 47%); // primary main 600
+// $def-sec: hsl(294, 98%, 47%);
+
+// $color--white: #fff;
+// $color--dark: black;
+// $color-text-dark: black;
+
+// $bg-color--dark: #000000;
+// // $bg-color--dark: #121212;
+// // $bg-color--dark: #0d1117;               // rgba(13, 17, 23, 1)
+// $bg-color--white: white;
+
+
 $levels: (
-        0dp: rgba(0,0,0,0),
-        1dp: rgba(0,0,0,0.05),
-        2dp: rgba(0,0,0,0.07),
-        3dp: rgba(0,0,0,0.08),
-        4dp: rgba(0,0,0,0.09),
-        6dp: rgba(0,0,0,0.11),
-        8dp: rgba(0,0,0,0.12),
-        12dp: rgba(0,0,0,0.14),
-        16dp: rgba(0,0,0,0.15),
-        24dp: rgba(0,0,0,0.16),
+	0dp: rgba(0, 0, 0, 0),
+	1dp: rgba(0, 0, 0, 0.05),
+	2dp: rgba(0, 0, 0, 0.07),
+	3dp: rgba(0, 0, 0, 0.08),
+	4dp: rgba(0, 0, 0, 0.09),
+	6dp: rgba(0, 0, 0, 0.11),
+	8dp: rgba(0, 0, 0, 0.12),
+	12dp: rgba(0, 0, 0, 0.14),
+	16dp: rgba(0, 0, 0, 0.15),
+	24dp: rgba(0, 0, 0, 0.16),
 );
 
-$box-shadow: 0 2px 1px rgba(0,0,0,.125);
+$box-shadow: 0 2px 1px rgba(0, 0, 0, 0.125);
 
-$def-pri: hsl(264, 98%, 47%); // primary main 600
+$def-pri: hsl(264, 98%, 47%);
 $def-sec: hsl(294, 98%, 47%);
 
 $color--white: #fff;
-$color--dark: black;
-$color-text-dark: black;
+$color--dark: #000;
 
-//$bg-color--dark: #121212;
-$bg-color--dark: #0d1117;               // rgba(13, 17, 23, 1)
-$bg-color--white: white;
+$color-text-dark: #000;
+
+$bg-color--dark: #000;
+$bg-color--white: #fff;
+
+
+// ============================================================
+// Accessibility / semantic colors
+// ============================================================
+
+$color-text-light: $color--white;
+
+$color-text-muted-dark: rgba(0, 0, 0, 0.70);
+$color-text-muted-light: rgba(255, 255, 255, 0.70);
+
+$color-border-dark: rgba(0, 0, 0, 0.16);
+$color-border-light: rgba(255, 255, 255, 0.20);
+
+$color-focus: $def-pri;
+
+$color-error: #b00020;
+$color-success: #087f23;
+$color-warning: #8a5a00;
