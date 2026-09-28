@@ -22,9 +22,17 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true,
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error(`CORS blocked origin: ${origin}`));
+        }
+    },
+    credentials: true
 }));
+
+app.options("*", cors());
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,12 +50,10 @@ const database = process.env.MONGO_DATABASE || "portfolio_db_dev";
 
 
 const mongoUri =
-    process.env.MONGO_URI ||
-    (
-        process.env.NODE_ENV === "production"
-            ? `mongodb+srv://${username}:${password}@${host}/${database}?retryWrites=true&w=majority&appName=Cluster0`
-            : `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`
-    );
+    process.env.NODE_ENV === "production"
+        ? `mongodb+srv://${username}:${password}@${host}/${database}?retryWrites=true&w=majority&appName=Cluster0`
+        : `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`;
+
 /* -------------------------------------------------------------------------- */
 /* Routes                                                                     */
 /* -------------------------------------------------------------------------- */
@@ -55,7 +61,7 @@ import timestampRouter from './modules/timestamp/timestamp.routes';
 import excerciseRouter from "./modules/exercise/excercise.routes";
 import whoiamRouter from "./modules/reqHeaderParser/reqHeaderParser";
 import shortUrlRouter from "./modules/urlShortener/shortUrl.routes";
-import todosRouter from "./modules/todo/todo";
+import todosRouter from "./modules/todo/todo.routes";
 import sessionRouter from "./modules/session/session";
 import contactRouter from "./modules/contact/contact.routes";
 import fileMetaRouter from "./modules/fileMetaData/fileMetaData";
@@ -63,6 +69,10 @@ import projectRoutes from "./modules/project/project.routes";
 import visitorRoutes from "./modules/visitor/visitor.routes";
 import { errorHandler } from "./middleware/error.middleware";
 import { notFound } from "./middleware/notFound";
+import path from "node:path";
+import requirementRoutes from "./modules/requirement/requirement.routes";
+// import { seedUnion } from "./database/portfolio/dev_seed";
+// import { seedUnion } from "./db/seed";
 
 app.use("/api/timestamp", timestampRouter);
 app.use("/api/whoiam", whoiamRouter);
@@ -74,6 +84,10 @@ app.use("/api/filemeta", fileMetaRouter);
 app.use("/api/contact", contactRouter);
 app.use("/api/projects", projectRoutes);
 app.use("/api/visitor", visitorRoutes);
+app.use(
+    "/api/requirements",
+    requirementRoutes
+);
 
 app.get("/health", (_req: Request, res: Response) => {
     const mongoState = mongoose.connection.readyState;
@@ -111,6 +125,25 @@ app.get("/", (_req: Request, res: Response) => {
     res.send("Yannick Njilo Portfolio backend");
 });
 
+
+app.get("/readme", (_req, res) => {
+    const readmePath = path.join(__dirname, "../UNION_README.md");
+
+    res.sendFile(readmePath, (err) => {
+        if (err) {
+            console.error("[README] Failed to send README:", err);
+
+            if (!res.headersSent) {
+                res.status(500).json({
+                    error: "Failed to load README",
+                });
+            }
+
+            return;
+        }
+    });
+});
+
 app.use(errorHandler);
 app.use(notFound);
 
@@ -132,6 +165,11 @@ const startServer = async () => {
             }
         );
         console.info("MongoDB Connected");
+
+        // await seedUnion();
+        // await seedUnionRequirements();
+
+
         app.listen(PORT, "0.0.0.0", () => {
             console.info(`Server is running on port : ${PORT}`);
         });
