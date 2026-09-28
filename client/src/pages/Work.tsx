@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-interface Project {
+type ExperienceType = "Professional" | "Academic" | "Personal";
+
+interface Experience {
+    id: string;
     name: string;
-    techStack: string[];
+    type: ExperienceType;
     description: string;
+    techStack: string[];
     status: string;
     link?: string;
-    use: (techStack: string[], tech: string) => boolean;
 }
 
 interface Category {
-    name: string;
-    techStack: string[];
-    active?: boolean;
+    name: ExperienceType;
+    active: boolean;
 }
 
 interface TechStack {
@@ -21,473 +23,482 @@ interface TechStack {
     active: boolean;
 }
 
-const Projects: Project[] = [
+const Categories: Category[] = [
     {
-        name: "Calculator",
-        techStack: ["HTML", "Javascript", "SCSS", "React"],
-        description: "calculate",
-        status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
+        name: "Professional",
+        active: true
+    },
+    {
+        name: "Academic",
+        active: false
+    },
+    {
+        name: "Personal",
+        active: false
+    }
+];
+
+const Experiences: Experience[] = [
+    {
+        id: "aonic-spfx",
+        name: "SharePoint / SPFx Development",
+        type: "Professional",
+        description: "Development of SharePoint solutions and backend services.",
+        techStack: [
+            "SPFx",
+            "SharePoint",
+            "React",
+            "TypeScript",
+            "Azure"
+        ],
+        status: "not-available"
+    },
+
+    {
+        id: "syngenio-assessment",
+        name: "Software Assessment Application",
+        type: "Professional",
+        description: "Web application with React frontend and Java/Spring Boot backend.",
+        techStack: [
+            "Java",
+            "Spring Boot",
+            "REST APIs",
+            "React",
+            "SQL"
+        ],
+        status: "not-available"
+    },
+
+    {
+        id: "vacuum-cleaner",
+        name: "Vacuum Cleaner Navigation",
+        type: "Academic",
+        description: "University project focusing on C++ and software engineering.",
+        techStack: [
+            "C++",
+            "OOP",
+            "UML",
+            "Software Engineering"
+        ],
+        status: "not-available"
+    },
+
+    {
+        id: "iot-attendance",
+        name: "IoT Attendance System",
+        type: "Personal",
+        description: "IoT-based attendance system using ESP32, Flutter and a REST backend.",
+        techStack: [
+            "Flutter",
+            "Express.js",
+            "ESP32",
+            "REST APIs",
+            "Docker",
+            "NFC",
+            "Bluetooth",
+            "RC522",
+            "RFID",
+            "SD Card",
+            "Prisma",
+            "Authentication",
+            "Authorization"
+        ],
+        status: "available"
     },
     {
         name: "Quote",
+        type: "Personal",
+        id: "Quote",
         techStack: ["Javascript", "Ajax", "React", "SCSS"],
         description: "Generate a Random Quote onclick",
         status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "Timer",
-        techStack: ["Javascript", "React", "HTML", "SCSS", "Ajax"],
-        description: "set a timer with Break Time an ring tone at the end of the time",
-        status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
     },
     {
         name: "BarChart",
+        id: "BarChart",
+        type: "Personal",
         techStack: ["Javascript", "D3", "Ajax", "React", "HTML"],
         description: "calculate",
-        status: "not available",
         link: "/dataviz/BarChart",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
+        status: "available",
+    },
+    {
+        name: "Timer",
+        id: "Timer",
+        type: "Personal",
+        techStack: ["Javascript", "React", "HTML", "SCSS", "Ajax"],
+        description: "set a timer with Break Time an ring tone at the end of the time",
+        status: "available",
     },
     {
         name: "ScatterPlot",
+        id: "ScatterPlot",
+        type: "Personal",
         techStack: ["Javascript", "D3", "HTML", "React"],
         description: "description...",
-        status: "available",
+        status: "not-available",
         link: "/dataviz/ScatterPlot",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
     },
     {
         name: "Timestamp",
+        id: "Timestamp",
+        type: "Personal",
         techStack: ["Express"],
         description: "Timestamp Microservice - Convert dates between Unix timestamp and UTC ISO-8601 formats. FreeCodeCamp API certification project.",
         status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
     },
-    {
-        name: "Heatmap",
-        techStack: ["Javascript", "Ajax", "React"],
-        description: "Description .....",
-        status: "available",
-        link: "/dataviz/Heatmap",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "MarkDownPreviewer",
-        techStack: ["Javascript", "HTML", "SCSS", "React"],
-        description: "Markdown Previewer - Live markdown editor with real-time preview using marked.js. Supports code blocks, tables, lists, and more.",
-        status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
+    // {
+    //     name: "Heatmap",
+    //     id: "Heatmap",
+    //     type: "Personal",
+    //     techStack: ["Javascript", "Ajax", "React"],
+    //     description: "Description .....",
+    //     status: "available",
+    //     link: "/dataviz/Heatmap",
+    // },
     {
         name: "Choroploth",
+        id: "Choroploth",
+        type: "Personal",
         techStack: ["Javascript", "Ajax", "D3"],
         description: "Description .....",
         status: "available",
         link: "/dataviz/Choroploth",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "Treemap",
-        techStack: ["Javascript", "Ajax", "D3"],
-        description: "Description .....",
-        status: "available",
-        link: "/dataviz/Treemap",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
     },
     {
         name: "TributePage",
+        id: "TributePage",
+        type: "Personal",
         techStack: ["Javascript", "Ajax", "React"],
         description: "Description .....",
         status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "Shapes",
-        techStack: ["Javascript", "SCSS", "Ajax", "React"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "Survey",
-        techStack: ["Javascript", "Ajax", "SCSS", "PHP"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "PalindromeChecker",
-        techStack: ["Javascript", "SCSS"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "CashRegister",
-        techStack: ["Javascript", "SCSS"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "CaeserCypher",
-        techStack: ["Javascript", "SCSS"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "Ito1Converter",
-        techStack: ["Javascript", "SCSS"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "TelephoneNumberValidator",
-        techStack: ["Javascript", "SCSS"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "DrumMachine",
-        techStack: ["Javascript", "Ajax", "React"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "RequestHeaderParser",
-        techStack: ["Express"],
-        description: "Request Header Parser Microservice - Parse HTTP request headers to extract client IP, language, and software information. FreeCodeCamp API certification project.",
-        status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
     },
     {
         name: "URLShortener",
+        id: "URLShortener",
+        type: "Personal",
         techStack: ["Express", "MongoDB"],
         description: "URL Shortener Microservice - Create short URLs that redirect to original long URLs. Includes URL validation and database storage. FreeCodeCamp API certification project.",
         status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
     },
     {
         name: "FileMetadata",
+        id: "FileMetadata",
+        type: "Personal",
         techStack: ["Express", "Multer"],
         description: "File Metadata Microservice - Upload files and receive metadata including file name, type, and size. Uses multer for file handling. FreeCodeCamp API certification project.",
         status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
     },
     {
         name: "ExerciseTracker",
+        id: "ExerciseTracker",
+        type: "Personal",
         techStack: ["Express", "MongoDB"],
         description: "Exercise Tracker Microservice - Create users, add exercises, and retrieve exercise logs. Full CRUD functionality with MongoDB. FreeCodeCamp API certification project.",
         status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
     },
-    {
-        name: "TodoManager",
-        techStack: ["Express", "MongoDB"],
-        description: "Todo Manager API - Create, read, update, and delete tasks with full CRUD functionality. Manage your tasks with MongoDB storage.",
-        status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "ArithmetixFormater",
-        techStack: ["Python", "Express"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "TimeCalculator",
-        techStack: ["Express", "Python"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "BudjetApp",
-        techStack: ["Express", "Python"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "PolygonAreaCalculator",
-        techStack: ["Express", "Python"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "ProbalityCalculator",
-        techStack: ["Javascript", "Ajax", "React"],
-        description: "Description .....",
-        status: "not available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-    {
-        name: "ProjectArchitecture",
-        techStack: ["Docker"],
-        description: "Description .....",
-        status: "available",
-        use: (techStack, tech) => {
-            return techStack.some(elem => elem === tech);
-        }
-    },
-]
+];
 
-const Categories: Category[] = [
-    {
-        name: "Frontend",
-        techStack: ["HTML", "SCSS/CSS", "Javascript", "React", "Bootstrap",]
-    },
-    {
-        name: "Backend",
-        techStack: ["Express", "PHP", "SQL", "MySQL", "MongoDB", "Python", "Django"]
-    },
-    {
-        name: "Devops",
-        techStack: ["Docker", "Kubernetes", "Git"]
-    },
-    {
-        name: "IOT",
-        techStack: ["C/C++", "Esp-idf", "Arduino"]
-    }
-]
+const DEFAULT_EXPERIENCES: ExperienceType[] = [
+    "Personal",
+];
 
 const Works: React.FC = () => {
-    const [curCategories, setcurCategories] = useState<Category[]>(Categories);
-    const [curStack, setCurStack] = useState<TechStack[]>([])
-    
-    useEffect(() => {
-        let newStackList: TechStack[] = [];
-        Categories.forEach((projectItem, idx) => {
-            projectItem.techStack.forEach((tech) => {
-                if (idx === 0) {
-                    newStackList.push({ tech: tech, active: true })
-                } else {
-                    newStackList.push({ tech: tech, active: false })
-                }
-            })
-        })
-        setCurStack(newStackList);
+    const [curCategories, setCurCategories] =
+        useState<Category[]>(
+            Categories.map(category => ({
+                ...category,
+                active: DEFAULT_EXPERIENCES.includes(
+                    category.name
+                )
+            }))
+        );
 
-        const newCategoriesList = Categories.map((item, idx) => {
-            return {
-                ...item,
-                active: idx === 0
-            }
-        })
-        setcurCategories(newCategoriesList);
+    const [curStack, setCurStack] =
+        useState<TechStack[]>([]);
+
+    useEffect(() => {
+        const allTechnologies = Array.from(
+            new Set(
+                Experiences.flatMap(
+                    experience => experience.techStack
+                )
+            )
+        );
+
+        setCurStack(
+            allTechnologies.map(tech => ({
+                tech,
+                active: Experiences.some(
+                    experience =>
+                        DEFAULT_EXPERIENCES.includes(
+                            experience.type
+                        ) &&
+                        experience.techStack.includes(tech)
+                )
+            }))
+        );
     }, []);
 
-    const updateStack = (categories: Category[]): void => {
-        let newStackList: TechStack[] = [];
-        categories.forEach((curItem) => {
-            const { techStack, active } = curItem;
-            if (active) {
-                techStack.forEach((tech) => {
-                    newStackList.push({ tech: tech, active: true })
-                })
-            } else {
-                techStack.forEach((tech) => {
-                    newStackList.push({ tech: tech, active: false })
-                })
-            }
-        })
-        setCurStack(newStackList);
-    }
+    /*
+     * Category selection
+     */
+    const handleCategoryChange = (
+        e: React.MouseEvent<HTMLLIElement>
+    ): void => {
+        const categoryName =
+            e.currentTarget.id as ExperienceType;
 
-    const updateCategories = (stack: TechStack[]): void => {
-        const activeStack = stack.filter(({ active }) => active);
-        const activeStacks = activeStack.map(item => item.tech);
+        const category = curCategories.find(
+            category => category.name === categoryName
+        );
 
-        const newCategoriesList = Categories.map((curItem) => {
-            const { techStack } = curItem;
-            let match = false;
-            techStack.forEach(item => {
-                if (activeStacks.some(elem => elem === item)) {
-                    match = true;
-                }
+        if (!category) return;
+
+        const newActive = !category.active;
+
+        // Update Experience
+        setCurCategories(current =>
+            current.map(category => ({
+                ...category,
+                active:
+                    category.name === categoryName
+                        ? newActive
+                        : category.active
+            }))
+        );
+
+        // If Experience is activated,
+        // activate all technologies belonging to it.
+        if (newActive) {
+            const matchingTechs = new Set(
+                Experiences
+                    .filter(
+                        experience =>
+                            experience.type === categoryName
+                    )
+                    .flatMap(
+                        experience => experience.techStack
+                    )
+            );
+
+            setCurStack(current =>
+                current.map(stack => ({
+                    ...stack,
+                    active:
+                        matchingTechs.has(stack.tech)
+                            ? true
+                            : stack.active
+                }))
+            );
+        } else {
+            const activeCategories = curCategories
+                .filter(
+                    category =>
+                        category.active &&
+                        category.name !== categoryName
+                )
+                .map(category => category.name);
+
+            const remainingTechs = new Set(
+                Experiences
+                    .filter(experience =>
+                        activeCategories.includes(
+                            experience.type
+                        )
+                    )
+                    .flatMap(
+                        experience => experience.techStack
+                    )
+            );
+
+            setCurStack(current =>
+                current.map(stack => ({
+                    ...stack,
+                    active: remainingTechs.has(stack.tech)
+                }))
+            );
+        }
+    };
+
+    const handleTechStackChange = (
+        e: React.MouseEvent<HTMLLIElement>
+    ): void => {
+        const techName = e.currentTarget.id;
+
+        const stack = curStack.find(
+            stack => stack.tech === techName
+        );
+
+        if (!stack) return;
+
+        const newActive = !stack.active;
+
+        // Update TechStack
+        const newStack = curStack.map(stack => ({
+            ...stack,
+            active:
+                stack.tech === techName
+                    ? newActive
+                    : stack.active
+        }));
+
+        setCurStack(newStack);
+
+        /*
+         * Find all Experiences that contain
+         * any currently selected technology.
+         */
+        const activeTechs = newStack
+            .filter(stack => stack.active)
+            .map(stack => stack.tech);
+
+        /*
+         * No technology selected:
+         * reset all Experience filters.
+         */
+        if (activeTechs.length === 0) {
+            setCurCategories(current =>
+                current.map(category => ({
+                    ...category,
+                    active: false
+                }))
+            );
+
+            return;
+        }
+
+        /*
+         * Activate Experiences that contain
+         * at least one selected technology.
+         */
+        setCurCategories(current =>
+            current.map(category => {
+                const hasMatchingExperience =
+                    Experiences.some(
+                        experience =>
+                            experience.type ===
+                            category.name &&
+                            experience.techStack.some(
+                                tech =>
+                                    activeTechs.includes(tech)
+                            )
+                    );
+
+                return {
+                    ...category,
+                    active: hasMatchingExperience
+                };
             })
-            return {
-                ...curItem,
-                active: match
-            }
-        })
-        setcurCategories(newCategoriesList);
-    }
+        );
+    };
+    /*
+     * Currently selected filters
+     */
+    const activeCategories = curCategories
+        .filter(category => category.active)
+        .map(category => category.name);
 
-    const handleCategorieChange = (e: React.MouseEvent<HTMLLIElement>): void => {
-        const target = e.currentTarget;
-        const categoryName = target.id;
-        
-        const newCategories = curCategories.map(item => {
-            if (item.name === categoryName) {
-                return {
-                    ...item,
-                    active: !item.active
-                }
-            }
-            return item;
-        })
-        setcurCategories(newCategories);
-        updateStack(newCategories);
-    }
+    const activeStacks = curStack
+        .filter(stack => stack.active)
+        .map(stack => stack.tech);
 
-    const handleTechStackChange = (e: React.MouseEvent<HTMLLIElement>): void => {
-        const target = e.currentTarget;
-        const techName = target.id;
-        
-        const newStackList = curStack.map(item => {
-            if (item.tech === techName) {
-                return {
-                    ...item,
-                    active: !item.active
-                }
-            }
-            return item;
-        });
-        setCurStack(newStackList);
-        updateCategories(newStackList);
-    }
+    /*
+     * Filter Experiences
+     */
+    const filteredExperiences = Experiences.filter(
+        experience => {
+            const categoryMatch =
+                activeCategories.length === 0 ||
+                activeCategories.includes(experience.type);
+
+            const techMatch =
+                activeStacks.length === 0 ||
+                activeStacks.some(tech =>
+                    experience.techStack.includes(tech)
+                );
+
+            return (
+                categoryMatch &&
+                techMatch &&
+                experience.status === "available"
+            );
+        }
+    );
 
     return (
-        <>
-            <div id="work">
-                <h2>Work</h2>
-                <div className="filters">
-                    <div id="categorie">
-                        <h4>Categorie</h4>
-                        <ul className="filter-list close">
-                            {
-                                curCategories.map((curCategorie, idx) => {
-                                    const { active } = curCategorie;
-                                    return (
-                                        <li
-                                            id={curCategorie.name}
-                                            className={active ? "active" : ""}
-                                            onClick={handleCategorieChange}
-                                            key={curCategorie.name + idx}
-                                        >
-                                            {curCategorie.name}
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
-                    <div id="techStack">
-                        <h4>Tech stack</h4>
-                        <ul className="filter-list">
-                            {
-                                curStack.map((stack, idx) => {
-                                    const { tech, active } = stack;
-                                    return (
-                                        <li
-                                            id={tech}
-                                            className={active ? "active" : ""}
-                                            onClick={handleTechStackChange}
-                                            key={tech + idx}
-                                        >
-                                            {tech}
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
+        <section id="work" className="page">
+            <h2>Work</h2>
+
+            <div className="filters">
+
+                {/* Experience */}
+                <div id="experience">
+                    <h4>Experience</h4>
+
+                    <ul className="filter-list">
+                        {curCategories.map(category => (
+                            <li
+                                id={category.name}
+                                className={
+                                    category.active
+                                        ? "active"
+                                        : ""
+                                }
+                                onClick={
+                                    handleCategoryChange
+                                }
+                                key={category.name}
+                            >
+                                {category.name}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-                <div className="work-list">
-                    {Projects.map((project, idx) => {
-                        const {
-                            name,
-                            techStack,
-                            status
-                        } = project;
-                        const activeStack = curStack.filter(({ active }) => active);
-                        const activeStacks = activeStack.map(item => item.tech);
-                        if (activeStacks.some(elem => project.use(techStack, elem))
-                            && status === "available") {
-                            return (
-                                <NavLink
-                                    to={project.link ? project.link : `/works/${name}`}
-                                    className="list-item project-card"
-                                    key={name + techStack + idx}
-                                >
-                                    {name}
-                                </NavLink>
-                            )
-                        }
-                        return null;
-                    })}
+
+                {/* Tech Stack */}
+                <div id="techStack">
+                    <h4>Tech Stack</h4>
+
+                    <ul className="filter-list">
+                        {curStack.map(stack => (
+                            <li
+                                id={stack.tech}
+                                className={
+                                    stack.active
+                                        ? "active"
+                                        : ""
+                                }
+                                onClick={
+                                    handleTechStackChange
+                                }
+                                key={stack.tech}
+                            >
+                                {stack.tech}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
+
             </div>
-        </>
-    )
-}
+
+            {/* Experiences */}
+            <div className="work-list">
+                {filteredExperiences.map(experience => (
+                    <NavLink
+                        to={
+                            experience.link ??
+                            `/works/${experience.id}`
+                        }
+                        className="list-item project-card"
+                        key={experience.id}
+                    >
+                        {experience.name}
+                    </NavLink>
+                ))}
+            </div>
+        </section>
+    );
+};
 
 export default Works;

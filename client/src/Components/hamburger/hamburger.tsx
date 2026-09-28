@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleHamburger } from "../../features/hamburgerSlice";
-import type { RootState } from "../../store";
+import type { RootState } from "../../redux/store";
 
 const Hamburger = () => {
 	const { isOpen } = useSelector(

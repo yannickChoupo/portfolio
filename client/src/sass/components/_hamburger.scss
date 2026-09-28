@@ -10,9 +10,7 @@
   justify-content: center;
 
   .hamburger {
-    width: px-to-em(40px);
     // width: px-to-em(40px);
-    // height: px-to-em(40px);
     @include mixins.flexCenter;
 
     position: relative;
@@ -22,7 +20,7 @@
     cursor: pointer;
 
     @include breakpoint--small {
-      width: px-to-em(40px);
+      // width: px-to-em(40px);
       // width: 52px;
       height: 52px;
     }

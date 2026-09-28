@@ -1,27 +1,38 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface ThemeState {
-    darkThemeIsActiv: boolean;
+    darkThemeIsActive: boolean;
 }
 
 const initialState: ThemeState = {
-    darkThemeIsActiv: false
+    darkThemeIsActive: false,
 };
 
 const themeSlice = createSlice({
-    name: 'theme',
+    name: "theme",
+
     initialState,
+
     reducers: {
         switchTheme: (state) => {
-            state.darkThemeIsActiv = !state.darkThemeIsActiv;
+            state.darkThemeIsActive =
+                !state.darkThemeIsActive;
         },
-        setDarkThemeIsActiv: (state, action: PayloadAction<boolean>) => {
-            state.darkThemeIsActiv = action.payload;
-        }
-    }
+
+        setDarkThemeIsActive: (
+            state,
+            action: PayloadAction<boolean>
+        ) => {
+            state.darkThemeIsActive =
+                action.payload;
+        },
+    },
 });
 
-export const { setDarkThemeIsActiv, switchTheme } = themeSlice.actions;
+export const {
+    setDarkThemeIsActive,
+    switchTheme,
+} = themeSlice.actions;
 
 export default themeSlice.reducer;
