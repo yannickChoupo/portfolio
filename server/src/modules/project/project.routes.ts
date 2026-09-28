@@ -5,30 +5,55 @@ import {
     getProjectById,
     createProject,
     updateProject,
-    deleteProject
+    deleteProject,
+    createProjectRequirement,
+    getGithubProjectsV2,
+    refreshGithubProjectsV2
 } from "./project.controller";
+
+import {
+    createProjectTodo,
+    getProjectTodos
+} from "../todo/todo.controller";
+import { getProjectRequirements } from "../requirement/requirement.controller";
 
 const router = Router();
 
-/*
- * Public
- */
+
 router.get("/", getProjects);
-router.get("/:id", getProjectById);
 
-/*
- * Admin
- *
- * Add your authentication middleware here once
- * the admin project management UI is implemented.
- */
+router.get("/github", getGithubProjectsV2);
 
-// router.post("/", authMiddleware, createProject);
-// router.put("/:id", authMiddleware, updateProject);
-// router.delete("/:id", authMiddleware, deleteProject);
+router.post("/github/refresh", refreshGithubProjectsV2);
+
+router.get("/:projectId", getProjectById);
 
 router.post("/", createProject);
-router.put("/:id", updateProject);
-router.delete("/:id", deleteProject);
+
+router.put("/:projectId", updateProject);
+
+router.delete("/:projectId", deleteProject);
+
+// Project-specific requirements
+router.get(
+    "/:projectId/requirements",
+    getProjectRequirements
+);
+
+router.post(
+    "/:projectId/requirements",
+    createProjectRequirement
+);
+
+// Project-specific todos
+router.get(
+    "/:projectId/todos",
+    getProjectTodos
+);
+
+router.post(
+    "/:projectId/todos",
+    createProjectTodo
+);
 
 export default router;

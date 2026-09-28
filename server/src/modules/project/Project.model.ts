@@ -77,11 +77,15 @@ const ProjectSchema = new mongoose.Schema(
         endpoints: [{
             method: {
                 type: String,
-                enum: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+                enum: [
+                    "GET",
+                    "POST",
+                    "PUT",
+                    "PATCH",
+                    "DELETE"
+                ]
             },
-
             path: String,
-
             description: String
         }]
     },
@@ -90,6 +94,9 @@ const ProjectSchema = new mongoose.Schema(
     }
 );
 
-const Project = mongoose.model("Project", ProjectSchema);
+const Project = mongoose.model(
+    "Project",
+    ProjectSchema
+);
 
 export default Project;
