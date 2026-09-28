@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 
 const Home: React.FC = () => {
 	return (
-		<div id="home">
-			<section className="home-header d-flex justify-content-center">
+		<section id="home">
+			<div className="home-header d-flex justify-content-center">
 				<div className="image" />
-			</section>
-			<section className="home-body text-center fs-3 pt-5 l">
+			</div>
+			<div className="home-body text-center fs-3 pt-5 l">
 				<p>
 					Hi, I’m Yannick<br />
 					great to have you here!
@@ -17,12 +17,13 @@ const Home: React.FC = () => {
 					creates to improve the way we live, work, and connect.
 				</p>
 				<p>
-					I’m fascinated by digital systems can transform industries,
+					I’m fascinated by how digital systems can transform industries, 
 					automate processes, and turn ideas into impactful solutions.<br />
 				</p>
 				<p>
-					Currently, I’m studying Electrical Engineering with a focus on <strong>Systems Automation</strong> at the
-					<strong> darmstadt university of applied sciences </strong><br />
+					Currently, I’m studying Electrical Engineering with a focus on<br />
+					<strong>Systems Automation</strong> at the
+					<strong> Darmstadt university of applied sciences </strong><br />
 					Throughout my studies, I’ve developed a strong technical
 					foundation in engineering principles, automation, and system design.
 				</p>
@@ -52,10 +53,10 @@ const Home: React.FC = () => {
 						reach out.
 					</NavLink>
 					<br />
-					Looking forward to hearing from you! 🚀
+					Looking forward to hearing from you!
 				</p>
-			</section>
-		</div >
+			</div>
+		</section >
 	);
 };
 

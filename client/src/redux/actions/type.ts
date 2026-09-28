@@ -24,3 +24,5 @@ export const LAUNCH_DEMO = 'LAUNCH_DEMO';
 export const STOP_DEMO = 'STOP_DEMO';
 export const TOGGLE_DEMO = 'TOGGLE_DEMO';
 
+export const TOGGLE_HAMBURGER = 'TOGGLE_HAMBURGER';
+

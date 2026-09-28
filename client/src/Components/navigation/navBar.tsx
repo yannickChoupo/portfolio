@@ -6,19 +6,19 @@ import { BuildingHome32Regular } from '@fluentui/react-icons';
 export const NavBar = () => {
     return (
         <>
-            <div className="navbar">
+            <nav className="navbar">
                 <div className="container nav-body">
                     <NavLink
-                        className="logo navbar-link "
+                        className="navbar-link logo"
                         aria-current="page"
                         to='/'>
                         {/* &#127960; */}
-                        <BuildingHome32Regular />
+                        <BuildingHome32Regular aria-hidden="true" />
                     </NavLink>
                     <Hamburger />
                     <SideBar />
                 </div>
-            </div>
+            </nav>
         </>
     )
 }

@@ -1,9 +1,9 @@
 html {
   box-sizing: border-box;
-  
+  scroll-behavior: smooth;
 }
 
-html, 
+html,
 body {
   height: 100%;
 }
@@ -14,10 +14,10 @@ body {
   box-sizing: inherit;
 }
 
-body, 
-p, 
-a, 
-ul, 
+body,
+p,
+a,
+ul,
 li,
 h3,
 h2,

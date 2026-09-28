@@ -6,8 +6,6 @@
 $lines-color: rgba($def-pri, .87);
 
 #about {
-	// padding: 0 px-to-em(12px);
-
 	h2 {
 		margin-bottom: 1em;
 	}
@@ -18,6 +16,11 @@ $lines-color: rgba($def-pri, .87);
 		border-bottom: 2px solid $def-pri;
 	}
 
+	#profile {
+		.body {
+			padding: px-to-em(10px) 0;
+		}
+	}
 	#education {
 		.body {
 			margin: 1em 0;
@@ -29,8 +32,8 @@ $lines-color: rgba($def-pri, .87);
 
 					&::before {
 						content: "";
-						width: .2em;
-						height: calc(85% + 2em);
+						// width: .2em;
+						// height: calc(85% + 2em);
 						position: absolute;
 						left: 0;
 						top: 8%;
@@ -48,10 +51,9 @@ $lines-color: rgba($def-pri, .87);
 
 					&::before {
 						content: "";
-						width: .2em;
-						height: 24%;
+						// width: .2em;
+						// height: 22%;
 						position: absolute;
-						// z-index: 1000;
 						left: 0;
 						top: 0;
 						background-color: $def-pri;
@@ -64,8 +66,8 @@ $lines-color: rgba($def-pri, .87);
 
 					&::before {
 						content: "";
-						width: .2em;
-						height: calc(100% + 1em);
+						// width: .2em;
+						// height: calc(100% + 1em);
 						position: absolute;
 						left: 0;
 						top: 0;
@@ -97,7 +99,7 @@ $lines-color: rgba($def-pri, .87);
 					.to {
 						position: relative;
 						text-align: left;
-						margin-left: 5ch;
+						margin-left: 7ch;
 
 						&::before {
 							content: "";
@@ -130,8 +132,8 @@ $lines-color: rgba($def-pri, .87);
 
 					&::before {
 						content: "";
-						width: .2em;
-						height: calc(100% + 2em);
+						// width: .2em;
+						// height: calc(100% + 2em);
 						position: absolute;
 						left: 0;
 						top: .5em;
@@ -144,8 +146,8 @@ $lines-color: rgba($def-pri, .87);
 
 					&::before {
 						content: "";
-						width: .2em;
-						height: .5em;
+						// width: .2em;
+						// height: .5em;
 						position: absolute;
 						left: 0;
 						background-color: $def-pri;
@@ -213,6 +215,7 @@ $lines-color: rgba($def-pri, .87);
 					}
 
 					ul {
+						list-style: disc;
 						li {
 							line-height: 1.5em;
 						}
