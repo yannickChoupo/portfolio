@@ -73,3 +73,105 @@ export default defineConfig([
 ])
 
 ```
+<!-- Requirement 1: Credential Management
+
+Requirement:
+Users must be able to provision, store, register, and manage their Union credentials.
+
+Requirement-Todos:
+
+Define credential data model
+Implement credential provisioning
+Implement credential storage
+Implement credential registration/binding
+Implement credential status management
+Implement credential lookup
+Implement credential validation
+Handle invalid/unknown credentials
+Add authorization rules
+Write unit tests for credential validation
+Write integration tests for credential registration
+Test invalid and expired credentials
+Requirement 2: NFC Authentication
+
+
+
+
+Requirement:
+The system must authenticate a user through an NFC interaction and establish a valid user session.
+
+Requirement-Todos:
+
+Define NFC authentication flow
+Implement NFC reader communication
+Implement backend NFC endpoint
+Validate NFC credential
+Resolve credential to user
+Create authenticated session
+Reject invalid credentials
+Handle duplicate/replayed requests
+Add authentication logging
+Write unit tests
+Write integration tests
+Test invalid NFC credentials
+Test unauthorized access
+Requirement 3: Event Access
+
+
+
+
+Requirement:
+Authenticated users must be able to access an assigned event/game.
+
+Requirement-Todos:
+
+Define event data model
+Define user-event relationship
+Implement event lookup
+Validate event access
+Implement event entry
+Handle unauthorized users
+Record event access
+Write access-control tests
+Write integration tests
+Requirement 4: Attendance
+
+
+
+
+Requirement:
+Union must record when an authenticated participant attends an event.
+
+Requirement-Todos:
+
+Define attendance data model
+Implement attendance creation
+Prevent duplicate attendance records
+Store timestamp
+Associate attendance with user
+Associate attendance with event
+Add attendance lookup
+Test successful attendance
+Test duplicate attendance
+Test unauthorized attendance
+Requirement 5: Tasks & Progress
+
+
+
+
+Requirement:
+Participants must be able to view assigned tasks, complete them, and receive corresponding progress/points.
+
+Requirement-Todos:
+
+Define task data model
+Assign tasks to events/users
+Display available tasks
+Implement task completion
+Prevent duplicate completion
+Calculate points
+Update user progress
+Store completion timestamp
+Test task completion
+Test duplicate completion
+Test point calculation -->

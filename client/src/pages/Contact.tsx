@@ -31,44 +31,42 @@ const Contact: React.FC = () => {
 	}
 
 	return (
-		<>
-			<div id="contact">
-				<h2>CONTACT</h2>
-				<section className="infos">
-					<p>
-						Email : <em>yannicknjilo@gmail.com</em>
-					</p>
-					<p>
-						Phone : <em>(+49)17674543455</em>
-					</p>
-					<p>
-						Github : <em>
-							<a href="https://github.com/yannickChoupo">
-								https://github.com/yannickChoupo
-							</a>
-						</em>
-					</p>
-					<p>
-						Linkedin : <em>
-							<a href="https://www.linkedin.com/in/yannick-njilo-794326205/">
-								https://www.linkedin.com/in/yannick-njilo-794326205/
-							</a>
-						</em>
-					</p>
-				</section>
-				<section>
-					<h3> Drop a message</h3>
-					<textarea className="message-area"
-						name="message-area"
-						placeholder="please consider living a message ...."
-						onChange={handleChange}
-						value={message}
-						rows={2}>
-					</textarea>
-					<button type="button" onClick={saveMessage}>send</button>
-				</section>
-			</div>
-		</>
+		<main id="contact" className="page">
+			<h2>CONTACT</h2>
+			<section className="infos">
+				<p>
+					Email : <em>yannicknjilo@gmail.com</em>
+				</p>
+				<p>
+					Phone : <em>(+49)17674543455</em>
+				</p>
+				<p>
+					Github : <em>
+						<a href="https://github.com/yannickChoupo">
+							https://github.com/yannickChoupo
+						</a>
+					</em>
+				</p>
+				<p>
+					Linkedin : <em>
+						<a href="https://www.linkedin.com/in/yannick-njilo-794326205/">
+							https://www.linkedin.com/in/yannick-njilo-794326205/
+						</a>
+					</em>
+				</p>
+			</section>
+			<section>
+				<h3> Drop a message</h3>
+				<textarea className="message-area"
+					name="message-area"
+					placeholder="please consider living a message ...."
+					onChange={handleChange}
+					value={message}
+					rows={2}>
+				</textarea>
+				<button type="button" onClick={saveMessage}>send</button>
+			</section>
+		</main>
 	);
 }
 

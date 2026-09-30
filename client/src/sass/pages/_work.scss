@@ -32,10 +32,12 @@
 		.filter-list {
 			font-size: .7em;
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(7em, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
 
 			& li {
 				display: flex;
+				justify-content: center;
+				align-items: center;
 				border-radius: .4em;
 				border: .1em solid $def-pri;
 				padding: .3em;

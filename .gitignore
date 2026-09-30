@@ -1,16 +1,13 @@
 /node_modules
 client/Makefile
 client/build/
-client/package-lock.json
-server/package-lock.json
 server/node_modules/
 server/Makefile
 .idea/
 .vscode/
-package-lock.json
 
 node_modules/
-.env/
+.env
 .env.dev/
 dist/
 build/
@@ -18,4 +15,3 @@ build/
 .idea/
 .vscode/
 config/
-package-lock.json

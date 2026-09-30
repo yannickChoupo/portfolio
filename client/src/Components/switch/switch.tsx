@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleHamburger } from "../../features/hamburgerSlice";
-import { setDarkThemeIsActiv } from "../../features/themeslice";
+
 import {
   getSavedTheme,
   getSystemTheme,
   setTheme,
   applyTheme
 } from "../../utils/theme";
-import type { RootState } from "../../store";
+import type { RootState } from "../../redux/store";
+import { setDarkThemeIsActive } from "../../features/themeslice";
 
 const Switch = (): React.ReactElement => {
   const dispatch = useDispatch();
   const { isOpen } = useSelector((state: RootState) => state.hamburger);
-  const darkMode = useSelector((state: RootState) => state.theme.darkThemeIsActiv);
+  const darkMode = useSelector((state: RootState) => state.theme.darkThemeIsActive);
 
   const handleSwitchClick = () => {
     const nextDark = !darkMode;
@@ -22,7 +23,7 @@ const Switch = (): React.ReactElement => {
     setTheme(nextDark ? "dark" : "light");
 
     // update redux
-    dispatch(setDarkThemeIsActiv(nextDark));
+    dispatch(setDarkThemeIsActive(nextDark));
 
     // close hamburger if open
     if (isOpen) dispatch(toggleHamburger());
@@ -34,7 +35,7 @@ const Switch = (): React.ReactElement => {
     const initial = saved ?? getSystemTheme();
 
     applyTheme(initial);
-    dispatch(setDarkThemeIsActiv(initial === "dark"));
+    dispatch(setDarkThemeIsActive(initial === "dark"));
   }, [dispatch]);
 
   return (
