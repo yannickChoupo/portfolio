@@ -7,7 +7,7 @@ server/Makefile
 .vscode/
 
 node_modules/
-.env/
+.env
 .env.dev/
 dist/
 build/
