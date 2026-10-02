@@ -50,7 +50,8 @@ services:
       context: ./client
       dockerfile: Dockerfile
       args:
-        REACT_APP_API_URL: ${REACT_APP_API_URL}
+        VITE_API_URL: ${VITE_API_URL:-/api}
+        VITE_UNION_APP_URL: ${VITE_UNION_APP_URL:-https://app.union.njiloportfolio.de/#/login}
     restart: unless-stopped
     working_dir: /usr/src/app
     environment:

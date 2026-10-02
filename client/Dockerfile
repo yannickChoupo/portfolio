@@ -4,7 +4,9 @@ WORKDIR /usr/src/app
 
 # Accept PUBLIC_URL as build argument
 ARG VITE_API_URL=/api
+ARG VITE_UNION_APP_URL=https://app.union.njiloportfolio.de/#/login
 ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_UNION_APP_URL=$VITE_UNION_APP_URL
 
 COPY package*.json ./
 
