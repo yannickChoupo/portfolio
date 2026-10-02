@@ -112,6 +112,15 @@
     color: rgba($def-pri, 0.7);
   }
 
+  .live-version-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: $def-pri;
+    font-weight: 600;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25rem;
+  }
+
   // ----------------------------------------------
   // Project metadata
   // ----------------------------------------------
