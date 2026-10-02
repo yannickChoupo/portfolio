@@ -17,7 +17,7 @@ const app = express();
 const allowedOrigins = [
     "http://localhost:3000",
     "https://www.njiloportfolio.de",
-    "https://www.njiloportfolio.de",
+    "https://njiloportfolio.de",
     "http://localhost:8080",
     "http://localhost:5173"
 ];
