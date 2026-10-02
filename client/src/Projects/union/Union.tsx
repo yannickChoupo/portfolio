@@ -321,6 +321,16 @@ const Union: React.FC = () => {
                     device integration.
                 </p>
 
+                <a
+                    className="live-version-link"
+                    href={import.meta.env.VITE_UNION_APP_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Open the current web version
+                    <span aria-hidden="true"> →</span>
+                </a>
+
                 <div className="project-meta">
                     <div className="stack-tags">
                         <span>React</span>
@@ -2105,5 +2115,4 @@ export default Union;
 //     Hardware/software integration
 //     System architecture
 //     Iteration
-
 
