@@ -73,7 +73,9 @@ jobs:
         with:
           context: ./client
           push: true
-          build-args: VITE_API_URL=/api
+          build-args: |
+            VITE_API_URL=/api
+            VITE_UNION_APP_URL=https://app.union.njiloportfolio.de/#/login
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/portfolio:client-${{ github.sha }}
             ${{ secrets.DOCKER_USERNAME }}/portfolio:client-latest
